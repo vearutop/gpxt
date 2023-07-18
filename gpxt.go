@@ -4,11 +4,11 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/bool64/dev/version"
 	"os"
 	"time"
 
 	"github.com/alecthomas/kingpin/v2"
+	"github.com/bool64/dev/version"
 	"github.com/tkrajina/gpxgo/gpx"
 	"github.com/vearutop/gpxt/runnerup"
 	_ "modernc.org/sqlite"
