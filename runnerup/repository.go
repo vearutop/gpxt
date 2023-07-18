@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/bool64/sqluct"
-	_ "modernc.org/sqlite"
+	_ "modernc.org/sqlite" // SQL Driver.
 )
 
 // ActivityType describes what was happening during tracking.
@@ -14,10 +14,12 @@ type ActivityType int
 // MSTimeStamp is a UNIX timestamp in milliseconds.
 type MSTimeStamp int
 
+// String returns time stamp in RFC 3339 format.
 func (t MSTimeStamp) String() string {
 	return t.Time().Format(time.RFC3339)
 }
 
+// Time returns time.Time value.
 func (t MSTimeStamp) Time() time.Time {
 	return time.Unix(int64(t/1000), 0)
 }
@@ -29,6 +31,7 @@ func (t TimeStamp) String() string {
 	return time.Unix(int64(t), 0).Format(time.RFC3339)
 }
 
+// Seconds defines duration.
 type Seconds int
 
 func (t Seconds) String() string {
@@ -60,12 +63,14 @@ type Location struct {
 	Satellites int      `db:"satellites"`
 }
 
+// Repository provides access to DB entities.
 type Repository struct {
 	st *sqluct.Storage
 	ls sqluct.StorageOf[Location]
 	as sqluct.StorageOf[Activity]
 }
 
+// NewRepository creates a new Repository.
 func NewRepository(dbFile string) (*Repository, error) {
 	st, err := sqluct.Open("sqlite", dbFile)
 	if err != nil {
@@ -80,16 +85,19 @@ func NewRepository(dbFile string) (*Repository, error) {
 	return &r, nil
 }
 
+// Close closes underlying DB connection.
 func (r *Repository) Close() error {
 	return r.st.DB().Close()
 }
 
+// ListActivities returns latest Activity list.
 func (r *Repository) ListActivities(ctx context.Context, limit uint64) ([]Activity, error) {
 	return r.as.List(ctx, r.as.SelectStmt().
 		OrderBy(r.as.Fmt("%s DESC", &r.as.R.ID)).
 		Limit(limit))
 }
 
+// ListLocations returns all Location points for an Activity ID.
 func (r *Repository) ListLocations(ctx context.Context, activityID int) ([]Location, error) {
 	return r.ls.List(ctx, r.ls.SelectStmt().
 		OrderBy(r.ls.Fmt("%s ASC", &r.ls.R.ID)).

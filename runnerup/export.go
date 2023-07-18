@@ -49,9 +49,7 @@ func export(c *kingpin.CmdClause) {
 			gpxDoc.AppendPoint(&p)
 		}
 
-		xx, err := gpxDoc.ToXml(gpx.ToXmlParams{
-			Indent: indent,
-		})
+		xx, err := gpxDoc.ToXml(gpx.ToXmlParams{Indent: indent})
 		if err != nil {
 			return err
 		}

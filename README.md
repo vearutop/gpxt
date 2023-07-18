@@ -7,11 +7,28 @@
 ![Code lines](https://sloc.xyz/github/vearutop/gpxt/?category=code)
 ![Comments](https://sloc.xyz/github/vearutop/gpxt/?category=comments)
 
-<!--- TODO Update README.md -->
-
-Library template with GitHub actions for Go.
+GPX Tool CLI.
 
 ## Usage
 
-Create a new repository from this template, check out it and run `./run_me.sh` to replace template name with name of
-your repository.
+```
+Commands:
+help [<command>...]
+    Show help.
+
+time [<flags>] <file>
+    Move track in time
+
+info <file>
+    Show info about GPX file
+
+merge [<flags>] [<files>...]
+    Merge multiple GPX tracks in one.
+
+runnerup list [<flags>] <db>
+    List latest activities
+
+runnerup export [<flags>] <db> <activity-id> [<output>]
+    Export activity as GPX.
+
+```
