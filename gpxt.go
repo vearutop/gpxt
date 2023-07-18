@@ -3,17 +3,20 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/alecthomas/kingpin"
-	"io/ioutil"
+	"os"
 	"time"
 
+	"github.com/alecthomas/kingpin/v2"
 	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/runnerup"
+	_ "modernc.org/sqlite"
 )
 
 func main() {
 	timeCmd()
 	infoCmd()
 	mergeCmd()
+	runnerup.Cmd()
 
 	kingpin.Parse()
 }
@@ -93,13 +96,12 @@ func timeCmd() {
 			return fmt.Errorf("error rendering GPX: %w", err)
 		}
 
-		if err = ioutil.WriteFile("./out.gpx", xx, 0o660); err != nil {
+		if err = os.WriteFile("./out.gpx", xx, 0o660); err != nil {
 			return fmt.Errorf("failed to save GPX file: %w", err)
 		}
 
 		return nil
 	})
-
 }
 
 func mergeCmd() {
@@ -135,7 +137,7 @@ func mergeCmd() {
 			return fmt.Errorf("error rendering GPX: %w", err)
 		}
 
-		if err = ioutil.WriteFile("./out.gpx", xx, 0o660); err != nil {
+		if err = os.WriteFile("./out.gpx", xx, 0o660); err != nil {
 			return fmt.Errorf("failed to save GPX file: %w", err)
 		}
 
