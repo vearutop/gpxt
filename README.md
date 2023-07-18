@@ -1,17 +1,34 @@
-# go-library-template
+# gpxt
 
-[![Build Status](https://github.com/bool64/go-library-template/workflows/test-unit/badge.svg)](https://github.com/bool64/go-library-template/actions?query=branch%3Amaster+workflow%3Atest-unit)
-[![Coverage Status](https://codecov.io/gh/bool64/go-library-template/branch/master/graph/badge.svg)](https://codecov.io/gh/bool64/go-library-template)
-[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/github.com/bool64/go-library-template)
-[![Time Tracker](https://wakatime.com/badge/github/bool64/go-library-template.svg)](https://wakatime.com/badge/github/bool64/go-library-template)
-![Code lines](https://sloc.xyz/github/bool64/go-library-template/?category=code)
-![Comments](https://sloc.xyz/github/bool64/go-library-template/?category=comments)
+[![Build Status](https://github.com/vearutop/gpxt/workflows/test-unit/badge.svg)](https://github.com/vearutop/gpxt/actions?query=branch%3Amaster+workflow%3Atest-unit)
+[![Coverage Status](https://codecov.io/gh/vearutop/gpxt/branch/master/graph/badge.svg)](https://codecov.io/gh/vearutop/gpxt)
+[![GoDevDoc](https://img.shields.io/badge/dev-doc-00ADD8?logo=go)](https://pkg.go.dev/github.com/vearutop/gpxt)
+[![Time Tracker](https://wakatime.com/badge/github/vearutop/gpxt.svg)](https://wakatime.com/badge/github/vearutop/gpxt)
+![Code lines](https://sloc.xyz/github/vearutop/gpxt/?category=code)
+![Comments](https://sloc.xyz/github/vearutop/gpxt/?category=comments)
 
-<!--- TODO Update README.md -->
-
-Library template with GitHub actions for Go.
+GPX Tool CLI.
 
 ## Usage
 
-Create a new repository from this template, check out it and run `./run_me.sh` to replace template name with name of
-your repository.
+```
+Commands:
+help [<command>...]
+    Show help.
+
+time [<flags>] <file>
+    Move track in time
+
+info <file>
+    Show info about GPX file
+
+merge [<flags>] [<files>...]
+    Merge multiple GPX tracks in one.
+
+runnerup list [<flags>] <db>
+    List latest activities
+
+runnerup export [<flags>] <db> <activity-id> [<output>]
+    Export activity as GPX.
+
+```
