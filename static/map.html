@@ -56,35 +56,8 @@
             return 6371000 * c
         }
 
-        var bounds = null
-        var toRad = Math.PI/180
-
-        // GPX rendering.
-        for (var i = 0; i < params.files.length; i++) {
-            var customLayer = L.geoJson(null, {
-                style: function () {
-                    return {color: getDarkColor()};
-                }
-            });
-
-            var name = params.files[i];
-            var gpxLayer = omnivore.gpx('/track/' + i + '.gpx', null, customLayer)
-                .on('ready', function (e) {
-                    var b = e.target.getBounds()
-
-                    if (bounds === null) {
-                        bounds = b
-                    } else {
-                        bounds.extend(b)
-                    }
-
-                    map.fitBounds(bounds);
-                });
-            gpxLayer
-                .bindPopup(function (){ return name })
-                .addTo(map);
-
-            gpxLayer.on('popupopen', function(e) {
+        function gpxPopupHandler(name) {
+            return function(e) {
                 var popup = e.popup;
                 var points = e.layer._latlngs
 
@@ -93,7 +66,7 @@
 
                 var shortest = null
                 var ptIdx = []
-                for (var i=0; i < points.length; i++) {
+                for (var i = 0; i < points.length; i++) {
                     var pt = points[i]
 
                     if (pt instanceof Array) {
@@ -130,8 +103,39 @@
                 }
 
                 popup.setContent(name + "<br />" + lat.toFixed(8) + ", " + lon.toFixed(8) + "<br />" +
-                    ts + "<br /> (dist to timestamp point " + Math.round(shortest) + " meters)");
+                    ts + "<br /> (dist to nearest timestamp " + Math.round(shortest) + " meters)");
+            }
+        }
+
+        var bounds = null
+        var toRad = Math.PI/180
+
+        // GPX rendering.
+        for (var i = 0; i < params.files.length; i++) {
+            var customLayer = L.geoJson(null, {
+                style: function () {
+                    return {color: getDarkColor()};
+                }
             });
+
+            var name = params.files[i];
+            var gpxLayer = omnivore.gpx('/track/' + i + '.gpx', null, customLayer)
+                .on('ready', function (e) {
+                    var b = e.target.getBounds()
+
+                    if (bounds === null) {
+                        bounds = b
+                    } else {
+                        bounds.extend(b)
+                    }
+
+                    map.fitBounds(bounds);
+                });
+            gpxLayer
+                .bindPopup(function (){ return name })
+                .addTo(map);
+
+            gpxLayer.on('popupopen', gpxPopupHandler(name));
 
             overlayMaps[name] = gpxLayer
         }
