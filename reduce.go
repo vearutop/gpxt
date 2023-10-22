@@ -36,42 +36,7 @@ func reduceCmd() {
 
 			for ti, t := range gpxFile.Tracks {
 				for si, s := range t.Segments {
-					var prev gpx.GPXPoint
-
-					s := s
-					gpxFile.AppendSegment(&s)
-
-					var pts []gpx.GPXPoint
-
-					for i, pt := range s.Points {
-						if prev.Timestamp.IsZero() {
-							prev = pt
-							pts = append(pts, pt)
-
-							continue
-						}
-
-						if prev.Distance2D(&pt) >= float64(minDist) {
-							prev = pt
-							pts = append(pts, pt)
-
-							continue
-						}
-
-						if prev.Timestamp.Sub(pt.Timestamp) >= minInterval {
-							prev = pt
-							pts = append(pts, pt)
-
-							continue
-						}
-
-						// Adding last point.
-						if i == len(s.Points)-1 {
-							pts = append(pts, pt)
-						}
-					}
-
-					s.Points = pts
+					s.Points = reducePoints(s.Points, minDist, minInterval)
 					t.Segments[si] = s
 				}
 
@@ -95,4 +60,43 @@ func reduceCmd() {
 
 		return nil
 	})
+}
+
+func reducePoints(points []gpx.GPXPoint, minDist int, minInterval time.Duration) []gpx.GPXPoint {
+	var (
+		prev gpx.GPXPoint
+		pts  []gpx.GPXPoint
+	)
+
+	for i, pt := range points {
+		pt := pt
+
+		if prev.Timestamp.IsZero() {
+			prev = pt
+			pts = append(pts, pt)
+
+			continue
+		}
+
+		if prev.Distance2D(&pt) >= float64(minDist) {
+			prev = pt
+			pts = append(pts, pt)
+
+			continue
+		}
+
+		if prev.Timestamp.Sub(pt.Timestamp) >= minInterval {
+			prev = pt
+			pts = append(pts, pt)
+
+			continue
+		}
+
+		// Adding last point.
+		if i == len(points)-1 {
+			pts = append(pts, pt)
+		}
+	}
+
+	return pts
 }

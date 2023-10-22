@@ -29,7 +29,7 @@ func showCmd() {
 		tiles string
 	)
 
-	info := kingpin.Command("show", "Show GPX file on the map")
+	info := kingpin.Command("show", "Show GPX file on the map in the browser")
 	info.Arg("files", "Files to show on the map.").StringsVar(&files)
 	info.Flag("tiles", "URL pattern for map tiles.").
 		Default("https://tile.openstreetmap.org/{z}/{x}/{y}.png").

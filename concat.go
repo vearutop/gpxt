@@ -16,7 +16,7 @@ func concatCmd() {
 		indent bool
 	)
 
-	merge := kingpin.Command("concat", "Concat multiple GPX tracks in one.")
+	merge := kingpin.Command("concat", "Concat multiple GPX tracks in one")
 	merge.Arg("files", "Files to merge.").StringsVar(&files)
 	merge.Flag("output", "Output file.").Default("out.gpx").StringVar(&output)
 	merge.Flag("indent", "Indent output file.").BoolVar(&indent)

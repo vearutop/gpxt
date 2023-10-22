@@ -22,13 +22,18 @@ time [<flags>] <file>
 info <file>
     Show info about GPX file
 
-merge [<flags>] [<files>...]
-    Merge multiple GPX tracks in one.
+show [<flags>] [<files>...]
+    Show GPX file on the map in the brpwser
+
+concat [<flags>] [<files>...]
+    Concat multiple GPX tracks in one
+
+reduce [<flags>] <files>...
+    Reduce number of points in track to simplify shape
 
 runnerup list [<flags>] <db>
     List latest activities
 
 runnerup export [<flags>] <db> <activity-id> [<output>]
     Export activity as GPX.
-
 ```

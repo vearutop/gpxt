@@ -11,6 +11,7 @@ import (
 //go:embed *
 var Assets embed.FS
 
+// Template creates HTML template from a static file.
 func Template(fileName string) (*template.Template, error) {
 	tpl, err := Assets.ReadFile(fileName)
 	if err != nil {
