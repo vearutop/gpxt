@@ -9,7 +9,9 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/stretchr/testify v1.8.4
 	github.com/swaggest/assertjson v1.9.0
+	github.com/swaggest/openapi-go v0.2.41
 	github.com/swaggest/rest v0.2.58
+	github.com/swaggest/usecase v1.2.1
 	github.com/tkrajina/gpxgo v1.3.0
 	github.com/vearutop/statigz v1.4.0
 	modernc.org/sqlite v1.26.0
@@ -37,10 +39,8 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v3 v3.1.0 // indirect
 	github.com/sergi/go-diff v1.3.1 // indirect
 	github.com/swaggest/form/v5 v5.1.1 // indirect
-	github.com/swaggest/jsonschema-go v0.3.58 // indirect
-	github.com/swaggest/openapi-go v0.2.39 // indirect
-	github.com/swaggest/refl v1.2.1 // indirect
-	github.com/swaggest/usecase v1.2.1 // indirect
+	github.com/swaggest/jsonschema-go v0.3.62 // indirect
+	github.com/swaggest/refl v1.3.0 // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
