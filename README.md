@@ -23,7 +23,7 @@ info <file>
     Show info about GPX file
 
 show [<flags>] [<files>...]
-    Show GPX file on the map in the brpwser
+    Show GPX file on the map in the browser
 
 concat [<flags>] [<files>...]
     Concat multiple GPX tracks in one
