@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx  xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="https://github.com/tkrajina/gpxgo">
+	<metadata>
+		<author></author>
+	</metadata>
+	<wpt lat="37.0078966667" lon="-7.9959733333">
+		<desc>http://127.0.0.1:8008/image/zgt8b082s2u3.jpg</desc>
+	</wpt>
+	<wpt lat="37.007915" lon="-7.99608">
+		<desc>http://127.0.0.1:8008/image/3vfhpjgubebin.jpg</desc>
+	</wpt>
+	<wpt lat="37.007915" lon="-7.99608">
+		<desc>http://127.0.0.1:8008/image/24l98fjtdxhm6.jpg</desc>
+	</wpt>
+	<wpt lat="37.0080833333" lon="-7.99633">
+		<desc>http://127.0.0.1:8008/image/9x4xx1z31w0g.jpg</desc>
+	</wpt>
+	<wpt lat="37.0080483333" lon="-7.9963216667">
+		<desc>http://127.0.0.1:8008/image/fljfnz1tjlju.jpg</desc>
+	</wpt>
+	<wpt lat="37.00817" lon="-7.99663">
+		<desc>http://127.0.0.1:8008/image/1vbl2ypafjifq.jpg</desc>
+	</wpt>
+	<wpt lat="37.00827" lon="-7.996775">
+		<desc>http://127.0.0.1:8008/image/3jwvbisd3x48v.jpg</desc>
+	</wpt>
+	<wpt lat="37.02775" lon="-7.9745033333">
+		<desc>http://127.0.0.1:8008/image/17tvpn98ua3tt.jpg</desc>
+	</wpt>
+	<wpt lat="37.0293683333" lon="-7.9708466667">
+		<desc>http://127.0.0.1:8008/image/3r02scgbecb71.jpg</desc>
+	</wpt>
+	<wpt lat="37.0168833333" lon="-7.9885533333">
+		<desc>http://127.0.0.1:8008/image/1brxv625ny2vg.jpg</desc>
+	</wpt>
+	<wpt lat="37.016825" lon="-7.988875">
+		<desc>http://127.0.0.1:8008/image/ci986mkg0gnj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0176733333" lon="-7.9961033333">
+		<desc>http://127.0.0.1:8008/image/tv8bs3hj18nr.jpg</desc>
+	</wpt>
+	<wpt lat="37.018965" lon="-8.00107">
+		<desc>http://127.0.0.1:8008/image/3918ymbd6obop.jpg</desc>
+	</wpt>
+	<wpt lat="37.018965" lon="-8.00107">
+		<desc>http://127.0.0.1:8008/image/2hmhw2ekditvh.jpg</desc>
+	</wpt>
+	<wpt lat="37.0213916667" lon="-8.0072433333">
+		<desc>http://127.0.0.1:8008/image/33eezd5mgt4go.jpg</desc>
+	</wpt>
+	<wpt lat="37.0246816667" lon="-8.016435">
+		<desc>http://127.0.0.1:8008/image/3jd5245xm66u5.jpg</desc>
+	</wpt>
+	<wpt lat="37.0251116667" lon="-8.0256033333">
+		<desc>http://127.0.0.1:8008/image/lsqd9guzsh35.jpg</desc>
+	</wpt>
+	<wpt lat="37.0250833333" lon="-8.0255733333">
+		<desc>http://127.0.0.1:8008/image/1yfqk6sxnbwz7.jpg</desc>
+	</wpt>
+	<wpt lat="37.025085" lon="-8.0255783333">
+		<desc>http://127.0.0.1:8008/image/z6ae25f0j5dx.jpg</desc>
+	</wpt>
+	<wpt lat="37.0254316667" lon="-8.02526">
+		<desc>http://127.0.0.1:8008/image/22lvjqs0jczaz.jpg</desc>
+	</wpt>
+	<wpt lat="37.0255583333" lon="-8.0251666667">
+		<desc>http://127.0.0.1:8008/image/36dx5t55h9mz.jpg</desc>
+	</wpt>
+	<wpt lat="37.024825" lon="-8.0135366667">
+		<desc>http://127.0.0.1:8008/image/25oxhxvrxv5ws.jpg</desc>
+	</wpt>
+	<wpt lat="37.024825" lon="-8.0135366667">
+		<desc>http://127.0.0.1:8008/image/nbqgfdow55pf.jpg</desc>
+	</wpt>
+	<wpt lat="37.02457" lon="-8.01">
+		<desc>http://127.0.0.1:8008/image/39b1rlcttmvak.jpg</desc>
+	</wpt>
+	<wpt lat="37.02639" lon="-8.0049416667">
+		<desc>http://127.0.0.1:8008/image/2bixseibhvn1l.jpg</desc>
+	</wpt>
+	<wpt lat="37.0246433333" lon="-8.008555">
+		<desc>http://127.0.0.1:8008/image/2653pmko6nn06.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079533333" lon="-7.9958633333">
+		<desc>http://127.0.0.1:8008/image/2jwyjyoug4q1p.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079516667" lon="-7.9958783333">
+		<desc>http://127.0.0.1:8008/image/16dz4jdfvklcz.jpg</desc>
+	</wpt>
+	<wpt lat="37.0059683333" lon="-7.9920766667">
+		<desc>http://127.0.0.1:8008/image/splc3qvtl9fj.jpg</desc>
+	</wpt>
+	<wpt lat="37.00839" lon="-7.9946466667">
+		<desc>http://127.0.0.1:8008/image/2bh4sr39fy7gj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0103633333" lon="-7.9925183333">
+		<desc>http://127.0.0.1:8008/image/2jzh5vz9btpff.jpg</desc>
+	</wpt>
+	<wpt lat="37.0885916667" lon="-8.4271833333">
+		<desc>http://127.0.0.1:8008/image/275v2l9s82636.jpg</desc>
+	</wpt>
+	<wpt lat="37.0885916667" lon="-8.4271833333">
+		<desc>http://127.0.0.1:8008/image/301ecm3az43yq.jpg</desc>
+	</wpt>
+	<wpt lat="37.088355" lon="-8.4265766667">
+		<desc>http://127.0.0.1:8008/image/2qz76b1dvf3v1.jpg</desc>
+	</wpt>
+	<wpt lat="37.08839" lon="-8.4248833333">
+		<desc>http://127.0.0.1:8008/image/2a15fro8967s0.jpg</desc>
+	</wpt>
+	<wpt lat="37.087215" lon="-8.4236166667">
+		<desc>http://127.0.0.1:8008/image/4p9jkw8xga1p.jpg</desc>
+	</wpt>
+	<wpt lat="37.0863616667" lon="-8.426535">
+		<desc>http://127.0.0.1:8008/image/2dojvtrxgwix5.jpg</desc>
+	</wpt>
+	<wpt lat="37.085675" lon="-8.4281066667">
+		<desc>http://127.0.0.1:8008/image/3v3cn95c233c7.jpg</desc>
+	</wpt>
+	<wpt lat="37.0857066667" lon="-8.4335583333">
+		<desc>http://127.0.0.1:8008/image/3ewdu4n01gkia.jpg</desc>
+	</wpt>
+	<wpt lat="37.0857066667" lon="-8.4335583333">
+		<desc>http://127.0.0.1:8008/image/1d6f4lyhd44k.jpg</desc>
+	</wpt>
+	<wpt lat="37.0857066667" lon="-8.4335583333">
+		<desc>http://127.0.0.1:8008/image/11hgnha90hh5y.jpg</desc>
+	</wpt>
+	<wpt lat="37.0861033333" lon="-8.4383766667">
+		<desc>http://127.0.0.1:8008/image/3723x9qeomwts.jpg</desc>
+	</wpt>
+	<wpt lat="37.0861033333" lon="-8.4383766667">
+		<desc>http://127.0.0.1:8008/image/6y58noffegbu.jpg</desc>
+	</wpt>
+	<wpt lat="37.0863366667" lon="-8.443115">
+		<desc>http://127.0.0.1:8008/image/s0s1hchfq35q.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871033333" lon="-8.4241">
+		<desc>http://127.0.0.1:8008/image/13h9umn4rexpw.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871233333" lon="-8.424045">
+		<desc>http://127.0.0.1:8008/image/q0xnxcg492fo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871983333" lon="-8.4181666667">
+		<desc>http://127.0.0.1:8008/image/1var12747hmuy.jpg</desc>
+	</wpt>
+	<wpt lat="37.087495" lon="-8.4163916667">
+		<desc>http://127.0.0.1:8008/image/3qt4t1xjmqqks.jpg</desc>
+	</wpt>
+	<wpt lat="37.0883" lon="-8.41584">
+		<desc>http://127.0.0.1:8008/image/1zngh0zik2m4z.jpg</desc>
+	</wpt>
+	<wpt lat="37.0892983333" lon="-8.4112333333">
+		<desc>http://127.0.0.1:8008/image/3o5d3jc2i5rpg.jpg</desc>
+	</wpt>
+	<wpt lat="37.0899883333" lon="-8.4007466667">
+		<desc>http://127.0.0.1:8008/image/199awhkccz6lo.jpg</desc>
+	</wpt>
+	<wpt lat="37.086455" lon="-8.419915">
+		<desc>http://127.0.0.1:8008/image/12egftbhu3jbr.jpg</desc>
+	</wpt>
+	<wpt lat="37.0863933333" lon="-8.4196283333">
+		<desc>http://127.0.0.1:8008/image/1ozc7r25fktlk.jpg</desc>
+	</wpt>
+	<wpt lat="37.0865866667" lon="-8.4187566667">
+		<desc>http://127.0.0.1:8008/image/1cenhahjv1oci.jpg</desc>
+	</wpt>
+	<wpt lat="37.0873416667" lon="-8.4169466667">
+		<desc>http://127.0.0.1:8008/image/11wzf533spsv5.jpg</desc>
+	</wpt>
+	<wpt lat="37.0873066667" lon="-8.4169666667">
+		<desc>http://127.0.0.1:8008/image/2somp9xg9apc0.jpg</desc>
+	</wpt>
+	<wpt lat="37.087315" lon="-8.41694">
+		<desc>http://127.0.0.1:8008/image/1z6a8i6h4ylym.jpg</desc>
+	</wpt>
+	<wpt lat="37.0876716667" lon="-8.416625">
+		<desc>http://127.0.0.1:8008/image/3glxcs257b1di.jpg</desc>
+	</wpt>
+	<wpt lat="37.0878633333" lon="-8.4166583333">
+		<desc>http://127.0.0.1:8008/image/w0wn20iepdel.jpg</desc>
+	</wpt>
+	<wpt lat="37.0883366667" lon="-8.4165533333">
+		<desc>http://127.0.0.1:8008/image/u2w51a95n77b.jpg</desc>
+	</wpt>
+	<wpt lat="37.0881483333" lon="-8.4158916667">
+		<desc>http://127.0.0.1:8008/image/3bxsekiie5v56.jpg</desc>
+	</wpt>
+	<wpt lat="37.0889133333" lon="-8.4155816667">
+		<desc>http://127.0.0.1:8008/image/1heu92hizowlg.jpg</desc>
+	</wpt>
+	<wpt lat="37.08919" lon="-8.4155966667">
+		<desc>http://127.0.0.1:8008/image/3u71e5yrz22nc.jpg</desc>
+	</wpt>
+	<wpt lat="37.090245" lon="-8.41478">
+		<desc>http://127.0.0.1:8008/image/3f34obk86w5du.jpg</desc>
+	</wpt>
+	<wpt lat="37.0901933333" lon="-8.4146433333">
+		<desc>http://127.0.0.1:8008/image/109i8kxkixpd9.jpg</desc>
+	</wpt>
+	<wpt lat="37.0901366667" lon="-8.4146233333">
+		<desc>http://127.0.0.1:8008/image/9cd701oeilk6.jpg</desc>
+	</wpt>
+	<wpt lat="37.0899216667" lon="-8.4139316667">
+		<desc>http://127.0.0.1:8008/image/3563dzynox0sz.jpg</desc>
+	</wpt>
+	<wpt lat="37.090035" lon="-8.4125916667">
+		<desc>http://127.0.0.1:8008/image/1a5k230gp4u8u.jpg</desc>
+	</wpt>
+	<wpt lat="37.0896933333" lon="-8.4094783333">
+		<desc>http://127.0.0.1:8008/image/3s9kdblhfv2eg.jpg</desc>
+	</wpt>
+	<wpt lat="37.089295" lon="-8.4090083333">
+		<desc>http://127.0.0.1:8008/image/2um3oyt4kxuww.jpg</desc>
+	</wpt>
+	<wpt lat="37.0893" lon="-8.4089966667">
+		<desc>http://127.0.0.1:8008/image/2fnbvh4gau2sn.jpg</desc>
+	</wpt>
+	<wpt lat="37.0902016667" lon="-8.4060116667">
+		<desc>http://127.0.0.1:8008/image/1eodzso7n9ekd.jpg</desc>
+	</wpt>
+	<wpt lat="37.0901116667" lon="-8.40285">
+		<desc>http://127.0.0.1:8008/image/3cn9jzjmdqobj.jpg</desc>
+	</wpt>
+	<wpt lat="37.09057" lon="-8.402375">
+		<desc>http://127.0.0.1:8008/image/2crfxssbuy54v.jpg</desc>
+	</wpt>
+	<wpt lat="37.0907983333" lon="-8.400815">
+		<desc>http://127.0.0.1:8008/image/2pqjs8al8v6g6.jpg</desc>
+	</wpt>
+	<wpt lat="37.0906483333" lon="-8.4006266667">
+		<desc>http://127.0.0.1:8008/image/19xxsfhcoqm9e.jpg</desc>
+	</wpt>
+	<wpt lat="37.09087" lon="-8.4022483333">
+		<desc>http://127.0.0.1:8008/image/1wqutvxrgbts8.jpg</desc>
+	</wpt>
+	<wpt lat="37.0901466667" lon="-8.41386">
+		<desc>http://127.0.0.1:8008/image/118az4swh4en9.jpg</desc>
+	</wpt>
+	<wpt lat="37.0870433333" lon="-8.4210166667">
+		<desc>http://127.0.0.1:8008/image/2eg9djynomizi.jpg</desc>
+	</wpt>
+	<wpt lat="37.08707" lon="-8.4210516667">
+		<desc>http://127.0.0.1:8008/image/1djpa1hj8zuwj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0875666667" lon="-8.426775">
+		<desc>http://127.0.0.1:8008/image/67qm6f3t7lk1.jpg</desc>
+	</wpt>
+	<wpt lat="37.0867833333" lon="-8.4268616667">
+		<desc>http://127.0.0.1:8008/image/22gvvj53mwlpd.jpg</desc>
+	</wpt>
+	<wpt lat="37.0869333333" lon="-8.42922">
+		<desc>http://127.0.0.1:8008/image/3f83od4wuv530.jpg</desc>
+	</wpt>
+	<wpt lat="37.0053733333" lon="-7.9910166667">
+		<desc>http://127.0.0.1:8008/image/14gnqioarkj7m.jpg</desc>
+	</wpt>
+	<wpt lat="37.00802" lon="-7.9958616667">
+		<desc>http://127.0.0.1:8008/image/25aj8mn5kbgu4.jpg</desc>
+	</wpt>
+	<wpt lat="37.00802" lon="-7.9958616667">
+		<desc>http://127.0.0.1:8008/image/2ln8awz0syhr7.jpg</desc>
+	</wpt>
+	<wpt lat="37.0080033333" lon="-7.995765">
+		<desc>http://127.0.0.1:8008/image/2b49b0tfz96v5.jpg</desc>
+	</wpt>
+	<wpt lat="37.0201266667" lon="-7.9400883333">
+		<desc>http://127.0.0.1:8008/image/jixxae2wu91l.jpg</desc>
+	</wpt>
+	<wpt lat="37.0178516667" lon="-7.93769">
+		<desc>http://127.0.0.1:8008/image/48gzubddlcof.jpg</desc>
+	</wpt>
+	<wpt lat="37.0195383333" lon="-7.9345533333">
+		<desc>http://127.0.0.1:8008/image/2gb2940qyr5qw.jpg</desc>
+	</wpt>
+	<wpt lat="37.0187333333" lon="-7.9320766667">
+		<desc>http://127.0.0.1:8008/image/11clwf510wq4k.jpg</desc>
+	</wpt>
+	<wpt lat="37.0175133333" lon="-7.9325083333">
+		<desc>http://127.0.0.1:8008/image/2zso4979w884q.jpg</desc>
+	</wpt>
+	<wpt lat="37.015965" lon="-7.93286">
+		<desc>http://127.0.0.1:8008/image/2ewv5274vu19o.jpg</desc>
+	</wpt>
+	<wpt lat="37.0152183333" lon="-7.93309">
+		<desc>http://127.0.0.1:8008/image/3ixqypcg5pq5q.jpg</desc>
+	</wpt>
+	<wpt lat="37.01464" lon="-7.9328766667">
+		<desc>http://127.0.0.1:8008/image/1oj8vvgsu52kp.jpg</desc>
+	</wpt>
+	<wpt lat="37.0146483333" lon="-7.93297">
+		<desc>http://127.0.0.1:8008/image/3fhfzdamkau0.jpg</desc>
+	</wpt>
+	<wpt lat="37.01418" lon="-7.93292">
+		<desc>http://127.0.0.1:8008/image/27xkobp8d3laz.jpg</desc>
+	</wpt>
+	<wpt lat="37.0136866667" lon="-7.9327266667">
+		<desc>http://127.0.0.1:8008/image/u79iwmaacvjc.jpg</desc>
+	</wpt>
+	<wpt lat="37.0135916667" lon="-7.9327883333">
+		<desc>http://127.0.0.1:8008/image/1bgndqjt1s6jo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0137683333" lon="-7.9350266667">
+		<desc>http://127.0.0.1:8008/image/12x55cbhclhwh.jpg</desc>
+	</wpt>
+	<wpt lat="37.014855" lon="-7.935565">
+		<desc>http://127.0.0.1:8008/image/2s1bxgv7hte61.jpg</desc>
+	</wpt>
+	<wpt lat="37.014855" lon="-7.935565">
+		<desc>http://127.0.0.1:8008/image/35po74b37zptn.jpg</desc>
+	</wpt>
+	<wpt lat="37.01497" lon="-7.9350583333">
+		<desc>http://127.0.0.1:8008/image/3hir95duv6w72.jpg</desc>
+	</wpt>
+	<wpt lat="37.0165216667" lon="-7.9365533333">
+		<desc>http://127.0.0.1:8008/image/2zhcmiye4ny7l.jpg</desc>
+	</wpt>
+	<wpt lat="37.01799" lon="-7.938985">
+		<desc>http://127.0.0.1:8008/image/2tq6ad69th4t3.jpg</desc>
+	</wpt>
+	<wpt lat="37.0324933333" lon="-7.8337883333">
+		<desc>http://127.0.0.1:8008/image/1n8qj0kgsbi9q.jpg</desc>
+	</wpt>
+	<wpt lat="37.0325816667" lon="-7.8333866667">
+		<desc>http://127.0.0.1:8008/image/2dwsusuuvuqcs.jpg</desc>
+	</wpt>
+	<wpt lat="37.0357016667" lon="-7.8335083333">
+		<desc>http://127.0.0.1:8008/image/2k96y82xl25cb.jpg</desc>
+	</wpt>
+	<wpt lat="37.0355166667" lon="-7.8333633333">
+		<desc>http://127.0.0.1:8008/image/2imgdp1gg6nb8.jpg</desc>
+	</wpt>
+	<wpt lat="37.0357" lon="-7.8334133333">
+		<desc>http://127.0.0.1:8008/image/2sh2nyudim7lv.jpg</desc>
+	</wpt>
+	<wpt lat="37.0356183333" lon="-7.8337466667">
+		<desc>http://127.0.0.1:8008/image/1rjlk0eadc7t4.jpg</desc>
+	</wpt>
+	<wpt lat="37.034965" lon="-7.8363416667">
+		<desc>http://127.0.0.1:8008/image/obq58z1cl5r3.jpg</desc>
+	</wpt>
+	<wpt lat="37.0293033333" lon="-7.8404133333">
+		<desc>http://127.0.0.1:8008/image/3tzsj7pu6m46z.jpg</desc>
+	</wpt>
+	<wpt lat="37.02919" lon="-7.8403333333">
+		<desc>http://127.0.0.1:8008/image/2iqwb02mkqkt3.jpg</desc>
+	</wpt>
+	<wpt lat="37.02906" lon="-7.8404066667">
+		<desc>http://127.0.0.1:8008/image/3kyjg0il84heo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0271866667" lon="-7.9743433333">
+		<desc>http://127.0.0.1:8008/image/2oqvjy1qvk3uo.jpg</desc>
+	</wpt>
+	<wpt lat="37.206045" lon="-8.003215">
+		<desc>http://127.0.0.1:8008/image/52kbl40nvjmf.jpg</desc>
+	</wpt>
+	<wpt lat="37.20756" lon="-8.007855">
+		<desc>http://127.0.0.1:8008/image/utob03f560qr.jpg</desc>
+	</wpt>
+	<wpt lat="37.2076733333" lon="-8.007935">
+		<desc>http://127.0.0.1:8008/image/32c4hi1qqrru8.jpg</desc>
+	</wpt>
+	<wpt lat="37.2076016667" lon="-8.00803">
+		<desc>http://127.0.0.1:8008/image/2na2rstqqxolx.jpg</desc>
+	</wpt>
+	<wpt lat="37.207975" lon="-8.0083316667">
+		<desc>http://127.0.0.1:8008/image/mn5ngzpu2wm2.jpg</desc>
+	</wpt>
+	<wpt lat="37.209805" lon="-8.0098933333">
+		<desc>http://127.0.0.1:8008/image/ddra52usgxbs.jpg</desc>
+	</wpt>
+	<wpt lat="37.207585" lon="-8.0081">
+		<desc>http://127.0.0.1:8008/image/2xmibgntoeyht.jpg</desc>
+	</wpt>
+	<wpt lat="37.207645" lon="-8.00808">
+		<desc>http://127.0.0.1:8008/image/1ianayigob6wn.jpg</desc>
+	</wpt>
+	<wpt lat="37.2052683333" lon="-8.0057033333">
+		<desc>http://127.0.0.1:8008/image/gwm0naxv2yjf.jpg</desc>
+	</wpt>
+	<wpt lat="37.1985983333" lon="-8.006905">
+		<desc>http://127.0.0.1:8008/image/oaajagcx1mvu.jpg</desc>
+	</wpt>
+	<wpt lat="37.1985566667" lon="-8.0043033333">
+		<desc>http://127.0.0.1:8008/image/3r99o6btwv17.jpg</desc>
+	</wpt>
+	<wpt lat="37.25351" lon="-8.1016866667">
+		<desc>http://127.0.0.1:8008/image/1iv6o2i7a1khd.jpg</desc>
+	</wpt>
+	<wpt lat="37.2540566667" lon="-8.0935066667">
+		<desc>http://127.0.0.1:8008/image/2chwtdplwv93j.jpg</desc>
+	</wpt>
+	<wpt lat="37.2558766667" lon="-8.0935">
+		<desc>http://127.0.0.1:8008/image/2jksd4qsg0ox.jpg</desc>
+	</wpt>
+	<wpt lat="37.2544616667" lon="-8.0964833333">
+		<desc>http://127.0.0.1:8008/image/2lfnhk94vs9le.jpg</desc>
+	</wpt>
+	<wpt lat="37.254465" lon="-8.0964866667">
+		<desc>http://127.0.0.1:8008/image/qb3schjjb1j7.jpg</desc>
+	</wpt>
+	<wpt lat="37.2540833333" lon="-8.1014183333">
+		<desc>http://127.0.0.1:8008/image/3cja9ihiqa23l.jpg</desc>
+	</wpt>
+	<wpt lat="37.249555" lon="-8.1121566667">
+		<desc>http://127.0.0.1:8008/image/dgxpra2s83l8.jpg</desc>
+	</wpt>
+	<wpt lat="37.2497666667" lon="-8.1103283333">
+		<desc>http://127.0.0.1:8008/image/tmo17oixqula.jpg</desc>
+	</wpt>
+	<wpt lat="37.2502916667" lon="-8.1079966667">
+		<desc>http://127.0.0.1:8008/image/1q4vdzj1gmdxz.jpg</desc>
+	</wpt>
+	<wpt lat="37.2506916667" lon="-8.1031116667">
+		<desc>http://127.0.0.1:8008/image/28xdsfrw98jvb.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079333333" lon="-7.995825">
+		<desc>http://127.0.0.1:8008/image/33tq4vinldooc.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079283333" lon="-7.9958516667">
+		<desc>http://127.0.0.1:8008/image/jn7vskr4v6v.jpg</desc>
+	</wpt>
+	<wpt lat="37.007945" lon="-7.9958">
+		<desc>http://127.0.0.1:8008/image/2nsul2v0o4xb6.jpg</desc>
+	</wpt>
+	<wpt lat="37.0085166667" lon="-7.99486">
+		<desc>http://127.0.0.1:8008/image/87z203bex8tf.jpg</desc>
+	</wpt>
+	<wpt lat="37.0078916667" lon="-7.995965">
+		<desc>http://127.0.0.1:8008/image/35b7xrger1n5j.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079216667" lon="-7.9957866667">
+		<desc>http://127.0.0.1:8008/image/2jx63q0g73dpr.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079216667" lon="-7.9957866667">
+		<desc>http://127.0.0.1:8008/image/1s63en8fj5c1q.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079216667" lon="-7.9957866667">
+		<desc>http://127.0.0.1:8008/image/35qq7a1smkt55.jpg</desc>
+	</wpt>
+	<wpt lat="37.0081233333" lon="-7.9955383333">
+		<desc>http://127.0.0.1:8008/image/anlsg8dncvos.jpg</desc>
+	</wpt>
+	<wpt lat="37.0714266667" lon="-8.1070883333">
+		<desc>http://127.0.0.1:8008/image/3g2hw38lnoyvg.jpg</desc>
+	</wpt>
+	<wpt lat="37.0689616667" lon="-8.1074416667">
+		<desc>http://127.0.0.1:8008/image/1teddqqfz1wc4.jpg</desc>
+	</wpt>
+	<wpt lat="37.0689116667" lon="-8.1072633333">
+		<desc>http://127.0.0.1:8008/image/3gh97exbhku3s.jpg</desc>
+	</wpt>
+	<wpt lat="37.0689116667" lon="-8.1072633333">
+		<desc>http://127.0.0.1:8008/image/2rbgkw3wky1w8.jpg</desc>
+	</wpt>
+	<wpt lat="37.068555" lon="-8.1070416667">
+		<desc>http://127.0.0.1:8008/image/6v7aqglk9drg.jpg</desc>
+	</wpt>
+	<wpt lat="37.0683183333" lon="-8.1072133333">
+		<desc>http://127.0.0.1:8008/image/2suae5iz1e8kg.jpg</desc>
+	</wpt>
+	<wpt lat="37.0628966667" lon="-8.09177">
+		<desc>http://127.0.0.1:8008/image/24wwk6lfi412k.jpg</desc>
+	</wpt>
+	<wpt lat="37.0623716667" lon="-8.0910783333">
+		<desc>http://127.0.0.1:8008/image/ixb39tabecdn.jpg</desc>
+	</wpt>
+	<wpt lat="37.0623016667" lon="-8.0908866667">
+		<desc>http://127.0.0.1:8008/image/1znog5gb552ae.jpg</desc>
+	</wpt>
+	<wpt lat="37.06436" lon="-8.0921733333">
+		<desc>http://127.0.0.1:8008/image/1u8l4mbvqqfce.jpg</desc>
+	</wpt>
+	<wpt lat="37.0876416667" lon="-8.1691583333">
+		<desc>http://127.0.0.1:8008/image/3mz3ebxgthrzw.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871933333" lon="-8.169785">
+		<desc>http://127.0.0.1:8008/image/2kejd42hcr3n2.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871866667" lon="-8.1697216667">
+		<desc>http://127.0.0.1:8008/image/3s55ejwurf17g.jpg</desc>
+	</wpt>
+	<wpt lat="37.0871416667" lon="-8.1697233333">
+		<desc>http://127.0.0.1:8008/image/38wtfvxyzu04d.jpg</desc>
+	</wpt>
+	<wpt lat="37.087175" lon="-8.1696">
+		<desc>http://127.0.0.1:8008/image/rnqzvlrcndrl.jpg</desc>
+	</wpt>
+	<wpt lat="37.0869783333" lon="-8.169285">
+		<desc>http://127.0.0.1:8008/image/3sv5wl3pb9wrt.jpg</desc>
+	</wpt>
+	<wpt lat="37.08683" lon="-8.168965">
+		<desc>http://127.0.0.1:8008/image/w4txq3363e0v.jpg</desc>
+	</wpt>
+	<wpt lat="37.0868116667" lon="-8.16901">
+		<desc>http://127.0.0.1:8008/image/kdrnjggdz44t.jpg</desc>
+	</wpt>
+	<wpt lat="37.0864366667" lon="-8.16812">
+		<desc>http://127.0.0.1:8008/image/5zgsrm5p7qhk.jpg</desc>
+	</wpt>
+	<wpt lat="37.0862966667" lon="-8.1678583333">
+		<desc>http://127.0.0.1:8008/image/2k9dpl53819kd.jpg</desc>
+	</wpt>
+	<wpt lat="37.0861" lon="-8.16748">
+		<desc>http://127.0.0.1:8008/image/xob2le0zykuf.jpg</desc>
+	</wpt>
+	<wpt lat="37.08599" lon="-8.1669933333">
+		<desc>http://127.0.0.1:8008/image/12yqhx4ie4xd0.jpg</desc>
+	</wpt>
+	<wpt lat="37.0860766667" lon="-8.1670283333">
+		<desc>http://127.0.0.1:8008/image/vk2pmikxj462.jpg</desc>
+	</wpt>
+	<wpt lat="37.0864016667" lon="-8.1665966667">
+		<desc>http://127.0.0.1:8008/image/i3wc9o3nhicx.jpg</desc>
+	</wpt>
+	<wpt lat="37.0863383333" lon="-8.1663766667">
+		<desc>http://127.0.0.1:8008/image/g6i94h1wew00.jpg</desc>
+	</wpt>
+	<wpt lat="37.0862716667" lon="-8.166315">
+		<desc>http://127.0.0.1:8008/image/2uyhk3xzwontk.jpg</desc>
+	</wpt>
+	<wpt lat="37.0862683333" lon="-8.166145">
+		<desc>http://127.0.0.1:8008/image/qqmzvl5blgj.jpg</desc>
+	</wpt>
+	<wpt lat="37.08595" lon="-8.1664633333">
+		<desc>http://127.0.0.1:8008/image/n77i0j371pd1.jpg</desc>
+	</wpt>
+	<wpt lat="37.085955" lon="-8.166505">
+		<desc>http://127.0.0.1:8008/image/369v7h9b4bjt4.jpg</desc>
+	</wpt>
+	<wpt lat="37.08536" lon="-8.1647816667">
+		<desc>http://127.0.0.1:8008/image/3a5c7ns3uyqo8.jpg</desc>
+	</wpt>
+	<wpt lat="37.0853583333" lon="-8.1647983333">
+		<desc>http://127.0.0.1:8008/image/19700bv5j5tgf.jpg</desc>
+	</wpt>
+	<wpt lat="37.0853416667" lon="-8.1647533333">
+		<desc>http://127.0.0.1:8008/image/3uqqds28hw0bi.jpg</desc>
+	</wpt>
+	<wpt lat="37.085195" lon="-8.1640333333">
+		<desc>http://127.0.0.1:8008/image/1slxeqz2pjzcn.jpg</desc>
+	</wpt>
+	<wpt lat="37.0851633333" lon="-8.1631433333">
+		<desc>http://127.0.0.1:8008/image/1nm859vtkffzj.jpg</desc>
+	</wpt>
+	<wpt lat="37.08508" lon="-8.1631783333">
+		<desc>http://127.0.0.1:8008/image/2w20w161b7k4.jpg</desc>
+	</wpt>
+	<wpt lat="37.0850866667" lon="-8.1631166667">
+		<desc>http://127.0.0.1:8008/image/1yf1dh13at2f3.jpg</desc>
+	</wpt>
+	<wpt lat="37.08476" lon="-8.1620666667">
+		<desc>http://127.0.0.1:8008/image/232y2a7x60x2a.jpg</desc>
+	</wpt>
+	<wpt lat="37.08475" lon="-8.16125">
+		<desc>http://127.0.0.1:8008/image/x2nyqftqxxz4.jpg</desc>
+	</wpt>
+	<wpt lat="37.084555" lon="-8.160705">
+		<desc>http://127.0.0.1:8008/image/m9k2hm22apr7.jpg</desc>
+	</wpt>
+	<wpt lat="37.084515" lon="-8.1606366667">
+		<desc>http://127.0.0.1:8008/image/1vy634iymf7n3.jpg</desc>
+	</wpt>
+	<wpt lat="37.08452" lon="-8.1605883333">
+		<desc>http://127.0.0.1:8008/image/1kf33pqknje0n.jpg</desc>
+	</wpt>
+	<wpt lat="37.08452" lon="-8.1605883333">
+		<desc>http://127.0.0.1:8008/image/27sfsyi6poczm.jpg</desc>
+	</wpt>
+	<wpt lat="37.08452" lon="-8.1605883333">
+		<desc>http://127.0.0.1:8008/image/2o99s1gybqpnl.jpg</desc>
+	</wpt>
+	<wpt lat="37.08402" lon="-8.15964">
+		<desc>http://127.0.0.1:8008/image/19d221w08u9y.jpg</desc>
+	</wpt>
+	<wpt lat="37.0839633333" lon="-8.159295">
+		<desc>http://127.0.0.1:8008/image/24mibdyzzn0bm.jpg</desc>
+	</wpt>
+	<wpt lat="37.0836983333" lon="-8.15904">
+		<desc>http://127.0.0.1:8008/image/2if0rwr8ybo40.jpg</desc>
+	</wpt>
+	<wpt lat="37.083715" lon="-8.1590883333">
+		<desc>http://127.0.0.1:8008/image/flod1ng5u2qr.jpg</desc>
+	</wpt>
+	<wpt lat="37.083615" lon="-8.1582816667">
+		<desc>http://127.0.0.1:8008/image/3pvaf70p1n4tb.jpg</desc>
+	</wpt>
+	<wpt lat="37.0835733333" lon="-8.1578966667">
+		<desc>http://127.0.0.1:8008/image/32meklfl0ji94.jpg</desc>
+	</wpt>
+	<wpt lat="37.0833433333" lon="-8.1570566667">
+		<desc>http://127.0.0.1:8008/image/v97xp2wx95rw.jpg</desc>
+	</wpt>
+	<wpt lat="37.0830483333" lon="-8.1551766667">
+		<desc>http://127.0.0.1:8008/image/35i9swk2ht2d9.jpg</desc>
+	</wpt>
+	<wpt lat="37.083065" lon="-8.1551983333">
+		<desc>http://127.0.0.1:8008/image/2whpd8jzhrlob.jpg</desc>
+	</wpt>
+	<wpt lat="37.0817533333" lon="-8.1530566667">
+		<desc>http://127.0.0.1:8008/image/gqrcd050953x.jpg</desc>
+	</wpt>
+	<wpt lat="37.0818566667" lon="-8.15349">
+		<desc>http://127.0.0.1:8008/image/ejjf55j91mr4.jpg</desc>
+	</wpt>
+	<wpt lat="37.0823316667" lon="-8.15521">
+		<desc>http://127.0.0.1:8008/image/1fir6w4n9vren.jpg</desc>
+	</wpt>
+	<wpt lat="37.082345" lon="-8.15524">
+		<desc>http://127.0.0.1:8008/image/giamwuhh9mwc.jpg</desc>
+	</wpt>
+	<wpt lat="37.0836483333" lon="-8.1593666667">
+		<desc>http://127.0.0.1:8008/image/2z0bx5p3bmoq0.jpg</desc>
+	</wpt>
+	<wpt lat="37.0839416667" lon="-8.1607433333">
+		<desc>http://127.0.0.1:8008/image/2e01ztmh50a46.jpg</desc>
+	</wpt>
+	<wpt lat="37.08413" lon="-8.1611683333">
+		<desc>http://127.0.0.1:8008/image/10p328w2png8c.jpg</desc>
+	</wpt>
+	<wpt lat="37.0842283333" lon="-8.16173">
+		<desc>http://127.0.0.1:8008/image/2wws9siwngax5.jpg</desc>
+	</wpt>
+	<wpt lat="37.0899066667" lon="-8.1902983333">
+		<desc>http://127.0.0.1:8008/image/ka0dbx0k7y7p.jpg</desc>
+	</wpt>
+	<wpt lat="37.090015" lon="-8.1904233333">
+		<desc>http://127.0.0.1:8008/image/kwq7knopk18a.jpg</desc>
+	</wpt>
+	<wpt lat="37.1854916667" lon="-7.9146066667">
+		<desc>http://127.0.0.1:8008/image/39ld5kqottnvd.jpg</desc>
+	</wpt>
+	<wpt lat="37.1841766667" lon="-7.9104716667">
+		<desc>http://127.0.0.1:8008/image/thd96axm803e.jpg</desc>
+	</wpt>
+	<wpt lat="37.18399" lon="-7.9093566667">
+		<desc>http://127.0.0.1:8008/image/379f8nz21833o.jpg</desc>
+	</wpt>
+	<wpt lat="37.184535" lon="-7.907955">
+		<desc>http://127.0.0.1:8008/image/1ipr60a876pir.jpg</desc>
+	</wpt>
+	<wpt lat="37.1849183333" lon="-7.9077633333">
+		<desc>http://127.0.0.1:8008/image/2lpbykuaamua2.jpg</desc>
+	</wpt>
+	<wpt lat="37.1862733333" lon="-7.90754">
+		<desc>http://127.0.0.1:8008/image/1fdtfqhp7oc9k.jpg</desc>
+	</wpt>
+	<wpt lat="37.187025" lon="-7.90743">
+		<desc>http://127.0.0.1:8008/image/371glto06bjv4.jpg</desc>
+	</wpt>
+	<wpt lat="37.1884616667" lon="-7.9072066667">
+		<desc>http://127.0.0.1:8008/image/1iluyzkwci2k2.jpg</desc>
+	</wpt>
+	<wpt lat="37.188625" lon="-7.9071716667">
+		<desc>http://127.0.0.1:8008/image/3t2kxzz3pt342.jpg</desc>
+	</wpt>
+	<wpt lat="37.1905166667" lon="-7.9072883333">
+		<desc>http://127.0.0.1:8008/image/2wudgajjph43b.jpg</desc>
+	</wpt>
+	<wpt lat="37.19229" lon="-7.907205">
+		<desc>http://127.0.0.1:8008/image/141rb5pv9xvf1.jpg</desc>
+	</wpt>
+	<wpt lat="37.19257" lon="-7.9082316667">
+		<desc>http://127.0.0.1:8008/image/1mvtee0yx8bh.jpg</desc>
+	</wpt>
+	<wpt lat="37.191455" lon="-7.91055">
+		<desc>http://127.0.0.1:8008/image/unzds45hg9qy.jpg</desc>
+	</wpt>
+	<wpt lat="37.191545" lon="-7.9102366667">
+		<desc>http://127.0.0.1:8008/image/v7ihgnhbhxq1.jpg</desc>
+	</wpt>
+	<wpt lat="37.1913766667" lon="-7.9099533333">
+		<desc>http://127.0.0.1:8008/image/2jtqaskg265uj.jpg</desc>
+	</wpt>
+	<wpt lat="37.19137" lon="-7.90991">
+		<desc>http://127.0.0.1:8008/image/uv7nvmq8g9ir.jpg</desc>
+	</wpt>
+	<wpt lat="37.1897416667" lon="-7.91067">
+		<desc>http://127.0.0.1:8008/image/1cb2yru1imw22.jpg</desc>
+	</wpt>
+	<wpt lat="37.1867333333" lon="-7.9123983333">
+		<desc>http://127.0.0.1:8008/image/opmis53qz77x.jpg</desc>
+	</wpt>
+	<wpt lat="37.0951883333" lon="-7.9033383333">
+		<desc>http://127.0.0.1:8008/image/2696umptyevqc.jpg</desc>
+	</wpt>
+	<wpt lat="37.0951666667" lon="-7.9036033333">
+		<desc>http://127.0.0.1:8008/image/2gz1blo5rcgg9.jpg</desc>
+	</wpt>
+	<wpt lat="37.0968716667" lon="-7.8933083333">
+		<desc>http://127.0.0.1:8008/image/2spa0qascv2nx.jpg</desc>
+	</wpt>
+	<wpt lat="37.0963766667" lon="-7.8940283333">
+		<desc>http://127.0.0.1:8008/image/uf4xetmdqk3f.jpg</desc>
+	</wpt>
+	<wpt lat="37.0969266667" lon="-7.895435">
+		<desc>http://127.0.0.1:8008/image/3sot9vr6i3y8b.jpg</desc>
+	</wpt>
+	<wpt lat="37.0969266667" lon="-7.895435">
+		<desc>http://127.0.0.1:8008/image/1tk16rgjqnkoj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0969266667" lon="-7.895435">
+		<desc>http://127.0.0.1:8008/image/14qh87r16v4yo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0969266667" lon="-7.895435">
+		<desc>http://127.0.0.1:8008/image/14vx8u12sirkt.jpg</desc>
+	</wpt>
+	<wpt lat="37.0968966667" lon="-7.8956433333">
+		<desc>http://127.0.0.1:8008/image/6hs9erhy9cvs.jpg</desc>
+	</wpt>
+	<wpt lat="37.0968966667" lon="-7.8956433333">
+		<desc>http://127.0.0.1:8008/image/foe456eyw6bq.jpg</desc>
+	</wpt>
+	<wpt lat="37.0968966667" lon="-7.8956433333">
+		<desc>http://127.0.0.1:8008/image/3l7vevshobwz0.jpg</desc>
+	</wpt>
+	<wpt lat="37.0968966667" lon="-7.8956433333">
+		<desc>http://127.0.0.1:8008/image/24eh2oqsvfcc5.jpg</desc>
+	</wpt>
+	<wpt lat="37.0966183333" lon="-7.895865">
+		<desc>http://127.0.0.1:8008/image/nq66sh2aai39.jpg</desc>
+	</wpt>
+	<wpt lat="37.0965216667" lon="-7.89568">
+		<desc>http://127.0.0.1:8008/image/1twbaezl8vguf.jpg</desc>
+	</wpt>
+	<wpt lat="37.0965883333" lon="-7.895585">
+		<desc>http://127.0.0.1:8008/image/vzdf4v66b5ot.jpg</desc>
+	</wpt>
+	<wpt lat="37.096565" lon="-7.8955783333">
+		<desc>http://127.0.0.1:8008/image/2743bd8x5xgw0.jpg</desc>
+	</wpt>
+	<wpt lat="37.0965633333" lon="-7.8955566667">
+		<desc>http://127.0.0.1:8008/image/31i1ts24kyngt.jpg</desc>
+	</wpt>
+	<wpt lat="37.096505" lon="-7.895655">
+		<desc>http://127.0.0.1:8008/image/2xsw6am2vsddx.jpg</desc>
+	</wpt>
+	<wpt lat="37.09648" lon="-7.8951716667">
+		<desc>http://127.0.0.1:8008/image/2lhx6s76sdh3f.jpg</desc>
+	</wpt>
+	<wpt lat="37.0965333333" lon="-7.8954316667">
+		<desc>http://127.0.0.1:8008/image/2u2diuqainyog.jpg</desc>
+	</wpt>
+	<wpt lat="37.0940633333" lon="-7.8955133333">
+		<desc>http://127.0.0.1:8008/image/ea3wxhrt3vfj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0940633333" lon="-7.8955133333">
+		<desc>http://127.0.0.1:8008/image/1qq6rww8eheuz.jpg</desc>
+	</wpt>
+	<wpt lat="37.0202333333" lon="-7.9346083333">
+		<desc>http://127.0.0.1:8008/image/26qhtgb5twuqi.jpg</desc>
+	</wpt>
+	<wpt lat="37.0202333333" lon="-7.9346083333">
+		<desc>http://127.0.0.1:8008/image/3tcqgcnrz9aa.jpg</desc>
+	</wpt>
+	<wpt lat="37.0202333333" lon="-7.9346083333">
+		<desc>http://127.0.0.1:8008/image/1am850o6reo9p.jpg</desc>
+	</wpt>
+	<wpt lat="37.0202333333" lon="-7.9346083333">
+		<desc>http://127.0.0.1:8008/image/13ug8igik12jr.jpg</desc>
+	</wpt>
+	<wpt lat="37.0202333333" lon="-7.9346083333">
+		<desc>http://127.0.0.1:8008/image/3d486lzke5hek.jpg</desc>
+	</wpt>
+	<wpt lat="37.0199083333" lon="-7.934505">
+		<desc>http://127.0.0.1:8008/image/yid1dxw6r0kd.jpg</desc>
+	</wpt>
+	<wpt lat="37.0208283333" lon="-7.9349666667">
+		<desc>http://127.0.0.1:8008/image/3cff0sssjy7em.jpg</desc>
+	</wpt>
+	<wpt lat="37.0208283333" lon="-7.9349666667">
+		<desc>http://127.0.0.1:8008/image/ost8hfy89hcc.jpg</desc>
+	</wpt>
+	<wpt lat="37.0206516667" lon="-7.934835">
+		<desc>http://127.0.0.1:8008/image/3pqp1fhv5y25d.jpg</desc>
+	</wpt>
+	<wpt lat="37.0206383333" lon="-7.9348333333">
+		<desc>http://127.0.0.1:8008/image/2dv8667gnhgm7.jpg</desc>
+	</wpt>
+	<wpt lat="37.02055" lon="-7.93482">
+		<desc>http://127.0.0.1:8008/image/2m02icxfn5npz.jpg</desc>
+	</wpt>
+	<wpt lat="37.02055" lon="-7.93482">
+		<desc>http://127.0.0.1:8008/image/10mgu5hf5o51v.jpg</desc>
+	</wpt>
+	<wpt lat="37.02055" lon="-7.93482">
+		<desc>http://127.0.0.1:8008/image/1a49e1on69k6y.jpg</desc>
+	</wpt>
+	<wpt lat="37.02055" lon="-7.93482">
+		<desc>http://127.0.0.1:8008/image/3o5y2p149ohe7.jpg</desc>
+	</wpt>
+	<wpt lat="37.02055" lon="-7.93482">
+		<desc>http://127.0.0.1:8008/image/p4ofuihp9iv1.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205783333" lon="-7.9347833333">
+		<desc>http://127.0.0.1:8008/image/3qpwb8i65k2uo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/2uu66kkm9i3ac.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/2gdeqcj6as0ce.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/31pf0e0215370.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/5bxvawzun4yk.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/37v2081frrau8.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/1de4k0km17zfb.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/3p51fnu4hkku7.jpg</desc>
+	</wpt>
+	<wpt lat="37.0205866667" lon="-7.934815">
+		<desc>http://127.0.0.1:8008/image/211s0s5scopys.jpg</desc>
+	</wpt>
+	<wpt lat="37.0079933333" lon="-7.9955033333">
+		<desc>http://127.0.0.1:8008/image/30ytnutzhnkyw.jpg</desc>
+	</wpt>
+	<wpt lat="37.008155" lon="-7.994915">
+		<desc>http://127.0.0.1:8008/image/1ki41fas7jolq.jpg</desc>
+	</wpt>
+	<wpt lat="37.00803" lon="-7.9945566667">
+		<desc>http://127.0.0.1:8008/image/1chn93myxenv6.jpg</desc>
+	</wpt>
+	<wpt lat="37.027065" lon="-7.9744033333">
+		<desc>http://127.0.0.1:8008/image/3elexk87wlena.jpg</desc>
+	</wpt>
+	<wpt lat="37.027065" lon="-7.9744033333">
+		<desc>http://127.0.0.1:8008/image/2oe258avkcmq7.jpg</desc>
+	</wpt>
+	<wpt lat="37.0278383333" lon="-7.974445">
+		<desc>http://127.0.0.1:8008/image/2mvmd6krd4c3w.jpg</desc>
+	</wpt>
+	<wpt lat="37.0279833333" lon="-7.9754133333">
+		<desc>http://127.0.0.1:8008/image/8h8jocr9pgd2.jpg</desc>
+	</wpt>
+	<wpt lat="37.0272733333" lon="-7.9743733333">
+		<desc>http://127.0.0.1:8008/image/1eqm9k6nysegz.jpg</desc>
+	</wpt>
+	<wpt lat="37.02721" lon="-7.9744283333">
+		<desc>http://127.0.0.1:8008/image/2odijhmhips8n.jpg</desc>
+	</wpt>
+	<wpt lat="37.008195" lon="-7.995925">
+		<desc>http://127.0.0.1:8008/image/n0thniapen8c.jpg</desc>
+	</wpt>
+	<wpt lat="37.0139266" lon="-8.00504">
+		<desc>http://127.0.0.1:8008/image/3lzicdu1l1ejq.jpg</desc>
+	</wpt>
+	<wpt lat="37.01393" lon="-8.005045">
+		<desc>http://127.0.0.1:8008/image/1h8bjg9zb88sy.jpg</desc>
+	</wpt>
+	<wpt lat="37.0138116667" lon="-8.00512">
+		<desc>http://127.0.0.1:8008/image/3aulkem7atzrv.jpg</desc>
+	</wpt>
+	<wpt lat="37.01505" lon="-8.007925">
+		<desc>http://127.0.0.1:8008/image/2dj2qiesfvk11.jpg</desc>
+	</wpt>
+	<wpt lat="37.0252666667" lon="-8.0257516667">
+		<desc>http://127.0.0.1:8008/image/1wp7bw66jj9zu.jpg</desc>
+	</wpt>
+	<wpt lat="37.0253316667" lon="-8.02583">
+		<desc>http://127.0.0.1:8008/image/126z4e1bj8pdu.jpg</desc>
+	</wpt>
+	<wpt lat="37.0253083333" lon="-8.0258216667">
+		<desc>http://127.0.0.1:8008/image/14cjfl9csk1my.jpg</desc>
+	</wpt>
+	<wpt lat="37.0253283333" lon="-8.02583">
+		<desc>http://127.0.0.1:8008/image/34v0nkckhn74p.jpg</desc>
+	</wpt>
+	<wpt lat="37.0252933333" lon="-8.02583">
+		<desc>http://127.0.0.1:8008/image/1zp9hgjwgnrci.jpg</desc>
+	</wpt>
+	<wpt lat="37.0253133333" lon="-8.025825">
+		<desc>http://127.0.0.1:8008/image/20gqhuh4ayqep.jpg</desc>
+	</wpt>
+	<wpt lat="37.0253166667" lon="-8.02584">
+		<desc>http://127.0.0.1:8008/image/2oi8exfazufs0.jpg</desc>
+	</wpt>
+	<wpt lat="37.0204433333" lon="-8.0173633333">
+		<desc>http://127.0.0.1:8008/image/2t0wbw61m7jju.jpg</desc>
+	</wpt>
+	<wpt lat="37.02041" lon="-8.0173033333">
+		<desc>http://127.0.0.1:8008/image/1msrwuu357f2f.jpg</desc>
+	</wpt>
+	<wpt lat="37.0188216667" lon="-8.0143333333">
+		<desc>http://127.0.0.1:8008/image/5eprc41igc9s.jpg</desc>
+	</wpt>
+	<wpt lat="37.0156133333" lon="-8.0085566667">
+		<desc>http://127.0.0.1:8008/image/3jv595mo9dpo8.jpg</desc>
+	</wpt>
+	<wpt lat="37.0100316667" lon="-7.9988383333">
+		<desc>http://127.0.0.1:8008/image/33webr1awzhdj.jpg</desc>
+	</wpt>
+	<wpt lat="37.0206016667" lon="-7.967095">
+		<desc>http://127.0.0.1:8008/image/1e7n3p0ya4kgl.jpg</desc>
+	</wpt>
+	<wpt lat="37.0278516667" lon="-7.9743283333">
+		<desc>http://127.0.0.1:8008/image/23d4azo5dm5eo.jpg</desc>
+	</wpt>
+	<wpt lat="37.0305433333" lon="-7.9681333333">
+		<desc>http://127.0.0.1:8008/image/2o98w4bsr6r9p.jpg</desc>
+	</wpt>
+</gpx>
