@@ -2,6 +2,7 @@ package base
 
 import (
 	"fmt"
+	"github.com/tkrajina/gpxgo/gpx"
 	"math"
 	"math/rand"
 )
@@ -65,9 +66,9 @@ func (a City) String() string {
 	return fmt.Sprintf("{x%d y%d}", a.x, a.y)
 }
 
-// ShuffleCities : return a shuffled []City given input []City
-func ShuffleCities(in []City) []City {
-	out := make([]City, len(in), cap(in))
+// ShuffleCities : return a shuffled []gpx.Point given input []gpx.Point
+func ShuffleCities(in []gpx.Point) []gpx.Point {
+	out := make([]gpx.Point, len(in), cap(in))
 	perm := rand.Perm(len(in))
 	for i, v := range perm {
 		out[v] = in[i]

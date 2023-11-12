@@ -15,7 +15,7 @@ func Order(points []gpx.GPXPoint) {
 	tm.NewTourManager()
 
 	// Generate Cities
-	var cities []base.City
+	var cities []gpx.Point
 	var bitch [][2]int
 
 	for _, p := range points {
@@ -30,7 +30,7 @@ func Order(points []gpx.GPXPoint) {
 
 		if !found {
 			bitch = append(bitch, b1)
-			cities = append(cities, base.GenerateCity(b1[0], b1[1]))
+			cities = append(cities, p.Point)
 		}
 	}
 

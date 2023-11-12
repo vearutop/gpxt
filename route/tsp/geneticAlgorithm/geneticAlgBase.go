@@ -63,7 +63,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	}
 
 	// For debugging
-	msCity := ""
+	//msCity := ""
 	j := 0
 	// Populate child with parent 2 cities that are missing
 	for i := 0; i < size; i++ {
@@ -72,7 +72,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 			c.SetCity(p2s[j], p2.GetCity(i))
 			j++
 			// For debugging
-			msCity += p2.GetCity(i).String() + " "
+			//msCity += p2.GetCity(i).String() + " "
 		}
 	}
 	//log.Println(msCity)
