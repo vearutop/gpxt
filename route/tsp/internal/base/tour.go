@@ -8,6 +8,7 @@ import (
 	"github.com/tkrajina/gpxgo/gpx"
 )
 
+// Tour is an arranged list of points.
 type Tour struct {
 	tourPoints []gpx.Point
 	fitness    float64
@@ -19,16 +20,17 @@ func (a *Tour) InitTour(numberOfPoints int) {
 	a.tourPoints = make([]gpx.Point, numberOfPoints)
 }
 
+// Points returns list of points.
 func (a *Tour) Points() []gpx.Point {
 	return a.tourPoints
 }
 
-// InitTourPoints
+// InitTourPoints inits tour.
 func (a *Tour) InitTourPoints(tm TourManager) {
 	a.InitTour(tm.NumberOfPoints())
 	// Add all destination points from TourManager to Tour
 	for i := 0; i < tm.NumberOfPoints(); i++ {
-		a.SetPoint(i, tm.GetPoint(i))
+		a.SetPoint(i, tm.getPoint(i))
 	}
 	// Shuffle points in tour
 	a.tourPoints = shufflePoints(a.tourPoints)
@@ -38,9 +40,11 @@ func (a *Tour) InitTourPoints(tm TourManager) {
 func shufflePoints(in []gpx.Point) []gpx.Point {
 	out := make([]gpx.Point, len(in), cap(in))
 	perm := rand.Perm(len(in))
+
 	for i, v := range perm {
 		out[v] = in[i]
 	}
+
 	return out
 }
 
@@ -57,47 +61,57 @@ func (a *Tour) SetPoint(tourPosition int, c gpx.Point) {
 	a.distance = 0
 }
 
+// ResetFitnessDistance zeroes fitness and distance.
 func (a *Tour) ResetFitnessDistance() {
 	a.fitness = 0
 	a.distance = 0
 }
 
+// TourSize return number of points in tour.
 func (a *Tour) TourSize() int {
 	return len(a.tourPoints)
 }
 
-// TourDistance : Calculates total distance traveled for this tour
+// TourDistance calculates total distance traveled for this tour.
 func (a *Tour) TourDistance() float64 {
 	if a.distance == 0 {
 		td := float64(0)
+
 		for i := 0; i < a.TourSize(); i++ {
 			fromC := a.GetPoint(i)
-			var destC gpx.Point
+			destC := gpx.Point{}
+
 			if i+1 < a.TourSize() {
 				destC = a.GetPoint(i + 1)
 			} else {
 				destC = a.GetPoint(0)
 			}
+
 			td += fromC.Distance2D(&destC)
 		}
+
 		a.distance = td
 	}
+
 	return a.distance
 }
 
-func (a *Tour) Fitness() float64 {
+func (a *Tour) normalizedFitness() float64 {
 	if a.fitness == 0 {
 		a.fitness = 1 / a.TourDistance()
 	}
+
 	return a.fitness
 }
 
+// ContainsPoint return true if point is in tour points.
 func (a *Tour) ContainsPoint(c gpx.Point) bool {
 	for _, cs := range a.tourPoints {
 		if cs == c {
 			return true
 		}
 	}
+
 	return false
 }
 
@@ -106,5 +120,6 @@ func (a Tour) String() string {
 	for i, c := range a.tourPoints {
 		s += strconv.Itoa(i) + fmt.Sprintf("LON %.f, LAT %.f", c.Longitude, c.Latitude) + "|"
 	}
+
 	return s
 }

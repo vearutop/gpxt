@@ -1,3 +1,4 @@
+// Package ors provides access to openrouteservice API.
 package ors
 
 import (
@@ -30,6 +31,7 @@ const (
 	ProfilePublicTransport = Profile("public-transport")
 )
 
+// GetRoute uses ORS API to get route information.
 func GetRoute(ctx context.Context, profile Profile, points []gpx.Point) (*GeoJSON, error) {
 	apiKey := os.Getenv("ORS_KEY")
 	if apiKey == "" {
@@ -64,6 +66,8 @@ func GetRoute(ctx context.Context, profile Profile, points []gpx.Point) (*GeoJSO
 	if err != nil {
 		return nil, err
 	}
+
+	defer func() { _ = resp.Body.Close() }() //nolint
 
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {

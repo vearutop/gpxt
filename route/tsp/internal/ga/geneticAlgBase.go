@@ -1,4 +1,5 @@
-package geneticAlgorithm
+// Package ga implements genetic algorithm.
+package ga
 
 import (
 	"math/rand"
@@ -6,7 +7,7 @@ import (
 	"github.com/vearutop/gpxt/route/tsp/internal/base"
 )
 
-// Genetic Algorithm Parameters
+// Genetic algorithm parameters.
 var (
 	mutationRate                = 0.015
 	tournamentSize              = 10
@@ -15,16 +16,17 @@ var (
 	defCrossoverRate    float32 = 0.7
 )
 
-func CrossoverRate() float32 {
+func crossoverRate() float32 {
 	if randomCrossoverRate {
-		return rand.Float32()
+		return rand.Float32() //nolint:gosec
 	}
+
 	return defCrossoverRate
 }
 
-// Crossover  performs multipoint cross over with 2 parents with an
+// crossover  performs multipoint cross over with 2 parents with an
 // assumption that parents have equal size.
-func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
+func crossover(p1 base.Tour, p2 base.Tour) base.Tour { //nolint:cyclop
 	// Size
 	size := p1.TourSize()
 	// Child Tour
@@ -32,20 +34,20 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	c.InitTour(size)
 
 	// Number of crossover
-	nc := int(CrossoverRate() * float32(size))
+	nc := int(crossoverRate() * float32(size))
 	if nc == 0 {
 		// log.Println("no crossover")
 		return p1
 	}
 	// Start positions of cross over for parent 1
-	sp := int(rand.Float32() * float32(size))
+	sp := int(rand.Float32() * float32(size)) //nolint:gosec
 	// End position of cross over for parent 1
 	ep := (sp + nc) % size
 	// Parent 2 slots
 	p2s := make([]int, 0, size-nc)
-	// log.Println(size, sp, nc, ep) // For debugging
+
 	// Populate child with parent 1
-	if sp < ep {
+	if sp < ep { //nolint:nestif
 		for i := 0; i < size; i++ {
 			if i >= sp && i < ep {
 				c.SetPoint(i, p1.GetPoint(i))
@@ -81,13 +83,14 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 func Mutation(in *base.Tour) {
 	// for each city
 	for p1 := 0; p1 < in.TourSize(); p1++ {
-		if rand.Float64() < mutationRate {
+		if rand.Float64() < mutationRate { //nolint:gosec
 			// Select 2nd city to perform swap
-			p2 := int(float64(in.TourSize()) * rand.Float64())
-			// log.Println("Mutation occured", p1, "swap", p2)
+			p2 := int(float64(in.TourSize()) * rand.Float64()) //nolint:gosec
+
 			// Temp store city
 			c1 := in.GetPoint(p1)
 			c2 := in.GetPoint(p2)
+
 			// Swap Cities
 			in.SetPoint(p1, c2)
 			in.SetPoint(p2, c1)
@@ -95,17 +98,18 @@ func Mutation(in *base.Tour) {
 	}
 }
 
-// TournamentSelection : select a group at random and pick the best parent
+// TournamentSelection selects a group at random and pick the best parent.
 func TournamentSelection(pop base.Population) base.Tour {
 	tourny := base.Population{}
 	tourny.InitEmpty(tournamentSize)
 
 	for i := 0; i < tournamentSize; i++ {
-		r := int(rand.Float64() * float64(pop.PopulationSize()))
+		r := int(rand.Float64() * float64(pop.PopulationSize())) //nolint:gosec
 		tourny.SaveTour(i, *pop.GetTour(r))
 	}
 	// fittest tour
 	fTour := tourny.GetFittest()
+
 	return *fTour
 }
 
@@ -119,17 +123,20 @@ func EvolvePopulation(pop base.Population) base.Population {
 	npop.InitEmpty(pop.PopulationSize())
 
 	popOffset := 0
+
 	if elitism {
 		npop.SaveTour(0, *pop.GetFittest())
+
 		popOffset = 1
 	}
 
 	for i := popOffset; i < npop.PopulationSize(); i++ {
 		p1 := TournamentSelection(pop)
 		p2 := TournamentSelection(pop)
-		child := Crossover(p1, p2)
+		child := crossover(p1, p2)
 		Mutation(&child)
 		npop.SaveTour(i, child)
 	}
+
 	return npop
 }

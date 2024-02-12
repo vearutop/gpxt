@@ -17,7 +17,7 @@ import (
 	"github.com/vearutop/gpxt/route/tsp"
 )
 
-func routeCmd() {
+func routeCmd() { //nolint:funlen,cyclop
 	var (
 		file      string
 		output    string
@@ -98,7 +98,10 @@ func routeCmd() {
 				pts = append(pts, [2]float64{p.Longitude, p.Latitude})
 			}
 
-			j, _ := json.Marshal(pts)
+			j, err := json.Marshal(pts)
+			if err != nil {
+				return err
+			}
 			fmt.Println(string(j))
 		}
 

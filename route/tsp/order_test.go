@@ -18,7 +18,8 @@ func TestOrder(t *testing.T) {
 	// Initial tour distance:  4.92231483363616e+06
 	// Final tour distance:  2.796963430731682e+06
 
-	rand.Seed(1)
+	rand.Seed(1) //nolint
+
 	_, initial, final := tsp.Order(gpxFile.Waypoints, tsp.DefaultNumberOfGenerations, tsp.DefaultPopulationSize)
 
 	assert.InEpsilon(t, 4.8343e+06, initial, 0.01)
