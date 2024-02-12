@@ -31,6 +31,9 @@ concat [<flags>] [<files>...]
 reduce [<flags>] <files>...
     Reduce number of points in track to simplify shape
 
+route [<flags>] <file>
+    Build optimal route through waypoints
+
 runnerup list [<flags>] <db>
     List latest activities
 
