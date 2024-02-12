@@ -2,24 +2,26 @@ package base
 
 import "github.com/tkrajina/gpxgo/gpx"
 
-// ToueManager : Contains list of of cities to be visited
+// TourManager contains list of points to be visited.
 type TourManager struct {
-	destCities []gpx.Point
+	points []gpx.Point
 }
 
 // NewTourManager : Initialize TourManager
-func (a *TourManager) NewTourManager() {
-	a.destCities = make([]gpx.Point, 0, 50)
+func NewTourManager() *TourManager {
+	return &TourManager{
+		points: make([]gpx.Point, 0, 50),
+	}
 }
 
-func (a *TourManager) AddCity(c gpx.Point) {
-	a.destCities = append(a.destCities, c)
+func (a *TourManager) AddPoint(c gpx.Point) {
+	a.points = append(a.points, c)
 }
 
-func (a *TourManager) GetCity(i int) gpx.Point {
-	return a.destCities[i]
+func (a *TourManager) GetPoint(i int) gpx.Point {
+	return a.points[i]
 }
 
-func (a *TourManager) NumberOfCities() int {
-	return len(a.destCities)
+func (a *TourManager) NumberOfPoints() int {
+	return len(a.points)
 }

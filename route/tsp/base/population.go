@@ -12,7 +12,7 @@ func (a *Population) InitPopulation(pSize int, tm TourManager) {
 	a.tours = make([]Tour, pSize)
 	for i := 0; i < pSize; i++ {
 		nT := Tour{}
-		nT.InitTourCities(tm)
+		nT.InitTourPoints(tm)
 		a.SaveTour(i, nT)
 	}
 }

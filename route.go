@@ -5,27 +5,33 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/vearutop/gpxt/route/tsp"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/tkrajina/gpxgo/gpx"
-	"github.com/vearutop/gpxt/route"
 	"github.com/vearutop/gpxt/route/ors"
 )
 
 func routeCmd() {
 	var (
-		file     string
-		output   string
-		detailed bool
-		indent   bool
+		file      string
+		output    string
+		detailed  bool
+		profile   string
+		indent    bool
+		gens, pop int
 	)
 
 	cmd := kingpin.Command("route", "Build optimal route through waypoints")
 	cmd.Arg("file", "GPX files to process.").Required().StringVar(&file)
+	cmd.Flag("gens", "Number of generations for genetic algorithm.").Default(strconv.Itoa(tsp.DefaultNumberOfGenerations)).IntVar(&gens)
+	cmd.Flag("pop", "Population size for genetic algorithm.").Default(strconv.Itoa(tsp.DefaultPopulationSize)).IntVar(&pop)
+	cmd.Flag("profile", "Roting profile for ORS.").Default(string(ors.ProfileFootWalking)).StringVar(&profile)
 	cmd.Flag("detailed", "Add routing directions from api.openrouteservice.org (needs api key in ORS_KEY env var)").BoolVar(&detailed)
 	cmd.Flag("output", "Output file.").Default("<name>.routed.gpx").StringVar(&output)
 	cmd.Flag("indent", "Indent output file.").BoolVar(&indent)
@@ -42,10 +48,12 @@ func routeCmd() {
 			return errors.New("no waypoints in gpx file")
 		}
 
-		points := route.OrderWaypoints(gpxFile.Waypoints)
+		points, initial, final := tsp.Order(gpxFile.Waypoints, gens, pop)
+
+		fmt.Printf("Points graph ordered, initial distance: %.2f, final distance: %.2f\n", initial, final)
 
 		if detailed {
-			gj, err := ors.GetRoute(ctx, ors.ProfileFootWalking, points)
+			gj, err := ors.GetRoute(ctx, ors.Profile(profile), points)
 			if err != nil {
 				return fmt.Errorf("get routing directions: %w", err)
 			}
@@ -79,7 +87,7 @@ func routeCmd() {
 				gpxFile.AppendTrack(&t)
 			}
 
-			fmt.Printf("Total distance: %.2f, total time %s\n", totalDist, totalDur.String())
+			fmt.Printf("Total detailed distance: %.2f, total time %s\n", totalDist, totalDur.String())
 		} else {
 			var pts [][2]float64
 

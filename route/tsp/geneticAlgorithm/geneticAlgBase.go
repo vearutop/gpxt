@@ -8,9 +8,9 @@ import (
 
 // Genetic Algorithm Parameters
 var (
-	mutationRate        float64 = 0.015
-	tournamentSize      int     = 10
-	elitism             bool    = true
+	mutationRate                = 0.015
+	tournamentSize              = 10
+	elitism                     = true
 	randomCrossoverRate         = false
 	defCrossoverRate    float32 = 0.7
 )
@@ -22,8 +22,8 @@ func CrossoverRate() float32 {
 	return defCrossoverRate
 }
 
-// Crossover : performs multi point cross over with 2 parents
-// Assumption - parents have equal size
+// Crossover  performs multipoint cross over with 2 parents with an
+// assumption that parents have equal size.
 func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	// Size
 	size := p1.TourSize()
@@ -48,7 +48,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	if sp < ep {
 		for i := 0; i < size; i++ {
 			if i >= sp && i < ep {
-				c.SetCity(i, p1.GetCity(i))
+				c.SetPoint(i, p1.GetPoint(i))
 			} else {
 				p2s = append(p2s, i)
 			}
@@ -56,34 +56,28 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	} else if sp > ep {
 		for i := 0; i < size; i++ {
 			if !(i >= ep && i < sp) {
-				c.SetCity(i, p1.GetCity(i))
+				c.SetPoint(i, p1.GetPoint(i))
 			} else {
 				p2s = append(p2s, i)
 			}
 		}
 	}
 
-	// For debugging
-	// msCity := ""
 	j := 0
 	// Populate child with parent 2 cities that are missing
 	for i := 0; i < size; i++ {
 		// Check if child contains city
-		if !c.ContainCity(p2.GetCity(i)) {
-			c.SetCity(p2s[j], p2.GetCity(i))
+		if !c.ContainsPoint(p2.GetPoint(i)) {
+			c.SetPoint(p2s[j], p2.GetPoint(i))
 			j++
-			// For debugging
-			// msCity += p2.GetCity(i).String() + " "
 		}
 	}
-	// log.Println(msCity)
-	// log.Println(p2s)
-	// log.Println(len(p2s))
+
 	return c
 }
 
-// Mutation : Performs swap mutation
-// Chance of mutation for each City based on mutation rate
+// Mutation performs swap mutation.
+// Chance of mutation for each City based on mutation rate.
 func Mutation(in *base.Tour) {
 	// for each city
 	for p1 := 0; p1 < in.TourSize(); p1++ {
@@ -92,11 +86,11 @@ func Mutation(in *base.Tour) {
 			p2 := int(float64(in.TourSize()) * rand.Float64())
 			// log.Println("Mutation occured", p1, "swap", p2)
 			// Temp store city
-			c1 := in.GetCity(p1)
-			c2 := in.GetCity(p2)
+			c1 := in.GetPoint(p1)
+			c2 := in.GetPoint(p2)
 			// Swap Cities
-			in.SetCity(p1, c2)
-			in.SetCity(p2, c1)
+			in.SetPoint(p1, c2)
+			in.SetPoint(p2, c1)
 		}
 	}
 }
@@ -115,13 +109,11 @@ func TournamentSelection(pop base.Population) base.Tour {
 	return *fTour
 }
 
-// EvolvePopulation : evolves population by :-
-/*
-	- Selecting 2 parents using tournament selection
-	- Perform crossover to obtain child
-	- Mutate child based on probability
-	- return new population
-*/
+// EvolvePopulation evolves population by:
+//   - Selecting 2 parents using tournament selection
+//   - Perform crossover to obtain child
+//   - Mutate child based on probability
+//   - return new population
 func EvolvePopulation(pop base.Population) base.Population {
 	npop := base.Population{}
 	npop.InitEmpty(pop.PopulationSize())

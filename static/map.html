@@ -116,57 +116,56 @@
                 var lat = popup.getLatLng().lat
                 var lon = popup.getLatLng().lng
 
-                var shortest = null
-                var ptIdx = []
-                for (var i = 0; i < points.length; i++) {
-                    var pt = points[i]
+                res += lat.toFixed(8) + ", " + lon.toFixed(8)
 
-                    if (pt instanceof Array) {
-                        for (var j = 0; j < pt.length; j++) {
-                            var pt2 = pt[j]
+                if (typeof e.layer.feature.properties.coordTimes !== 'undefined') {
+                    var shortest = null
+                    var ptIdx = []
+                    for (var i = 0; i < points.length; i++) {
+                        var pt = points[i]
 
-                            var dist = distance(lat, lon, pt2.lat, pt2.lng)
+                        if (pt instanceof Array) {
+                            for (var j = 0; j < pt.length; j++) {
+                                var pt2 = pt[j]
 
-                            if (shortest === null || shortest > dist) {
-                                shortest = dist
-                                ptIdx = [i, j]
+                                var dist = distance(lat, lon, pt2.lat, pt2.lng)
+
+                                if (shortest === null || shortest > dist) {
+                                    shortest = dist
+                                    ptIdx = [i, j]
+                                }
                             }
+
+                            continue
                         }
 
-                        continue
+                        var dist = distance(lat, lon, pt.lat, pt.lng)
+
+                        if (shortest === null || shortest > dist) {
+                            shortest = dist
+                            ptIdx = [i]
+                        }
                     }
 
-                    var dist = distance(lat, lon, pt.lat, pt.lng)
+                    var ts
 
-                    if (shortest === null || shortest > dist) {
-                        shortest = dist
-                        ptIdx = [i]
+                    if (ptIdx.length == 1) {
+                        ts = e.layer.feature.properties.coordTimes[ptIdx[0]]
                     }
+
+                    if (ptIdx.length == 2) {
+                        ts = e.layer.feature.properties.coordTimes[ptIdx[0]][ptIdx[1]]
+                    }
+
+                    res +=
+                        '<br />' + ts + " (" + Math.round(shortest) + "m away)"
                 }
 
-                res += lat.toFixed(8) + ", " + lon.toFixed(8)
                 res += '<br /><a class="google-maps" href="https://maps.google.com/maps?q=loc:' +
                     lat.toFixed(8) + ',' + lon.toFixed(8) + '">google maps</a>'
                 res += '<br /><a class="apple-maps" href="https://maps.apple.com/?ll=' +
                     lat.toFixed(8) + ',' + lon.toFixed(8) + '">apple maps</a>'
 
-                if (typeof e.layer.feature.properties.coordTimes === 'undefined') {
-                    popup.setContent(res);
-                    return
-                }
-
-                var ts
-
-                if (ptIdx.length == 1) {
-                    ts = e.layer.feature.properties.coordTimes[ptIdx[0]]
-                }
-
-                if (ptIdx.length == 2) {
-                    ts = e.layer.feature.properties.coordTimes[ptIdx[0]][ptIdx[1]]
-                }
-
-                res +=
-                    ts + "<br /> (dist to nearest timestamp " + Math.round(shortest) + " meters)"
                 popup.setContent(res);
             }
         }

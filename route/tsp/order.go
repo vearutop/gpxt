@@ -1,17 +1,22 @@
 package tsp
 
 import (
-	"fmt"
-
 	"github.com/tkrajina/gpxgo/gpx"
 	"github.com/vearutop/gpxt/route/tsp/base"
 	"github.com/vearutop/gpxt/route/tsp/geneticAlgorithm"
 )
 
-func Order(points []gpx.GPXPoint) []gpx.Point {
+const (
+	DefaultNumberOfGenerations = 100
+	DefaultPopulationSize      = 600
+)
+
+// Order solves travelling sales person problem with genetic algorithm.
+// It returns ordered points, initial and final distances.
+// Use DefaultNumberOfGenerations and DefaultPopulationSize when in doubt.
+func Order(points []gpx.GPXPoint, numberOfGenerations, populationSize int) ([]gpx.Point, float64, float64) {
 	// Init TourManager
-	tm := base.TourManager{}
-	tm.NewTourManager()
+	tm := base.NewTourManager()
 
 	// Prepare points
 	var cities []gpx.Point
@@ -32,20 +37,17 @@ func Order(points []gpx.GPXPoint) []gpx.Point {
 		}
 	}
 
-	// Add cities to TourManager
+	// Add points to TourManager
 	for _, v := range cities {
-		tm.AddCity(v)
+		tm.AddPoint(v)
 	}
 
-	numberOfGenerations := 100
-	populationSize := 600
-
-	return tspGA(&tm, numberOfGenerations, populationSize)
+	return tspGA(tm, numberOfGenerations, populationSize)
 }
 
-// tspGA : Travelling sales person with genetic algorithm
-// input :- TourManager, Number of generations
-func tspGA(tm *base.TourManager, gen int, popSize int) []gpx.Point {
+// tspGA solves travelling sales person problem with genetic algorithm.
+// It returns ordered points, initial and final distances.
+func tspGA(tm *base.TourManager, gen int, popSize int) ([]gpx.Point, float64, float64) {
 	p := base.Population{}
 	p.InitPopulation(popSize, *tm)
 
@@ -57,6 +59,7 @@ func tspGA(tm *base.TourManager, gen int, popSize int) []gpx.Point {
 	// Map to store fittest tours
 	fittestTours := make([]base.Tour, 0, gen+1)
 	fittestTours = append(fittestTours, *iFit)
+
 	// Evolve population "gen" number of times
 	for i := 1; i < gen+1; i++ {
 		p = geneticAlgorithm.EvolvePopulation(p)
@@ -64,12 +67,10 @@ func tspGA(tm *base.TourManager, gen int, popSize int) []gpx.Point {
 		// Store fittest for each generation
 		fittestTours = append(fittestTours, ft)
 	}
+
 	// Get final fittest tour and tour distance
 	fFit := p.GetFittest()
 	fTourDistance := fFit.TourDistance()
 
-	fmt.Println("Initial tour distance: ", iTourDistance)
-	fmt.Println("Final tour distance: ", fTourDistance)
-
-	return fFit.Points()
+	return fFit.Points(), iTourDistance, fTourDistance
 }

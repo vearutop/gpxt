@@ -2,6 +2,7 @@ package base
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
 
 	"github.com/tkrajina/gpxgo/gpx"
@@ -13,33 +14,43 @@ type Tour struct {
 	distance   float64
 }
 
-// InitTour : Initialize tour with cities arranged randomly
-func (a *Tour) InitTour(numberOfCities int) {
-	a.tourPoints = make([]gpx.Point, numberOfCities)
+// InitTour initializes tour with points arranged randomly.
+func (a *Tour) InitTour(numberOfPoints int) {
+	a.tourPoints = make([]gpx.Point, numberOfPoints)
 }
 
 func (a *Tour) Points() []gpx.Point {
 	return a.tourPoints
 }
 
-// InitTourCities
-func (a *Tour) InitTourCities(tm TourManager) {
-	a.InitTour(tm.NumberOfCities())
-	// Add all destination cities from TourManager to Tour
-	for i := 0; i < tm.NumberOfCities(); i++ {
-		a.SetCity(i, tm.GetCity(i))
+// InitTourPoints
+func (a *Tour) InitTourPoints(tm TourManager) {
+	a.InitTour(tm.NumberOfPoints())
+	// Add all destination points from TourManager to Tour
+	for i := 0; i < tm.NumberOfPoints(); i++ {
+		a.SetPoint(i, tm.GetPoint(i))
 	}
-	// Shuffle cities in tour
-	a.tourPoints = ShuffleCities(a.tourPoints)
+	// Shuffle points in tour
+	a.tourPoints = shufflePoints(a.tourPoints)
 }
 
-// GetCity : Get city based on position in slice
-func (a *Tour) GetCity(tourPosition int) gpx.Point {
+// shufflePoints returns a shuffled []gpx.Point given input []gpx.Point.
+func shufflePoints(in []gpx.Point) []gpx.Point {
+	out := make([]gpx.Point, len(in), cap(in))
+	perm := rand.Perm(len(in))
+	for i, v := range perm {
+		out[v] = in[i]
+	}
+	return out
+}
+
+// GetPoint gets point based on position in slice.
+func (a *Tour) GetPoint(tourPosition int) gpx.Point {
 	return a.tourPoints[tourPosition]
 }
 
-// SetCity : Set position of city in tour slice
-func (a *Tour) SetCity(tourPosition int, c gpx.Point) {
+// SetPoint sets position of a point in tour slice.
+func (a *Tour) SetPoint(tourPosition int, c gpx.Point) {
 	a.tourPoints[tourPosition] = c
 	// Reset fitness if tour have been altered
 	a.fitness = 0
@@ -60,12 +71,12 @@ func (a *Tour) TourDistance() float64 {
 	if a.distance == 0 {
 		td := float64(0)
 		for i := 0; i < a.TourSize(); i++ {
-			fromC := a.GetCity(i)
+			fromC := a.GetPoint(i)
 			var destC gpx.Point
 			if i+1 < a.TourSize() {
-				destC = a.GetCity(i + 1)
+				destC = a.GetPoint(i + 1)
 			} else {
-				destC = a.GetCity(0)
+				destC = a.GetPoint(0)
 			}
 			td += fromC.Distance2D(&destC)
 		}
@@ -81,7 +92,7 @@ func (a *Tour) Fitness() float64 {
 	return a.fitness
 }
 
-func (a *Tour) ContainCity(c gpx.Point) bool {
+func (a *Tour) ContainsPoint(c gpx.Point) bool {
 	for _, cs := range a.tourPoints {
 		if cs == c {
 			return true
