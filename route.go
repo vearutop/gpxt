@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/vearutop/gpxt/route/tsp"
 	"os"
 	"path"
 	"strconv"
@@ -15,6 +14,7 @@ import (
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/tkrajina/gpxgo/gpx"
 	"github.com/vearutop/gpxt/route/ors"
+	"github.com/vearutop/gpxt/route/tsp"
 )
 
 func routeCmd() {

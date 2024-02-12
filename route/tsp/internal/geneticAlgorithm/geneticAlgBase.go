@@ -3,7 +3,7 @@ package geneticAlgorithm
 import (
 	"math/rand"
 
-	"github.com/vearutop/gpxt/route/tsp/base"
+	"github.com/vearutop/gpxt/route/tsp/internal/base"
 )
 
 // Genetic Algorithm Parameters

@@ -2,8 +2,8 @@ package tsp
 
 import (
 	"github.com/tkrajina/gpxgo/gpx"
-	"github.com/vearutop/gpxt/route/tsp/base"
-	"github.com/vearutop/gpxt/route/tsp/geneticAlgorithm"
+	"github.com/vearutop/gpxt/route/tsp/internal/base"
+	"github.com/vearutop/gpxt/route/tsp/internal/geneticAlgorithm"
 )
 
 const (

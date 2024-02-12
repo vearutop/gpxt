@@ -1,13 +1,13 @@
 package tsp_test
 
 import (
-	"github.com/stretchr/testify/assert"
-	"github.com/vearutop/gpxt/route/tsp"
 	"math/rand"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/route/tsp"
 )
 
 func TestOrder(t *testing.T) {
