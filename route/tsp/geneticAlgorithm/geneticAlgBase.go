@@ -1,8 +1,9 @@
 package geneticAlgorithm
 
 import (
-	"github.com/vearutop/gpxt/route/tsp/base"
 	"math/rand"
+
+	"github.com/vearutop/gpxt/route/tsp/base"
 )
 
 // Genetic Algorithm Parameters
@@ -33,7 +34,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	// Number of crossover
 	nc := int(CrossoverRate() * float32(size))
 	if nc == 0 {
-		//log.Println("no crossover")
+		// log.Println("no crossover")
 		return p1
 	}
 	// Start positions of cross over for parent 1
@@ -42,7 +43,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	ep := (sp + nc) % size
 	// Parent 2 slots
 	p2s := make([]int, 0, size-nc)
-	//log.Println(size, sp, nc, ep) // For debugging
+	// log.Println(size, sp, nc, ep) // For debugging
 	// Populate child with parent 1
 	if sp < ep {
 		for i := 0; i < size; i++ {
@@ -63,7 +64,7 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 	}
 
 	// For debugging
-	//msCity := ""
+	// msCity := ""
 	j := 0
 	// Populate child with parent 2 cities that are missing
 	for i := 0; i < size; i++ {
@@ -72,12 +73,12 @@ func Crossover(p1 base.Tour, p2 base.Tour) base.Tour {
 			c.SetCity(p2s[j], p2.GetCity(i))
 			j++
 			// For debugging
-			//msCity += p2.GetCity(i).String() + " "
+			// msCity += p2.GetCity(i).String() + " "
 		}
 	}
-	//log.Println(msCity)
-	//log.Println(p2s)
-	//log.Println(len(p2s))
+	// log.Println(msCity)
+	// log.Println(p2s)
+	// log.Println(len(p2s))
 	return c
 }
 
@@ -89,7 +90,7 @@ func Mutation(in *base.Tour) {
 		if rand.Float64() < mutationRate {
 			// Select 2nd city to perform swap
 			p2 := int(float64(in.TourSize()) * rand.Float64())
-			//log.Println("Mutation occured", p1, "swap", p2)
+			// log.Println("Mutation occured", p1, "swap", p2)
 			// Temp store city
 			c1 := in.GetCity(p1)
 			c2 := in.GetCity(p2)

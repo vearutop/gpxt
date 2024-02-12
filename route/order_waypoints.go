@@ -5,6 +5,6 @@ import (
 	"github.com/vearutop/gpxt/route/tsp"
 )
 
-func OrderWaypoints(waypoints []gpx.GPXPoint) {
-	tsp.Order(waypoints)
+func OrderWaypoints(waypoints []gpx.GPXPoint) []gpx.Point {
+	return tsp.Order(waypoints)
 }

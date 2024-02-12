@@ -19,6 +19,7 @@ func main() {
 	showCmd()
 	concatCmd()
 	reduceCmd()
+	routeCmd()
 	runnerup.Cmd()
 
 	kingpin.Version(version.Info().Version)

@@ -33,7 +33,7 @@ func (a *Population) GetFittest() *Tour {
 	fittest := a.tours[0]
 	// Loop through all tours taken by population and determine the fittest
 	for i := 0; i < a.PopulationSize(); i++ {
-		//log.Println("Current Tour: ", i)
+		// log.Println("Current Tour: ", i)
 		if fittest.Fitness() <= a.GetTour(i).Fitness() {
 			fittest = *a.GetTour(i)
 		}

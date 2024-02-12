@@ -16,9 +16,34 @@
             crossorigin=""></script>
 
     <link rel="stylesheet" href="/static/Control.FullScreen.min.css">
+    <link rel="stylesheet" href="/static/L.Control.Locate.min.css">
 
     <script type="text/javascript" src="/static/Control.FullScreen.min.js"></script>
+    <script type="text/javascript" src="/static/L.Control.Locate.js"></script>
     <script type="text/javascript" src="/static/leaflet-omnivore.min.js"></script>
+
+    <style>
+        .google-maps {
+            background-image: url('/static/google_maps.svg');
+            background-size: 15px;
+            background-repeat: no-repeat;
+            padding-left: 24px;
+            padding-bottom: 6px;
+            display: inline-block;
+            height: 16px;
+            padding-top: 0;
+        }
+
+        .apple-maps {
+            background-image: url('/static/apple_maps.svg');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            padding-left: 24px;
+            padding-bottom: 6px;
+        }
+
+
+    </style>
 </head>
 
 <body style="height: 100%;padding: 0; margin: 0">
@@ -50,16 +75,43 @@
             var dLat = toRad * (lat1 - lat2)
             var dLon = toRad * (lon1 - lon2)
 
-            var a = Math.pow(Math.sin(dLat/2), 2) + Math.pow(Math.sin(dLon/2), 2)*Math.cos(toRad * lat1)*Math.cos(toRad * lat2)
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+            var a = Math.pow(Math.sin(dLat / 2), 2) + Math.pow(Math.sin(dLon / 2), 2) * Math.cos(toRad * lat1) * Math.cos(toRad * lat2)
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
             return 6371000 * c
         }
 
         function gpxPopupHandler(name) {
-            return function(e) {
+            return function (e) {
+                console.log(e)
+
                 var popup = e.popup;
-                var points = e.layer._latlngs
+
+                var feat = e.layer.feature
+                console.log("feat", feat)
+
+                var res = name + "<br />"
+                if (feat.properties.desc) {
+                    res += feat.properties.desc + "<br />"
+                }
+
+                if (feat.properties.name) {
+                    res += feat.properties.name + "<br />"
+                }
+
+                if (feat.geometry.type === "Point") {
+
+                    res += feat.geometry.coordinates[1].toFixed(8) + ", " + feat.geometry.coordinates[0].toFixed(8)
+                    res += '<br /><a class="google-maps" href="https://maps.google.com/maps?q=loc:' +
+                        feat.geometry.coordinates[1].toFixed(8) + ',' + feat.geometry.coordinates[0].toFixed(8) + '">google maps</a>'
+                    res += '<br /><a class="apple-maps" href="https://maps.apple.com/?ll=' +
+                        feat.geometry.coordinates[1].toFixed(8) + ',' + feat.geometry.coordinates[0].toFixed(8) + '">apple maps</a>'
+
+                    popup.setContent(res);
+                    return
+                }
+
+                var points = e.layer._latlngs || []
 
                 var lat = popup.getLatLng().lat
                 var lon = popup.getLatLng().lng
@@ -92,6 +144,17 @@
                     }
                 }
 
+                res += lat.toFixed(8) + ", " + lon.toFixed(8)
+                res += '<br /><a class="google-maps" href="https://maps.google.com/maps?q=loc:' +
+                    lat.toFixed(8) + ',' + lon.toFixed(8) + '">google maps</a>'
+                res += '<br /><a class="apple-maps" href="https://maps.apple.com/?ll=' +
+                    lat.toFixed(8) + ',' + lon.toFixed(8) + '">apple maps</a>'
+
+                if (typeof e.layer.feature.properties.coordTimes === 'undefined') {
+                    popup.setContent(res);
+                    return
+                }
+
                 var ts
 
                 if (ptIdx.length == 1) {
@@ -102,13 +165,14 @@
                     ts = e.layer.feature.properties.coordTimes[ptIdx[0]][ptIdx[1]]
                 }
 
-                popup.setContent(name + "<br />" + lat.toFixed(8) + ", " + lon.toFixed(8) + "<br />" +
-                    ts + "<br /> (dist to nearest timestamp " + Math.round(shortest) + " meters)");
+                res +=
+                    ts + "<br /> (dist to nearest timestamp " + Math.round(shortest) + " meters)"
+                popup.setContent(res);
             }
         }
 
         var bounds = null
-        var toRad = Math.PI/180
+        var toRad = Math.PI / 180
 
         // GPX rendering.
         for (var i = 0; i < params.files.length; i++) {
@@ -132,7 +196,9 @@
                     map.fitBounds(bounds);
                 });
             gpxLayer
-                .bindPopup(function (){ return name })
+                .bindPopup(function () {
+                    return name
+                })
                 .addTo(map);
 
             gpxLayer.on('popupopen', gpxPopupHandler(name));
@@ -141,6 +207,7 @@
         }
 
         L.control.layers({}, overlayMaps).addTo(map);
+        L.control.locate({}).addTo(map)
     }
 
     loadTracks({

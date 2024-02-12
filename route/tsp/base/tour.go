@@ -2,8 +2,9 @@ package base
 
 import (
 	"fmt"
-	"github.com/tkrajina/gpxgo/gpx"
 	"strconv"
+
+	"github.com/tkrajina/gpxgo/gpx"
 )
 
 type Tour struct {
@@ -15,6 +16,10 @@ type Tour struct {
 // InitTour : Initialize tour with cities arranged randomly
 func (a *Tour) InitTour(numberOfCities int) {
 	a.tourPoints = make([]gpx.Point, numberOfCities)
+}
+
+func (a *Tour) Points() []gpx.Point {
+	return a.tourPoints
 }
 
 // InitTourCities

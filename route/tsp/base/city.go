@@ -2,9 +2,10 @@ package base
 
 import (
 	"fmt"
-	"github.com/tkrajina/gpxgo/gpx"
 	"math"
 	"math/rand"
+
+	"github.com/tkrajina/gpxgo/gpx"
 )
 
 // City : coordinates of city

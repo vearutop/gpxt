@@ -1,0 +1,3814 @@
+{
+ "bbox":[2.077482,41.304249,2.190315,41.439946],
+ "routes":[
+  {
+   "summary":{"distance":58965.7,"duration":42454.20000000001},
+   "segments":[
+    {
+     "distance":721.5,"duration":519.5,
+     "steps":[
+      {
+       "distance":21.7,"duration":15.6,"type":11,"instruction":"Head northeast on Carrer d'Aragó",
+       "name":"Carrer d'Aragó","way_points":[0,2]
+      },
+      {
+       "distance":101.7,"duration":73.2,"type":1,"instruction":"Turn right onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[2,5]
+      },
+      {
+       "distance":8.5,"duration":6.1,"type":0,"instruction":"Turn left onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[5,6]
+      },
+      {
+       "distance":161.9,"duration":116.6,"type":1,
+       "instruction":"Turn right onto Passeig de Gràcia (lateral Llobregat)",
+       "name":"Passeig de Gràcia (lateral Llobregat)","way_points":[6,15]
+      },
+      {
+       "distance":8.4,"duration":6,"type":1,"instruction":"Turn right onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[15,16]
+      },
+      {
+       "distance":98.3,"duration":70.8,"type":0,"instruction":"Turn left onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[16,17]
+      },
+      {
+       "distance":62.9,"duration":45.3,"type":5,
+       "instruction":"Turn slight right onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[17,29]
+      },
+      {
+       "distance":20.8,"duration":15,"type":0,"instruction":"Turn left onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[29,31]
+      },
+      {
+       "distance":1.9,"duration":1.4,"type":0,
+       "instruction":"Turn left onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[31,32]
+      },
+      {
+       "distance":162.9,"duration":117.3,"type":3,
+       "instruction":"Turn sharp right onto Passeig de Gràcia","name":"Passeig de Gràcia",
+       "way_points":[32,35]
+      },
+      {
+       "distance":32.9,"duration":23.7,"type":0,"instruction":"Turn left onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[35,37]
+      },
+      {
+       "distance":22.4,"duration":16.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[37,40]
+      },
+      {
+       "distance":7.2,"duration":5.2,"type":1,"instruction":"Turn right onto Ronda de Sant Pere",
+       "name":"Ronda de Sant Pere","way_points":[40,41]
+      },
+      {
+       "distance":10,"duration":7.2,"type":1,"instruction":"Turn right onto Ronda de Sant Pere",
+       "name":"Ronda de Sant Pere","way_points":[41,42]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Ronda de Sant Pere, on the right","name":"-","way_points":[42,42]
+      }
+     ]
+    },
+    {
+     "distance":775.5,"duration":558.3,
+     "steps":[
+      {
+       "distance":10,"duration":7.2,"type":11,"instruction":"Head northeast on Ronda de Sant Pere",
+       "name":"Ronda de Sant Pere","way_points":[42,43]
+      },
+      {
+       "distance":157.9,"duration":113.7,"type":1,
+       "instruction":"Turn right onto Ronda de Sant Pere","name":"Ronda de Sant Pere",
+       "way_points":[43,51]
+      },
+      {
+       "distance":331.3,"duration":238.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[51,60]
+      },
+      {
+       "distance":9.4,"duration":6.8,"type":5,
+       "instruction":"Turn slight right onto Carrer dels Arcs","name":"Carrer dels Arcs",
+       "way_points":[60,61]
+      },
+      {
+       "distance":78.3,"duration":56.4,"type":0,"instruction":"Turn left onto Carrer dels Arcs",
+       "name":"Carrer dels Arcs","way_points":[61,63]
+      },
+      {
+       "distance":13.9,"duration":10,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[63,64]
+      },
+      {
+       "distance":14.1,"duration":10.1,"type":4,"instruction":"Turn slight left","name":"-",
+       "way_points":[64,65]
+      },
+      {
+       "distance":72.5,"duration":52.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[65,70]
+      },
+      {
+       "distance":88,"duration":63.4,"type":1,
+       "instruction":"Turn right onto Carrer de Montjuïc del Bisbe",
+       "name":"Carrer de Montjuïc del Bisbe","way_points":[70,79]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer de Montjuïc del Bisbe, on the right","name":"-",
+       "way_points":[79,79]
+      }
+     ]
+    },
+    {
+     "distance":686.2,"duration":494,
+     "steps":[
+      {
+       "distance":29.6,"duration":21.3,"type":11,
+       "instruction":"Head southeast on Carrer de Sant Felip Neri",
+       "name":"Carrer de Sant Felip Neri","way_points":[79,80]
+      },
+      {
+       "distance":74.8,"duration":53.8,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Sever","name":"Carrer de Sant Sever",
+       "way_points":[80,83]
+      },
+      {
+       "distance":27.4,"duration":19.8,"type":0,
+       "instruction":"Turn left onto Carrer dels Banys Nous","name":"Carrer dels Banys Nous",
+       "way_points":[83,84]
+      },
+      {
+       "distance":51.2,"duration":36.8,"type":1,
+       "instruction":"Turn right onto Carrer de l'Ave Maria","name":"Carrer de l'Ave Maria",
+       "way_points":[84,86]
+      },
+      {
+       "distance":32,"duration":23,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[86,88]
+      },
+      {
+       "distance":10.7,"duration":7.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[88,89]
+      },
+      {
+       "distance":128.7,"duration":92.7,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[89,97]
+      },
+      {
+       "distance":11.7,"duration":8.4,"type":1,
+       "instruction":"Turn right onto Plaça de la Boqueria","name":"Plaça de la Boqueria",
+       "way_points":[97,98]
+      },
+      {
+       "distance":5.4,"duration":3.9,"type":5,"instruction":"Turn slight right onto La Rambla",
+       "name":"La Rambla","way_points":[98,100]
+      },
+      {
+       "distance":110.4,"duration":79.5,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[100,101]
+      },
+      {
+       "distance":3.4,"duration":2.4,"type":1,"instruction":"Turn right onto La Rambla",
+       "name":"La Rambla","way_points":[101,102]
+      },
+      {
+       "distance":13.3,"duration":9.6,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[102,103]
+      },
+      {
+       "distance":18.2,"duration":13.1,"type":1,"instruction":"Turn right onto La Rambla",
+       "name":"La Rambla","way_points":[103,106]
+      },
+      {
+       "distance":88.6,"duration":63.8,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[106,109]
+      },
+      {
+       "distance":2.1,"duration":1.5,"type":1,"instruction":"Turn right onto La Rambla",
+       "name":"La Rambla","way_points":[109,110]
+      },
+      {
+       "distance":7.2,"duration":5.2,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[110,111]
+      },
+      {
+       "distance":5.8,"duration":4.2,"type":4,
+       "instruction":"Turn slight left onto Carrer Nou de la Rambla",
+       "name":"Carrer Nou de la Rambla","way_points":[111,113]
+      },
+      {
+       "distance":65.8,"duration":47.4,"type":1,
+       "instruction":"Turn right onto Carrer Nou de la Rambla","name":"Carrer Nou de la Rambla",
+       "way_points":[113,114]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer Nou de la Rambla, on the right","name":"-",
+       "way_points":[114,114]
+      }
+     ]
+    },
+    {
+     "distance":547.1,"duration":393.9,
+     "steps":[
+      {
+       "distance":65.8,"duration":47.4,"type":11,
+       "instruction":"Head northeast on Carrer Nou de la Rambla","name":"Carrer Nou de la Rambla",
+       "way_points":[114,115]
+      },
+      {
+       "distance":4.9,"duration":3.5,"type":5,"instruction":"Turn slight right onto La Rambla",
+       "name":"La Rambla","way_points":[115,117]
+      },
+      {
+       "distance":115.8,"duration":83.4,"type":1,"instruction":"Turn right onto La Rambla",
+       "name":"La Rambla","way_points":[117,120]
+      },
+      {
+       "distance":10.1,"duration":7.3,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[120,122]
+      },
+      {
+       "distance":41.9,"duration":30.2,"type":1,"instruction":"Turn right onto La Rambla",
+       "name":"La Rambla","way_points":[122,123]
+      },
+      {
+       "distance":11.5,"duration":8.3,"type":0,"instruction":"Turn left onto La Rambla",
+       "name":"La Rambla","way_points":[123,125]
+      },
+      {
+       "distance":90.7,"duration":65.3,"type":6,
+       "instruction":"Continue straight onto Plaça Joaquim Xirau i Palau",
+       "name":"Plaça Joaquim Xirau i Palau","way_points":[125,128]
+      },
+      {
+       "distance":20.8,"duration":15,"type":1,
+       "instruction":"Turn right onto Plaça de Joaquim Xirau i Palau",
+       "name":"Plaça de Joaquim Xirau i Palau","way_points":[128,129]
+      },
+      {
+       "distance":3.5,"duration":2.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[129,130]
+      },
+      {
+       "distance":148.4,"duration":106.9,"type":1,
+       "instruction":"Turn right onto Passatge de la Pau","name":"Passatge de la Pau",
+       "way_points":[130,138]
+      },
+      {
+       "distance":33.8,"duration":24.3,"type":0,
+       "instruction":"Turn left onto Carrer de Josep Anselm Clavé",
+       "name":"Carrer de Josep Anselm Clavé","way_points":[138,140]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer de Josep Anselm Clavé, on the left","name":"-",
+       "way_points":[140,140]
+      }
+     ]
+    },
+    {
+     "distance":348.2,"duration":250.7,
+     "steps":[
+      {
+       "distance":154.3,"duration":111.1,"type":11,
+       "instruction":"Head southwest on Carrer de Josep Anselm Clavé",
+       "name":"Carrer de Josep Anselm Clavé","way_points":[140,145]
+      },
+      {
+       "distance":48.8,"duration":35.1,"type":1,
+       "instruction":"Turn right onto Carrer de Josep Anselm Clavé",
+       "name":"Carrer de Josep Anselm Clavé","way_points":[145,152]
+      },
+      {
+       "distance":23.7,"duration":17.1,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[152,154]
+      },
+      {
+       "distance":90.5,"duration":65.1,"type":6,"instruction":"Continue straight onto La Rambla",
+       "name":"La Rambla","way_points":[154,166]
+      },
+      {
+       "distance":30.9,"duration":22.3,"type":3,
+       "instruction":"Turn sharp right onto Avinguda de les Drassanes",
+       "name":"Avinguda de les Drassanes","way_points":[166,168]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Avinguda de les Drassanes, on the right","name":"-",
+       "way_points":[168,168]
+      }
+     ]
+    },
+    {
+     "distance":2507.2,"duration":1805.1,
+     "steps":[
+      {
+       "distance":74.5,"duration":53.6,"type":11,
+       "instruction":"Head west on Avinguda de les Drassanes","name":"Avinguda de les Drassanes",
+       "way_points":[168,170]
+      },
+      {
+       "distance":7.5,"duration":5.4,"type":6,
+       "instruction":"Continue straight onto Carrer del Portal de Santa Madrona",
+       "name":"Carrer del Portal de Santa Madrona","way_points":[170,171]
+      },
+      {
+       "distance":214.8,"duration":154.6,"type":0,
+       "instruction":"Turn left onto Carrer del Portal de Santa Madrona",
+       "name":"Carrer del Portal de Santa Madrona","way_points":[171,176]
+      },
+      {
+       "distance":13.4,"duration":9.7,"type":6,
+       "instruction":"Continue straight onto Carrer del Portal de Santa Madrona",
+       "name":"Carrer del Portal de Santa Madrona","way_points":[176,177]
+      },
+      {
+       "distance":209,"duration":150.5,"type":12,
+       "instruction":"Keep left onto Carrer del Portal de Santa Madrona",
+       "name":"Carrer del Portal de Santa Madrona","way_points":[177,185]
+      },
+      {
+       "distance":4.6,"duration":3.3,"type":1,
+       "instruction":"Turn right onto Carrer de Palaudàries","name":"Carrer de Palaudàries",
+       "way_points":[185,186]
+      },
+      {
+       "distance":75.5,"duration":54.4,"type":0,
+       "instruction":"Turn left onto Carrer de Palaudàries","name":"Carrer de Palaudàries",
+       "way_points":[186,188]
+      },
+      {
+       "distance":4.9,"duration":3.5,"type":5,
+       "instruction":"Turn slight right onto Carrer de Piquer","name":"Carrer de Piquer",
+       "way_points":[188,189]
+      },
+      {
+       "distance":16.4,"duration":11.8,"type":12,"instruction":"Keep left onto Carrer de Piquer",
+       "name":"Carrer de Piquer","way_points":[189,192]
+      },
+      {
+       "distance":4.6,"duration":3.3,"type":5,
+       "instruction":"Turn slight right onto Passeig de Montjuïc","name":"Passeig de Montjuïc",
+       "way_points":[192,193]
+      },
+      {
+       "distance":88.1,"duration":63.4,"type":0,"instruction":"Turn left onto Passeig de Montjuïc",
+       "name":"Passeig de Montjuïc","way_points":[193,196]
+      },
+      {
+       "distance":5.4,"duration":3.9,"type":5,
+       "instruction":"Turn slight right onto Passeig de Montjuïc","name":"Passeig de Montjuïc",
+       "way_points":[196,197]
+      },
+      {
+       "distance":19.3,"duration":13.9,"type":0,"instruction":"Turn left onto Carrer de Mata",
+       "name":"Carrer de Mata","way_points":[197,199]
+      },
+      {
+       "distance":77.3,"duration":55.6,"type":4,
+       "instruction":"Turn slight left onto Passeig de Montjuïc","name":"Passeig de Montjuïc",
+       "way_points":[199,202]
+      },
+      {
+       "distance":11.2,"duration":8.1,"type":1,"instruction":"Turn right onto Passeig de Montjuïc",
+       "name":"Passeig de Montjuïc","way_points":[202,203]
+      },
+      {
+       "distance":8.6,"duration":6.2,"type":4,
+       "instruction":"Turn slight left onto Carrer de Cabanes","name":"Carrer de Cabanes",
+       "way_points":[203,205]
+      },
+      {
+       "distance":4.4,"duration":3.1,"type":4,
+       "instruction":"Turn slight left onto Camí de la Font Trobada",
+       "name":"Camí de la Font Trobada","way_points":[205,206]
+      },
+      {
+       "distance":10.1,"duration":7.3,"type":12,"instruction":"Keep left onto Carrer de Blesa",
+       "name":"Carrer de Blesa","way_points":[206,208]
+      },
+      {
+       "distance":10.7,"duration":7.7,"type":4,
+       "instruction":"Turn slight left onto Camí de la Font Trobada",
+       "name":"Camí de la Font Trobada","way_points":[208,209]
+      },
+      {
+       "distance":15.1,"duration":10.9,"type":4,
+       "instruction":"Turn slight left onto Passeig de Montjuïc","name":"Passeig de Montjuïc",
+       "way_points":[209,211]
+      },
+      {
+       "distance":241.7,"duration":174,"type":0,
+       "instruction":"Turn left onto Camí de la Font Trobada","name":"Camí de la Font Trobada",
+       "way_points":[211,221]
+      },
+      {
+       "distance":87.5,"duration":63,"type":0,"instruction":"Turn left onto Passeig de Miramar",
+       "name":"Passeig de Miramar","way_points":[221,227]
+      },
+      {
+       "distance":86.4,"duration":62.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[227,233]
+      },
+      {
+       "distance":91.2,"duration":65.7,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[233,238]
+      },
+      {
+       "distance":58.1,"duration":41.8,"type":3,
+       "instruction":"Turn sharp right onto Avinguda de Miramar","name":"Avinguda de Miramar",
+       "way_points":[238,242]
+      },
+      {
+       "distance":27.3,"duration":19.7,"type":0,"instruction":"Turn left onto Avinguda de Miramar",
+       "name":"Avinguda de Miramar","way_points":[242,246]
+      },
+      {
+       "distance":8.2,"duration":5.9,"type":2,
+       "instruction":"Turn sharp left onto Avinguda de Miramar","name":"Avinguda de Miramar",
+       "way_points":[246,247]
+      },
+      {
+       "distance":40.3,"duration":29,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[247,251]
+      },
+      {
+       "distance":39.5,"duration":28.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[251,255]
+      },
+      {
+       "distance":78,"duration":56.1,"type":4,"instruction":"Turn slight left","name":"-",
+       "way_points":[255,263]
+      },
+      {
+       "distance":67,"duration":48.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[263,270]
+      },
+      {
+       "distance":20.9,"duration":15.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[270,271]
+      },
+      {
+       "distance":82.5,"duration":59.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[271,277]
+      },
+      {
+       "distance":45.3,"duration":32.6,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[277,281]
+      },
+      {
+       "distance":36.3,"duration":26.1,"type":0,
+       "instruction":"Turn left onto Carrer dels Tarongers","name":"Carrer dels Tarongers",
+       "way_points":[281,282]
+      },
+      {
+       "distance":11.2,"duration":8.1,"type":1,
+       "instruction":"Turn right onto Carrer dels Tarongers","name":"Carrer dels Tarongers",
+       "way_points":[282,284]
+      },
+      {
+       "distance":26.2,"duration":18.9,"type":0,
+       "instruction":"Turn left onto Carrer dels Tarongers","name":"Carrer dels Tarongers",
+       "way_points":[284,287]
+      },
+      {
+       "distance":25.4,"duration":18.3,"type":5,
+       "instruction":"Turn slight right onto Avinguda del Castell","name":"Avinguda del Castell",
+       "way_points":[287,290]
+      },
+      {
+       "distance":27.8,"duration":20,"type":6,
+       "instruction":"Continue straight onto Passeigs dels Cims","name":"Passeigs dels Cims",
+       "way_points":[290,293]
+      },
+      {
+       "distance":120.3,"duration":86.6,"type":6,
+       "instruction":"Continue straight onto Avinguda del Castell","name":"Avinguda del Castell",
+       "way_points":[293,300]
+      },
+      {
+       "distance":93.3,"duration":67.2,"type":6,
+       "instruction":"Continue straight onto Avinguda del Castell","name":"Avinguda del Castell",
+       "way_points":[300,308]
+      },
+      {
+       "distance":45.2,"duration":32.5,"type":3,
+       "instruction":"Turn sharp right onto Avinguda del Castell","name":"Avinguda del Castell",
+       "way_points":[308,310]
+      },
+      {
+       "distance":41.4,"duration":29.8,"type":1,
+       "instruction":"Turn right onto Avinguda del Castell","name":"Avinguda del Castell",
+       "way_points":[310,315]
+      },
+      {
+       "distance":41.9,"duration":30.2,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[315,318]
+      },
+      {
+       "distance":129.3,"duration":93.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[318,322]
+      },
+      {
+       "distance":59.6,"duration":42.9,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[322,323]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the left",
+       "name":"-","way_points":[323,323]
+      }
+     ]
+    },
+    {
+     "distance":2217.8,"duration":1596.8,
+     "steps":[
+      {
+       "distance":59.6,"duration":42.9,"type":11,"instruction":"Head northwest","name":"-",
+       "way_points":[323,324]
+      },
+      {
+       "distance":129.3,"duration":93.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[324,328]
+      },
+      {
+       "distance":36.6,"duration":26.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[328,330]
+      },
+      {
+       "distance":46.8,"duration":33.7,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[330,336]
+      },
+      {
+       "distance":34.7,"duration":25,"type":0,"instruction":"Turn left onto Avinguda del Castell",
+       "name":"Avinguda del Castell","way_points":[336,337]
+      },
+      {
+       "distance":212.6,"duration":153.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[337,344]
+      },
+      {
+       "distance":49.4,"duration":35.6,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[344,347]
+      },
+      {
+       "distance":100.2,"duration":72.1,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[347,351]
+      },
+      {
+       "distance":23.7,"duration":17.1,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[351,352]
+      },
+      {
+       "distance":11.2,"duration":8.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[352,354]
+      },
+      {
+       "distance":21.7,"duration":15.6,"type":1,"instruction":"Turn right onto Passeig del Migdia",
+       "name":"Passeig del Migdia","way_points":[354,355]
+      },
+      {
+       "distance":268.5,"duration":193.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[355,363]
+      },
+      {
+       "distance":33.8,"duration":24.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[363,364]
+      },
+      {
+       "distance":121.3,"duration":87.3,"type":0,
+       "instruction":"Turn left onto Carrer del Doctor Font i Quer",
+       "name":"Carrer del Doctor Font i Quer","way_points":[364,367]
+      },
+      {
+       "distance":13.6,"duration":9.8,"type":1,
+       "instruction":"Turn right onto Carrer del Doctor Font i Quer",
+       "name":"Carrer del Doctor Font i Quer","way_points":[367,369]
+      },
+      {
+       "distance":4.6,"duration":3.3,"type":0,
+       "instruction":"Turn left onto Carrer del Doctor Font i Quer",
+       "name":"Carrer del Doctor Font i Quer","way_points":[369,370]
+      },
+      {
+       "distance":274.2,"duration":197.4,"type":1,
+       "instruction":"Turn right onto Carrer dels Tres Pins","name":"Carrer dels Tres Pins",
+       "way_points":[370,377]
+      },
+      {
+       "distance":2.3,"duration":1.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[377,378]
+      },
+      {
+       "distance":113.9,"duration":82,"type":0,"instruction":"Turn left onto Carrer de Vivers",
+       "name":"Carrer de Vivers","way_points":[378,385]
+      },
+      {
+       "distance":3.9,"duration":2.8,"type":4,
+       "instruction":"Turn slight left onto Avinguda de l'Estadi","name":"Avinguda de l'Estadi",
+       "way_points":[385,386]
+      },
+      {
+       "distance":19.8,"duration":14.3,"type":1,
+       "instruction":"Turn right onto Avinguda de l'Estadi","name":"Avinguda de l'Estadi",
+       "way_points":[386,388]
+      },
+      {
+       "distance":39.6,"duration":28.5,"type":1,
+       "instruction":"Turn right onto Avinguda de l'Estadi","name":"Avinguda de l'Estadi",
+       "way_points":[388,390]
+      },
+      {
+       "distance":37.2,"duration":26.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[390,393]
+      },
+      {
+       "distance":19.4,"duration":14,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[393,394]
+      },
+      {
+       "distance":282.1,"duration":203.1,"type":0,
+       "instruction":"Turn left onto Passeig de Santa Madrona","name":"Passeig de Santa Madrona",
+       "way_points":[394,404]
+      },
+      {
+       "distance":89.3,"duration":64.3,"type":6,
+       "instruction":"Continue straight onto Carrer del Mirador del Palau Nacional",
+       "name":"Carrer del Mirador del Palau Nacional","way_points":[404,411]
+      },
+      {
+       "distance":18.6,"duration":13.4,"type":1,
+       "instruction":"Turn right onto Avinguda dels Montanyans","name":"Avinguda dels Montanyans",
+       "way_points":[411,413]
+      },
+      {
+       "distance":25,"duration":18,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[413,416]
+      },
+      {
+       "distance":109.8,"duration":79,"type":0,
+       "instruction":"Turn left onto Carrer Mirador del Palau Nacional",
+       "name":"Carrer Mirador del Palau Nacional","way_points":[416,419]
+      },
+      {
+       "distance":15.2,"duration":10.9,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[419,421]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the left",
+       "name":"-","way_points":[421,421]
+      }
+     ]
+    },
+    {
+     "distance":321.8,"duration":231.7,
+     "steps":[
+      {
+       "distance":15.2,"duration":10.9,"type":11,"instruction":"Head northwest","name":"-",
+       "way_points":[421,423]
+      },
+      {
+       "distance":7.1,"duration":5.1,"type":1,
+       "instruction":"Turn right onto Carrer Mirador del Palau Nacional",
+       "name":"Carrer Mirador del Palau Nacional","way_points":[423,424]
+      },
+      {
+       "distance":9.5,"duration":6.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[424,427]
+      },
+      {
+       "distance":14.8,"duration":10.6,"type":0,
+       "instruction":"Turn left onto Carrer Mirador del Palau Nacional",
+       "name":"Carrer Mirador del Palau Nacional","way_points":[427,428]
+      },
+      {
+       "distance":188.4,"duration":135.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[428,436]
+      },
+      {
+       "distance":85.1,"duration":61.3,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[436,439]
+      },
+      {
+       "distance":1.7,"duration":1.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[439,440]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[440,440]
+      }
+     ]
+    },
+    {
+     "distance":12721.6,"duration":9159.3,
+     "steps":[
+      {
+       "distance":7.2,"duration":5.2,"type":11,"instruction":"Head west","name":"-",
+       "way_points":[440,441]
+      },
+      {
+       "distance":30.9,"duration":22.3,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[441,444]
+      },
+      {
+       "distance":14.3,"duration":10.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[444,445]
+      },
+      {
+       "distance":26.6,"duration":19.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[445,446]
+      },
+      {
+       "distance":87.7,"duration":63.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[446,448]
+      },
+      {
+       "distance":21.3,"duration":15.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[448,449]
+      },
+      {
+       "distance":40.7,"duration":29.3,"type":0,
+       "instruction":"Turn left onto Avinguda de Francesc Ferrer i Guàrdia",
+       "name":"Avinguda de Francesc Ferrer i Guàrdia","way_points":[449,452]
+      },
+      {
+       "distance":20.6,"duration":14.8,"type":1,
+       "instruction":"Turn right onto Avinguda de Francesc Ferrer i Guàrdia",
+       "name":"Avinguda de Francesc Ferrer i Guàrdia","way_points":[452,454]
+      },
+      {
+       "distance":29.1,"duration":21,"type":1,"instruction":"Turn right onto Carrer dels Morabos",
+       "name":"Carrer dels Morabos","way_points":[454,458]
+      },
+      {
+       "distance":2.1,"duration":1.5,"type":1,"instruction":"Turn right onto Carrer dels Montfar",
+       "name":"Carrer dels Montfar","way_points":[458,459]
+      },
+      {
+       "distance":197.6,"duration":142.3,"type":2,
+       "instruction":"Turn sharp left onto Carrer dels Montfar","name":"Carrer dels Montfar",
+       "way_points":[459,469]
+      },
+      {
+       "distance":30.4,"duration":21.9,"type":6,
+       "instruction":"Continue straight onto Carrer de Chopin","name":"Carrer de Chopin",
+       "way_points":[469,471]
+      },
+      {
+       "distance":3.9,"duration":2.8,"type":0,"instruction":"Turn left onto Carrer de la Guatlla",
+       "name":"Carrer de la Guatlla","way_points":[471,472]
+      },
+      {
+       "distance":4.8,"duration":3.4,"type":1,"instruction":"Turn right onto Carrer de la Guatlla",
+       "name":"Carrer de la Guatlla","way_points":[472,473]
+      },
+      {
+       "distance":39,"duration":28,"type":6,"instruction":"Continue straight onto Carrer de Chopin",
+       "name":"Carrer de Chopin","way_points":[473,476]
+      },
+      {
+       "distance":249.2,"duration":179.5,"type":12,
+       "instruction":"Keep left onto Carrer de la Font Florida","name":"Carrer de la Font Florida",
+       "way_points":[476,488]
+      },
+      {
+       "distance":368.2,"duration":265.1,"type":13,
+       "instruction":"Keep right onto Carrer de la Font Florida","name":"Carrer de la Font Florida",
+       "way_points":[488,498]
+      },
+      {
+       "distance":205.8,"duration":148.2,"type":5,
+       "instruction":"Turn slight right onto Carrer de la Font Florida",
+       "name":"Carrer de la Font Florida","way_points":[498,506]
+      },
+      {
+       "distance":105.6,"duration":76,"type":0,
+       "instruction":"Turn left onto Plaça de les Matemàtiques",
+       "name":"Plaça de les Matemàtiques","way_points":[506,512]
+      },
+      {
+       "distance":19.6,"duration":14.1,"type":1,
+       "instruction":"Turn right onto Carrer de la Mare de Déu de Port",
+       "name":"Carrer de la Mare de Déu de Port","way_points":[512,516]
+      },
+      {
+       "distance":29.9,"duration":21.5,"type":1,
+       "instruction":"Turn right onto Plaça de les Matemàtiques",
+       "name":"Plaça de les Matemàtiques","way_points":[516,519]
+      },
+      {
+       "distance":99.4,"duration":71.6,"type":4,
+       "instruction":"Turn slight left onto Carrer de la Mineria","name":"Carrer de la Mineria",
+       "way_points":[519,522]
+      },
+      {
+       "distance":21.2,"duration":15.2,"type":13,
+       "instruction":"Keep right onto Carrer de la Mineria","name":"Carrer de la Mineria",
+       "way_points":[522,523]
+      },
+      {
+       "distance":18.9,"duration":13.6,"type":1,
+       "instruction":"Turn right onto Carrer de la Mineria","name":"Carrer de la Mineria",
+       "way_points":[523,528]
+      },
+      {
+       "distance":93.3,"duration":67.2,"type":0,"instruction":"Turn left onto Carrer de la Mineria",
+       "name":"Carrer de la Mineria","way_points":[528,529]
+      },
+      {
+       "distance":7.8,"duration":5.6,"type":1,
+       "instruction":"Turn right onto Passeig de la Zona Franca","name":"Passeig de la Zona Franca",
+       "way_points":[529,530]
+      },
+      {
+       "distance":33.4,"duration":24.1,"type":0,
+       "instruction":"Turn left onto Passeig de la Zona Franca","name":"Passeig de la Zona Franca",
+       "way_points":[530,536]
+      },
+      {
+       "distance":73.2,"duration":52.7,"type":1,
+       "instruction":"Turn right onto Passeig de la Zona Franca","name":"Passeig de la Zona Franca",
+       "way_points":[536,537]
+      },
+      {
+       "distance":146.4,"duration":105.4,"type":5,
+       "instruction":"Turn slight right onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[537,541]
+      },
+      {
+       "distance":16.9,"duration":12.1,"type":5,
+       "instruction":"Turn slight right onto Carrer del Radi","name":"Carrer del Radi",
+       "way_points":[541,543]
+      },
+      {
+       "distance":102.4,"duration":73.7,"type":6,
+       "instruction":"Continue straight onto Avinguda de la Granvia de l'Hospitalet",
+       "name":"Avinguda de la Granvia de l'Hospitalet","way_points":[543,552]
+      },
+      {
+       "distance":54.3,"duration":39.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[552,559]
+      },
+      {
+       "distance":393.2,"duration":283.1,"type":0,
+       "instruction":"Turn left onto Avinguda de la Granvia de l'Hospitalet",
+       "name":"Avinguda de la Granvia de l'Hospitalet","way_points":[559,585]
+      },
+      {
+       "distance":452.6,"duration":325.9,"type":13,
+       "instruction":"Keep right onto Carrer de Natzaret","name":"Carrer de Natzaret",
+       "way_points":[585,602]
+      },
+      {
+       "distance":359,"duration":258.5,"type":7,
+       "instruction":"Enter the roundabout and take the 2nd exit onto Carrer de Jerusalem",
+       "name":"Carrer de Jerusalem","exit_number":2,"way_points":[602,611]
+      },
+      {
+       "distance":408.6,"duration":294.2,"type":7,
+       "instruction":"Enter the roundabout and take the 2nd exit onto Carrer dels Joncs",
+       "name":"Carrer dels Joncs","exit_number":2,"way_points":[611,622]
+      },
+      {
+       "distance":20.8,"duration":15,"type":0,"instruction":"Turn left onto Avinguda de Vilanova",
+       "name":"Avinguda de Vilanova","way_points":[622,626]
+      },
+      {
+       "distance":10.3,"duration":7.4,"type":0,"instruction":"Turn left onto Avinguda de Vilanova",
+       "name":"Avinguda de Vilanova","way_points":[626,627]
+      },
+      {
+       "distance":8.9,"duration":6.4,"type":1,"instruction":"Turn right onto Avinguda de Vilanova",
+       "name":"Avinguda de Vilanova","way_points":[627,628]
+      },
+      {
+       "distance":153.5,"duration":110.5,"type":0,
+       "instruction":"Turn left onto Avinguda de Vilanova","name":"Avinguda de Vilanova",
+       "way_points":[628,629]
+      },
+      {
+       "distance":380.5,"duration":273.9,"type":1,
+       "instruction":"Turn right onto Avinguda de Vilanova","name":"Avinguda de Vilanova",
+       "way_points":[629,636]
+      },
+      {
+       "distance":14.9,"duration":10.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[636,641]
+      },
+      {
+       "distance":17.5,"duration":12.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[641,642]
+      },
+      {
+       "distance":62.7,"duration":45.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[642,644]
+      },
+      {
+       "distance":7.3,"duration":5.2,"type":0,"instruction":"Turn left onto Avinguda d'Amèrica",
+       "name":"Avinguda d'Amèrica","way_points":[644,645]
+      },
+      {
+       "distance":9.7,"duration":7,"type":1,"instruction":"Turn right onto Avinguda d'Amèrica",
+       "name":"Avinguda d'Amèrica","way_points":[645,646]
+      },
+      {
+       "distance":89.1,"duration":64.2,"type":0,"instruction":"Turn left onto Avinguda d'Amèrica",
+       "name":"Avinguda d'Amèrica","way_points":[646,647]
+      },
+      {
+       "distance":272.5,"duration":196.2,"type":1,
+       "instruction":"Turn right onto Avinguda d'Amèrica","name":"Avinguda d'Amèrica",
+       "way_points":[647,656]
+      },
+      {
+       "distance":32.9,"duration":23.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[656,663]
+      },
+      {
+       "distance":0.7,"duration":0.5,"type":1,"instruction":"Turn right onto Rambla de la Marina",
+       "name":"Rambla de la Marina","way_points":[663,664]
+      },
+      {
+       "distance":25.3,"duration":18.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[664,669]
+      },
+      {
+       "distance":47.6,"duration":34.3,"type":0,"instruction":"Turn left onto Rambla de la Marina",
+       "name":"Rambla de la Marina","way_points":[669,671]
+      },
+      {
+       "distance":233.2,"duration":167.9,"type":1,
+       "instruction":"Turn right onto Carrer de l'Ermita de Bellvitge",
+       "name":"Carrer de l'Ermita de Bellvitge","way_points":[671,681]
+      },
+      {
+       "distance":141.3,"duration":101.7,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[681,694]
+      },
+      {
+       "distance":105.7,"duration":76.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[694,698]
+      },
+      {
+       "distance":19.9,"duration":14.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[698,699]
+      },
+      {
+       "distance":19.4,"duration":14,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[699,700]
+      },
+      {
+       "distance":33.8,"duration":24.3,"type":0,
+       "instruction":"Turn left onto Avinguda de la Mare de Déu de Bellvitge",
+       "name":"Avinguda de la Mare de Déu de Bellvitge","way_points":[700,702]
+      },
+      {
+       "distance":277.6,"duration":199.9,"type":7,
+       "instruction":"Enter the roundabout and take the 1st exit","name":"-","exit_number":1,
+       "way_points":[702,713]
+      },
+      {
+       "distance":91.5,"duration":65.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[713,717]
+      },
+      {
+       "distance":100.1,"duration":72.1,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[717,722]
+      },
+      {
+       "distance":764.3,"duration":550.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[722,748]
+      },
+      {
+       "distance":9.2,"duration":6.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[748,749]
+      },
+      {
+       "distance":8.1,"duration":5.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[749,750]
+      },
+      {
+       "distance":23.8,"duration":17.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[750,751]
+      },
+      {
+       "distance":67.3,"duration":48.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[751,755]
+      },
+      {
+       "distance":215.8,"duration":155.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[755,762]
+      },
+      {
+       "distance":9.2,"duration":6.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[762,763]
+      },
+      {
+       "distance":18.7,"duration":13.5,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[763,765]
+      },
+      {
+       "distance":7.6,"duration":5.5,"type":1,"instruction":"Turn right onto Camí del Sorral",
+       "name":"Camí del Sorral","way_points":[765,766]
+      },
+      {
+       "distance":433.2,"duration":311.9,"type":13,"instruction":"Keep right onto Camí del Sorral",
+       "name":"Camí del Sorral","way_points":[766,772]
+      },
+      {
+       "distance":26.5,"duration":19.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[772,776]
+      },
+      {
+       "distance":15.5,"duration":11.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[776,777]
+      },
+      {
+       "distance":717.2,"duration":516.4,"type":4,
+       "instruction":"Turn slight left onto Avinguda de Josep Anselm Clavé",
+       "name":"Avinguda de Josep Anselm Clavé","way_points":[777,795]
+      },
+      {
+       "distance":3.4,"duration":2.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[795,796]
+      },
+      {
+       "distance":15.2,"duration":10.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[796,798]
+      },
+      {
+       "distance":107.9,"duration":77.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[798,805]
+      },
+      {
+       "distance":4.4,"duration":3.2,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[805,806]
+      },
+      {
+       "distance":40.8,"duration":29.3,"type":6,
+       "instruction":"Continue straight onto Plaça de la Vila","name":"Plaça de la Vila",
+       "way_points":[806,807]
+      },
+      {
+       "distance":22.2,"duration":16,"type":1,"instruction":"Turn right onto Plaça de la Vila",
+       "name":"Plaça de la Vila","way_points":[807,809]
+      },
+      {
+       "distance":582.8,"duration":419.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[809,825]
+      },
+      {
+       "distance":70.7,"duration":50.9,"type":1,
+       "instruction":"Turn right onto Avinguda Verge de Montserrat",
+       "name":"Avinguda Verge de Montserrat","way_points":[825,830]
+      },
+      {
+       "distance":150.5,"duration":108.3,"type":0,"instruction":"Turn left onto Avinguda del Canal",
+       "name":"Avinguda del Canal","way_points":[830,833]
+      },
+      {
+       "distance":204.6,"duration":147.3,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[833,840]
+      },
+      {
+       "distance":7.6,"duration":5.5,"type":2,"instruction":"Turn sharp left onto Carrer de Lleida",
+       "name":"Carrer de Lleida","way_points":[840,841]
+      },
+      {
+       "distance":227.8,"duration":164,"type":3,
+       "instruction":"Turn sharp right onto Carretera de l'Aviació",
+       "name":"Carretera de l'Aviació","way_points":[841,845]
+      },
+      {
+       "distance":29.5,"duration":21.2,"type":6,
+       "instruction":"Continue straight onto Carretera de l'Aviació",
+       "name":"Carretera de l'Aviació","way_points":[845,849]
+      },
+      {
+       "distance":20.8,"duration":15,"type":0,
+       "instruction":"Turn left onto Avinguda de l'Onze de Setembre, B-250",
+       "name":"Avinguda de l'Onze de Setembre, B-250","way_points":[849,850]
+      },
+      {
+       "distance":11.9,"duration":8.5,"type":1,
+       "instruction":"Turn right onto Carrer d'Ernest Lluch","name":"Carrer d'Ernest Lluch",
+       "way_points":[850,851]
+      },
+      {
+       "distance":17.2,"duration":12.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[851,854]
+      },
+      {
+       "distance":285.8,"duration":205.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[854,857]
+      },
+      {
+       "distance":1.1,"duration":0.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[857,858]
+      },
+      {
+       "distance":300,"duration":216,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[858,867]
+      },
+      {
+       "distance":2.2,"duration":1.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[867,868]
+      },
+      {
+       "distance":95.3,"duration":68.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[868,874]
+      },
+      {
+       "distance":111.5,"duration":80.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[874,887]
+      },
+      {
+       "distance":2.9,"duration":2.1,"type":0,
+       "instruction":"Turn left onto Carretera de l'Aviació","name":"Carretera de l'Aviació",
+       "way_points":[887,888]
+      },
+      {
+       "distance":38.4,"duration":27.6,"type":1,
+       "instruction":"Turn right onto Avinguda de Pepa Colomer","name":"Avinguda de Pepa Colomer",
+       "way_points":[888,893]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[893,894]
+      },
+      {
+       "distance":261,"duration":187.9,"type":1,
+       "instruction":"Turn right onto Avinguda de Pepa Colomer","name":"Avinguda de Pepa Colomer",
+       "way_points":[894,896]
+      },
+      {
+       "distance":24.6,"duration":17.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[896,897]
+      },
+      {
+       "distance":104.7,"duration":75.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[897,901]
+      },
+      {
+       "distance":349,"duration":251.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[901,908]
+      },
+      {
+       "distance":46.2,"duration":33.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[908,913]
+      },
+      {
+       "distance":162.3,"duration":116.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[913,918]
+      },
+      {
+       "distance":6.4,"duration":4.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[918,919]
+      },
+      {
+       "distance":98.6,"duration":71,"type":1,
+       "instruction":"Turn right onto Carrer de Collar i Barberán",
+       "name":"Carrer de Collar i Barberán","way_points":[919,922]
+      },
+      {
+       "distance":5.2,"duration":3.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[922,923]
+      },
+      {
+       "distance":111.1,"duration":80,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[923,929]
+      },
+      {
+       "distance":48.7,"duration":35.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[929,933]
+      },
+      {
+       "distance":218.2,"duration":157.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[933,949]
+      },
+      {
+       "distance":2.4,"duration":1.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[949,950]
+      },
+      {
+       "distance":238,"duration":171.3,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[950,958]
+      },
+      {
+       "distance":122.3,"duration":88,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[958,964]
+      },
+      {
+       "distance":8.8,"duration":6.4,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[964,965]
+      },
+      {
+       "distance":5.1,"duration":3.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[965,966]
+      },
+      {
+       "distance":86.3,"duration":62.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[966,968]
+      },
+      {
+       "distance":2.7,"duration":1.9,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[968,969]
+      },
+      {
+       "distance":73.7,"duration":53.1,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[969,970]
+      },
+      {
+       "distance":15.7,"duration":11.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[970,971]
+      },
+      {
+       "distance":63.3,"duration":45.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[971,972]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[972,972]
+      }
+     ]
+    },
+    {
+     "distance":14210.7,"duration":10231.5,
+     "steps":[
+      {
+       "distance":63.3,"duration":45.6,"type":11,"instruction":"Head southeast","name":"-",
+       "way_points":[972,973]
+      },
+      {
+       "distance":15.7,"duration":11.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[973,974]
+      },
+      {
+       "distance":73.7,"duration":53.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[974,975]
+      },
+      {
+       "distance":2.7,"duration":1.9,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[975,976]
+      },
+      {
+       "distance":86.3,"duration":62.2,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[976,978]
+      },
+      {
+       "distance":5.1,"duration":3.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[978,979]
+      },
+      {
+       "distance":8.8,"duration":6.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[979,980]
+      },
+      {
+       "distance":122.3,"duration":88,"type":4,"instruction":"Turn slight left","name":"-",
+       "way_points":[980,986]
+      },
+      {
+       "distance":238,"duration":171.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[986,994]
+      },
+      {
+       "distance":2.4,"duration":1.7,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[994,995]
+      },
+      {
+       "distance":218.2,"duration":157.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[995,1011]
+      },
+      {
+       "distance":48.7,"duration":35.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1011,1015]
+      },
+      {
+       "distance":111.1,"duration":80,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1015,1021]
+      },
+      {
+       "distance":5.2,"duration":3.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1021,1022]
+      },
+      {
+       "distance":98.6,"duration":71,"type":1,
+       "instruction":"Turn right onto Carrer de Collar i Barberán",
+       "name":"Carrer de Collar i Barberán","way_points":[1022,1025]
+      },
+      {
+       "distance":6.4,"duration":4.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1025,1026]
+      },
+      {
+       "distance":162.3,"duration":116.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1026,1031]
+      },
+      {
+       "distance":46.2,"duration":33.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1031,1036]
+      },
+      {
+       "distance":349,"duration":251.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1036,1043]
+      },
+      {
+       "distance":104.7,"duration":75.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1043,1047]
+      },
+      {
+       "distance":24.6,"duration":17.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1047,1048]
+      },
+      {
+       "distance":261,"duration":187.9,"type":1,
+       "instruction":"Turn right onto Avinguda de Pepa Colomer","name":"Avinguda de Pepa Colomer",
+       "way_points":[1048,1050]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1050,1051]
+      },
+      {
+       "distance":38.4,"duration":27.6,"type":1,
+       "instruction":"Turn right onto Avinguda de Pepa Colomer","name":"Avinguda de Pepa Colomer",
+       "way_points":[1051,1056]
+      },
+      {
+       "distance":2.9,"duration":2.1,"type":0,
+       "instruction":"Turn left onto Carretera de l'Aviació","name":"Carretera de l'Aviació",
+       "way_points":[1056,1057]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1057,1058]
+      },
+      {
+       "distance":106.9,"duration":76.9,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[1058,1070]
+      },
+      {
+       "distance":95.3,"duration":68.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1070,1076]
+      },
+      {
+       "distance":2.2,"duration":1.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1076,1077]
+      },
+      {
+       "distance":300,"duration":216,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1077,1086]
+      },
+      {
+       "distance":1.1,"duration":0.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1086,1087]
+      },
+      {
+       "distance":285.8,"duration":205.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1087,1090]
+      },
+      {
+       "distance":17.2,"duration":12.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1090,1093]
+      },
+      {
+       "distance":11.9,"duration":8.5,"type":0,"instruction":"Turn left onto Carrer d'Ernest Lluch",
+       "name":"Carrer d'Ernest Lluch","way_points":[1093,1094]
+      },
+      {
+       "distance":20.8,"duration":15,"type":0,
+       "instruction":"Turn left onto Avinguda de l'Onze de Setembre, B-250",
+       "name":"Avinguda de l'Onze de Setembre, B-250","way_points":[1094,1095]
+      },
+      {
+       "distance":6.1,"duration":4.4,"type":1,
+       "instruction":"Turn right onto Carretera de l'Aviació","name":"Carretera de l'Aviació",
+       "way_points":[1095,1096]
+      },
+      {
+       "distance":251.3,"duration":180.9,"type":6,
+       "instruction":"Continue straight onto Carretera de l'Aviació",
+       "name":"Carretera de l'Aviació","way_points":[1096,1103]
+      },
+      {
+       "distance":7.6,"duration":5.5,"type":2,"instruction":"Turn sharp left onto Carrer de Lleida",
+       "name":"Carrer de Lleida","way_points":[1103,1104]
+      },
+      {
+       "distance":204.6,"duration":147.3,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[1104,1111]
+      },
+      {
+       "distance":150.5,"duration":108.3,"type":6,
+       "instruction":"Continue straight onto Avinguda del Canal","name":"Avinguda del Canal",
+       "way_points":[1111,1114]
+      },
+      {
+       "distance":70.7,"duration":50.9,"type":1,
+       "instruction":"Turn right onto Avinguda Verge de Montserrat",
+       "name":"Avinguda Verge de Montserrat","way_points":[1114,1119]
+      },
+      {
+       "distance":582.8,"duration":419.6,"type":0,
+       "instruction":"Turn left onto Carrer de Jaume Casanovas","name":"Carrer de Jaume Casanovas",
+       "way_points":[1119,1135]
+      },
+      {
+       "distance":22.2,"duration":16,"type":1,"instruction":"Turn right onto Plaça de la Vila",
+       "name":"Plaça de la Vila","way_points":[1135,1137]
+      },
+      {
+       "distance":40.8,"duration":29.3,"type":0,"instruction":"Turn left onto Plaça de la Vila",
+       "name":"Plaça de la Vila","way_points":[1137,1138]
+      },
+      {
+       "distance":112.4,"duration":80.9,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[1138,1146]
+      },
+      {
+       "distance":15.2,"duration":10.9,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1146,1148]
+      },
+      {
+       "distance":3.4,"duration":2.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1148,1149]
+      },
+      {
+       "distance":690,"duration":496.8,"type":1,"instruction":"Turn right onto Carrer de Flaquer",
+       "name":"Carrer de Flaquer","way_points":[1149,1166]
+      },
+      {
+       "distance":27.2,"duration":19.6,"type":6,
+       "instruction":"Continue straight onto Avinguda de Josep Anselm Clavé",
+       "name":"Avinguda de Josep Anselm Clavé","way_points":[1166,1167]
+      },
+      {
+       "distance":15.5,"duration":11.2,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1167,1168]
+      },
+      {
+       "distance":26.5,"duration":19.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1168,1172]
+      },
+      {
+       "distance":433.2,"duration":311.9,"type":0,"instruction":"Turn left onto Camí del Sorral",
+       "name":"Camí del Sorral","way_points":[1172,1178]
+      },
+      {
+       "distance":7.6,"duration":5.5,"type":12,"instruction":"Keep left onto Camí del Sorral",
+       "name":"Camí del Sorral","way_points":[1178,1179]
+      },
+      {
+       "distance":18.7,"duration":13.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1179,1181]
+      },
+      {
+       "distance":9.2,"duration":6.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1181,1182]
+      },
+      {
+       "distance":215.8,"duration":155.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1182,1189]
+      },
+      {
+       "distance":67.3,"duration":48.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1189,1193]
+      },
+      {
+       "distance":23.8,"duration":17.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1193,1194]
+      },
+      {
+       "distance":8.1,"duration":5.8,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[1194,1195]
+      },
+      {
+       "distance":9.2,"duration":6.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1195,1196]
+      },
+      {
+       "distance":736.8,"duration":530.5,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1196,1218]
+      },
+      {
+       "distance":60.5,"duration":43.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1218,1220]
+      },
+      {
+       "distance":72,"duration":51.8,"type":13,
+       "instruction":"Keep right onto Aparcament Hospital de Bellvitge PARKIA",
+       "name":"Aparcament Hospital de Bellvitge PARKIA","way_points":[1220,1223]
+      },
+      {
+       "distance":13.5,"duration":9.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1223,1225]
+      },
+      {
+       "distance":43.2,"duration":31.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1225,1228]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1228,1230]
+      },
+      {
+       "distance":106.5,"duration":76.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1230,1234]
+      },
+      {
+       "distance":349.1,"duration":251.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1234,1240]
+      },
+      {
+       "distance":36.9,"duration":26.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1240,1243]
+      },
+      {
+       "distance":10.6,"duration":7.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1243,1244]
+      },
+      {
+       "distance":103.5,"duration":74.5,"type":6,
+       "instruction":"Continue straight onto Avinguda de la Mare de Déu de Bellvitge",
+       "name":"Avinguda de la Mare de Déu de Bellvitge","way_points":[1244,1246]
+      },
+      {
+       "distance":201.9,"duration":145.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1246,1259]
+      },
+      {
+       "distance":182.4,"duration":131.4,"type":1,"instruction":"Turn right onto Carrer del Prat",
+       "name":"Carrer del Prat","way_points":[1259,1265]
+      },
+      {
+       "distance":18.5,"duration":13.3,"type":1,"instruction":"Turn right onto Carrer del Prat",
+       "name":"Carrer del Prat","way_points":[1265,1267]
+      },
+      {
+       "distance":135.8,"duration":97.7,"type":4,
+       "instruction":"Turn slight left onto Carrer del Prat","name":"Carrer del Prat",
+       "way_points":[1267,1272]
+      },
+      {
+       "distance":17,"duration":12.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1272,1273]
+      },
+      {
+       "distance":22,"duration":15.9,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[1273,1274]
+      },
+      {
+       "distance":43.2,"duration":31.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1274,1279]
+      },
+      {
+       "distance":117.8,"duration":84.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1279,1283]
+      },
+      {
+       "distance":21.3,"duration":15.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1283,1285]
+      },
+      {
+       "distance":1203.6,"duration":866.6,"type":0,
+       "instruction":"Turn left onto Rambla de la Marina","name":"Rambla de la Marina",
+       "way_points":[1285,1317]
+      },
+      {
+       "distance":16.9,"duration":12.2,"type":6,
+       "instruction":"Continue straight onto Rambla de Just Oliveras",
+       "name":"Rambla de Just Oliveras","way_points":[1317,1320]
+      },
+      {
+       "distance":88.6,"duration":63.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1320,1323]
+      },
+      {
+       "distance":34.5,"duration":24.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1323,1329]
+      },
+      {
+       "distance":234.5,"duration":168.9,"type":1,
+       "instruction":"Turn right onto Carretera d'Esplugues","name":"Carretera d'Esplugues",
+       "way_points":[1329,1335]
+      },
+      {
+       "distance":223.8,"duration":161.1,"type":13,
+       "instruction":"Keep right onto Carrer de Granollers","name":"Carrer de Granollers",
+       "way_points":[1335,1345]
+      },
+      {
+       "distance":395,"duration":284.4,"type":0,
+       "instruction":"Turn left onto Carrer de Pere Pelegrí","name":"Carrer de Pere Pelegrí",
+       "way_points":[1345,1361]
+      },
+      {
+       "distance":294.8,"duration":212.2,"type":13,
+       "instruction":"Keep right onto Carrer de la Maladeta","name":"Carrer de la Maladeta",
+       "way_points":[1361,1371]
+      },
+      {
+       "distance":22.9,"duration":16.5,"type":0,
+       "instruction":"Turn left onto Carrer de la Maladeta","name":"Carrer de la Maladeta",
+       "way_points":[1371,1372]
+      },
+      {
+       "distance":113.2,"duration":81.5,"type":6,
+       "instruction":"Continue straight onto Carrer de la Maladeta","name":"Carrer de la Maladeta",
+       "way_points":[1372,1377]
+      },
+      {
+       "distance":11.9,"duration":8.6,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[1377,1379]
+      },
+      {
+       "distance":119.5,"duration":86.1,"type":0,
+       "instruction":"Turn left onto Avinguda de Severo Ochoa","name":"Avinguda de Severo Ochoa",
+       "way_points":[1379,1382]
+      },
+      {
+       "distance":225.7,"duration":162.5,"type":7,
+       "instruction":"Enter the roundabout and take the 2nd exit onto Carrer de Gravina",
+       "name":"Carrer de Gravina","exit_number":2,"way_points":[1382,1390]
+      },
+      {
+       "distance":59.8,"duration":43.1,"type":1,
+       "instruction":"Turn right onto Carretera de Collblanc, N-340",
+       "name":"Carretera de Collblanc, N-340","way_points":[1390,1392]
+      },
+      {
+       "distance":53.1,"duration":38.2,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[1392,1397]
+      },
+      {
+       "distance":141.5,"duration":101.9,"type":1,
+       "instruction":"Turn right onto Avinguda de Manuel Azaña","name":"Avinguda de Manuel Azaña",
+       "way_points":[1397,1404]
+      },
+      {
+       "distance":121.1,"duration":87.2,"type":1,
+       "instruction":"Turn right onto Avinguda de Manuel Azaña","name":"Avinguda de Manuel Azaña",
+       "way_points":[1404,1406]
+      },
+      {
+       "distance":404.3,"duration":291.1,"type":12,
+       "instruction":"Keep left onto Carrer de Carles Ferrer Salat",
+       "name":"Carrer de Carles Ferrer Salat","way_points":[1406,1412]
+      },
+      {
+       "distance":88.8,"duration":63.9,"type":0,
+       "instruction":"Turn left onto Avinguda d'Albert Bastardas",
+       "name":"Avinguda d'Albert Bastardas","way_points":[1412,1416]
+      },
+      {
+       "distance":15.7,"duration":11.3,"type":1,
+       "instruction":"Turn right onto Carrer de la Torre Melina","name":"Carrer de la Torre Melina",
+       "way_points":[1416,1417]
+      },
+      {
+       "distance":5.5,"duration":4,"type":0,
+       "instruction":"Turn left onto Carrer de la Torre Melina","name":"Carrer de la Torre Melina",
+       "way_points":[1417,1418]
+      },
+      {
+       "distance":259,"duration":186.5,"type":1,
+       "instruction":"Turn right onto Carrer de la Torre Melina","name":"Carrer de la Torre Melina",
+       "way_points":[1418,1422]
+      },
+      {
+       "distance":10.6,"duration":7.6,"type":4,
+       "instruction":"Turn slight left onto Avinguda Diagonal","name":"Avinguda Diagonal",
+       "way_points":[1422,1423]
+      },
+      {
+       "distance":14.6,"duration":10.5,"type":5,
+       "instruction":"Turn slight right onto Avinguda Diagonal (lateral mar)",
+       "name":"Avinguda Diagonal (lateral mar)","way_points":[1423,1425]
+      },
+      {
+       "distance":33.6,"duration":24.2,"type":1,"instruction":"Turn right onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[1425,1428]
+      },
+      {
+       "distance":28.1,"duration":20.2,"type":1,"instruction":"Turn right onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[1428,1431]
+      },
+      {
+       "distance":15.8,"duration":11.4,"type":12,
+       "instruction":"Keep left onto Carrer de Manel Ballbé","name":"Carrer de Manel Ballbé",
+       "way_points":[1431,1432]
+      },
+      {
+       "distance":12.7,"duration":9.2,"type":6,
+       "instruction":"Continue straight onto Avinguda Diagonal","name":"Avinguda Diagonal",
+       "way_points":[1432,1434]
+      },
+      {
+       "distance":251.4,"duration":181,"type":6,
+       "instruction":"Continue straight onto Carrer de Manel Ballbé",
+       "name":"Carrer de Manel Ballbé","way_points":[1434,1440]
+      },
+      {
+       "distance":4,"duration":2.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1440,1441]
+      },
+      {
+       "distance":152.1,"duration":109.5,"type":0,
+       "instruction":"Turn left onto Carrer de Manel Ballbé","name":"Carrer de Manel Ballbé",
+       "way_points":[1441,1446]
+      },
+      {
+       "distance":24.8,"duration":17.9,"type":1,
+       "instruction":"Turn right onto Carrer de González Tablas",
+       "name":"Carrer de González Tablas","way_points":[1446,1447]
+      },
+      {
+       "distance":269.1,"duration":193.8,"type":0,
+       "instruction":"Turn left onto Carrer dels Cavallers","name":"Carrer dels Cavallers",
+       "way_points":[1447,1456]
+      },
+      {
+       "distance":6.2,"duration":4.4,"type":0,"instruction":"Turn left onto Carrer dels Cavallers",
+       "name":"Carrer dels Cavallers","way_points":[1456,1457]
+      },
+      {
+       "distance":187.4,"duration":134.9,"type":1,
+       "instruction":"Turn right onto Carrer dels Cavallers","name":"Carrer dels Cavallers",
+       "way_points":[1457,1460]
+      },
+      {
+       "distance":8.9,"duration":6.4,"type":6,
+       "instruction":"Continue straight onto Carrer de Santa Caterina de Siena",
+       "name":"Carrer de Santa Caterina de Siena","way_points":[1460,1462]
+      },
+      {
+       "distance":120.7,"duration":86.9,"type":6,
+       "instruction":"Continue straight onto Carrer dels Cavallers","name":"Carrer dels Cavallers",
+       "way_points":[1462,1463]
+      },
+      {
+       "distance":5.4,"duration":3.9,"type":4,
+       "instruction":"Turn slight left onto Carrer dels Cavallers","name":"Carrer dels Cavallers",
+       "way_points":[1463,1464]
+      },
+      {
+       "distance":6.2,"duration":4.5,"type":5,
+       "instruction":"Turn slight right onto Carrer de Miret i Sans",
+       "name":"Carrer de Miret i Sans","way_points":[1464,1465]
+      },
+      {
+       "distance":61.9,"duration":44.5,"type":0,
+       "instruction":"Turn left onto Carrer de Miret i Sans","name":"Carrer de Miret i Sans",
+       "way_points":[1465,1466]
+      },
+      {
+       "distance":6.2,"duration":4.5,"type":1,
+       "instruction":"Turn right onto Carrer de Miret i Sans","name":"Carrer de Miret i Sans",
+       "way_points":[1466,1467]
+      },
+      {
+       "distance":146.5,"duration":105.4,"type":0,
+       "instruction":"Turn left onto Carrer de Miret i Sans","name":"Carrer de Miret i Sans",
+       "way_points":[1467,1476]
+      },
+      {
+       "distance":211.8,"duration":152.5,"type":4,
+       "instruction":"Turn slight left onto Carrer de l'Abadessa Olzet",
+       "name":"Carrer de l'Abadessa Olzet","way_points":[1476,1487]
+      },
+      {
+       "distance":21.4,"duration":15.4,"type":0,"instruction":"Turn left onto Avinguda d'Esplugues",
+       "name":"Avinguda d'Esplugues","way_points":[1487,1490]
+      },
+      {
+       "distance":115.9,"duration":83.5,"type":1,
+       "instruction":"Turn right onto Avinguda d'Esplugues","name":"Avinguda d'Esplugues",
+       "way_points":[1490,1492]
+      },
+      {
+       "distance":26.4,"duration":19,"type":12,"instruction":"Keep left onto Baixada del Monestir",
+       "name":"Baixada del Monestir","way_points":[1492,1493]
+      },
+      {
+       "distance":60.6,"duration":43.7,"type":0,"instruction":"Turn left onto Baixada del Monestir",
+       "name":"Baixada del Monestir","way_points":[1493,1497]
+      },
+      {
+       "distance":7.8,"duration":5.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1497,1500]
+      },
+      {
+       "distance":3.9,"duration":2.8,"type":4,
+       "instruction":"Turn slight left onto Baixada del Monestir","name":"Baixada del Monestir",
+       "way_points":[1500,1501]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Baixada del Monestir, on the left","name":"-",
+       "way_points":[1501,1501]
+      }
+     ]
+    },
+    {
+     "distance":3791.6,"duration":2729.9,
+     "steps":[
+      {
+       "distance":3.9,"duration":2.8,"type":11,
+       "instruction":"Head northeast on Baixada del Monestir","name":"Baixada del Monestir",
+       "way_points":[1501,1502]
+      },
+      {
+       "distance":26.6,"duration":19.1,"type":6,
+       "instruction":"Continue straight onto Baixada del Monestir","name":"Baixada del Monestir",
+       "way_points":[1502,1505]
+      },
+      {
+       "distance":247.4,"duration":178.1,"type":5,
+       "instruction":"Turn slight right onto Plaça del Monestir","name":"Plaça del Monestir",
+       "way_points":[1505,1512]
+      },
+      {
+       "distance":91.8,"duration":66.1,"type":1,
+       "instruction":"Turn right onto Carrer de Pons i Serra","name":"Carrer de Pons i Serra",
+       "way_points":[1512,1514]
+      },
+      {
+       "distance":10,"duration":7.2,"type":6,
+       "instruction":"Continue straight onto Carrer de Pons i Serra",
+       "name":"Carrer de Pons i Serra","way_points":[1514,1515]
+      },
+      {
+       "distance":11.2,"duration":8.1,"type":4,
+       "instruction":"Turn slight left onto Passeig de la Reina Elisenda de Montcada",
+       "name":"Passeig de la Reina Elisenda de Montcada","way_points":[1515,1516]
+      },
+      {
+       "distance":307.3,"duration":221.3,"type":1,
+       "instruction":"Turn right onto Carrer de Domínguez i Miralles",
+       "name":"Carrer de Domínguez i Miralles","way_points":[1516,1525]
+      },
+      {
+       "distance":3.4,"duration":2.4,"type":13,
+       "instruction":"Keep right onto Carrer de Domínguez i Miralles",
+       "name":"Carrer de Domínguez i Miralles","way_points":[1525,1526]
+      },
+      {
+       "distance":8.4,"duration":6,"type":6,
+       "instruction":"Continue straight onto Avinguda de Josep Vicens i Foix",
+       "name":"Avinguda de Josep Vicens i Foix","way_points":[1526,1528]
+      },
+      {
+       "distance":9.9,"duration":7.1,"type":0,
+       "instruction":"Turn left onto Avinguda de Josep Vicens i Foix",
+       "name":"Avinguda de Josep Vicens i Foix","way_points":[1528,1530]
+      },
+      {
+       "distance":82.7,"duration":59.5,"type":5,
+       "instruction":"Turn slight right onto Avinguda de Josep Vicens i Foix",
+       "name":"Avinguda de Josep Vicens i Foix","way_points":[1530,1537]
+      },
+      {
+       "distance":4.8,"duration":3.4,"type":1,
+       "instruction":"Turn right onto Carrer del Pedró de la Creu",
+       "name":"Carrer del Pedró de la Creu","way_points":[1537,1538]
+      },
+      {
+       "distance":122.7,"duration":88.4,"type":0,
+       "instruction":"Turn left onto Carrer del Pedró de la Creu",
+       "name":"Carrer del Pedró de la Creu","way_points":[1538,1542]
+      },
+      {
+       "distance":93,"duration":67,"type":1,"instruction":"Turn right onto Carrer de Bonaplata",
+       "name":"Carrer de Bonaplata","way_points":[1542,1547]
+      },
+      {
+       "distance":118.8,"duration":85.5,"type":0,
+       "instruction":"Turn left onto Carrer de les Calàndries","name":"Carrer de les Calàndries",
+       "way_points":[1547,1549]
+      },
+      {
+       "distance":171.5,"duration":123.4,"type":6,
+       "instruction":"Continue straight onto carrer de Mañé i Flaquer",
+       "name":"carrer de Mañé i Flaquer","way_points":[1549,1557]
+      },
+      {
+       "distance":9.7,"duration":7,"type":1,
+       "instruction":"Turn right onto Carrer del Cardenal de Sentmenat",
+       "name":"Carrer del Cardenal de Sentmenat","way_points":[1557,1558]
+      },
+      {
+       "distance":3.1,"duration":2.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1558,1559]
+      },
+      {
+       "distance":83.8,"duration":60.4,"type":1,
+       "instruction":"Turn right onto Carrer del Cardenal de Sentmenat",
+       "name":"Carrer del Cardenal de Sentmenat","way_points":[1559,1562]
+      },
+      {
+       "distance":49,"duration":35.3,"type":12,
+       "instruction":"Keep left onto Carrer del Cardenal de Sentmenat",
+       "name":"Carrer del Cardenal de Sentmenat","way_points":[1562,1565]
+      },
+      {
+       "distance":91.2,"duration":65.7,"type":0,"instruction":"Turn left onto Carrer dels Vergós",
+       "name":"Carrer dels Vergós","way_points":[1565,1571]
+      },
+      {
+       "distance":3,"duration":2.2,"type":0,"instruction":"Turn left onto Carrer dels Vergós",
+       "name":"Carrer dels Vergós","way_points":[1571,1572]
+      },
+      {
+       "distance":13,"duration":9.4,"type":12,"instruction":"Keep left onto Carrer de Castellnou",
+       "name":"Carrer de Castellnou","way_points":[1572,1574]
+      },
+      {
+       "distance":31.7,"duration":22.8,"type":6,
+       "instruction":"Continue straight onto Carrer dels Vergós","name":"Carrer dels Vergós",
+       "way_points":[1574,1575]
+      },
+      {
+       "distance":89.3,"duration":64.3,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1575,1579]
+      },
+      {
+       "distance":42.6,"duration":30.7,"type":12,
+       "instruction":"Keep left onto Carrer de la Nena Casas","name":"Carrer de la Nena Casas",
+       "way_points":[1579,1584]
+      },
+      {
+       "distance":53.8,"duration":38.7,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1584,1586]
+      },
+      {
+       "distance":12.3,"duration":8.8,"type":6,
+       "instruction":"Continue straight onto Carrer del Doctor Roux",
+       "name":"Carrer del Doctor Roux","way_points":[1586,1588]
+      },
+      {
+       "distance":102.6,"duration":73.9,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1588,1594]
+      },
+      {
+       "distance":6.4,"duration":4.6,"type":6,
+       "instruction":"Continue straight onto Carrer del Rosari","name":"Carrer del Rosari",
+       "way_points":[1594,1595]
+      },
+      {
+       "distance":8.7,"duration":6.3,"type":13,"instruction":"Keep right onto Carrer del Rosari",
+       "name":"Carrer del Rosari","way_points":[1595,1596]
+      },
+      {
+       "distance":67.7,"duration":48.8,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1596,1598]
+      },
+      {
+       "distance":38.1,"duration":27.4,"type":1,
+       "instruction":"Turn right onto Ronda del General Mitre","name":"Ronda del General Mitre",
+       "way_points":[1598,1602]
+      },
+      {
+       "distance":12.9,"duration":9.3,"type":0,
+       "instruction":"Turn left onto Ronda del General Mitre","name":"Ronda del General Mitre",
+       "way_points":[1602,1604]
+      },
+      {
+       "distance":94.8,"duration":68.2,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1604,1606]
+      },
+      {
+       "distance":15.3,"duration":11,"type":6,
+       "instruction":"Continue straight onto Carrer Alt de Gironella",
+       "name":"Carrer Alt de Gironella","way_points":[1606,1607]
+      },
+      {
+       "distance":6.3,"duration":4.6,"type":6,
+       "instruction":"Continue straight onto Carrer Alt de Gironella",
+       "name":"Carrer Alt de Gironella","way_points":[1607,1608]
+      },
+      {
+       "distance":75.6,"duration":54.4,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1608,1611]
+      },
+      {
+       "distance":164.2,"duration":118.2,"type":0,"instruction":"Turn left onto Carrer de Ganduxer",
+       "name":"Carrer de Ganduxer","way_points":[1611,1619]
+      },
+      {
+       "distance":13.9,"duration":10,"type":0,"instruction":"Turn left onto Carrer del Modolell",
+       "name":"Carrer del Modolell","way_points":[1619,1621]
+      },
+      {
+       "distance":101,"duration":72.7,"type":6,"instruction":"Continue straight onto Via Augusta",
+       "name":"Via Augusta","way_points":[1621,1623]
+      },
+      {
+       "distance":9.5,"duration":6.8,"type":4,
+       "instruction":"Turn slight left onto Carrer de Vallmajor","name":"Carrer de Vallmajor",
+       "way_points":[1623,1625]
+      },
+      {
+       "distance":80.3,"duration":57.8,"type":4,"instruction":"Turn slight left onto Via Augusta",
+       "name":"Via Augusta","way_points":[1625,1627]
+      },
+      {
+       "distance":21,"duration":15.1,"type":0,"instruction":"Turn left onto Via Augusta",
+       "name":"Via Augusta","way_points":[1627,1629]
+      },
+      {
+       "distance":184.3,"duration":132.7,"type":1,"instruction":"Turn right onto Via Augusta",
+       "name":"Via Augusta","way_points":[1629,1634]
+      },
+      {
+       "distance":28.4,"duration":20.4,"type":13,"instruction":"Keep right onto Via Augusta",
+       "name":"Via Augusta","way_points":[1634,1636]
+      },
+      {
+       "distance":8.8,"duration":6.3,"type":1,"instruction":"Turn right onto Carrer de Santaló",
+       "name":"Carrer de Santaló","way_points":[1636,1638]
+      },
+      {
+       "distance":8.4,"duration":6,"type":1,"instruction":"Turn right onto Via Augusta",
+       "name":"Via Augusta","way_points":[1638,1639]
+      },
+      {
+       "distance":78.6,"duration":56.6,"type":0,"instruction":"Turn left onto Via Augusta",
+       "name":"Via Augusta","way_points":[1639,1643]
+      },
+      {
+       "distance":13.9,"duration":10,"type":6,
+       "instruction":"Continue straight onto Carrer de Muntaner","name":"Carrer de Muntaner",
+       "way_points":[1643,1645]
+      },
+      {
+       "distance":77.6,"duration":55.9,"type":1,"instruction":"Turn right onto Via Augusta",
+       "name":"Via Augusta","way_points":[1645,1647]
+      },
+      {
+       "distance":7.5,"duration":5.4,"type":6,
+       "instruction":"Continue straight onto Carrer de Tavern","name":"Carrer de Tavern",
+       "way_points":[1647,1649]
+      },
+      {
+       "distance":230.9,"duration":166.3,"type":6,
+       "instruction":"Continue straight onto Via Augusta","name":"Via Augusta",
+       "way_points":[1649,1654]
+      },
+      {
+       "distance":5.2,"duration":3.8,"type":1,"instruction":"Turn right onto Carrer de Brusi",
+       "name":"Carrer de Brusi","way_points":[1654,1656]
+      },
+      {
+       "distance":67.2,"duration":48.4,"type":1,"instruction":"Turn right onto Via Augusta",
+       "name":"Via Augusta","way_points":[1656,1660]
+      },
+      {
+       "distance":45,"duration":32.4,"type":6,
+       "instruction":"Continue straight onto Plaça de Molina","name":"Plaça de Molina",
+       "way_points":[1660,1662]
+      },
+      {
+       "distance":10.7,"duration":7.7,"type":0,"instruction":"Turn left onto Carrer de Balmes",
+       "name":"Carrer de Balmes","way_points":[1662,1663]
+      },
+      {
+       "distance":17.2,"duration":12.4,"type":1,"instruction":"Turn right onto Carrer de Balmes",
+       "name":"Carrer de Balmes","way_points":[1663,1665]
+      },
+      {
+       "distance":13,"duration":9.3,"type":1,"instruction":"Turn right onto Carrer de Balmes",
+       "name":"Carrer de Balmes","way_points":[1665,1667]
+      },
+      {
+       "distance":2.8,"duration":2,"type":1,"instruction":"Turn right onto Carrer de Guillem Tell",
+       "name":"Carrer de Guillem Tell","way_points":[1667,1668]
+      },
+      {
+       "distance":151.7,"duration":109.2,"type":0,
+       "instruction":"Turn left onto Carrer de Guillem Tell","name":"Carrer de Guillem Tell",
+       "way_points":[1668,1677]
+      },
+      {
+       "distance":4,"duration":2.9,"type":1,"instruction":"Turn right onto Carrer de Guillem Tell",
+       "name":"Carrer de Guillem Tell","way_points":[1677,1678]
+      },
+      {
+       "distance":127.8,"duration":92,"type":0,
+       "instruction":"Turn left onto Carrer de Guillem Tell","name":"Carrer de Guillem Tell",
+       "way_points":[1678,1683]
+      },
+      {
+       "distance":12.2,"duration":8.8,"type":5,
+       "instruction":"Turn slight right onto Avinguda de la Riera de Cassoles",
+       "name":"Avinguda de la Riera de Cassoles","way_points":[1683,1685]
+      },
+      {
+       "distance":12.1,"duration":8.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1685,1687]
+      },
+      {
+       "distance":10.8,"duration":7.8,"type":1,
+       "instruction":"Turn right onto Avinguda de la Riera de Cassoles",
+       "name":"Avinguda de la Riera de Cassoles","way_points":[1687,1688]
+      },
+      {
+       "distance":12.1,"duration":8.7,"type":0,
+       "instruction":"Turn left onto Avinguda de la Riera de Cassoles",
+       "name":"Avinguda de la Riera de Cassoles","way_points":[1688,1690]
+      },
+      {
+       "distance":47.2,"duration":34,"type":6,
+       "instruction":"Continue straight onto Carrer de les Carolines",
+       "name":"Carrer de les Carolines","way_points":[1690,1691]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer de les Carolines, on the right","name":"-",
+       "way_points":[1691,1691]
+      }
+     ]
+    },
+    {
+     "distance":1756.9,"duration":1265,
+     "steps":[
+      {
+       "distance":385.2,"duration":277.3,"type":11,
+       "instruction":"Head northeast on Carrer de les Carolines","name":"Carrer de les Carolines",
+       "way_points":[1691,1699]
+      },
+      {
+       "distance":10.1,"duration":7.3,"type":1,
+       "instruction":"Turn right onto Carrer Gran de Gràcia","name":"Carrer Gran de Gràcia",
+       "way_points":[1699,1701]
+      },
+      {
+       "distance":45.6,"duration":32.8,"type":0,
+       "instruction":"Turn left onto Carrer Gran de Gràcia","name":"Carrer Gran de Gràcia",
+       "way_points":[1701,1704]
+      },
+      {
+       "distance":54.7,"duration":39.4,"type":1,"instruction":"Turn right onto Plaça de Lesseps",
+       "name":"Plaça de Lesseps","way_points":[1704,1706]
+      },
+      {
+       "distance":25.2,"duration":18.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1706,1708]
+      },
+      {
+       "distance":14.3,"duration":10.3,"type":1,"instruction":"Turn right onto Plaça de Lesseps",
+       "name":"Plaça de Lesseps","way_points":[1708,1709]
+      },
+      {
+       "distance":87,"duration":62.6,"type":6,
+       "instruction":"Continue straight onto Plaça de Lesseps","name":"Plaça de Lesseps",
+       "way_points":[1709,1711]
+      },
+      {
+       "distance":39,"duration":28.1,"type":0,"instruction":"Turn left onto Plaça de Lesseps",
+       "name":"Plaça de Lesseps","way_points":[1711,1714]
+      },
+      {
+       "distance":4.2,"duration":3,"type":1,"instruction":"Turn right onto Plaça de Lesseps",
+       "name":"Plaça de Lesseps","way_points":[1714,1715]
+      },
+      {
+       "distance":58.2,"duration":41.9,"type":0,
+       "instruction":"Turn left onto Carrer de la Mare de Déu del Coll",
+       "name":"Carrer de la Mare de Déu del Coll","way_points":[1715,1716]
+      },
+      {
+       "distance":7.1,"duration":5.1,"type":1,
+       "instruction":"Turn right onto Carrer de la Mare de Déu del Coll",
+       "name":"Carrer de la Mare de Déu del Coll","way_points":[1716,1718]
+      },
+      {
+       "distance":6.5,"duration":4.7,"type":0,
+       "instruction":"Turn left onto Carrer de la Mare de Déu del Coll",
+       "name":"Carrer de la Mare de Déu del Coll","way_points":[1718,1719]
+      },
+      {
+       "distance":4.9,"duration":3.5,"type":6,
+       "instruction":"Continue straight onto Carrer de Maignon","name":"Carrer de Maignon",
+       "way_points":[1719,1721]
+      },
+      {
+       "distance":1.8,"duration":1.3,"type":1,"instruction":"Turn right onto Carrer de Maignon",
+       "name":"Carrer de Maignon","way_points":[1721,1722]
+      },
+      {
+       "distance":123.2,"duration":88.7,"type":0,
+       "instruction":"Turn left onto Passatge de Napoleó","name":"Passatge de Napoleó",
+       "way_points":[1722,1726]
+      },
+      {
+       "distance":66.7,"duration":48,"type":4,
+       "instruction":"Turn slight left onto Carrer de Valldoreix","name":"Carrer de Valldoreix",
+       "way_points":[1726,1728]
+      },
+      {
+       "distance":2.4,"duration":1.7,"type":0,"instruction":"Turn left onto Carrer de Valldoreix",
+       "name":"Carrer de Valldoreix","way_points":[1728,1729]
+      },
+      {
+       "distance":3.3,"duration":2.4,"type":5,
+       "instruction":"Turn slight right onto Carrer de Verdi","name":"Carrer de Verdi",
+       "way_points":[1729,1730]
+      },
+      {
+       "distance":4.1,"duration":2.9,"type":1,"instruction":"Turn right onto Carrer de Verdi",
+       "name":"Carrer de Verdi","way_points":[1730,1732]
+      },
+      {
+       "distance":61,"duration":44,"type":2,"instruction":"Turn sharp left onto Carrer de Verdi",
+       "name":"Carrer de Verdi","way_points":[1732,1734]
+      },
+      {
+       "distance":6.9,"duration":5,"type":6,
+       "instruction":"Continue straight onto Carrer dels Albigesos","name":"Carrer dels Albigesos",
+       "way_points":[1734,1736]
+      },
+      {
+       "distance":1.2,"duration":0.9,"type":0,"instruction":"Turn left onto Carrer dels Albigesos",
+       "name":"Carrer dels Albigesos","way_points":[1736,1737]
+      },
+      {
+       "distance":53.6,"duration":38.6,"type":1,
+       "instruction":"Turn right onto Carrer dels Albigesos","name":"Carrer dels Albigesos",
+       "way_points":[1737,1739]
+      },
+      {
+       "distance":181,"duration":130.3,"type":0,
+       "instruction":"Turn left onto Avinguda del Coll del Portell",
+       "name":"Avinguda del Coll del Portell","way_points":[1739,1751]
+      },
+      {
+       "distance":53.7,"duration":38.7,"type":1,"instruction":"Turn right onto Rambla de Mercedes",
+       "name":"Rambla de Mercedes","way_points":[1751,1754]
+      },
+      {
+       "distance":118.1,"duration":85,"type":0,
+       "instruction":"Turn left onto Avinguda del Santuari de Sant Josep de la Muntanya",
+       "name":"Avinguda del Santuari de Sant Josep de la Muntanya","way_points":[1754,1756]
+      },
+      {
+       "distance":34.3,"duration":24.7,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[1756,1758]
+      },
+      {
+       "distance":144,"duration":103.7,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[1758,1768]
+      },
+      {
+       "distance":159.7,"duration":115,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[1768,1780]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[1780,1780]
+      }
+     ]
+    },
+    {
+     "distance":3912.1,"duration":2816.7,
+     "steps":[
+      {
+       "distance":83,"duration":59.7,"type":11,"instruction":"Head northeast","name":"-",
+       "way_points":[1780,1783]
+      },
+      {
+       "distance":64.1,"duration":46.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1783,1789]
+      },
+      {
+       "distance":23.6,"duration":17,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1789,1792]
+      },
+      {
+       "distance":519.2,"duration":373.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1792,1813]
+      },
+      {
+       "distance":155.2,"duration":111.7,"type":5,
+       "instruction":"Turn slight right onto Carrer del Portell","name":"Carrer del Portell",
+       "way_points":[1813,1819]
+      },
+      {
+       "distance":22.2,"duration":16,"type":6,
+       "instruction":"Continue straight onto Carrer de Tirso","name":"Carrer de Tirso",
+       "way_points":[1819,1821]
+      },
+      {
+       "distance":2.5,"duration":1.8,"type":0,"instruction":"Turn left onto Carrer de Ceuta",
+       "name":"Carrer de Ceuta","way_points":[1821,1822]
+      },
+      {
+       "distance":20.3,"duration":14.6,"type":5,
+       "instruction":"Turn slight right onto Carrer del Santuari","name":"Carrer del Santuari",
+       "way_points":[1822,1824]
+      },
+      {
+       "distance":9.5,"duration":6.9,"type":1,"instruction":"Turn right onto Carrer del Santuari",
+       "name":"Carrer del Santuari","way_points":[1824,1826]
+      },
+      {
+       "distance":46.2,"duration":33.3,"type":0,"instruction":"Turn left onto Carrer del Santuari",
+       "name":"Carrer del Santuari","way_points":[1826,1828]
+      },
+      {
+       "distance":51.5,"duration":37.1,"type":3,
+       "instruction":"Turn sharp right onto Carrer de l'Hortal","name":"Carrer de l'Hortal",
+       "way_points":[1828,1832]
+      },
+      {
+       "distance":99.6,"duration":71.7,"type":0,"instruction":"Turn left onto Carrer de Batet",
+       "name":"Carrer de Batet","way_points":[1832,1835]
+      },
+      {
+       "distance":22.8,"duration":16.4,"type":1,"instruction":"Turn right onto Carrer de Batet",
+       "name":"Carrer de Batet","way_points":[1835,1836]
+      },
+      {
+       "distance":70.6,"duration":50.8,"type":5,
+       "instruction":"Turn slight right onto Passeig de la Mare de Déu del Coll",
+       "name":"Passeig de la Mare de Déu del Coll","way_points":[1836,1839]
+      },
+      {
+       "distance":322.7,"duration":232.3,"type":0,
+       "instruction":"Turn left onto Carrer de Fastenrath","name":"Carrer de Fastenrath",
+       "way_points":[1839,1856]
+      },
+      {
+       "distance":25.6,"duration":18.5,"type":3,
+       "instruction":"Turn sharp right onto Plaça de la Taxonera","name":"Plaça de la Taxonera",
+       "way_points":[1856,1859]
+      },
+      {
+       "distance":1.5,"duration":1.1,"type":0,"instruction":"Turn left onto Carrer de Sant Crispí",
+       "name":"Carrer de Sant Crispí","way_points":[1859,1860]
+      },
+      {
+       "distance":49,"duration":35.3,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Crispí","name":"Carrer de Sant Crispí",
+       "way_points":[1860,1863]
+      },
+      {
+       "distance":30,"duration":21.6,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[1863,1869]
+      },
+      {
+       "distance":2,"duration":1.4,"type":0,
+       "instruction":"Turn left onto Carrer de Josep Sangenís","name":"Carrer de Josep Sangenís",
+       "way_points":[1869,1870]
+      },
+      {
+       "distance":7.2,"duration":5.2,"type":3,
+       "instruction":"Turn sharp right onto Carrer de Josep Sangenís",
+       "name":"Carrer de Josep Sangenís","way_points":[1870,1872]
+      },
+      {
+       "distance":98.4,"duration":70.9,"type":4,
+       "instruction":"Turn slight left onto Carrer de Santa Gemma","name":"Carrer de Santa Gemma",
+       "way_points":[1872,1876]
+      },
+      {
+       "distance":17.6,"duration":12.6,"type":6,
+       "instruction":"Continue straight onto Carrer dels Cortada","name":"Carrer dels Cortada",
+       "way_points":[1876,1878]
+      },
+      {
+       "distance":650.6,"duration":468.4,"type":5,
+       "instruction":"Turn slight right onto Avinguda de Martí-Codolar",
+       "name":"Avinguda de Martí-Codolar","way_points":[1878,1904]
+      },
+      {
+       "distance":28.2,"duration":20.3,"type":6,
+       "instruction":"Continue straight onto Avinguda de Martí-Codolar",
+       "name":"Avinguda de Martí-Codolar","way_points":[1904,1906]
+      },
+      {
+       "distance":41.8,"duration":30.1,"type":6,
+       "instruction":"Continue straight onto Avinguda de Martí-Codolar",
+       "name":"Avinguda de Martí-Codolar","way_points":[1906,1908]
+      },
+      {
+       "distance":174.5,"duration":125.7,"type":1,
+       "instruction":"Turn right onto Carrer de Juan de Mena","name":"Carrer de Juan de Mena",
+       "way_points":[1908,1917]
+      },
+      {
+       "distance":9.4,"duration":6.8,"type":1,
+       "instruction":"Turn right onto Carrer de Juan de Mena","name":"Carrer de Juan de Mena",
+       "way_points":[1917,1918]
+      },
+      {
+       "distance":8.7,"duration":6.2,"type":0,"instruction":"Turn left onto Carrer de Juan de Mena",
+       "name":"Carrer de Juan de Mena","way_points":[1918,1920]
+      },
+      {
+       "distance":37.1,"duration":26.7,"type":1,
+       "instruction":"Turn right onto Carrer de l'Arquitecte Moragas",
+       "name":"Carrer de l'Arquitecte Moragas","way_points":[1920,1921]
+      },
+      {
+       "distance":7.4,"duration":5.3,"type":0,
+       "instruction":"Turn left onto Carrer de l'Arquitecte Moragas",
+       "name":"Carrer de l'Arquitecte Moragas","way_points":[1921,1922]
+      },
+      {
+       "distance":309.9,"duration":223.1,"type":1,
+       "instruction":"Turn right onto Carrer de l'Arquitecte Moragas",
+       "name":"Carrer de l'Arquitecte Moragas","way_points":[1922,1928]
+      },
+      {
+       "distance":12.4,"duration":8.9,"type":0,"instruction":"Turn left onto Pont de Santa Coloma",
+       "name":"Pont de Santa Coloma","way_points":[1928,1931]
+      },
+      {
+       "distance":40.1,"duration":28.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1931,1937]
+      },
+      {
+       "distance":11.8,"duration":8.5,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[1937,1938]
+      },
+      {
+       "distance":38.1,"duration":27.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1938,1940]
+      },
+      {
+       "distance":36.6,"duration":26.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1940,1942]
+      },
+      {
+       "distance":62.3,"duration":44.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1942,1944]
+      },
+      {
+       "distance":22.6,"duration":16.3,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1944,1947]
+      },
+      {
+       "distance":14.1,"duration":10.1,"type":1,
+       "instruction":"Turn right onto Avinguda d'Arturo Mundet","name":"Avinguda d'Arturo Mundet",
+       "way_points":[1947,1949]
+      },
+      {
+       "distance":104.7,"duration":75.4,"type":1,
+       "instruction":"Turn right onto Passeig de la Vall d'Hebron",
+       "name":"Passeig de la Vall d'Hebron","way_points":[1949,1951]
+      },
+      {
+       "distance":7.4,"duration":5.3,"type":6,
+       "instruction":"Continue straight onto Carrer de Paulo Freire",
+       "name":"Carrer de Paulo Freire","way_points":[1951,1952]
+      },
+      {
+       "distance":161.3,"duration":116.2,"type":0,
+       "instruction":"Turn left onto Carrer de Paulo Freire","name":"Carrer de Paulo Freire",
+       "way_points":[1952,1956]
+      },
+      {
+       "distance":21.1,"duration":15.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1956,1959]
+      },
+      {
+       "distance":28.3,"duration":20.4,"type":2,
+       "instruction":"Turn sharp left onto Passeig dels Castanyers",
+       "name":"Passeig dels Castanyers","way_points":[1959,1962]
+      },
+      {
+       "distance":9,"duration":6.5,"type":13,
+       "instruction":"Keep right onto Passeig dels Castanyers","name":"Passeig dels Castanyers",
+       "way_points":[1962,1963]
+      },
+      {
+       "distance":8,"duration":5.7,"type":0,"instruction":"Turn left onto Passeig dels Castanyers",
+       "name":"Passeig dels Castanyers","way_points":[1963,1964]
+      },
+      {
+       "distance":13,"duration":9.4,"type":13,
+       "instruction":"Keep right onto Passeig dels Castanyers","name":"Passeig dels Castanyers",
+       "way_points":[1964,1966]
+      },
+      {
+       "distance":1.4,"duration":1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1966,1968]
+      },
+      {
+       "distance":1.3,"duration":1,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[1968,1969]
+      },
+      {
+       "distance":146.9,"duration":105.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1969,1980]
+      },
+      {
+       "distance":56.3,"duration":40.6,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1980,1985]
+      },
+      {
+       "distance":49.2,"duration":35.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[1985,1988]
+      },
+      {
+       "distance":38.9,"duration":28,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1988,1990]
+      },
+      {
+       "distance":15.5,"duration":11.2,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[1990,1991]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the left",
+       "name":"-","way_points":[1991,1991]
+      }
+     ]
+    },
+    {
+     "distance":3685.1,"duration":2653.2,
+     "steps":[
+      {
+       "distance":103.5,"duration":74.6,"type":11,"instruction":"Head southeast","name":"-",
+       "way_points":[1991,1997]
+      },
+      {
+       "distance":203.2,"duration":146.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[1997,2013]
+      },
+      {
+       "distance":1.3,"duration":1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2013,2014]
+      },
+      {
+       "distance":1.4,"duration":1,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[2014,2016]
+      },
+      {
+       "distance":21,"duration":15.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2016,2019]
+      },
+      {
+       "distance":37.3,"duration":26.9,"type":1,
+       "instruction":"Turn right onto Passeig dels Castanyers","name":"Passeig dels Castanyers",
+       "way_points":[2019,2023]
+      },
+      {
+       "distance":21.1,"duration":15.2,"type":3,
+       "instruction":"Turn sharp right onto Passeig dels Castanyers",
+       "name":"Passeig dels Castanyers","way_points":[2023,2026]
+      },
+      {
+       "distance":73.1,"duration":52.7,"type":0,
+       "instruction":"Turn left onto Carrer de Paulo Freire","name":"Carrer de Paulo Freire",
+       "way_points":[2026,2028]
+      },
+      {
+       "distance":88.2,"duration":63.5,"type":6,
+       "instruction":"Continue straight onto Carrer de Paulo Freire",
+       "name":"Carrer de Paulo Freire","way_points":[2028,2030]
+      },
+      {
+       "distance":7.4,"duration":5.3,"type":1,
+       "instruction":"Turn right onto Carrer de Paulo Freire","name":"Carrer de Paulo Freire",
+       "way_points":[2030,2031]
+      },
+      {
+       "distance":104.7,"duration":75.4,"type":6,
+       "instruction":"Continue straight onto Passeig de la Vall d'Hebron",
+       "name":"Passeig de la Vall d'Hebron","way_points":[2031,2033]
+      },
+      {
+       "distance":14.1,"duration":10.1,"type":0,
+       "instruction":"Turn left onto Avinguda d'Arturo Mundet","name":"Avinguda d'Arturo Mundet",
+       "way_points":[2033,2035]
+      },
+      {
+       "distance":85,"duration":61.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2035,2040]
+      },
+      {
+       "distance":36.6,"duration":26.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2040,2042]
+      },
+      {
+       "distance":38.1,"duration":27.4,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2042,2044]
+      },
+      {
+       "distance":11.8,"duration":8.5,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2044,2045]
+      },
+      {
+       "distance":78.6,"duration":56.6,"type":0,
+       "instruction":"Turn left onto Avinguda de Can Marcet","name":"Avinguda de Can Marcet",
+       "way_points":[2045,2048]
+      },
+      {
+       "distance":117.2,"duration":84.4,"type":13,
+       "instruction":"Keep right onto Avinguda de Can Marcet","name":"Avinguda de Can Marcet",
+       "way_points":[2048,2056]
+      },
+      {
+       "distance":21.4,"duration":15.4,"type":1,
+       "instruction":"Turn right onto Avinguda de Can Marcet","name":"Avinguda de Can Marcet",
+       "way_points":[2056,2059]
+      },
+      {
+       "distance":202.9,"duration":146.1,"type":0,
+       "instruction":"Turn left onto Avinguda de Can Marcet","name":"Avinguda de Can Marcet",
+       "way_points":[2059,2073]
+      },
+      {
+       "distance":28.6,"duration":20.6,"type":0,
+       "instruction":"Turn left onto Avinguda del Cardenal Vidal i Barraquer",
+       "name":"Avinguda del Cardenal Vidal i Barraquer","way_points":[2073,2076]
+      },
+      {
+       "distance":76.1,"duration":54.8,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[2076,2079]
+      },
+      {
+       "distance":134.8,"duration":97,"type":5,
+       "instruction":"Turn slight right onto Avinguda de l'Estatut de Catalunya",
+       "name":"Avinguda de l'Estatut de Catalunya","way_points":[2079,2084]
+      },
+      {
+       "distance":214.2,"duration":154.2,"type":4,
+       "instruction":"Turn slight left onto Avinguda de l'Estatut de Catalunya",
+       "name":"Avinguda de l'Estatut de Catalunya","way_points":[2084,2094]
+      },
+      {
+       "distance":14.1,"duration":10.2,"type":6,
+       "instruction":"Continue straight onto Carrer de Juan de Ávila",
+       "name":"Carrer de Juan de Ávila","way_points":[2094,2097]
+      },
+      {
+       "distance":124.7,"duration":89.8,"type":6,
+       "instruction":"Continue straight onto Plaça de l'Estatut","name":"Plaça de l'Estatut",
+       "way_points":[2097,2101]
+      },
+      {
+       "distance":39.5,"duration":28.5,"type":0,"instruction":"Turn left onto Plaça de l'Estatut",
+       "name":"Plaça de l'Estatut","way_points":[2101,2106]
+      },
+      {
+       "distance":16.7,"duration":12,"type":13,"instruction":"Keep right onto Carrer de Lisboa",
+       "name":"Carrer de Lisboa","way_points":[2106,2108]
+      },
+      {
+       "distance":14.8,"duration":10.7,"type":1,"instruction":"Turn right onto Carrer de Lisboa",
+       "name":"Carrer de Lisboa","way_points":[2108,2109]
+      },
+      {
+       "distance":53.7,"duration":38.6,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2109,2112]
+      },
+      {
+       "distance":30.3,"duration":21.8,"type":1,"instruction":"Turn right onto Carrer de Beatriu",
+       "name":"Carrer de Beatriu","way_points":[2112,2114]
+      },
+      {
+       "distance":3,"duration":2.2,"type":0,"instruction":"Turn left onto Carrer de Beatriu",
+       "name":"Carrer de Beatriu","way_points":[2114,2115]
+      },
+      {
+       "distance":91.6,"duration":66,"type":1,"instruction":"Turn right onto Carrer de Beatriu",
+       "name":"Carrer de Beatriu","way_points":[2115,2119]
+      },
+      {
+       "distance":4.6,"duration":3.3,"type":1,"instruction":"Turn right onto Rambla del Carmel",
+       "name":"Rambla del Carmel","way_points":[2119,2120]
+      },
+      {
+       "distance":265.9,"duration":191.5,"type":0,"instruction":"Turn left onto Rambla del Carmel",
+       "name":"Rambla del Carmel","way_points":[2120,2128]
+      },
+      {
+       "distance":9.8,"duration":7,"type":0,"instruction":"Turn left onto Carrer del Llobregós",
+       "name":"Carrer del Llobregós","way_points":[2128,2130]
+      },
+      {
+       "distance":117.8,"duration":84.8,"type":0,"instruction":"Turn left onto Rambla del Carmel",
+       "name":"Rambla del Carmel","way_points":[2130,2134]
+      },
+      {
+       "distance":3.4,"duration":2.5,"type":6,"instruction":"Continue straight onto Carrer de Lugo",
+       "name":"Carrer de Lugo","way_points":[2134,2135]
+      },
+      {
+       "distance":48.3,"duration":34.7,"type":1,"instruction":"Turn right onto Carrer de Lugo",
+       "name":"Carrer de Lugo","way_points":[2135,2137]
+      },
+      {
+       "distance":5,"duration":3.6,"type":0,
+       "instruction":"Turn left onto Carrer de Lluís Marià Vidal",
+       "name":"Carrer de Lluís Marià Vidal","way_points":[2137,2138]
+      },
+      {
+       "distance":2.9,"duration":2.1,"type":1,
+       "instruction":"Turn right onto Carrer de Lluís Marià Vidal",
+       "name":"Carrer de Lluís Marià Vidal","way_points":[2138,2139]
+      },
+      {
+       "distance":270,"duration":194.4,"type":0,
+       "instruction":"Turn left onto Carrer de Lluís Marià Vidal",
+       "name":"Carrer de Lluís Marià Vidal","way_points":[2139,2150]
+      },
+      {
+       "distance":7.7,"duration":5.5,"type":0,"instruction":"Turn left onto Carrer d'Arbós",
+       "name":"Carrer d'Arbós","way_points":[2150,2152]
+      },
+      {
+       "distance":263.6,"duration":189.8,"type":1,
+       "instruction":"Turn right onto Carrer de la Conca de Tremp",
+       "name":"Carrer de la Conca de Tremp","way_points":[2152,2157]
+      },
+      {
+       "distance":12.6,"duration":9,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2157,2160]
+      },
+      {
+       "distance":13.9,"duration":10,"type":0,
+       "instruction":"Turn left onto Carrer del Doctor Bové","name":"Carrer del Doctor Bové",
+       "way_points":[2160,2161]
+      },
+      {
+       "distance":9.9,"duration":7.1,"type":1,
+       "instruction":"Turn right onto Carrer del Doctor Bové","name":"Carrer del Doctor Bové",
+       "way_points":[2161,2163]
+      },
+      {
+       "distance":4.5,"duration":3.3,"type":6,
+       "instruction":"Continue straight onto Carrer de la Gran Vista",
+       "name":"Carrer de la Gran Vista","way_points":[2163,2165]
+      },
+      {
+       "distance":14.3,"duration":10.3,"type":1,
+       "instruction":"Turn right onto Carrer de la Gran Vista","name":"Carrer de la Gran Vista",
+       "way_points":[2165,2166]
+      },
+      {
+       "distance":27.3,"duration":19.7,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2166,2173]
+      },
+      {
+       "distance":120.1,"duration":86.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2173,2177]
+      },
+      {
+       "distance":164,"duration":118.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2177,2186]
+      },
+      {
+       "distance":60.3,"duration":43.4,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2186,2191]
+      },
+      {
+       "distance":39.9,"duration":28.7,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2191,2193]
+      },
+      {
+       "distance":36.3,"duration":26.1,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[2193,2197]
+      },
+      {
+       "distance":27.2,"duration":19.6,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2197,2202]
+      },
+      {
+       "distance":45.9,"duration":33.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2202,2204]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[2204,2204]
+      }
+     ]
+    },
+    {
+     "distance":1841.4,"duration":1325.8,
+     "steps":[
+      {
+       "distance":16.2,"duration":11.7,"type":11,"instruction":"Head northeast","name":"-",
+       "way_points":[2204,2206]
+      },
+      {
+       "distance":39.1,"duration":28.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2206,2212]
+      },
+      {
+       "distance":245.4,"duration":176.7,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[2212,2219]
+      },
+      {
+       "distance":5.2,"duration":3.7,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2219,2220]
+      },
+      {
+       "distance":99.1,"duration":71.4,"type":2,
+       "instruction":"Turn sharp left onto Carrer del Panorama","name":"Carrer del Panorama",
+       "way_points":[2220,2225]
+      },
+      {
+       "distance":14.6,"duration":10.5,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2225,2226]
+      },
+      {
+       "distance":42.8,"duration":30.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2226,2230]
+      },
+      {
+       "distance":24.2,"duration":17.4,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2230,2232]
+      },
+      {
+       "distance":23.1,"duration":16.6,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2232,2234]
+      },
+      {
+       "distance":109.9,"duration":79.1,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2234,2243]
+      },
+      {
+       "distance":72.6,"duration":52.3,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[2243,2246]
+      },
+      {
+       "distance":11.2,"duration":8,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2246,2247]
+      },
+      {
+       "distance":40.5,"duration":29.2,"type":0,"instruction":"Turn left onto Carrer del Telègraf",
+       "name":"Carrer del Telègraf","way_points":[2247,2249]
+      },
+      {
+       "distance":32.2,"duration":23.2,"type":1,
+       "instruction":"Turn right onto Carrer del Doctor Cadevall",
+       "name":"Carrer del Doctor Cadevall","way_points":[2249,2253]
+      },
+      {
+       "distance":77.3,"duration":55.7,"type":1,
+       "instruction":"Turn right onto Carrer del Telègraf","name":"Carrer del Telègraf",
+       "way_points":[2253,2265]
+      },
+      {
+       "distance":2.9,"duration":2.1,"type":0,"instruction":"Turn left onto Carrer de Brusel·les",
+       "name":"Carrer de Brusel·les","way_points":[2265,2266]
+      },
+      {
+       "distance":6.9,"duration":5,"type":1,"instruction":"Turn right onto Carrer de Brusel·les",
+       "name":"Carrer de Brusel·les","way_points":[2266,2268]
+      },
+      {
+       "distance":2.9,"duration":2.1,"type":0,"instruction":"Turn left onto Carrer de Brusel·les",
+       "name":"Carrer de Brusel·les","way_points":[2268,2269]
+      },
+      {
+       "distance":63.5,"duration":45.7,"type":1,
+       "instruction":"Turn right onto Carrer del Telègraf","name":"Carrer del Telègraf",
+       "way_points":[2269,2272]
+      },
+      {
+       "distance":1.9,"duration":1.4,"type":1,"instruction":"Turn right onto Carrer de Sèrbia",
+       "name":"Carrer de Sèrbia","way_points":[2272,2273]
+      },
+      {
+       "distance":5.3,"duration":3.8,"type":0,"instruction":"Turn left onto Carrer de Sèrbia",
+       "name":"Carrer de Sèrbia","way_points":[2273,2275]
+      },
+      {
+       "distance":2.6,"duration":1.9,"type":1,"instruction":"Turn right onto Carrer de Sèrbia",
+       "name":"Carrer de Sèrbia","way_points":[2275,2276]
+      },
+      {
+       "distance":22,"duration":15.8,"type":0,"instruction":"Turn left onto Carrer del Telègraf",
+       "name":"Carrer del Telègraf","way_points":[2276,2279]
+      },
+      {
+       "distance":39.8,"duration":28.6,"type":4,
+       "instruction":"Turn slight left onto Carrer del Telègraf","name":"Carrer del Telègraf",
+       "way_points":[2279,2280]
+      },
+      {
+       "distance":3.7,"duration":2.7,"type":0,
+       "instruction":"Turn left onto Avinguda de la Mare de Déu de Montserrat",
+       "name":"Avinguda de la Mare de Déu de Montserrat","way_points":[2280,2281]
+      },
+      {
+       "distance":12.4,"duration":8.9,"type":1,
+       "instruction":"Turn right onto Avinguda de la Mare de Déu de Montserrat",
+       "name":"Avinguda de la Mare de Déu de Montserrat","way_points":[2281,2283]
+      },
+      {
+       "distance":3.5,"duration":2.5,"type":1,
+       "instruction":"Turn right onto Avinguda de la Mare de Déu de Montserrat",
+       "name":"Avinguda de la Mare de Déu de Montserrat","way_points":[2283,2284]
+      },
+      {
+       "distance":220.7,"duration":158.9,"type":0,
+       "instruction":"Turn left onto Carrer del Telègraf","name":"Carrer del Telègraf",
+       "way_points":[2284,2294]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":1,"instruction":"Turn right onto Carrer del Telègraf",
+       "name":"Carrer del Telègraf","way_points":[2294,2295]
+      },
+      {
+       "distance":29.1,"duration":21,"type":0,"instruction":"Turn left onto Carrer del Telègraf",
+       "name":"Carrer del Telègraf","way_points":[2295,2297]
+      },
+      {
+       "distance":42.1,"duration":30.3,"type":6,
+       "instruction":"Continue straight onto Ronda del Guinardó","name":"Ronda del Guinardó",
+       "way_points":[2297,2300]
+      },
+      {
+       "distance":27.5,"duration":19.8,"type":0,"instruction":"Turn left onto Ronda del Guinardó",
+       "name":"Ronda del Guinardó","way_points":[2300,2306]
+      },
+      {
+       "distance":7.4,"duration":5.4,"type":1,"instruction":"Turn right onto Ronda del Guinardó",
+       "name":"Ronda del Guinardó","way_points":[2306,2307]
+      },
+      {
+       "distance":104.5,"duration":75.2,"type":12,
+       "instruction":"Keep left onto Carrer de Sant Quintí","name":"Carrer de Sant Quintí",
+       "way_points":[2307,2310]
+      },
+      {
+       "distance":4.7,"duration":3.4,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Quintí","name":"Carrer de Sant Quintí",
+       "way_points":[2310,2311]
+      },
+      {
+       "distance":14.6,"duration":10.5,"type":0,
+       "instruction":"Turn left onto Carrer de Sant Quintí","name":"Carrer de Sant Quintí",
+       "way_points":[2311,2312]
+      },
+      {
+       "distance":8,"duration":5.7,"type":1,"instruction":"Turn right onto urgències",
+       "name":"urgències","way_points":[2312,2313]
+      },
+      {
+       "distance":83.1,"duration":59.8,"type":0,
+       "instruction":"Turn left onto Carrer de Sant Quintí","name":"Carrer de Sant Quintí",
+       "way_points":[2313,2315]
+      },
+      {
+       "distance":34.3,"duration":24.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2315,2318]
+      },
+      {
+       "distance":27.8,"duration":20,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2318,2320]
+      },
+      {
+       "distance":100.4,"duration":72.3,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2320,2326]
+      },
+      {
+       "distance":111.5,"duration":80.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2326,2331]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[2331,2331]
+      }
+     ]
+    },
+    {
+     "distance":1347.8,"duration":970.4,
+     "steps":[
+      {
+       "distance":53,"duration":38.2,"type":11,"instruction":"Head east","name":"-",
+       "way_points":[2331,2332]
+      },
+      {
+       "distance":29.4,"duration":21.2,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[2332,2333]
+      },
+      {
+       "distance":139.2,"duration":100.2,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Antoni Maria Claret",
+       "name":"Carrer de Sant Antoni Maria Claret","way_points":[2333,2335]
+      },
+      {
+       "distance":15.6,"duration":11.2,"type":0,
+       "instruction":"Turn left onto Carrer de Sant Antoni Maria Claret",
+       "name":"Carrer de Sant Antoni Maria Claret","way_points":[2335,2337]
+      },
+      {
+       "distance":106.1,"duration":76.4,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Antoni Maria Claret",
+       "name":"Carrer de Sant Antoni Maria Claret","way_points":[2337,2341]
+      },
+      {
+       "distance":15.5,"duration":11.2,"type":1,"instruction":"Turn right onto Carrer de Cartagena",
+       "name":"Carrer de Cartagena","way_points":[2341,2344]
+      },
+      {
+       "distance":148.8,"duration":107.2,"type":0,"instruction":"Turn left onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2344,2348]
+      },
+      {
+       "distance":17.2,"duration":12.4,"type":1,
+       "instruction":"Turn right onto Carrer de la Indústria","name":"Carrer de la Indústria",
+       "way_points":[2348,2350]
+      },
+      {
+       "distance":32.8,"duration":23.6,"type":1,
+       "instruction":"Turn right onto Carrer de la Indústria","name":"Carrer de la Indústria",
+       "way_points":[2350,2353]
+      },
+      {
+       "distance":13.4,"duration":9.7,"type":1,
+       "instruction":"Turn right onto Carrer de los Castillejos","name":"Carrer de los Castillejos",
+       "way_points":[2353,2356]
+      },
+      {
+       "distance":141.6,"duration":101.9,"type":1,
+       "instruction":"Turn right onto Carrer de los Castillejos","name":"Carrer de los Castillejos",
+       "way_points":[2356,2361]
+      },
+      {
+       "distance":2.7,"duration":1.9,"type":1,"instruction":"Turn right onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2361,2362]
+      },
+      {
+       "distance":16.3,"duration":11.8,"type":0,"instruction":"Turn left onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2362,2363]
+      },
+      {
+       "distance":27.3,"duration":19.6,"type":1,"instruction":"Turn right onto Carrer de Còrsega",
+       "name":"Carrer de Còrsega","way_points":[2363,2365]
+      },
+      {
+       "distance":147,"duration":105.9,"type":12,"instruction":"Keep left onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2365,2367]
+      },
+      {
+       "distance":3,"duration":2.1,"type":1,"instruction":"Turn right onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2367,2368]
+      },
+      {
+       "distance":9.4,"duration":6.8,"type":0,"instruction":"Turn left onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2368,2370]
+      },
+      {
+       "distance":12.1,"duration":8.7,"type":4,
+       "instruction":"Turn slight left onto Carrer de Lepant","name":"Carrer de Lepant",
+       "way_points":[2370,2372]
+      },
+      {
+       "distance":30.6,"duration":22,"type":0,"instruction":"Turn left onto Carrer de Lepant",
+       "name":"Carrer de Lepant","way_points":[2372,2375]
+      },
+      {
+       "distance":13.1,"duration":9.5,"type":0,"instruction":"Turn left onto Carrer del Rosselló",
+       "name":"Carrer del Rosselló","way_points":[2375,2377]
+      },
+      {
+       "distance":145.6,"duration":104.8,"type":0,
+       "instruction":"Turn left onto Carrer del Rosselló","name":"Carrer del Rosselló",
+       "way_points":[2377,2381]
+      },
+      {
+       "distance":1.6,"duration":1.1,"type":0,"instruction":"Turn left onto Carrer de la Marina",
+       "name":"Carrer de la Marina","way_points":[2381,2382]
+      },
+      {
+       "distance":1.7,"duration":1.2,"type":1,"instruction":"Turn right onto Avinguda de Gaudí",
+       "name":"Avinguda de Gaudí","way_points":[2382,2383]
+      },
+      {
+       "distance":9.6,"duration":6.9,"type":5,
+       "instruction":"Turn slight right onto Carrer de la Marina","name":"Carrer de la Marina",
+       "way_points":[2383,2385]
+      },
+      {
+       "distance":2.6,"duration":1.8,"type":4,
+       "instruction":"Turn slight left onto Carrer de la Marina","name":"Carrer de la Marina",
+       "way_points":[2385,2386]
+      },
+      {
+       "distance":6.9,"duration":5,"type":0,"instruction":"Turn left onto Carrer de la Marina",
+       "name":"Carrer de la Marina","way_points":[2386,2387]
+      },
+      {
+       "distance":28.3,"duration":20.4,"type":1,"instruction":"Turn right onto Carrer de Provença",
+       "name":"Carrer de Provença","way_points":[2387,2388]
+      },
+      {
+       "distance":97.9,"duration":70.5,"type":5,
+       "instruction":"Turn slight right onto Carrer de Provença","name":"Carrer de Provença",
+       "way_points":[2388,2389]
+      },
+      {
+       "distance":12.2,"duration":8.8,"type":0,"instruction":"Turn left onto Carrer de Provença",
+       "name":"Carrer de Provença","way_points":[2389,2393]
+      },
+      {
+       "distance":1.6,"duration":1.2,"type":1,"instruction":"Turn right onto Carrer de Sardenya",
+       "name":"Carrer de Sardenya","way_points":[2393,2394]
+      },
+      {
+       "distance":26.4,"duration":19,"type":12,"instruction":"Keep left onto Carrer de Sardenya",
+       "name":"Carrer de Sardenya","way_points":[2394,2396]
+      },
+      {
+       "distance":39.5,"duration":28.4,"type":4,
+       "instruction":"Turn slight left onto Carrer de Sardenya","name":"Carrer de Sardenya",
+       "way_points":[2396,2397]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer de Sardenya, on the right","name":"-",
+       "way_points":[2397,2397]
+      }
+     ]
+    },
+    {
+     "distance":1756.1,"duration":1264.3,
+     "steps":[
+      {
+       "distance":45,"duration":32.4,"type":11,"instruction":"Head southeast on Carrer de Sardenya",
+       "name":"Carrer de Sardenya","way_points":[2397,2398]
+      },
+      {
+       "distance":24.4,"duration":17.6,"type":4,
+       "instruction":"Turn slight left onto Carrer de Mallorca","name":"Carrer de Mallorca",
+       "way_points":[2398,2400]
+      },
+      {
+       "distance":14.2,"duration":10.2,"type":1,"instruction":"Turn right onto Carrer de Mallorca",
+       "name":"Carrer de Mallorca","way_points":[2400,2402]
+      },
+      {
+       "distance":104.5,"duration":75.3,"type":0,"instruction":"Turn left onto Carrer de Mallorca",
+       "name":"Carrer de Mallorca","way_points":[2402,2404]
+      },
+      {
+       "distance":24.8,"duration":17.8,"type":1,"instruction":"Turn right onto Carrer de Mallorca",
+       "name":"Carrer de Mallorca","way_points":[2404,2407]
+      },
+      {
+       "distance":80,"duration":57.6,"type":5,
+       "instruction":"Turn slight right onto Carrer de la Marina","name":"Carrer de la Marina",
+       "way_points":[2407,2409]
+      },
+      {
+       "distance":8.1,"duration":5.8,"type":0,"instruction":"Turn left onto Carrer de la Marina",
+       "name":"Carrer de la Marina","way_points":[2409,2411]
+      },
+      {
+       "distance":240.9,"duration":173.4,"type":1,
+       "instruction":"Turn right onto Carrer de la Marina","name":"Carrer de la Marina",
+       "way_points":[2411,2423]
+      },
+      {
+       "distance":17.4,"duration":12.5,"type":0,"instruction":"Turn left onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[2423,2426]
+      },
+      {
+       "distance":7.3,"duration":5.2,"type":1,"instruction":"Turn right onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[2426,2427]
+      },
+      {
+       "distance":63.4,"duration":45.7,"type":0,"instruction":"Turn left onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[2427,2428]
+      },
+      {
+       "distance":15.9,"duration":11.5,"type":13,
+       "instruction":"Keep right onto Carrer del Consell de Cent",
+       "name":"Carrer del Consell de Cent","way_points":[2428,2429]
+      },
+      {
+       "distance":526.7,"duration":379.2,"type":6,
+       "instruction":"Continue straight onto Carrer del Consell de Cent",
+       "name":"Carrer del Consell de Cent","way_points":[2429,2450]
+      },
+      {
+       "distance":256,"duration":184.3,"type":4,
+       "instruction":"Turn slight left onto Plaça de les Glòries","name":"Plaça de les Glòries",
+       "way_points":[2450,2461]
+      },
+      {
+       "distance":29.5,"duration":21.2,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2461,2465]
+      },
+      {
+       "distance":117.1,"duration":84.3,"type":1,
+       "instruction":"Turn right onto Carrer de la Independència",
+       "name":"Carrer de la Independència","way_points":[2465,2479]
+      },
+      {
+       "distance":35.6,"duration":25.6,"type":5,"instruction":"Turn slight right","name":"-",
+       "way_points":[2479,2482]
+      },
+      {
+       "distance":48.5,"duration":34.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2482,2493]
+      },
+      {
+       "distance":56.3,"duration":40.6,"type":1,"instruction":"Turn right onto Avinguda Diagonal",
+       "name":"Avinguda Diagonal","way_points":[2493,2496]
+      },
+      {
+       "distance":3.5,"duration":2.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2496,2497]
+      },
+      {
+       "distance":37.1,"duration":26.7,"type":2,"instruction":"Turn sharp left","name":"-",
+       "way_points":[2497,2500]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[2500,2500]
+      }
+     ]
+    },
+    {
+     "distance":2004.7,"duration":1443.3,
+     "steps":[
+      {
+       "distance":37.1,"duration":26.7,"type":11,"instruction":"Head west","name":"-",
+       "way_points":[2500,2503]
+      },
+      {
+       "distance":3.5,"duration":2.5,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2503,2504]
+      },
+      {
+       "distance":94.9,"duration":68.3,"type":2,
+       "instruction":"Turn sharp left onto Carrer de Badajoz","name":"Carrer de Badajoz",
+       "way_points":[2504,2510]
+      },
+      {
+       "distance":13.9,"duration":10,"type":1,"instruction":"Turn right onto Carrer de Badajoz",
+       "name":"Carrer de Badajoz","way_points":[2510,2512]
+      },
+      {
+       "distance":24.1,"duration":17.3,"type":0,"instruction":"Turn left onto Carrer de Badajoz",
+       "name":"Carrer de Badajoz","way_points":[2512,2514]
+      },
+      {
+       "distance":4.2,"duration":3,"type":0,"instruction":"Turn left onto Carrer de Bolívia",
+       "name":"Carrer de Bolívia","way_points":[2514,2515]
+      },
+      {
+       "distance":270.8,"duration":195,"type":1,"instruction":"Turn right onto Carrer de Bolívia",
+       "name":"Carrer de Bolívia","way_points":[2515,2522]
+      },
+      {
+       "distance":5.9,"duration":4.2,"type":0,"instruction":"Turn left onto Carrer de Bolívia",
+       "name":"Carrer de Bolívia","way_points":[2522,2523]
+      },
+      {
+       "distance":72.3,"duration":52.1,"type":1,"instruction":"Turn right onto Carrer de Bolívia",
+       "name":"Carrer de Bolívia","way_points":[2523,2526]
+      },
+      {
+       "distance":36,"duration":25.9,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2526,2528]
+      },
+      {
+       "distance":14.4,"duration":10.4,"type":1,"instruction":"Turn right onto Carrer de Pamplona",
+       "name":"Carrer de Pamplona","way_points":[2528,2531]
+      },
+      {
+       "distance":16,"duration":11.5,"type":4,
+       "instruction":"Turn slight left onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2531,2532]
+      },
+      {
+       "distance":29.5,"duration":21.2,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2532,2536]
+      },
+      {
+       "distance":101.1,"duration":72.8,"type":0,"instruction":"Turn left onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2536,2538]
+      },
+      {
+       "distance":3,"duration":2.2,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2538,2539]
+      },
+      {
+       "distance":14.4,"duration":10.4,"type":0,"instruction":"Turn left onto Carrer de Padilla",
+       "name":"Carrer de Padilla","way_points":[2539,2540]
+      },
+      {
+       "distance":12.5,"duration":9,"type":6,
+       "instruction":"Continue straight onto Carrer de Padilla","name":"Carrer de Padilla",
+       "way_points":[2540,2541]
+      },
+      {
+       "distance":52.1,"duration":37.5,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2541,2543]
+      },
+      {
+       "distance":11.6,"duration":8.3,"type":12,"instruction":"Keep left onto Carrer d'Alí Bei",
+       "name":"Carrer d'Alí Bei","way_points":[2543,2544]
+      },
+      {
+       "distance":7.6,"duration":5.4,"type":6,
+       "instruction":"Continue straight onto Carrer d'Alí Bei","name":"Carrer d'Alí Bei",
+       "way_points":[2544,2545]
+      },
+      {
+       "distance":7.3,"duration":5.3,"type":2,
+       "instruction":"Turn sharp left onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2545,2547]
+      },
+      {
+       "distance":110.6,"duration":79.6,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2547,2550]
+      },
+      {
+       "distance":17.2,"duration":12.4,"type":2,
+       "instruction":"Turn sharp left onto Carrer de Lepant","name":"Carrer de Lepant",
+       "way_points":[2550,2552]
+      },
+      {
+       "distance":13.9,"duration":10,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2552,2553]
+      },
+      {
+       "distance":21.4,"duration":15.4,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2553,2555]
+      },
+      {
+       "distance":94.6,"duration":68.1,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2555,2557]
+      },
+      {
+       "distance":46.4,"duration":33.4,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2557,2559]
+      },
+      {
+       "distance":13.6,"duration":9.8,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2559,2561]
+      },
+      {
+       "distance":24.9,"duration":17.9,"type":0,"instruction":"Turn left onto Carrer de la Marina",
+       "name":"Carrer de la Marina","way_points":[2561,2566]
+      },
+      {
+       "distance":75.4,"duration":54.3,"type":0,"instruction":"Turn left onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2566,2570]
+      },
+      {
+       "distance":15.5,"duration":11.2,"type":0,
+       "instruction":"Turn left onto Carrer dels Almogàvers","name":"Carrer dels Almogàvers",
+       "way_points":[2570,2572]
+      },
+      {
+       "distance":21.8,"duration":15.7,"type":4,
+       "instruction":"Turn slight left onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2572,2573]
+      },
+      {
+       "distance":103.5,"duration":74.5,"type":1,"instruction":"Turn right onto Avinguda Meridiana",
+       "name":"Avinguda Meridiana","way_points":[2573,2575]
+      },
+      {
+       "distance":22.4,"duration":16.1,"type":6,
+       "instruction":"Continue straight onto Carrer de Sardenya","name":"Carrer de Sardenya",
+       "way_points":[2575,2576]
+      },
+      {
+       "distance":6,"duration":4.3,"type":6,
+       "instruction":"Continue straight onto Carrer de Sardenya","name":"Carrer de Sardenya",
+       "way_points":[2576,2577]
+      },
+      {
+       "distance":1.6,"duration":1.1,"type":6,
+       "instruction":"Continue straight onto Avinguda Meridiana","name":"Avinguda Meridiana",
+       "way_points":[2577,2578]
+      },
+      {
+       "distance":165.2,"duration":118.9,"type":6,
+       "instruction":"Continue straight onto Carrer de Buenaventura Muñoz",
+       "name":"Carrer de Buenaventura Muñoz","way_points":[2578,2584]
+      },
+      {
+       "distance":29.1,"duration":21,"type":4,
+       "instruction":"Turn slight left onto Carrer de Wellington","name":"Carrer de Wellington",
+       "way_points":[2584,2588]
+      },
+      {
+       "distance":26,"duration":18.7,"type":0,"instruction":"Turn left onto Passeig de Pujades",
+       "name":"Passeig de Pujades","way_points":[2588,2592]
+      },
+      {
+       "distance":62.7,"duration":45.1,"type":1,"instruction":"Turn right onto Passeig de Pujades",
+       "name":"Passeig de Pujades","way_points":[2592,2593]
+      },
+      {
+       "distance":50.3,"duration":36.2,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2593,2595]
+      },
+      {
+       "distance":30.5,"duration":22,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2595,2596]
+      },
+      {
+       "distance":96.7,"duration":69.6,"type":12,"instruction":"Keep left","name":"-",
+       "way_points":[2596,2600]
+      },
+      {
+       "distance":29.1,"duration":21,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2600,2601]
+      },
+      {
+       "distance":51.2,"duration":36.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2601,2604]
+      },
+      {
+       "distance":11.9,"duration":8.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2604,2605]
+      },
+      {
+       "distance":11.2,"duration":8.1,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2605,2607]
+      },
+      {
+       "distance":19.6,"duration":14.1,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2607,2609]
+      },
+      {
+       "distance":0,"duration":0,"type":10,"instruction":"Arrive at your destination, on the right",
+       "name":"-","way_points":[2609,2609]
+      }
+     ]
+    },
+    {
+     "distance":917.4,"duration":660.5,
+     "steps":[
+      {
+       "distance":28.8,"duration":20.7,"type":11,"instruction":"Head south","name":"-",
+       "way_points":[2609,2612]
+      },
+      {
+       "distance":12.5,"duration":9,"type":3,"instruction":"Turn sharp right","name":"-",
+       "way_points":[2612,2613]
+      },
+      {
+       "distance":111.6,"duration":80.4,"type":13,"instruction":"Keep right","name":"-",
+       "way_points":[2613,2620]
+      },
+      {
+       "distance":83.8,"duration":60.3,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2620,2623]
+      },
+      {
+       "distance":42.3,"duration":30.5,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2623,2627]
+      },
+      {
+       "distance":9.4,"duration":6.8,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2627,2628]
+      },
+      {
+       "distance":33,"duration":23.8,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2628,2631]
+      },
+      {
+       "distance":33.2,"duration":23.9,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2631,2634]
+      },
+      {
+       "distance":21.7,"duration":15.6,"type":1,"instruction":"Turn right onto Passeig de Picasso",
+       "name":"Passeig de Picasso","way_points":[2634,2635]
+      },
+      {
+       "distance":14.6,"duration":10.5,"type":0,"instruction":"Turn left onto Passeig de Picasso",
+       "name":"Passeig de Picasso","way_points":[2635,2637]
+      },
+      {
+       "distance":25,"duration":18,"type":0,"instruction":"Turn left onto Passeig de Picasso",
+       "name":"Passeig de Picasso","way_points":[2637,2640]
+      },
+      {
+       "distance":6.2,"duration":4.4,"type":0,"instruction":"Turn left onto Passatge Mercantil",
+       "name":"Passatge Mercantil","way_points":[2640,2641]
+      },
+      {
+       "distance":49,"duration":35.2,"type":1,"instruction":"Turn right onto Passatge Mercantil",
+       "name":"Passatge Mercantil","way_points":[2641,2643]
+      },
+      {
+       "distance":66.6,"duration":48,"type":0,"instruction":"Turn left onto Carrer Comercial",
+       "name":"Carrer Comercial","way_points":[2643,2644]
+      },
+      {
+       "distance":104.5,"duration":75.2,"type":1,
+       "instruction":"Turn right onto Carrer de la Ribera","name":"Carrer de la Ribera",
+       "way_points":[2644,2650]
+      },
+      {
+       "distance":23.6,"duration":17,"type":6,"instruction":"Continue straight","name":"-",
+       "way_points":[2650,2651]
+      },
+      {
+       "distance":52.4,"duration":37.7,"type":1,"instruction":"Turn right","name":"-",
+       "way_points":[2651,2653]
+      },
+      {
+       "distance":2.7,"duration":2,"type":0,"instruction":"Turn left onto Passeig del Born",
+       "name":"Passeig del Born","way_points":[2653,2654]
+      },
+      {
+       "distance":18.1,"duration":13,"type":1,
+       "instruction":"Turn right onto Carrer Antic de Sant Joan","name":"Carrer Antic de Sant Joan",
+       "way_points":[2654,2656]
+      },
+      {
+       "distance":107.2,"duration":77.2,"type":0,"instruction":"Turn left onto Passeig del Born",
+       "name":"Passeig del Born","way_points":[2656,2661]
+      },
+      {
+       "distance":18.9,"duration":13.6,"type":3,
+       "instruction":"Turn sharp right onto Placeta de Montcada","name":"Placeta de Montcada",
+       "way_points":[2661,2662]
+      },
+      {
+       "distance":52.3,"duration":37.6,"type":0,
+       "instruction":"Turn left onto Carrer dels Sombrerers","name":"Carrer dels Sombrerers",
+       "way_points":[2662,2664]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer dels Sombrerers, on the right","name":"-",
+       "way_points":[2664,2664]
+      }
+     ]
+    },
+    {
+     "distance":578.7,"duration":416.6,
+     "steps":[
+      {
+       "distance":18.2,"duration":13.1,"type":11,
+       "instruction":"Head southwest on Carrer dels Sombrerers","name":"Carrer dels Sombrerers",
+       "way_points":[2664,2666]
+      },
+      {
+       "distance":152.8,"duration":110,"type":1,
+       "instruction":"Turn right onto Carrer dels Mirallers","name":"Carrer dels Mirallers",
+       "way_points":[2666,2672]
+      },
+      {
+       "distance":22.3,"duration":16.1,"type":0,"instruction":"Turn left onto Carrer dels Vigatans",
+       "name":"Carrer dels Vigatans","way_points":[2672,2673]
+      },
+      {
+       "distance":35.9,"duration":25.9,"type":1,"instruction":"Turn right onto Carrer d'Esquirol",
+       "name":"Carrer d'Esquirol","way_points":[2673,2674]
+      },
+      {
+       "distance":37,"duration":26.6,"type":0,"instruction":"Turn left onto Carrer dels Cotoners",
+       "name":"Carrer dels Cotoners","way_points":[2674,2678]
+      },
+      {
+       "distance":97,"duration":69.9,"type":0,"instruction":"Turn left onto Carrer de la Princesa",
+       "name":"Carrer de la Princesa","way_points":[2678,2684]
+      },
+      {
+       "distance":25.1,"duration":18.1,"type":1,"instruction":"Turn right onto Plaça de l'Àngel",
+       "name":"Plaça de l'Àngel","way_points":[2684,2686]
+      },
+      {
+       "distance":59.3,"duration":42.7,"type":0,
+       "instruction":"Turn left onto Baixada de la Llibreteria","name":"Baixada de la Llibreteria",
+       "way_points":[2686,2688]
+      },
+      {
+       "distance":59.4,"duration":42.7,"type":1,"instruction":"Turn right onto Carrer de Freneria",
+       "name":"Carrer de Freneria","way_points":[2688,2691]
+      },
+      {
+       "distance":35.3,"duration":25.4,"type":0,"instruction":"Turn left onto Carrer de la Pietat",
+       "name":"Carrer de la Pietat","way_points":[2691,2692]
+      },
+      {
+       "distance":36.3,"duration":26.1,"type":1,"instruction":"Turn right onto Carrer de la Pietat",
+       "name":"Carrer de la Pietat","way_points":[2692,2694]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer de la Pietat, on the right","name":"-",
+       "way_points":[2694,2694]
+      }
+     ]
+    },
+    {
+     "distance":608.7,"duration":438.3,
+     "steps":[
+      {
+       "distance":36.3,"duration":26.1,"type":11,
+       "instruction":"Head southeast on Carrer de la Pietat","name":"Carrer de la Pietat",
+       "way_points":[2694,2696]
+      },
+      {
+       "distance":35.3,"duration":25.4,"type":0,"instruction":"Turn left onto Carrer de la Pietat",
+       "name":"Carrer de la Pietat","way_points":[2696,2697]
+      },
+      {
+       "distance":97.1,"duration":69.9,"type":0,"instruction":"Turn left onto Carrer dels Comtes",
+       "name":"Carrer dels Comtes","way_points":[2697,2701]
+      },
+      {
+       "distance":38.1,"duration":27.4,"type":1,
+       "instruction":"Turn right onto Baixada de la Canonja","name":"Baixada de la Canonja",
+       "way_points":[2701,2702]
+      },
+      {
+       "distance":192.4,"duration":138.5,"type":0,
+       "instruction":"Turn left onto Carrer de la Tapineria","name":"Carrer de la Tapineria",
+       "way_points":[2702,2710]
+      },
+      {
+       "distance":67.4,"duration":48.5,"type":0,"instruction":"Turn left","name":"-",
+       "way_points":[2710,2718]
+      },
+      {
+       "distance":17,"duration":12.2,"type":1,"instruction":"Turn right onto Via Laietana",
+       "name":"Via Laietana","way_points":[2718,2720]
+      },
+      {
+       "distance":14.9,"duration":10.7,"type":0,"instruction":"Turn left onto Via Laietana",
+       "name":"Via Laietana","way_points":[2720,2721]
+      },
+      {
+       "distance":94.3,"duration":67.9,"type":1,
+       "instruction":"Turn right onto Carrer de Sant Pere Més Alt",
+       "name":"Carrer de Sant Pere Més Alt","way_points":[2721,2726]
+      },
+      {
+       "distance":16,"duration":11.5,"type":0,"instruction":"Turn left onto Carrer d'Amadeu Vives",
+       "name":"Carrer d'Amadeu Vives","way_points":[2726,2727]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Carrer d'Amadeu Vives, on the left","name":"-",
+       "way_points":[2727,2727]
+      }
+     ]
+    },
+    {
+     "distance":1707.6,"duration":1229.4,
+     "steps":[
+      {
+       "distance":81.1,"duration":58.4,"type":11,
+       "instruction":"Head northwest on Carrer d'Amadeu Vives","name":"Carrer d'Amadeu Vives",
+       "way_points":[2727,2728]
+      },
+      {
+       "distance":60.4,"duration":43.5,"type":0,"instruction":"Turn left onto Carrer d'Ortigosa",
+       "name":"Carrer d'Ortigosa","way_points":[2728,2730]
+      },
+      {
+       "distance":24.5,"duration":17.7,"type":6,
+       "instruction":"Continue straight onto Carrer de les Jonqueres",
+       "name":"Carrer de les Jonqueres","way_points":[2730,2732]
+      },
+      {
+       "distance":7.6,"duration":5.5,"type":1,
+       "instruction":"Turn right onto Carrer de les Jonqueres","name":"Carrer de les Jonqueres",
+       "way_points":[2732,2734]
+      },
+      {
+       "distance":26.9,"duration":19.3,"type":4,"instruction":"Turn slight left onto Via Laietana",
+       "name":"Via Laietana","way_points":[2734,2737]
+      },
+      {
+       "distance":156,"duration":112.4,"type":1,"instruction":"Turn right onto Via Laietana",
+       "name":"Via Laietana","way_points":[2737,2740]
+      },
+      {
+       "distance":16.2,"duration":11.7,"type":1,
+       "instruction":"Turn right onto Carrer de Fontanella","name":"Carrer de Fontanella",
+       "way_points":[2740,2742]
+      },
+      {
+       "distance":40.4,"duration":29.1,"type":5,
+       "instruction":"Turn slight right onto Plaça d'Urquinaona","name":"Plaça d'Urquinaona",
+       "way_points":[2742,2746]
+      },
+      {
+       "distance":28,"duration":20.1,"type":1,"instruction":"Turn right onto Ronda de Sant Pere",
+       "name":"Ronda de Sant Pere","way_points":[2746,2749]
+      },
+      {
+       "distance":6.6,"duration":4.8,"type":0,"instruction":"Turn left onto Plaça d'Urquinaona",
+       "name":"Plaça d'Urquinaona","way_points":[2749,2751]
+      },
+      {
+       "distance":161.9,"duration":116.6,"type":0,
+       "instruction":"Turn left onto Plaça d'Urquinaona","name":"Plaça d'Urquinaona",
+       "way_points":[2751,2754]
+      },
+      {
+       "distance":72.1,"duration":51.9,"type":6,
+       "instruction":"Continue straight onto Passeig de Gràcia","name":"Passeig de Gràcia",
+       "way_points":[2754,2758]
+      },
+      {
+       "distance":5,"duration":3.6,"type":6,"instruction":"Continue straight onto Carrer de Casp",
+       "name":"Carrer de Casp","way_points":[2758,2760]
+      },
+      {
+       "distance":123.2,"duration":88.7,"type":6,
+       "instruction":"Continue straight onto Passeig de Gràcia","name":"Passeig de Gràcia",
+       "way_points":[2760,2763]
+      },
+      {
+       "distance":11,"duration":7.9,"type":1,
+       "instruction":"Turn right onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[2763,2764]
+      },
+      {
+       "distance":48,"duration":34.6,"type":0,
+       "instruction":"Turn left onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[2764,2777]
+      },
+      {
+       "distance":11.7,"duration":8.4,"type":4,
+       "instruction":"Turn slight left onto Gran Via de les Corts Catalanes",
+       "name":"Gran Via de les Corts Catalanes","way_points":[2777,2778]
+      },
+      {
+       "distance":111,"duration":79.9,"type":5,
+       "instruction":"Turn slight right onto Passeig de Gràcia","name":"Passeig de Gràcia",
+       "way_points":[2778,2782]
+      },
+      {
+       "distance":9.5,"duration":6.9,"type":0,
+       "instruction":"Turn left onto Carrer de la Diputació","name":"Carrer de la Diputació",
+       "way_points":[2782,2783]
+      },
+      {
+       "distance":663.1,"duration":477.4,"type":1,
+       "instruction":"Turn right onto Passeig de Gràcia (lateral Besòs)",
+       "name":"Passeig de Gràcia (lateral Besòs)","way_points":[2783,2806]
+      },
+      {
+       "distance":9.9,"duration":7.1,"type":1,"instruction":"Turn right onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[2806,2807]
+      },
+      {
+       "distance":3.9,"duration":2.8,"type":12,"instruction":"Keep left onto Passeig de Gràcia",
+       "name":"Passeig de Gràcia","way_points":[2807,2808]
+      },
+      {
+       "distance":11.3,"duration":8.1,"type":0,"instruction":"Turn left onto Carrer de Provença",
+       "name":"Carrer de Provença","way_points":[2808,2810]
+      },
+      {
+       "distance":18.1,"duration":13,"type":6,
+       "instruction":"Continue straight onto Passeig de Gràcia","name":"Passeig de Gràcia",
+       "way_points":[2810,2811]
+      },
+      {
+       "distance":0,"duration":0,"type":10,
+       "instruction":"Arrive at Passeig de Gràcia, on the right","name":"-",
+       "way_points":[2811,2811]
+      }
+     ]
+    }
+   ],
+   "bbox":[2.077482,41.304249,2.190315,41.439946],
+   "geometry":"yis{F}weLGIIa@JOb@g@vAkBKMNSDGDEDGhCgDBCJODGRWHLbC}CVGHE@CDEBCDEHMHKFIBGBA@CC]ASCA~B}Cb@k@r@_AOc@Ka@HW?GEOJGFTGUHGNKR[lBkCPYNEHGLOAE\\C`C_DfCcDv@gADEl@g@NK^c@NGC[dAaCRSBa@j@e@DGT[BEV]@BJPR\\CVDNBX@JV@RGh@i@LPX`@VbBl@Y^~@Pd@Uz@CFDV\\T@?r@d@VHv@D\\IFCJKPN@@BFdDqCBDROFLFPBBFGDEvBcB@BJABCDCzA~A{A_BAEAEvAqAn@y@^SAEAObAi@EQAGGWUs@aA_BZa@CEhB{BPSFGTYFITYHIDKs@]CAB@r@\\TLtBhAv@`@CFKZFVKN@DBD@HJTNTBFBHBDn@d@HSFAHA@?H?F?BAV?Kf@E\\YlCE^CPrA`APb@`BnD^x@Tf@NXFLLJLLlBt@TJpCnALFLDCHrBz@FJ@HDJFN@DCHF@LzAVdBCJDTDRDB@Nt@pCITAFCJ@HFFDFPHLAJADUPBt@j@PTHTLv@HdADhALbBXhADEJGPr@`@|@JHJVZWN?LJDLRfAHTPDfA?F?f@q@DKLf@Bb@Ah@?PL?P?J?BB?SD?D?N@`@f@FEPEFEZW@SDMJODYHc@BIBO?a@b@ABKKSC[HEDCJQ`@NZSBi@DCDAXO`@b@T?X\\LAJAQsAHCFCAk@FCDC\\?D@F@N@\\FB?J@`@@^Dv@RTDj@\\FBHDFBD?ZFB@`BK@C?IPF|@CBHXv@BJ@B@B@JETi@`@fAfEJVRFF^zAeA{AdAG_@SGKWgAgEh@a@DUAKACACCKYw@CI}@BBXcA\\UHMPAZFX~ArF?p@BTIj@O`A[rACp@AZEv@I@I@Cs@I?o@LaBDmBLw@@oAGq@DYQq@l@RxAz@`DDNIFKDBHsAbCELC`@P`Al@tAXh@tAdDABJVH`@Bb@K~@Ob@MTI^@FMHQL[gAEIKFQZI^Y]CHKfAOb@Yd@[XkAn@o@p@uAdBEJs@|@KP]|@If@BRFNHHJBANGXGBWNIDlAhEFPDLRKBAC@SJEME@EDCBJ\\c@ZPp@g@ZK]KFYPaAj@{@j@]T_ARm@^AB?PE^KTGDJ\\k@\\~@hDDPa@VJ\\JNZREREXC@E?OTFTA@V`@VPJZd@xAHb@B\\?H?p@Gh@YhAENQp@BFEFGTYl@AHZlA`@nARb@BBBF|@zAl@l@BBVNRFb@LVP|BdCLLzBbCCFXXVZjBjBLF|@Pf@BBBt@N`@VRVPh@Hj@@XJjELDNPV`@bAvAFFL@?H@L@F@LGFCNDh@JVr@z@`AlAVf@EFCFA@CDGFpBdDENBDBDRZBBBDBHq@`Da@t@zBbDP`@B@JNFLFH\\b@BDDHd@x@BDPXHJFLEHCBQZMTEHGHIJFL@D@BBDLP^h@LPDFFJ^f@h@t@pAjBRVPVFJFJf@t@LPJNX`@HLDFbAvAJNDFDDb@fBDNBHb@lBBLDNZvABJFTTjAHVHZ^bBf@tBJf@~@~DFTMV@VBJPDT\\bBtH|@vDHb@l@fCIHe@`ACN?JDLNHFn@x@hE`@vBd@bCjA~FH?HDDF@HP@?RpGZ?NfMj@HEb@BJF~@FxA@?@?BG??DH??h@`BJBPJ?DT~CLF^v@xEXn@FP\\Mb@OJr@LH`@fCBADA@HBJ@H@@DV?@HZ?@BJ@F?D@AlAg@LZVh@t@zAHNTNF`@Cd@@Ll@xDJCFADXLf@HNXNBFHj@J\\LVJNLN@LALDDfAUr@v@Nt@a@NJj@TB`@VTLb@RTXZd@`@l@DHB\\Dn@FxAfDCHHH~A@Hn@|@JNN^F`@@bAGj@On@B@@BJLPTTXLNFFBDd@x@RBhAx@fFdE`AElAZbEXv@R\\Zf@DVJv@bAR`AUlAFr@DT`@b@VHFSLB`@c@x@r@RTHP?HNBD?BBZb@bEbGXd@CHQCCKQUFMv@kAP]Ni@b@w@hEgN~AmDJJJLFDF?Bb@Vx@zA`FL^l@vBLb@nAhEDPFNlA`EFPDPjA|DHVDLjA`EDNDNr@zBBAHVDB?D@F?@?pA?BdBXL@FBfA@BX@ZJ@zCr@~@Rx@AL?tCAzCEJ?FAx@C|@KvAShAQDA`Bi@NE@BFLv@`BDFDFLEnBs@`C_AxBs@dAQn@KbAOLAPEPCEO`BAvADjBNpBNT@F@J@H?Ao@PK@BDT?JvCTvD\\lD\\@A@?F@P@L?B@t@FbF\\tBXvAP?DH@NHd@?b@q@N[Cc@NCf@t@D@DCFCDED?LVNLJ@XI@BBHBCBF?B\\SHBFPDCpD|NRx@f@Wn@fCNn@HZBLLBnBhIbAbEHXHDN?vBeABFH`@DLH^BJFCH@FDHPdBhHHENj@Nn@h@xBFCPp@DHJFF?`@SpAo@BLJ`@NJN`@RE?NDVRz@DLJDPA`@QZE^?ZHFBDBdAb@RFJ@@BFHDFDPVlAH^FTIVjBbISHa@TaBx@DNQ\\ENMF?JaClAKFBBwBfAHb@gB|@fB}@Ic@vBgACCJG`CmA?KLGDOP]EO`By@`@URIkBcIHWGUI_@WmAEQEGGIACKASGeAc@ECGC[I_@?[Da@PQ@KEEMS{@EW?OSDOa@OKKa@CMqAn@a@RG?KGEIQq@GBi@yBOo@Ok@IDeBiHIQGEIAGBCKI_@EMIa@CGwBdAO?IEIYcAcEoBiIMCCMI[Oo@o@gCg@VSy@qD}NEBGQIC]R?CCGCBCIACYHKAOMMWE?EDGBEBEAg@u@OBBb@OZc@p@e@?OIIA?EwAQuBYcF]u@GCAM?QAGAA?A@mD]wD]wCU?KEUACQJ@n@I?KAGAUAqBOkBOwAEaB@DNQBQDM@cANo@JeAPyBr@aC~@oBr@MDEGEGw@aBGMACODaBh@E@iAPwAR}@Jy@BG@K?{CDuC@M?y@@_AS{Cs@KAA[CYgAAGCMAeBY?C?qA?AAG?EECIWC@s@{BEOEOkAaEEMIWkA}DEQGQmAaEGOEQoAiEMc@m@wBM_@{AaFWy@Cc@G?GEKMKK_BlDiEfNc@v@Oh@Q\\w@jAGLPTBJPBBIYe@cEcG[c@CCE?OC?IIQSUy@s@a@b@MCGRWIa@c@EUGs@TmASaAw@cAWKg@E][w@ScEYmA[aADgFeEiAy@SCe@y@CEGGMOUY{@v@[Z}@Nq@DOFIUAEIDk@MSLACAESFyBD[@S?ScACOy@oFq@uEYkC[wBIBSB_@NEWe@qCUyAWHa@NYHWJWHc@LA@m@Ra@L[JWHYJDTkA^_AZg@PUFIBeBj@G]EIG?eA^qAd@m@RYJS][c@GHW\\GJCN?Je@Ag@Jm@h@u@fAKMOU[^e@j@iAz@ONQJiDpBkDpBOHOJmF|COFcAb@GD{A~@g@FA?q@XCGoC`AQDaDxAGD_DzAIDKD{@b@_Ab@KHsBbA_Ab@m@RIDIBOFA?IZ@f@h@`CGBOFIHEF?H?HIFUJKFaAt@WNeFzDu@AYIGES[KSe@kA_@aAK[MeAIkA_BU}Bg@UBeANs@HQ@MJ_@L]JSFI@y@P]JWFI@mAb@SMqEuCIGKE_Ak@QOa@WuAw@EKBGe@UYOc@Yu@sBGQGQAMGIOFaB\\aBBGGE?C@YUwA]_AUuDcAIAFmB@_@[`@I@KBSJGHY[KEUKe@IkAGq@EQEGWYeGw@qAoB}CmAiBkFaIMUAME@{BTW?E@Ka@GD}CaGEEi@HcDf@MNIBMFAG]JWHE[SIGE[GMAG@_A\\SL]\\OXQ^qClHG?Qf@U\\ODwC}BIGXq@KIqEsDEEGEIIgBuAW[KMMSIFg@w@aEuFGICCGI{CgEIAGIqAdBEKCBEECCm@g@i@We@Qw@Qe@GGCMAGAEBe@Gq@KwBOUC]MYQ[_@KWGFMPEHuCmDGGo@EINCBa@l@a@Z@DBF?@DDEEGIUXEGa@yAK]cBsBOSQU{AoB]c@?cA?wC?YKSHQP]`@c@HQBOJqCQ_D[oB_@qC@G@GDGEIAIDSXUPe@RWPQJCAGFGMu@eAwCIKOa@HKRQbA_AVe@FEg@gGAM?ECMUk@IWMYiAiCi@kAEKJMAEn@eA^i@X_@@KXa@\\e@i@iAg@}@@CDEDGHI?GGKGIe@y@Q[?cA?{ADMAK?K@o@@U?GBk@GsA?O?M?G@Q?gBCkAAW@O?M?U?sCCMDM?W?]?SGG?QBgD?{@?c@?OAkCH[DE?ECMAM?CII?QAoHFKCU?KE}EBQ?K@KGOEkDQGQ?[_EG[O{@Ms@[yAMm@KDCIEGFO{@aCAGCEMEKCIIJUmA{BCECEGKuB}Dm@mA{AgCEBACCE@G?Cu@iBIOS[c@q@MPISGMDMGK@EACw@oAAAGIIMACyA_CIOEGDES[iAgBIQIKk@}@EQFAAI?QR?BGESk@_B[_A[w@u@}BCGeEbDoBzA_@Xw@t@EEEIIHk@x@GDAEcAuAWHQFUO{@m@oAq@GHc@d@IJCGqAtACECGIFC@CBAC}DISACGAEOQm@sBCBE?ACACc@`@u@n@GFACA?o@uAIOM?MEMGWQKYAaDCSQa@WGSBCBKFEKo@sACEkBbBaA|@YT]BWFSZ]n@QFUIa@c@Q_@OMKAIB[NM@KCOOKWA]BUHSPi@C_@Og@EMc@oASu@@a@QCIQISI[OYIIEQCSGMiDnEQPgArAQZEHc@n@SFUVUb@s@bA[b@Q`@Gj@Ab@?FM^SPYLE?sAg@[GkBgAYGUGWAYCy@EQCUE?DQLATIAE??LE`BOIy@]G?C?gAzCEJOb@i@?GEuAqAIEEH_@`@YR{@`@c@XGJU^Yx@CLAJKhA?l@?L?JFfARpATv@EAQEOSA@KK_@k@SWQKHPABGDCB??@BG?E@GD_@XiBtAEBGDSLOGWs@c@m@k@o@o@g@s@]q@Uu@Mg@Cg@?q@HKB_@AYDGFc@JgADeAAeC[a@Ac@AI?qAHg@Lc@TGDWPQP]b@Qd@O?WMa@Ma@EQBYHw@j@OZWpAOIALCB_A[ENSGYK_E{AcA_@]K}DyAAFCFEFQGIIIIIKGGCCOQMT_@l@LPb@d@KP_AzAIBOTEFIKGIBq@mBgCIK}AT_ADkANq@\\AEMYCIEFILYLOAIJK@KB?@?@AAKNIJ?@SV_@j@]h@OREJET@jACHIPSLIDe@CMAU\\CFc@j@OTUv@O\\N]Tw@NUb@k@BGT]L@d@BHERMHQBIAkADUDKNS\\i@^k@RW?AHKJO@@?A?AJCJAHKN@XMHMDGBHLX@Dp@]jAO~@E|AUHJlBfCCp@FHHJDGNUHC~@{AJQc@e@MQ^m@LUNPLWVm@b@yAXoB@q@@_@EI?I?YDK?QD?HAT?Ds@J_AHa@KABMFYFQJUHK`@_@NI\\Mp@EJBBGP_@HOZw@r@}@FQd@YzC{ANIBADAXSj@k@f@w@DMFKFMhAyBZa@f@_@@CFGDCDGnAmAbA_AZSH?AK?GJC?GLm@NIJCH^B?X\\XeAHBj@IAEbCi@H@HAHA?Ht@OnDa@@?JCFCxDg@LCLPFGFC@MDA~@I`CUD?h@rADJH?@DPCjBEBABAXEH?xBKvAGz@GFADn@BAFA@FrHg@JKHCbCO@CBS@CQWDGDGBCBAJ\\DCAEBD?I?GGS@Aa@yBIq@C[[cANMJ?BC?GFCUuBKe@g@}@k@y@JBFEa@e@IUA[BJj@v@?OJDPIJY\\H@?BC?CDC?g@Y}@CEG[BCCIJC?C`@MBBG]K{@@q@F_CDmBF_D?k@FF?qACWQe@MQg@_@ZCEi@N]FEHAJ_@GQNEVHD[FO@[P}@FS?[GQDa@COOgAIq@Fk@NJd@oA@ATJ@EDKQI?MBC?MHGCMJEAQJIAULE?O?ECE@G@ECCDS\\wAF_@B@@G?CD?@EH_@FE\\uAEE@MDKD@BMTaA?EDSBIHSR{@\\_B`@cB\\{AF@J]L_@BOBAh@t@FGBEJMBGBG?CLCd@w@Xc@bAuADDPWJHrAsBTYBF`@l@BDZa@JCTl@Ln@LXPJPAd@EDSL?j@@ZG`BE@}Bd@q@hBlCdA|AFKJMbBbCDFb@?BCJJB@DFH?dF@H?KMPWBCFJ^DJKFHBFDDCBJ@`@B~BCjAC?D\\ATZJNb@?dFG?DF@BHFHFHDEd@?FFFIFKCITAvEAJF@AB@DF@HBBFKr@DzBdDDGBC@ABE@Bd@?F?p@cAx@kA@u@AAHMFIi@u@yA{B?C@o@@EXc@jAaBCEAIZe@DG\\e@b@m@hAaB\\i@DGX]f@w@LQHMFI?SAOAEFMc@qCIc@COQsAACG]AKGWy@eFAGAIEU?EEWcAkGCG?KCIAEAIgAsGIi@U_BMMg@i@k@{@y@}AGO_@aAa@mAS[INO\\OTIKMOIGGI`@w@NUHG@C\\g@DG@CBA@EBC@APUHODGJIC]Ga@BAHCHCBA@?HCDCB?PIDADIJBNGt@_AAEY\\FW?O?NGVX]@Dh@u@DKHIBCNUh@y@HJFHd@I@DFEbCnDJLHNxB~C`@j@DFZf@FIfA~AJNFHFFt@DBB@DDRVT?F?L?f@?HdDBN??FXAV?pABHFR?L?CK@CzCA^?GHN@NAVA^??GBAdDD\\?t@@@FGRFJDHFF@DDFV]LGv@GV\\JKFIDs@bD?T?f@?H?B?N?d@?N@xD?^BDHHDLFLAHDHIDEFKJMlAjB\\g@b@k@d@r@b@DJDNPlAxA^y@h@JZFRAF[DFHB?FZJ`@LH@AIT?p@f@TXV^f@t@BBBDFHt@eAr@aABCFHBDBBd@p@JONRZDHCBNFf@JL[b@HNEHHNHJHNFIBDv@lAtAqBBHBJhA`BX\\FFNP\\f@y@`B?@BBANAZPL@FhCvAD@D@Of@h@^f@\\JHNJM\\k@`COp@Mj@K\\Uh@Zd@k@|@JVP`@EHABFHx@hALPLRTVHJCDYd@n@z@Zd@Yh@a@z@EJn@v@?n@SZR[?o@o@w@OTW\\S\\y@vA{@m@?@o@vAQX_AZ_AXMDYHy@T?Hg@RADE@[`@CBGJCBIOIMSXy@_@EGKKa@g@[a@SZgBfCbAzAJ@JB\\I@H@FJRJTDH_E~FAD@BKLIJC?GHe@l@?FMNSVC@?@@LF?pBbHNh@BHIL_AjAOPEDA@ABIJuCxDKQA@A@CBA@CDCDMPILEDCF??CBEFAZi@`AU^s@z@[VJNEFGHCBILeCdDCDKLEDQV_CzCSZIHY`@g@p@aBvBILCBQTeCdDSXQTo@x@aBxBOEGACFGLWZ",
+   "way_points":[
+    0,42,79,114,140,168,323,421,440,972,1501,1691,1780,1991,2204,2331,2397,2500,2609,2664,2694,2727,
+    2811
+   ],
+   "legs":[]
+  }
+ ],
+ "metadata":{
+  "attribution":"openrouteservice.org | OpenStreetMap contributors","service":"routing",
+  "timestamp":1699803839791,
+  "query":{
+   "coordinates":[
+    [2.164731569,41.3917335028],[2.1703533459,41.3879636237],[2.1749811959,41.3832365357],
+    [2.1741540522,41.3788724545],[2.1782321528,41.3779233079],[2.1762210132,41.375777914],
+    [2.1655785819,41.362934814],[2.1534519806,41.3684157161],[2.1516947537,41.3710468544],
+    [2.0774993409,41.3069308106],[2.1127460513,41.395655266],[2.1505833285,41.4034161199],
+    [2.1530592782,41.4144786791],[2.1454103653,41.439985857],[2.1619331862,41.4192922258],
+    [2.174444,41.412778],[2.1742042806,41.4034586347],[2.1895930979,41.4033324446],
+    [2.1858649831,41.3887990339],[2.1820496401,41.3838307225],[2.1763859006,41.3838054534],
+    [2.1754522728,41.3875510231],[2.1617039064,41.3952195165]
+   ],
+   "profile":"foot-walking","format":"json"
+  },
+  "engine":{"version":"7.1.0","build_date":"2023-07-09T01:31:50Z","graph_date":"2023-10-29T22:15:52Z"}
+ }
+}
