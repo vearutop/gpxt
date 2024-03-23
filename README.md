@@ -12,12 +12,20 @@ GPX Tool CLI.
 ## Usage
 
 ```
+usage: gpxt [<flags>] <command> [<args> ...]
+
+
+Flags:
+  --[no-]help     Show context-sensitive help (also try --help-long and --help-man).
+  --[no-]version  Show application version.
+
 Commands:
 help [<command>...]
     Show help.
 
-time [<flags>] <file>
-    Move track in time
+move [<flags>] <file>
+    When both new-start and new-end are present, the track would be stretched/shrinked to fit in new boundaries. Otherwise it would be moved to the touch new-start or
+    new-end.
 
 info <file>
     Show info about GPX file
@@ -27,6 +35,9 @@ show [<flags>] [<files>...]
 
 concat [<flags>] [<files>...]
     Concat multiple GPX tracks in one
+
+cut [<flags>] <files>...
+    Remove head and/or tail of a track
 
 reduce [<flags>] <files>...
     Reduce number of points in track to simplify shape
@@ -39,4 +50,5 @@ runnerup list [<flags>] <db>
 
 runnerup export [<flags>] <db> <activity-id> [<output>]
     Export activity as GPX.
+
 ```
