@@ -14,10 +14,11 @@ import (
 )
 
 func main() {
-	timeCmd()
+	moveCmd()
 	infoCmd()
 	showCmd()
 	concatCmd()
+	cutCmd()
 	reduceCmd()
 	routeCmd()
 	runnerup.Cmd()

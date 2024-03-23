@@ -45,7 +45,7 @@ func reduceCmd() {
 
 			fmt.Println(GetGpxElementInfo("", gpxFile))
 
-			xx, err := gpxFile.ToXml(gpx.ToXmlParams{})
+			xx, err := gpxFile.ToXml(gpx.ToXmlParams{Indent: indent})
 			if err != nil {
 				return fmt.Errorf("render GPX: %w", err)
 			}
