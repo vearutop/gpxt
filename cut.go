@@ -45,9 +45,18 @@ func cutCmd() {
 			}
 
 			for ti, t := range gpxFile.Tracks {
-				for si, s := range t.Segments {
+				var segments []gpx.GPXTrackSegment
+
+				for _, s := range t.Segments {
 					s.Points = cutPoints(s.Points, minTS, maxTS)
-					t.Segments[si] = s
+
+					if len(s.Points) > 0 {
+						segments = append(segments, s)
+					}
+				}
+
+				if len(segments) > 0 {
+					t.Segments = segments
 				}
 
 				gpxFile.Tracks[ti] = t
@@ -55,7 +64,9 @@ func cutCmd() {
 
 			fmt.Println(GetGpxElementInfo("", gpxFile))
 
-			xx, err := gpxFile.ToXml(gpx.ToXmlParams{})
+			xx, err := gpxFile.ToXml(gpx.ToXmlParams{
+				Indent: indent,
+			})
 			if err != nil {
 				return fmt.Errorf("render GPX: %w", err)
 			}
@@ -73,9 +84,7 @@ func cutCmd() {
 }
 
 func cutPoints(points []gpx.GPXPoint, minTime, maxTime time.Time) []gpx.GPXPoint {
-	var (
-		pts []gpx.GPXPoint
-	)
+	var pts []gpx.GPXPoint
 
 	for _, pt := range points {
 		pt := pt
@@ -84,7 +93,7 @@ func cutPoints(points []gpx.GPXPoint, minTime, maxTime time.Time) []gpx.GPXPoint
 			continue
 		}
 
-		if !maxTime.IsZero() && pt.Timestamp.After(minTime) {
+		if !maxTime.IsZero() && pt.Timestamp.After(maxTime) {
 			continue
 		}
 

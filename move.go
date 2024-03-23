@@ -87,7 +87,7 @@ func moveCmd() {
 
 		fmt.Println(GetGpxElementInfo("", gpxFile))
 
-		xx, err := gpxFile.ToXml(gpx.ToXmlParams{})
+		xx, err := gpxFile.ToXml(gpx.ToXmlParams{Indent: indent})
 		if err != nil {
 			return fmt.Errorf("error rendering GPX: %w", err)
 		}
@@ -108,7 +108,8 @@ func transformTime(
 	origDur time.Duration,
 	newMin time.Time,
 	newDur time.Duration,
-	p time.Time) time.Time {
+	p time.Time,
+) time.Time {
 	pr := float64(p.Sub(origMin)) / float64(origDur)
 	cr := pr * float64(newDur) / float64(origDur)
 	c := newMin.Add(time.Duration(cr * float64(newDur)))
