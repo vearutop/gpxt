@@ -41,9 +41,11 @@ func export(c *kingpin.CmdClause) {
 			p.Latitude = i.Lat
 			p.Longitude = i.Lon
 			p.Elevation.SetValue(i.Alt)
+
 			if i.Satellites != 0 {
 				p.Satellites.SetValue(i.Satellites)
 			}
+
 			p.Timestamp = i.Time.Time()
 
 			gpxDoc.AppendPoint(&p)

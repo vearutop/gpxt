@@ -28,10 +28,12 @@ func (a *Tour) Points() []gpx.Point {
 // InitTourPoints inits tour.
 func (a *Tour) InitTourPoints(tm TourManager) {
 	a.InitTour(tm.NumberOfPoints())
+
 	// Add all destination points from TourManager to Tour
 	for i := 0; i < tm.NumberOfPoints(); i++ {
 		a.SetPoint(i, tm.getPoint(i))
 	}
+
 	// Shuffle points in tour
 	a.tourPoints = shufflePoints(a.tourPoints)
 }

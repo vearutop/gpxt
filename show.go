@@ -86,7 +86,7 @@ func showMap(files []string, tiles string) usecase.Interactor {
 		Tiles string
 	}
 
-	u := usecase.NewInteractor(func(ctx context.Context, in struct{}, out *page) error {
+	u := usecase.NewInteractor(func(_ context.Context, _ struct{}, out *page) error {
 		d := pageData{
 			Files: files,
 			Tiles: tiles,
@@ -105,7 +105,7 @@ func dlGPX(files []string) usecase.Interactor {
 		ID uint `path:"id"`
 	}
 
-	u := usecase.NewInteractor(func(ctx context.Context, in req, out *usecase.OutputWithEmbeddedWriter) error {
+	u := usecase.NewInteractor(func(_ context.Context, in req, out *usecase.OutputWithEmbeddedWriter) error {
 		rw, ok := out.Writer.(http.ResponseWriter)
 		if !ok {
 			return errors.New("missing http.ResponseWriter")

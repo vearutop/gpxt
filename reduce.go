@@ -69,8 +69,6 @@ func reducePoints(points []gpx.GPXPoint, minDist int, minInterval time.Duration)
 	)
 
 	for i, pt := range points {
-		pt := pt
-
 		if prev.Timestamp.IsZero() {
 			prev = pt
 			pts = append(pts, pt)

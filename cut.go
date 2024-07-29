@@ -84,11 +84,9 @@ func cutCmd() {
 }
 
 func cutPoints(points []gpx.GPXPoint, minTime, maxTime time.Time) []gpx.GPXPoint {
-	var pts []gpx.GPXPoint
+	pts := make([]gpx.GPXPoint, 0, len(points))
 
 	for _, pt := range points {
-		pt := pt
-
 		if !minTime.IsZero() && pt.Timestamp.Before(minTime) {
 			continue
 		}
