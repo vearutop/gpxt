@@ -71,6 +71,7 @@ func crossover(p1 base.Tour, p2 base.Tour) base.Tour { //nolint:cyclop
 		// Check if child contains city
 		if !c.ContainsPoint(p2.GetPoint(i)) {
 			c.SetPoint(p2s[j], p2.GetPoint(i))
+
 			j++
 		}
 	}

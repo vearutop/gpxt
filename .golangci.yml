@@ -22,42 +22,41 @@ linters-settings:
 linters:
   enable-all: true
   disable:
-    - goerr113
+    - funlen
+    - gocognit
+    - intrange
+    - cyclop
+    - gocyclo
+    - err113
     - lll
-    - maligned
     - gochecknoglobals
     - gomnd
     - wrapcheck
     - paralleltest
     - forbidigo
-    - exhaustivestruct
-    - interfacer # deprecated
     - forcetypeassert
-    - scopelint # deprecated
-    - ifshort # too many false positives
-    - golint # deprecated
     - varnamelen
     - tagliatelle
     - errname
     - ireturn
     - exhaustruct
     - nonamedreturns
-    - nosnakecase
-    - structcheck
-    - varcheck
-    - deadcode
     - testableexamples
     - dupword
     - depguard
     - tagalign
+    - execinquery
+    - mnd
+    - testifylint
 
 issues:
   exclude-use-default: false
   exclude-rules:
     - linters:
         - gomnd
+        - mnd
         - goconst
-        - goerr113
+        - err113
         - noctx
         - funlen
         - dupl

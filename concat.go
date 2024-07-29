@@ -38,7 +38,6 @@ func concatCmd() {
 
 			for _, t := range mf.Tracks {
 				for _, s := range t.Segments {
-					s := s
 					gpxFile.AppendSegment(&s)
 				}
 			}

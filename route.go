@@ -61,7 +61,7 @@ func routeCmd() { //nolint:funlen,cyclop
 			segs := gj.Features[0].Properties.Segments
 			pts := gj.Features[0].Geometry.Coordinates
 			totalDist := 0.0
-			var totalDur time.Duration
+			totalDur := time.Duration(0)
 
 			for _, seg := range segs {
 				t := gpx.GPXTrack{}
@@ -95,6 +95,7 @@ func routeCmd() { //nolint:funlen,cyclop
 				gp := gpx.GPXPoint{}
 				gp.Point = p
 				gpxFile.AppendPoint(&gp)
+
 				pts = append(pts, [2]float64{p.Longitude, p.Latitude})
 			}
 
@@ -102,6 +103,7 @@ func routeCmd() { //nolint:funlen,cyclop
 			if err != nil {
 				return err
 			}
+
 			fmt.Println(string(j))
 		}
 

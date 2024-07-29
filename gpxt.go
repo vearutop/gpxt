@@ -43,12 +43,17 @@ func GetGpxElementInfo(prefix string, gpxDoc gpx.GPXElementInfo) string {
 	result += fmt.Sprint(prefix, "Moving time: ", (time.Duration(md.MovingTime) * time.Second).String(), "\n")
 	result += fmt.Sprint(prefix, "Stopped time: ", (time.Duration(md.StoppedTime) * time.Second).String(), "\n")
 
+	avgSpd := md.MovingDistance / md.MovingTime // m/s
+
+	result += strings.TrimSpace(fmt.Sprintf("%s Avg speed: %fm/s = %fkm/h",
+		prefix, avgSpd, avgSpd*60*60/1000.0)) + "\n"
+
 	result += strings.TrimSpace(fmt.Sprintf("%s Max speed: %fm/s = %fkm/h",
 		prefix, md.MaxSpeed, md.MaxSpeed*60*60/1000.0)) + "\n"
 
 	updo := gpxDoc.UphillDownhill()
-	result += fmt.Sprint(prefix, "Total uphill: ", updo.Uphill, "\n")
-	result += fmt.Sprint(prefix, "Total downhill: ", updo.Downhill, "\n")
+	result += fmt.Sprint(prefix, "Total uphill: ", updo.Uphill, "m\n")
+	result += fmt.Sprint(prefix, "Total downhill: ", updo.Downhill, "m\n")
 
 	timeBounds := gpxDoc.TimeBounds()
 	result += fmt.Sprint(prefix, "Started: ", timeBounds.StartTime.Format(time.RFC3339), "\n")
