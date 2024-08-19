@@ -10,6 +10,7 @@ import (
 	"github.com/bool64/dev/version"
 	"github.com/tkrajina/gpxgo/gpx"
 	"github.com/vearutop/gpxt/runnerup"
+	"github.com/vearutop/gpxt/sigma"
 	_ "modernc.org/sqlite"
 )
 
@@ -22,6 +23,7 @@ func main() {
 	reduceCmd()
 	routeCmd()
 	runnerup.Cmd()
+	sigma.Cmd()
 
 	kingpin.Version(version.Info().Version)
 	kingpin.Parse()

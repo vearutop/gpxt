@@ -1,0 +1,18 @@
+.google-maps {
+    background-image: url('/static/google_maps.svg');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+    padding-bottom: 6px;
+    display: inline-block;
+    height: 16px;
+    padding-top: 0;
+}
+
+.apple-maps {
+    background-image: url('/static/apple_maps.svg');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    padding-left: 24px;
+    padding-bottom: 6px;
+}

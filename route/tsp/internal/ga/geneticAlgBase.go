@@ -47,7 +47,7 @@ func crossover(p1 base.Tour, p2 base.Tour) base.Tour { //nolint:cyclop
 	p2s := make([]int, 0, size-nc)
 
 	// Populate child with parent 1
-	if sp < ep { //nolint:nestif
+	if sp < ep {
 		for i := 0; i < size; i++ {
 			if i >= sp && i < ep {
 				c.SetPoint(i, p1.GetPoint(i))

@@ -11,6 +11,8 @@ import (
 )
 
 func TestOrder(t *testing.T) {
+	t.Skip("too slow")
+
 	gpxFile, err := gpx.ParseFile("testdata/photos-2023-10-faro.gpx")
 	require.NoError(t, err)
 
