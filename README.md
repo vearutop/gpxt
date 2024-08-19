@@ -9,6 +9,45 @@
 
 GPX Tool CLI.
 
+## Install
+
+```
+go install github.com/vearutop/gpxt@latest
+$(go env GOPATH)/bin/gpxt --help
+```
+
+Or download binary from [releases](https://github.com/vearutop/gpxt/releases).
+
+### Linux AMD64
+
+```
+wget https://github.com/vearutop/gpxt/releases/latest/download/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && rm linux_amd64.tar.gz
+./gpxt -version
+```
+
+### Linux ARM64
+
+```
+wget https://github.com/vearutop/gpxt/releases/latest/download/linux_arm64.tar.gz && tar xf linux_arm64.tar.gz && rm linux_arm64.tar.gz
+./gpxt -version
+```
+
+### Macos Intel
+
+```
+wget https://github.com/vearutop/gpxt/releases/latest/download/darwin_amd64.tar.gz && tar xf darwin_amd64.tar.gz && rm darwin_amd64.tar.gz
+codesign -s - ./gpxt
+./gpxt -version
+```
+
+### Macos Apple Silicon (M1, etc...)
+
+```
+wget https://github.com/vearutop/gpxt/releases/latest/download/darwin_arm64.tar.gz && tar xf darwin_arm64.tar.gz && rm darwin_arm64.tar.gz
+codesign -s - ./gpxt
+./gpxt -version
+```
+
 ## Usage
 
 ```
