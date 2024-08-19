@@ -14,7 +14,9 @@ import (
 
 // MapSlf defines mapping options.
 type MapSlf struct {
-	ByDist bool
+	ByDist    bool
+	FromStart bool
+	Scale     float64
 }
 
 const (
@@ -40,6 +42,8 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	if err := xml.Unmarshal(d, &v); err != nil {
 		return fmt.Errorf("decode slf: %w", err)
 	}
+
+	entries := v.Entries.Entry
 
 	gpxFile, err := gpx.ParseFile(gpxFn)
 	if err != nil {
@@ -84,9 +88,14 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	}
 
 	var (
-		dist      float64
-		prevPoint *gpx.GPXPoint
+		slfFullDist = entries[len(entries)-1].DistanceAbsolute
+		dist        float64
+		prevPoint   *gpx.GPXPoint
 	)
+
+	if !mo.FromStart {
+		dist = gpxFile.Length2D()
+	}
 
 	visitPoint := func(point *gpx.GPXPoint) {
 		if prevPoint != nil {
@@ -96,7 +105,7 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 		prevPoint = point
 
 		// Find closes point by time or by distance.
-		i, _ := slices.BinarySearchFunc(v.Entries.Entry, point, func(entry Entry, point *gpx.GPXPoint) int {
+		i, _ := slices.BinarySearchFunc(entries, point, func(entry Entry, point *gpx.GPXPoint) int {
 			if mo.ByDist {
 				if entry.DistanceAbsolute < dist {
 					return -1

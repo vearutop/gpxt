@@ -22,14 +22,14 @@ Or download binary from [releases](https://github.com/vearutop/gpxt/releases).
 
 ```
 wget https://github.com/vearutop/gpxt/releases/latest/download/linux_amd64.tar.gz && tar xf linux_amd64.tar.gz && rm linux_amd64.tar.gz
-./gpxt -version
+./gpxt --version
 ```
 
 ### Linux ARM64
 
 ```
 wget https://github.com/vearutop/gpxt/releases/latest/download/linux_arm64.tar.gz && tar xf linux_arm64.tar.gz && rm linux_arm64.tar.gz
-./gpxt -version
+./gpxt --version
 ```
 
 ### Macos Intel
@@ -37,7 +37,7 @@ wget https://github.com/vearutop/gpxt/releases/latest/download/linux_arm64.tar.g
 ```
 wget https://github.com/vearutop/gpxt/releases/latest/download/darwin_amd64.tar.gz && tar xf darwin_amd64.tar.gz && rm darwin_amd64.tar.gz
 codesign -s - ./gpxt
-./gpxt -version
+./gpxt --version
 ```
 
 ### Macos Apple Silicon (M1, etc...)
@@ -45,7 +45,7 @@ codesign -s - ./gpxt
 ```
 wget https://github.com/vearutop/gpxt/releases/latest/download/darwin_arm64.tar.gz && tar xf darwin_arm64.tar.gz && rm darwin_arm64.tar.gz
 codesign -s - ./gpxt
-./gpxt -version
+./gpxt --version
 ```
 
 ## Usage
