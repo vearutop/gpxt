@@ -18,6 +18,8 @@ linters-settings:
     check-exported: true
   funlen:
     lines: 70
+  nestif:
+    min-complexity: 7
 
 linters:
   enable-all: true

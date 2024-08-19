@@ -12,6 +12,7 @@ import (
 	"github.com/tkrajina/gpxgo/gpx"
 )
 
+// MapSlf defines mapping options.
 type MapSlf struct {
 	ByDist bool
 }
@@ -21,6 +22,7 @@ const (
 	tpxPath = "TrackPointExtension"
 )
 
+// MergeSlfIntoGpx adds data from SLF into GPX file.
 func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) error {
 	var v Activity
 
@@ -30,7 +32,7 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 		opt(&mo)
 	}
 
-	d, err := os.ReadFile(slfFn)
+	d, err := os.ReadFile(slfFn) //nolint:gosec
 	if err != nil {
 		return fmt.Errorf("read source slf: %w", err)
 	}
@@ -77,16 +79,20 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 
 	entryTime := func(entry Entry) time.Time {
 		t, _ := entryTimePause(entry)
+
 		return t
 	}
 
-	dist := 0.0
-	var prevPoint *gpx.GPXPoint
+	var (
+		dist      float64
+		prevPoint *gpx.GPXPoint
+	)
 
 	visitPoint := func(point *gpx.GPXPoint) {
 		if prevPoint != nil {
 			dist += prevPoint.Distance2D(point)
 		}
+
 		prevPoint = point
 
 		// Find closes point by time or by distance.
@@ -116,14 +122,10 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 			vt, _ := entryTimePause(vv)
 
 			if !mo.ByDist && vt.Sub(t) > 10*time.Second {
-				// println("GPX TIME", t.String(), "SLF TIME", vt.String(), "skipping")
-
 				return
 			}
 
 			if mo.ByDist && math.Abs(vv.DistanceAbsolute-dist) > 100.0 {
-				// println("GPX DIST", dist, "SLF DIST", vv.DistanceAbsolute, "skipping")
-
 				return
 			}
 
@@ -142,14 +144,13 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 			if vv.Temperature != "" {
 				point.Extensions.GetOrCreateNode(tpxNs, tpxPath, "atemp").Data = vv.Temperature
 			}
-		} else {
-			// println("GPX TIME", t.String(), "SLF TIME ABSENT")
 		}
 	}
 
 	for _, tr := range gpxFile.Tracks {
 		for _, s := range tr.Segments {
 			prevPoint = nil
+
 			for i, point := range s.Points {
 				visitPoint(&point)
 				s.Points[i] = point

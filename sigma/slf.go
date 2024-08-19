@@ -1,8 +1,11 @@
+// Package sigma provides tools to work with Sigma SLF files.
+//
+// See also https://help.sigmasport.com/en/activities-log/221-6-4-datenexport-log-exportieren.
 package sigma
 
 import "encoding/xml"
 
-// Activity was generated 2024-08-01 16:52:14 by https://xml-to-go.github.io/ in Ukraine.
+// Activity is an SLF XML content.
 type Activity struct {
 	XMLName  xml.Name `xml:"Activity"`
 	Text     string   `xml:",chardata"`
@@ -45,7 +48,7 @@ type Activity struct {
 		IntensityZone3Start         string  `xml:"intensityZone3Start"`
 		IntensityZone4Start         string  `xml:"intensityZone4Start"`
 		IntensityZone4End           string  `xml:"intensityZone4End"`
-		LinkedRouteId               string  `xml:"linkedRouteId"`
+		LinkedRouteID               string  `xml:"linkedRouteId"`
 		LowerLimit                  string  `xml:"lowerLimit"`
 		ManualTemperature           string  `xml:"manualTemperature"`
 		MaximumAltitude             string  `xml:"maximumAltitude"`
@@ -92,7 +95,7 @@ type Activity struct {
 		TrainingTime                string  `xml:"trainingTime"`
 		TrainingType                string  `xml:"trainingType"`
 		TrainingZone                string  `xml:"trainingZone"`
-		UnitId                      string  `xml:"unitId"`
+		UnitID                      string  `xml:"unitId"`
 		UpperLimit                  string  `xml:"upperLimit"`
 		Weather                     string  `xml:"weather"`
 		Wind                        string  `xml:"wind"`
@@ -139,6 +142,7 @@ type Activity struct {
 	} `xml:"Markers"`
 }
 
+// Entry is a single log row.
 type Entry struct {
 	Text                        string   `xml:",chardata"`
 	Altitude                    int      `xml:"altitude,attr"`
