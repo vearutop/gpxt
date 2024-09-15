@@ -100,6 +100,8 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	for _, tr := range gpxFile.Tracks {
 		for _, s := range tr.Segments {
 			for _, point := range s.Points {
+				point := point
+
 				if prevPoint != nil {
 					dist += prevPoint.Distance2D(&point)
 				}
