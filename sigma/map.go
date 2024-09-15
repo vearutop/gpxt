@@ -84,13 +84,44 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	}
 
 	var (
-		dist      float64
-		prevPoint *gpx.GPXPoint
+		dist       float64
+		prevPoint  *gpx.GPXPoint
+		slfEntries = v.Entries.Entry
 	)
+
+	totalGPXDist := gpxFile.Length3D()
+	fmt.Printf("GPX dist: %.2fkm\n", totalGPXDist/1000.0)
+
+	totalSLFDist := slfEntries[len(slfEntries)-1].DistanceAbsolute
+	fmt.Printf("SLF dist: %.2fkm\n", totalSLFDist/1000.0)
+
+	prevPoint = nil
+
+	for _, tr := range gpxFile.Tracks {
+		for _, s := range tr.Segments {
+			for _, point := range s.Points {
+				if prevPoint != nil {
+					dist += prevPoint.Distance2D(&point)
+				}
+
+				prevPoint = &point
+			}
+		}
+	}
+
+	totalGPXDist = dist
+	fmt.Printf("GPX dist 2: %.2fkm\n", totalGPXDist/1000.0)
+
+	distRatio := totalSLFDist / totalGPXDist
+
+	fmt.Printf("Dist ratio: %.f%%\n", 100.0*distRatio)
+
+	dist = 0
+	prevPoint = nil
 
 	visitPoint := func(point *gpx.GPXPoint) {
 		if prevPoint != nil {
-			dist += prevPoint.Distance2D(point)
+			dist += distRatio * prevPoint.Distance2D(point)
 		}
 
 		prevPoint = point
@@ -149,8 +180,6 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 
 	for _, tr := range gpxFile.Tracks {
 		for _, s := range tr.Segments {
-			prevPoint = nil
-
 			for i, point := range s.Points {
 				visitPoint(&point)
 				s.Points[i] = point

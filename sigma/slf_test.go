@@ -14,3 +14,14 @@ func TestMergeSlfIntoGpx(t *testing.T) {
 		"testdata/RunnerUp_2024-08-10-19-24-37_Biking-SLF.gpx",
 	))
 }
+
+func TestMergeSlfIntoGpx_byDist(t *testing.T) {
+	require.NoError(t, sigma.MergeSlfIntoGpx(
+		"testdata/5b7ab817c983b8885c2e1bd64f15dba74ccf7a1b.slf",
+		"testdata/RunnerUp_2024-08-10-19-24-37_Biking.gpx",
+		"testdata/RunnerUp_2024-08-10-19-24-37_Biking-SLF.gpx",
+		func(options *sigma.MapSlf) {
+			options.ByDist = true
+		},
+	))
+}

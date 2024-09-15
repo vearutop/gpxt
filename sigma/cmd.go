@@ -20,7 +20,7 @@ func merge(c *kingpin.CmdClause) {
 		gpxFile string
 		slfFile string
 		output  string
-		byDist  bool
+		byTime  bool
 	)
 
 	list := c.Command("merge", "Merge SLF into GPX")
@@ -28,7 +28,7 @@ func merge(c *kingpin.CmdClause) {
 	list.Arg("slf", "Source SLF file.").Required().StringVar(&slfFile)
 
 	list.Flag("output", "Output file.").Default("<name>.slf.gpx").StringVar(&output)
-	list.Flag("by-dist", "Map by distance, can be more accurate than by estimated timestamp.").BoolVar(&byDist)
+	list.Flag("by-time", "Map by estimated time, can be less accurate than by distance.").BoolVar(&byTime)
 
 	list.Action(func(_ *kingpin.ParseContext) error {
 		name := strings.TrimSuffix(gpxFile, path.Ext(gpxFile))
@@ -37,7 +37,7 @@ func merge(c *kingpin.CmdClause) {
 		fmt.Println("Merging " + gpxFile + " with " + slfFile + " into " + outName)
 
 		err := MergeSlfIntoGpx(slfFile, gpxFile, outName, func(options *MapSlf) {
-			options.ByDist = byDist
+			options.ByDist = !byTime
 		})
 		if err != nil {
 			return err
