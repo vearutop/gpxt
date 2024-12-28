@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/alecthomas/kingpin/v2"
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 )
 
 func reduceCmd() {

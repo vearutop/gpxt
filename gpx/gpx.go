@@ -1159,9 +1159,8 @@ func (seg *GPXTrackSegment) MovingData() MovingData {
 		stoppedTime     float64
 		movingDistance  float64
 		stoppedDistance float64
+		maxSpeed        float64
 	)
-
-	speedsDistances := make([]SpeedsAndDistances, 0)
 
 	for i := 1; i < len(seg.Points); i++ {
 		prev := seg.Points[i-1]
@@ -1184,16 +1183,11 @@ func (seg *GPXTrackSegment) MovingData() MovingData {
 			movingTime += timedelta.Seconds()
 			movingDistance += dist
 
-			sd := SpeedsAndDistances{dist / timedelta.Seconds(), dist}
-			speedsDistances = append(speedsDistances, sd)
-		}
-	}
+			spd := dist / timedelta.Seconds()
 
-	var maxSpeed float64
-	if len(speedsDistances) > 0 {
-		maxSpeed = CalcMaxSpeed(speedsDistances)
-		if math.IsNaN(maxSpeed) {
-			maxSpeed = 0
+			if spd > maxSpeed {
+				maxSpeed = spd
+			}
 		}
 	}
 

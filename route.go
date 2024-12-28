@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/alecthomas/kingpin/v2"
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 	"github.com/vearutop/gpxt/route/ors"
 	"github.com/vearutop/gpxt/route/tsp"
 )

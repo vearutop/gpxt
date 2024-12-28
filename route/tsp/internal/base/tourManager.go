@@ -1,7 +1,7 @@
 // Package base holds basic entities.
 package base
 
-import "github.com/tkrajina/gpxgo/gpx"
+import "github.com/vearutop/gpxt/gpx"
 
 // TourManager contains list of points to be visited.
 type TourManager struct {

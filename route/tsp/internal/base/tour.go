@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"strconv"
 
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 )
 
 // Tour is an arranged list of points.

@@ -7,7 +7,6 @@ package gpx
 
 import (
 	"math"
-	"sort"
 )
 
 const (
@@ -43,12 +42,6 @@ func (md MovingData) Equals(md2 MovingData) bool {
 		md.StoppedTime == md2.StoppedTime &&
 		md.StoppedDistance == md2.StoppedDistance &&
 		md.MaxSpeed == md.MaxSpeed
-}
-
-// SpeedsAndDistances contaings speed/distance information
-type SpeedsAndDistances struct {
-	Speed    float64
-	Distance float64
 }
 
 // HaversineDistance returns the haversine distance between two points.
@@ -93,58 +86,6 @@ func Length2D(locs []Point) float64 {
 // Length3D calculates the lenght of given points list including elevation distance
 func Length3D(locs []Point) float64 {
 	return length(locs, true)
-}
-
-// CalcMaxSpeed returns the maximum speed
-func CalcMaxSpeed(speedsDistances []SpeedsAndDistances) float64 {
-	lenArrs := len(speedsDistances)
-
-	if len(speedsDistances) < 3 {
-		// log.Println("Segment too small to compute speed, size: ", lenArrs)
-		return 0.0
-	}
-
-	var sumDists float64
-	for _, d := range speedsDistances {
-		sumDists += d.Distance
-	}
-	avgDist := sumDists / float64(lenArrs)
-
-	var variance float64
-	for i := 0; i < len(speedsDistances); i++ {
-		variance += math.Pow(speedsDistances[i].Distance-avgDist, 2)
-	}
-	stdDeviation := math.Sqrt(variance)
-
-	// ignore items with distance too long
-	filteredSD := make([]SpeedsAndDistances, 0)
-	for i := 0; i < len(speedsDistances); i++ {
-		dist := math.Abs(speedsDistances[i].Distance - avgDist)
-		if dist <= stdDeviation*1.5 {
-			filteredSD = append(filteredSD, speedsDistances[i])
-		}
-	}
-
-	speeds := make([]float64, len(filteredSD))
-	for i, sd := range filteredSD {
-		speeds[i] = sd.Speed
-	}
-
-	speedsSorted := sort.Float64Slice(speeds)
-	sort.Sort(speedsSorted)
-
-	if len(speedsSorted) == 0 {
-		return 0
-	}
-
-	maxIdx := int(float64(len(speedsSorted)) * 0.95)
-	if maxIdx >= len(speedsSorted) {
-		maxIdx = len(speedsSorted) - 1
-	}
-	if maxIdx < 0 {
-		maxIdx = 0
-	}
-	return speedsSorted[maxIdx]
 }
 
 // CalcUphillDownhill calculates uphill and downhill from given elevations

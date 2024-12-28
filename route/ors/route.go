@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 )
 
 // Profile is an enum type.

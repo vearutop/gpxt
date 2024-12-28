@@ -14,7 +14,7 @@ import (
 )
 
 // defaultCreator contains the original repo path
-const defaultCreator = "https://github.com/vearutop/gpxgo"
+const defaultCreator = "https://github.com/vearutop/gpxt"
 
 // ----------------------------------------------------------------------------------------------------
 // Gpx 1.0 Stuff

@@ -8,7 +8,7 @@ import (
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/bool64/dev/version"
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 	"github.com/vearutop/gpxt/runnerup"
 	"github.com/vearutop/gpxt/sigma"
 	_ "modernc.org/sqlite"
