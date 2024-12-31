@@ -2,7 +2,7 @@
 package tsp
 
 import (
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 	"github.com/vearutop/gpxt/route/tsp/internal/base"
 	"github.com/vearutop/gpxt/route/tsp/internal/ga"
 )

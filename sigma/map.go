@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/gpx"
 )
 
 // MapSlf defines mapping options.
