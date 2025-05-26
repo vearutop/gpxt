@@ -63,8 +63,7 @@ help [<command>...]
     Show help.
 
 move [<flags>] <file>
-    When both new-start and new-end are present, the track would be stretched/shrinked to fit in new boundaries. Otherwise it would be moved to the touch new-start or
-    new-end.
+    When both new-start and new-end are present, the track would be stretched/shrunk to fit in new boundaries. Otherwise it would be moved to the touch new-start or new-end.
 
 info <file>
     Show info about GPX file
@@ -84,10 +83,15 @@ reduce [<flags>] <files>...
 route [<flags>] <file>
     Build optimal route through waypoints
 
+convert [<flags>] <files>...
+    Convert files from exotic formats (supported: Locus)
+
 runnerup list [<flags>] <db>
     List latest activities
 
 runnerup export [<flags>] <db> <activity-id> [<output>]
     Export activity as GPX.
 
+sigma merge [<flags>] <gpx> <slf>
+    Merge SLF into GPX
 ```
