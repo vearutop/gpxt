@@ -10,17 +10,13 @@ import (
 	"time"
 
 	"github.com/tkrajina/gpxgo/gpx"
+	"github.com/vearutop/gpxt/ns"
 )
 
 // MapSlf defines mapping options.
 type MapSlf struct {
 	ByDist bool
 }
-
-const (
-	tpxNs   = "http://www.garmin.com/xmlschemas/TrackPointExtension/v1"
-	tpxPath = "TrackPointExtension"
-)
 
 // MergeSlfIntoGpx adds data from SLF into GPX file.
 func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) error {
@@ -100,8 +96,6 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	for _, tr := range gpxFile.Tracks {
 		for _, s := range tr.Segments {
 			for _, point := range s.Points {
-				point := point
-
 				if prevPoint != nil {
 					dist += prevPoint.Distance2D(&point)
 				}
@@ -167,15 +161,15 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 			}
 
 			if vv.Heartrate != nil && *vv.Heartrate != 0 {
-				point.Extensions.GetOrCreateNode(tpxNs, tpxPath, "hr").Data = strconv.Itoa(int(*vv.Heartrate))
+				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "hr").Data = strconv.Itoa(int(*vv.Heartrate))
 			}
 
 			if vv.Cadence != nil {
-				point.Extensions.GetOrCreateNode(tpxNs, tpxPath, "cad").Data = strconv.Itoa(int(*vv.Cadence))
+				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "cad").Data = strconv.Itoa(int(*vv.Cadence))
 			}
 
 			if vv.Temperature != "" {
-				point.Extensions.GetOrCreateNode(tpxNs, tpxPath, "atemp").Data = vv.Temperature
+				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "atemp").Data = vv.Temperature
 			}
 		}
 	}

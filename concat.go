@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/tkrajina/gpxgo/gpx"
@@ -30,6 +31,8 @@ func concatCmd() {
 			return fmt.Errorf("open gpx file: %w", err)
 		}
 
+		tm := gpxFile.TimeBounds().EndTime
+
 		for _, f := range files[1:] {
 			mf, err := gpx.ParseFile(f)
 			if err != nil {
@@ -38,7 +41,21 @@ func concatCmd() {
 
 			for _, t := range mf.Tracks {
 				for _, s := range t.Segments {
-					gpxFile.AppendSegment(&s)
+					tb := s.TimeBounds()
+					dt := tb.StartTime.Unix() - tm.Unix()
+
+					if dt > 0 && dt < 300 { // Up to 5 min.
+						gpxFile.AppendSegment(&s)
+
+						tm = tb.EndTime
+					} else {
+						dt -= 60
+						for _, p := range s.Points {
+							p.Timestamp = p.Timestamp.Add(-time.Duration(dt) * time.Second)
+							tm = p.Timestamp
+							gpxFile.AppendPoint(&p)
+						}
+					}
 				}
 			}
 		}

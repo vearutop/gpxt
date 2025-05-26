@@ -109,12 +109,17 @@ function loadTracks(params) {
             console.log("feat", feat)
 
             var res = name + "<br />"
+
+            if (feat.properties.name) {
+                res += "<b>" + feat.properties.name + "</b><br />"
+            }
+
             if (feat.properties.desc) {
                 res += feat.properties.desc + "<br />"
             }
 
-            if (feat.properties.name) {
-                res += feat.properties.name + "<br />"
+            if (feat.properties.time) {
+                res += feat.properties.time + "<br />"
             }
 
             if (feat.geometry.type === "Point") {
@@ -202,7 +207,7 @@ function loadTracks(params) {
                     // noClip: true,
                     // smoothFactor: 0,
                     color: getDarkColor(),
-                    renderer: new polycolorRenderer(),
+                    // renderer: new polycolorRenderer(),
                     // dynamicCtx: function (point, ctx) {
                     //     ctx.strokeStyle = getDarkColor2(100*point.x+point.y)
                     //     ctx.lineWidth = (100*point.x+point.y) % 15 + 5
@@ -211,7 +216,7 @@ function loadTracks(params) {
             }
         });
 
-        var name = params.files[i];
+        const name = params.files[i];
         var gpxLayer = omnivore.gpx('/track/' + i + '.gpx', null, customLayer)
             .on('ready', function (e) {
                 var b = e.target.getBounds()
@@ -234,6 +239,15 @@ function loadTracks(params) {
 
         overlayMaps[name] = gpxLayer
     }
+
+    map.on('contextmenu', function(event){
+        console.log(event)
+        L.popup()
+            .setLatLng(event.latlng)
+            .setContent(event.latlng.lat.toFixed(8) + ", " + event.latlng.lng.toFixed(8))
+            .openOn(map);
+    });
+
 
     L.control.layers({}, overlayMaps).addTo(map);
     L.control.locate({}).addTo(map)

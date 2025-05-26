@@ -22,6 +22,7 @@ func main() {
 	cutCmd()
 	reduceCmd()
 	routeCmd()
+	convertCmd()
 	runnerup.Cmd()
 	sigma.Cmd()
 

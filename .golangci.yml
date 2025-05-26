@@ -24,6 +24,8 @@ linters-settings:
 linters:
   enable-all: true
   disable:
+    - gosec
+    - recvcheck
     - funlen
     - gocognit
     - intrange
