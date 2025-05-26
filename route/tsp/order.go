@@ -51,13 +51,16 @@ func Order(points []gpx.GPXPoint, numberOfGenerations, populationSize int) ([]gp
 // tspGA solves traveling sales person problem with genetic algorithm.
 // It returns ordered points, initial and final distances.
 func tspGA(tm *base.TourManager, gen int, popSize int) ([]gpx.Point, float64, float64) {
+	if gen == 0 {
+		return nil, 0, 0
+	}
+
 	p := base.Population{}
 	p.InitPopulation(popSize, *tm)
 
 	// Get initial fittest tour and it's tour distance
 	iFit := p.GetFittest()
 	iTourDistance := iFit.TourDistance()
-	// fmt.Println("Initial tour distance: ", iTourDistance)
 
 	// Evolve population "gen" number of times
 	for i := 1; i < gen+1; i++ {

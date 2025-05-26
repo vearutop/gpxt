@@ -12,8 +12,6 @@ linters-settings:
     threshold: 100
   misspell:
     locale: US
-  unused:
-    check-exported: false
   unparam:
     check-exported: true
   funlen:
@@ -24,6 +22,8 @@ linters-settings:
 linters:
   enable-all: true
   disable:
+    - godox
+    - gosec
     - funlen
     - gocognit
     - intrange
@@ -32,7 +32,6 @@ linters:
     - err113
     - lll
     - gochecknoglobals
-    - gomnd
     - wrapcheck
     - paralleltest
     - forbidigo
@@ -47,9 +46,9 @@ linters:
     - dupword
     - depguard
     - tagalign
-    - execinquery
     - mnd
     - testifylint
+    - recvcheck
 
 issues:
   exclude-use-default: false
@@ -71,4 +70,7 @@ issues:
         - errcheck # Error checking omitted for brevity.
         - gosec
       path: "example_"
+    - linters:
+        - revive
+      text: "unused-parameter: parameter"
 

@@ -68,6 +68,8 @@ func reducePoints(points []gpx.GPXPoint, minDist int, minInterval time.Duration)
 		pts  []gpx.GPXPoint
 	)
 
+	// TODO: check github.com/paulmach/orb/simplify.DouglasPeucker simplification.
+
 	for i, pt := range points {
 		if prev.Timestamp.IsZero() {
 			prev = pt

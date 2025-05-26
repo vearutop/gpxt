@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"math/rand"
 	"os"
 	"path"
 	"strconv"
@@ -48,9 +49,18 @@ func routeCmd() { //nolint:funlen,cyclop
 			return errors.New("no waypoints in gpx file")
 		}
 
-		points, initial, final := tsp.Order(gpxFile.Waypoints, gens, pop)
+		var points []gpx.Point
 
-		fmt.Printf("Points graph ordered, initial distance: %.2f, final distance: %.2f\n", initial, final)
+		if gens > 0 {
+			pts, initial, final := tsp.Order(gpxFile.Waypoints, gens, pop)
+			fmt.Printf("Points graph ordered, initial distance: %.2f, final distance: %.2f\n", initial, final)
+
+			points = pts
+		} else {
+			for _, pt := range gpxFile.Waypoints {
+				points = append(points, pt.Point)
+			}
+		}
 
 		if detailed {
 			gj, err := ors.GetRoute(ctx, ors.Profile(profile), points)
@@ -63,8 +73,12 @@ func routeCmd() { //nolint:funlen,cyclop
 			totalDist := 0.0
 			totalDur := time.Duration(0)
 
+			tm := time.Now()
+			spd := 250.0 / 36.0 // 25 km/h in m/s
+
+			t := gpx.GPXTrack{}
+
 			for _, seg := range segs {
-				t := gpx.GPXTrack{}
 				totalDist += seg.Distance
 				dur := time.Duration(seg.Duration * float64(time.Second))
 				totalDur += dur
@@ -74,18 +88,29 @@ func routeCmd() { //nolint:funlen,cyclop
 
 				start := seg.Steps[0]
 				end := seg.Steps[len(seg.Steps)-1]
+				prev := gpx.GPXPoint{}
 
 				for i := start.WayPoints[0]; i <= end.WayPoints[1]; i++ {
 					p := gpx.GPXPoint{}
 					pt := pts[i]
 					p.Longitude = pt[0]
 					p.Latitude = pt[1]
+
+					spd := spd + 5*(rand.Float64()-0.5)*1
+					if prev.Latitude != 0 {
+						tm = tm.Add(time.Duration(spd * prev.Distance2D(&p)))
+					}
+
+					prev = p
+					p.Timestamp = tm
+
 					s.AppendPoint(&p)
 				}
 
 				t.AppendSegment(&s)
-				gpxFile.AppendTrack(&t)
 			}
+
+			gpxFile.AppendTrack(&t)
 
 			fmt.Printf("Total detailed distance: %.2f, total time %s\n", totalDist, totalDur.String())
 		} else {
