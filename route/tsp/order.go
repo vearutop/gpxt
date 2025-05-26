@@ -61,7 +61,6 @@ func tspGA(tm *base.TourManager, gen int, popSize int) ([]gpx.Point, float64, fl
 	// Get initial fittest tour and it's tour distance
 	iFit := p.GetFittest()
 	iTourDistance := iFit.TourDistance()
-	// fmt.Println("Initial tour distance: ", iTourDistance)
 
 	// Evolve population "gen" number of times
 	for i := 1; i < gen+1; i++ {

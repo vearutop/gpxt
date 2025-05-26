@@ -82,14 +82,6 @@ func moveCmd() {
 			tt.newDur = time.Duration(float64(tt.origDur) * durMul)
 		}
 
-		println(
-			"orig dur", tt.origDur.String(),
-			"new dur", tt.newDur.String(),
-			"orig min", tt.origMin.String(),
-			"new min", tt.newMin.String(),
-			"delta", tt.delta.String(),
-		)
-
 		n := gpxFile.GetTrackPointsNo()
 
 		if addPauses > 0 {

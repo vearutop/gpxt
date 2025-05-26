@@ -36,7 +36,6 @@ func crossover(p1 base.Tour, p2 base.Tour) base.Tour { //nolint:cyclop
 	// Number of crossover
 	nc := int(crossoverRate() * float32(size))
 	if nc == 0 {
-		// log.Println("no crossover")
 		return p1
 	}
 	// Start positions of cross over for parent 1
