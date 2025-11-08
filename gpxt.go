@@ -23,6 +23,7 @@ func main() {
 	reduceCmd()
 	routeCmd()
 	convertCmd()
+	extendCmd()
 	runnerup.Cmd()
 	sigma.Cmd()
 

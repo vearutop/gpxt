@@ -36,6 +36,26 @@ func infoCmd() {
 			fmt.Println("Routes:", len(gpxFile.Routes))
 		}
 
+		var (
+			dist      float64
+			prevPoint *gpx.GPXPoint
+		)
+
+		for _, tr := range gpxFile.Tracks {
+			for _, s := range tr.Segments {
+				for _, point := range s.Points {
+					if prevPoint != nil {
+						dist += prevPoint.Distance2D(&point)
+					}
+
+					prevPoint = &point
+				}
+			}
+		}
+
+		totalGPXDist := dist
+		fmt.Printf("GPX dist 2: %.2fkm\n", totalGPXDist/1000.0)
+
 		return nil
 	})
 }
