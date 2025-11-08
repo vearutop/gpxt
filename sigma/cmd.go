@@ -23,14 +23,14 @@ func merge(c *kingpin.CmdClause) {
 		byTime  bool
 	)
 
-	list := c.Command("merge", "Merge SLF into GPX")
-	list.Arg("gpx", "Source GPX file.").Required().StringVar(&gpxFile)
-	list.Arg("slf", "Source SLF file.").Required().StringVar(&slfFile)
+	merge := c.Command("merge", "Merge SLF into GPX")
+	merge.Arg("gpx", "Source GPX file.").Required().StringVar(&gpxFile)
+	merge.Arg("slf", "Source SLF file.").Required().StringVar(&slfFile)
 
-	list.Flag("output", "Output file.").Default("<name>.slf.gpx").StringVar(&output)
-	list.Flag("by-time", "Map by estimated time, can be less accurate than by distance.").BoolVar(&byTime)
+	merge.Flag("output", "Output file.").Default("<name>.slf.gpx").StringVar(&output)
+	merge.Flag("by-time", "Map by estimated time, can be less accurate than by distance.").BoolVar(&byTime)
 
-	list.Action(func(_ *kingpin.ParseContext) error {
+	merge.Action(func(_ *kingpin.ParseContext) error {
 		name := strings.TrimSuffix(gpxFile, path.Ext(gpxFile))
 		outName := strings.ReplaceAll(output, "<name>", name)
 
