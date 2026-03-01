@@ -84,7 +84,10 @@ route [<flags>] <file>
     Build optimal route through waypoints
 
 convert [<flags>] <files>...
-    Convert files from exotic formats (supported: Locus)
+    Convert files from exotic formats (supported: Locus, FIT)
+
+csv [<flags>] <file>
+    Export GPX track points to CSV
 
 runnerup list [<flags>] <db>
     List latest activities
