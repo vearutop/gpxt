@@ -18,7 +18,7 @@ func convertCmd() {
 		indent bool
 	)
 
-	cmd := kingpin.Command("convert", "Convert files from exotic formats (supported: Locus)")
+	cmd := kingpin.Command("convert", "Convert files from exotic formats (supported: Locus, FIT)")
 	cmd.Arg("files", "GPX files to process.").Required().StringsVar(&files)
 	cmd.Flag("output", "Output file.").Default("<name>.converted.gpx").StringVar(&output)
 	cmd.Flag("indent", "Indent output file.").BoolVar(&indent)

@@ -157,19 +157,31 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 			}
 
 			if vv.Power != nil {
-				point.Extensions.GetOrCreateNode(gpx.NoNamespace, "power").Data = strconv.Itoa(int(*vv.Power))
+				node := point.Extensions.GetOrCreateNode(gpx.NoNamespace, "power")
+				if node.Data == "" {
+					node.Data = strconv.Itoa(int(*vv.Power))
+				}
 			}
 
 			if vv.Heartrate != nil && *vv.Heartrate != 0 {
-				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "hr").Data = strconv.Itoa(int(*vv.Heartrate))
+				node := point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "hr")
+				if node.Data == "" {
+					node.Data = strconv.Itoa(int(*vv.Heartrate))
+				}
 			}
 
 			if vv.Cadence != nil {
-				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "cad").Data = strconv.Itoa(int(*vv.Cadence))
+				node := point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "cad")
+				if node.Data == "" {
+					node.Data = strconv.Itoa(int(*vv.Cadence))
+				}
 			}
 
 			if vv.Temperature != "" {
-				point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "atemp").Data = vv.Temperature
+				node := point.Extensions.GetOrCreateNode(ns.TpxNs, ns.TpxPath, "atemp")
+				if node.Data == "" {
+					node.Data = vv.Temperature
+				}
 			}
 		}
 	}
