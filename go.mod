@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
-	github.com/bool64/dev v0.2.39
+	github.com/bool64/dev v0.2.43
 	github.com/bool64/sqluct v0.2.4
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/stretchr/testify v1.8.4
