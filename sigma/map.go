@@ -172,9 +172,8 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 
 			if vv.Power != nil {
 				node := findPowerNode(point)
-				if node != nil {
-					// Power already present in the original GPX, skip adding/changing.
-				} else {
+				// Power is not present in the original GPX.
+				if node == nil {
 					node = point.Extensions.GetOrCreateNode(gpx.NoNamespace, "power")
 					node.Data = strconv.Itoa(int(*vv.Power))
 				}
