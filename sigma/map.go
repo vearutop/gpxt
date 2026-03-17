@@ -115,6 +115,20 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 	dist = 0
 	prevPoint = nil
 
+	findPowerNode := func(point *gpx.GPXPoint) *gpx.ExtensionNode {
+		if tpxNode, found := point.Extensions.GetNode(ns.TpxNs, ns.TpxPath); found {
+			if powerNode, ok := tpxNode.GetNode("power"); ok {
+				return powerNode
+			}
+		}
+
+		if powerNode, found := point.Extensions.GetNode(gpx.AnyNamespace, "power"); found {
+			return powerNode
+		}
+
+		return nil
+	}
+
 	visitPoint := func(point *gpx.GPXPoint) {
 		if prevPoint != nil {
 			dist += distRatio * prevPoint.Distance2D(point)
@@ -157,8 +171,10 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 			}
 
 			if vv.Power != nil {
-				node := point.Extensions.GetOrCreateNode(gpx.NoNamespace, "power")
-				if node.Data == "" {
+				node := findPowerNode(point)
+				// Power is not present in the original GPX.
+				if node == nil {
+					node = point.Extensions.GetOrCreateNode(gpx.NoNamespace, "power")
 					node.Data = strconv.Itoa(int(*vv.Power))
 				}
 			}
