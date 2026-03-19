@@ -56,5 +56,3 @@ jobs:
       - name: Upload windows_amd64.zip
         if: hashFiles('windows_amd64.zip') != ''
         run: gh release upload "$TAG_NAME" windows_amd64.zip --clobber
-
-
