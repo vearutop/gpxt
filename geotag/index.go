@@ -103,9 +103,9 @@ func (idx *Index) AddGPX(g *gpx.GPX) {
 // ClockSync defines a time shift for a camera clock within a time range.
 // Start or End may be zero to indicate an open-ended range.
 type ClockSync struct {
-	Start  int64         // unix nanos, inclusive. 0 means -inf.
-	End    int64         // unix nanos, inclusive. 0 means +inf.
-	Offset time.Duration // added to the photo time to align with GPS time.
+	Start  time.Time     `json:"start"`  // 0 means -inf.
+	End    time.Time     `json:"end"`    // 0 means +inf.
+	Offset time.Duration `json:"offset"` // added to the photo time to align with GPS time.
 }
 
 // AddClockSync registers a time shift for a given clock ID.
@@ -117,14 +117,7 @@ func (idx *Index) AddClockSync(clockID string, start, end time.Time, offset time
 	if idx.clocks == nil {
 		idx.clocks = make(map[string][]ClockSync)
 	}
-	var s, e int64
-	if !start.IsZero() {
-		s = Time(start)
-	}
-	if !end.IsZero() {
-		e = Time(end)
-	}
-	cs := ClockSync{Start: s, End: e, Offset: offset}
+	cs := ClockSync{Start: start, End: end, Offset: offset}
 	idx.clocks[clockID] = append(idx.clocks[clockID], cs)
 }
 
@@ -231,16 +224,12 @@ func (idx *Index) Lookup(t time.Time) (p Point, ok bool) {
 // LookupWithClock applies clock synchronization and looks up the closest position.
 // If no clock sync matches, it falls back to "default", then no offset.
 func (idx *Index) LookupWithClock(t time.Time, clockID string) (p Point, ok bool) {
-	if clockID == "" {
-		clockID = "default"
-	}
 	offset := idx.clockOffset(clockID, t)
-	if offset == 0 && clockID != "default" {
-		offset = idx.clockOffset("default", t)
-	}
+
 	if offset != 0 {
 		t = t.Add(offset)
 	}
+
 	return idx.Lookup(t)
 }
 
@@ -286,21 +275,20 @@ func (idx *Index) clockOffset(clockID string, t time.Time) time.Duration {
 	if len(list) == 0 {
 		return 0
 	}
-	tn := t.UnixNano()
 	for i := len(list) - 1; i >= 0; i-- {
 		cs := list[i]
-		if inRange(cs, tn) {
+		if inRange(cs, t) {
 			return cs.Offset
 		}
 	}
 	return 0
 }
 
-func inRange(cs ClockSync, tn int64) bool {
-	if cs.Start != 0 && tn < cs.Start {
+func inRange(cs ClockSync, tn time.Time) bool {
+	if !cs.Start.IsZero() && tn.Before(cs.Start) {
 		return false
 	}
-	if cs.End != 0 && tn > cs.End {
+	if !cs.End.IsZero() && tn.After(cs.End) {
 		return false
 	}
 	return true
@@ -389,17 +377,7 @@ func haversineMeters(a, b Point) float64 {
 	return earthRadiusMeters * c
 }
 
-// Time converts t to unix nanoseconds.
-func Time(t time.Time) int64 {
-	return t.UnixNano()
-}
-
 // AltUnknown returns a NaN value to mark missing altitude.
 func AltUnknown() float32 {
 	return float32(math.NaN())
-}
-
-// AltKnown reports whether altitude is present.
-func AltKnown(a float32) bool {
-	return altValid(a)
 }

@@ -1,18 +1,20 @@
-package geotag
+package geotag_test
 
 import (
 	"math"
 	"testing"
 	"time"
+
+	"github.com/vearutop/gpxt/geotag"
 )
 
 func TestLookupInterpolate(t *testing.T) {
 	base := time.Unix(1_700_000_000, 0)
-	idx := NewIndex(Options{
+	idx := geotag.NewIndex(geotag.Options{
 		MaxGap:      60 * time.Second,
 		Interpolate: true,
 	})
-	idx.AddTrack([]Point{
+	idx.AddTrack([]geotag.Point{
 		{Time: base.UnixNano(), Lat: 10, Lon: 20, Alt: 100},
 		{Time: base.Add(10 * time.Second).UnixNano(), Lat: 20, Lon: 30, Alt: 200},
 	})
@@ -28,11 +30,11 @@ func TestLookupInterpolate(t *testing.T) {
 
 func TestLookupMaxGap(t *testing.T) {
 	base := time.Unix(1_700_000_000, 0)
-	idx := NewIndex(Options{
+	idx := geotag.NewIndex(geotag.Options{
 		MaxGap:      10 * time.Second,
 		Interpolate: true,
 	})
-	idx.AddTrack([]Point{
+	idx.AddTrack([]geotag.Point{
 		{Time: base.UnixNano(), Lat: 10, Lon: 20, Alt: 100},
 	})
 
@@ -43,18 +45,18 @@ func TestLookupMaxGap(t *testing.T) {
 }
 
 func TestAltUnknown(t *testing.T) {
-	if !math.IsNaN(float64(AltUnknown())) {
+	if !math.IsNaN(float64(geotag.AltUnknown())) {
 		t.Fatalf("expected NaN")
 	}
 }
 
 func TestLookupWithClock(t *testing.T) {
 	base := time.Unix(1_700_000_000, 0)
-	idx := NewIndex(Options{
+	idx := geotag.NewIndex(geotag.Options{
 		MaxGap:      60 * time.Second,
 		Interpolate: false,
 	})
-	idx.AddTrack([]Point{
+	idx.AddTrack([]geotag.Point{
 		{Time: base.UnixNano(), Lat: 10, Lon: 20, Alt: 100},
 	})
 	idx.AddClockSync("camA", base.Add(-10*time.Minute), base.Add(10*time.Minute), 30*time.Second)
@@ -70,8 +72,8 @@ func TestLookupWithClock(t *testing.T) {
 
 func TestOffsetForLocation(t *testing.T) {
 	base := time.Unix(1_700_000_000, 0)
-	idx := NewIndex(Options{})
-	idx.AddTrack([]Point{
+	idx := geotag.NewIndex(geotag.Options{})
+	idx.AddTrack([]geotag.Point{
 		{Time: base.UnixNano(), Lat: 10, Lon: 20},
 		{Time: base.Add(10 * time.Second).UnixNano(), Lat: 11, Lon: 21},
 	})
