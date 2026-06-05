@@ -18,8 +18,18 @@ type MapSlf struct {
 	ByDist bool
 }
 
+// MergeSlfIntoGpxFile adds data from SLF into GPX file.
+func MergeSlfIntoGpxFile(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) error {
+	gpxFile, err := gpx.ParseFile(gpxFn)
+	if err != nil {
+		return fmt.Errorf("parse source gpx: %w", err)
+	}
+
+	return MergeSlfIntoGpx(*gpxFile, slfFn, outFn, opts...)
+}
+
 // MergeSlfIntoGpx adds data from SLF into GPX file.
-func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) error {
+func MergeSlfIntoGpx(gpxFile gpx.GPX, slfFn string, outFn string, opts ...func(options *MapSlf)) error {
 	var v Activity
 
 	mo := MapSlf{}
@@ -35,11 +45,6 @@ func MergeSlfIntoGpx(slfFn, gpxFn, outFn string, opts ...func(options *MapSlf)) 
 
 	if err := xml.Unmarshal(d, &v); err != nil {
 		return fmt.Errorf("decode slf: %w", err)
-	}
-
-	gpxFile, err := gpx.ParseFile(gpxFn)
-	if err != nil {
-		return fmt.Errorf("parse source gpx: %w", err)
 	}
 
 	// Thu Aug 1 17:56:21 GMT+0200 2024

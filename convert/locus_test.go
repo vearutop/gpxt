@@ -10,11 +10,13 @@ import (
 )
 
 func TestFromLocus(t *testing.T) {
-	data, err := os.ReadFile("testdata/locus.gpx")
+	data, err := os.Open("testdata/locus.gpx")
 	require.NoError(t, err)
 
 	g, err := convert.FromLocus(data)
 	require.NoError(t, err)
+
+	require.NoError(t, data.Close())
 
 	println(g.Time.String())
 

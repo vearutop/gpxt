@@ -3,6 +3,7 @@ package convert
 
 import (
 	"encoding/xml"
+	"io"
 	"time"
 
 	"github.com/tkrajina/gpxgo/gpx"
@@ -10,13 +11,13 @@ import (
 )
 
 // FromLocus reads Locus Map for Android GPX format.
-func FromLocus(data []byte) (gpx.GPX, error) {
+func FromLocus(data io.Reader) (gpx.GPX, error) {
 	var (
 		result gpx.GPX
 		input  LocusGpx
 	)
 
-	err := xml.Unmarshal(data, &input)
+	err := xml.NewDecoder(data).Decode(&input)
 	if err != nil {
 		return result, err
 	}

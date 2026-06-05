@@ -2,10 +2,12 @@ package sigma
 
 import (
 	"fmt"
+	"os"
 	"path"
 	"strings"
 
 	"github.com/alecthomas/kingpin/v2"
+	"github.com/vearutop/gpxt/convert"
 )
 
 // Cmd defines sigma subcommand.
@@ -24,7 +26,7 @@ func merge(c *kingpin.CmdClause) {
 	)
 
 	merge := c.Command("merge", "Merge SLF into GPX")
-	merge.Arg("gpx", "Source GPX file.").Required().StringVar(&gpxFile)
+	merge.Arg("gpx", "Source GPX or convertible file (FIT).").Required().StringVar(&gpxFile)
 	merge.Arg("slf", "Source SLF file.").Required().StringVar(&slfFile)
 
 	merge.Flag("output", "Output file.").Default("<name>.slf.gpx").StringVar(&output)
@@ -36,7 +38,20 @@ func merge(c *kingpin.CmdClause) {
 
 		fmt.Println("Merging " + gpxFile + " with " + slfFile + " into " + outName)
 
-		err := MergeSlfIntoGpx(slfFile, gpxFile, outName, func(options *MapSlf) {
+		f, err := os.Open(gpxFile)
+		if err != nil {
+			return err
+		}
+		defer func() {
+			_ = f.Close()
+		}()
+
+		gpxf, err := convert.Auto(f)
+		if err != nil {
+			return err
+		}
+
+		err = MergeSlfIntoGpx(gpxf, slfFile, outName, func(options *MapSlf) {
 			options.ByDist = !byTime
 		})
 		if err != nil {

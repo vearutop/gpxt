@@ -9,10 +9,12 @@ import (
 )
 
 func TestFromFit(t *testing.T) {
-	data, err := os.ReadFile("../testdata/20260228.fit")
+	data, err := os.Open("../testdata/20260228.fit")
 	require.NoError(t, err)
 
 	g, err := convert.FromFit(data)
 	require.NoError(t, err)
 	require.Greater(t, g.GetTrackPointsNo(), 0)
+
+	require.NoError(t, data.Close())
 }
