@@ -8,7 +8,7 @@ import (
 )
 
 func TestMergeSlfIntoGpx(t *testing.T) {
-	require.NoError(t, sigma.MergeSlfIntoGpx(
+	require.NoError(t, sigma.MergeSlfIntoGpxFile(
 		"testdata/5b7ab817c983b8885c2e1bd64f15dba74ccf7a1b.slf",
 		"testdata/RunnerUp_2024-08-10-19-24-37_Biking.gpx",
 		"testdata/RunnerUp_2024-08-10-19-24-37_Biking-SLF.gpx",
@@ -16,7 +16,7 @@ func TestMergeSlfIntoGpx(t *testing.T) {
 }
 
 func TestMergeSlfIntoGpx_byDist(t *testing.T) {
-	require.NoError(t, sigma.MergeSlfIntoGpx(
+	require.NoError(t, sigma.MergeSlfIntoGpxFile(
 		"testdata/5b7ab817c983b8885c2e1bd64f15dba74ccf7a1b.slf",
 		"testdata/RunnerUp_2024-08-10-19-24-37_Biking.gpx",
 		"testdata/RunnerUp_2024-08-10-19-24-37_Biking-SLF.gpx",

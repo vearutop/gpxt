@@ -25,10 +25,12 @@ func convertCmd() {
 
 	cmd.Action(func(_ *kingpin.ParseContext) error {
 		for _, file := range files {
-			data, err := os.ReadFile(file)
+			data, err := os.Open(file)
 			if err != nil {
 				return fmt.Errorf("error opening file: %w", err)
 			}
+
+			defer data.Close()
 
 			gpxFile, err := convert.Auto(data)
 			if err != nil {

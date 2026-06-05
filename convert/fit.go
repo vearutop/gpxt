@@ -2,8 +2,8 @@
 package convert
 
 import (
-	"bytes"
 	"fmt"
+	"io"
 	"math"
 	"strconv"
 
@@ -18,11 +18,11 @@ const (
 )
 
 // FromFit reads Garmin FIT and returns GPX.
-func FromFit(data []byte) (gpx.GPX, error) {
+func FromFit(data io.Reader) (gpx.GPX, error) {
 	var result gpx.GPX
 	result.RegisterNamespace("gpxtpx", ns.TpxNs)
 
-	file, err := fit.Decode(bytes.NewReader(data))
+	file, err := fit.Decode(data)
 	if err != nil {
 		return result, err
 	}
