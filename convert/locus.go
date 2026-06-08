@@ -3,6 +3,7 @@ package convert
 
 import (
 	"encoding/xml"
+	"errors"
 	"io"
 	"time"
 
@@ -20,6 +21,10 @@ func FromLocus(data io.Reader) (gpx.GPX, error) {
 	err := xml.NewDecoder(data).Decode(&input)
 	if err != nil {
 		return result, err
+	}
+
+	if input.Locus == "" {
+		return result, errors.New("not a locus file")
 	}
 
 	result.Time = &input.Metadata.Time

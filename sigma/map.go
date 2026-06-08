@@ -15,7 +15,36 @@ import (
 
 // MapSlf defines mapping options.
 type MapSlf struct {
-	ByDist bool
+	ByDist        bool
+	SkipStartDist float64
+}
+
+func SlfInfo(slfFn string) error {
+	d, err := os.ReadFile(slfFn) //nolint:gosec
+	if err != nil {
+		return fmt.Errorf("read source slf: %w", err)
+	}
+
+	var v Activity
+
+	if err := xml.Unmarshal(d, &v); err != nil {
+		return fmt.Errorf("decode slf: %w", err)
+	}
+
+	// Thu Aug 1 17:56:21 GMT+0200 2024
+	slfStartTime, err := time.Parse("Mon Jan _2 15:04:05 GMT-0700 2006", v.GeneralInformation.StartDate)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Start time:", slfStartTime)
+
+	slfEntries := v.Entries.Entry
+
+	totalSLFDist := slfEntries[len(slfEntries)-1].DistanceAbsolute
+	fmt.Printf("SLF dist: %.fm\n", totalSLFDist)
+
+	return nil
 }
 
 // MergeSlfIntoGpxFile adds data from SLF into GPX file.
@@ -94,6 +123,7 @@ func MergeSlfIntoGpx(gpxFile gpx.GPX, slfFn string, outFn string, opts ...func(o
 	fmt.Printf("GPX dist: %.2fkm\n", totalGPXDist/1000.0)
 
 	totalSLFDist := slfEntries[len(slfEntries)-1].DistanceAbsolute
+	totalSLFDist -= mo.SkipStartDist
 	fmt.Printf("SLF dist: %.2fkm\n", totalSLFDist/1000.0)
 
 	prevPoint = nil
@@ -144,7 +174,7 @@ func MergeSlfIntoGpx(gpxFile gpx.GPX, slfFn string, outFn string, opts ...func(o
 		// Find closes point by time or by distance.
 		i, _ := slices.BinarySearchFunc(v.Entries.Entry, point, func(entry Entry, point *gpx.GPXPoint) int {
 			if mo.ByDist {
-				if entry.DistanceAbsolute < dist {
+				if entry.DistanceAbsolute-mo.SkipStartDist < dist {
 					return -1
 				}
 
@@ -171,7 +201,7 @@ func MergeSlfIntoGpx(gpxFile gpx.GPX, slfFn string, outFn string, opts ...func(o
 				return
 			}
 
-			if mo.ByDist && math.Abs(vv.DistanceAbsolute-dist) > 100.0 {
+			if mo.ByDist && math.Abs((vv.DistanceAbsolute-mo.SkipStartDist)-dist) > 100.0 {
 				return
 			}
 
