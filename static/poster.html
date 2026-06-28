@@ -22,6 +22,18 @@
         <input type="checkbox" id="fills-checkbox">
         <span class="toolbar-control__label">Show fills</span>
     </label>
+    <div id="track-colors"></div>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Title</span>
+        <input type="text" id="poster-title" class="toolbar-text-input" placeholder="(track name)">
+    </label>
+    <div class="toolbar-stat-group">
+        <span class="toolbar-control__label">Stats</span>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="distance"   checked> Dist</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="movingTime" checked> Time</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="avgSpeed"   checked> Speed</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="elevation"  checked> Elev</label>
+    </div>
     <label class="toolbar-control">
         <span class="toolbar-control__label">Rotation</span>
         <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">

@@ -44,7 +44,7 @@ func posterCmd() {
 	cmd.Arg("files", "GPX files to show on the poster.").StringsVar(&files)
 	cmd.Flag("image", "Background image file (JPG/PNG).").Required().StringVar(&imageFile)
 	cmd.Flag("style", "MapLibre style URL.").
-		Default("https://tiles.openfreemap.org/styles/liberty").
+		Default("https://tiles.openfreemap.org/styles/fiord").
 		Envar("MAPLIBRE_STYLE").
 		StringVar(&styleURL)
 
@@ -58,7 +58,21 @@ func posterCmd() {
 		s.Get("/track/{id}.geojson", dlGeoJSON(files))
 		s.Get("/image", posterServeImage(imageFile))
 		s.Get("/stats.json", posterServeStats(files))
-		s.Get("/", posterShowPage(files, styleURL))
+
+		// If --style points to a local file, serve it from the embedded server
+		// so the browser can fetch it from the same origin as the page.
+		styleEndpoint := styleURL
+		if !strings.HasPrefix(styleURL, "http://") && !strings.HasPrefix(styleURL, "https://") {
+			styleData, err := os.ReadFile(styleURL)
+			if err != nil {
+				return fmt.Errorf("reading style file %s: %w", styleURL, err)
+			}
+			s.Get("/style.json", posterServeRaw(styleData, "application/json"))
+			styleEndpoint = "/style.json"
+			log.Println("Serving local style from", styleURL)
+		}
+
+		s.Get("/", posterShowPage(files, styleEndpoint))
 
 		srv := httptest.NewServer(s)
 
@@ -178,6 +192,20 @@ func posterServeStats(files []string) usecase.Interactor {
 		rw.Header().Set("Content-Type", "application/json")
 
 		return json.NewEncoder(rw).Encode(allStats)
+	})
+}
+
+func posterServeRaw(data []byte, contentType string) usecase.Interactor {
+	return usecase.NewInteractor(func(_ context.Context, _ struct{}, out *usecase.OutputWithEmbeddedWriter) error {
+		rw, ok := out.Writer.(http.ResponseWriter)
+		if !ok {
+			return errors.New("missing http.ResponseWriter")
+		}
+
+		rw.Header().Set("Content-Type", contentType)
+		_, err := rw.Write(data)
+
+		return err
 	})
 }
 

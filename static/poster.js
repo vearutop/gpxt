@@ -10,6 +10,9 @@
     var palette = ["#f97316", "#22c55e", "#06b6d4", "#eab308", "#ef4444", "#8b5cf6"];
     var fillLayers = {};   // layerId → {prop, original} — cached before first strip
     var trackBounds = null; // stored for re-fit after bearing change
+    var trackColors = config.files.map(function (_, i) { return palette[i % palette.length]; });
+    var posterTitle = "";
+    var enabledStats = { distance: true, movingTime: true, avgSpeed: true, elevation: true };
 
     function init() {
         loadBackgroundImage()
@@ -134,6 +137,14 @@
                 .then(function (geojson) {
                     allGeoJson[i] = geojson;
 
+                    // Update the color picker label with the real track name.
+                    var trackName = "";
+                    geojson.features.some(function (f) {
+                        if (f.properties && f.properties.name) { trackName = f.properties.name; return true; }
+                    });
+                    var labelEl = document.getElementById("track-label-" + i);
+                    if (labelEl && trackName) labelEl.textContent = trackName;
+
                     geojson.features.forEach(function (f) {
                         if (f.geometry.type === "LineString") {
                             f.geometry.coordinates.forEach(function (c) { bounds.extend(c); });
@@ -169,7 +180,7 @@
 
         allGeoJson.forEach(function (geojson, i) {
             if (!geojson) return;
-            var color = palette[i % palette.length];
+            var color = trackColors[i] || palette[i % palette.length];
 
             geojson.features.forEach(function (feature) {
                 if (!feature.geometry) return;
@@ -215,16 +226,21 @@
 
         var agg = aggregateStats(stats);
         var overlay = document.getElementById("stats-overlay");
+        var displayName = posterTitle || agg.name;
+
+        var itemsHtml = [];
+        if (enabledStats.distance)   itemsHtml.push(statItem(agg.distanceKm.toFixed(1) + " km", "Distance"));
+        if (enabledStats.movingTime) itemsHtml.push(statItem(agg.movingTime, "Moving Time"));
+        if (enabledStats.avgSpeed)   itemsHtml.push(statItem(agg.avgSpeedKmh.toFixed(1) + " km/h", "Avg Speed"));
+        if (enabledStats.elevation)  itemsHtml.push(statItem("↑ " + Math.round(agg.uphillM) + " m", "Elevation"));
 
         overlay.innerHTML =
-            '<div class="stats-name">' + esc(agg.name) + "</div>" +
+            '<div class="stats-name">' + esc(displayName) + "</div>" +
             '<div class="stats-date">' + esc(agg.date) + "</div>" +
-            '<div class="stats-grid">' +
-            statItem(agg.distanceKm.toFixed(1) + " km", "Distance") +
-            statItem(agg.movingTime, "Moving Time") +
-            statItem(agg.avgSpeedKmh.toFixed(1) + " km/h", "Avg Speed") +
-            statItem("↑ " + Math.round(agg.uphillM) + " m", "Elevation") +
-            "</div>";
+            (itemsHtml.length
+                ? '<div class="stats-grid" style="grid-template-columns:repeat(' + itemsHtml.length + ',1fr)">' +
+                  itemsHtml.join("") + "</div>"
+                : "");
     }
 
     function aggregateStats(stats) {
@@ -326,7 +342,35 @@
         document.getElementById("bearing-value").textContent = Math.round(bearing) + "°";
     }
 
+    function initTrackColorPickers() {
+        var container = document.getElementById("track-colors");
+        config.files.forEach(function (fileName, i) {
+            var label = document.createElement("label");
+            label.className = "toolbar-control";
+
+            var swatch = document.createElement("input");
+            swatch.type = "color";
+            swatch.value = trackColors[i];
+            swatch.className = "track-color-input";
+            swatch.addEventListener("input", function () {
+                trackColors[i] = this.value;
+                drawTracks();
+            });
+
+            var nameSpan = document.createElement("span");
+            nameSpan.id = "track-label-" + i;
+            nameSpan.className = "toolbar-control__label";
+            // Filename as placeholder until GeoJSON loads.
+            nameSpan.textContent = fileName.split(/[/\\]/).pop().replace(/\.[^.]+$/, "");
+
+            label.appendChild(swatch);
+            label.appendChild(nameSpan);
+            container.appendChild(label);
+        });
+    }
+
     function setupControls() {
+        initTrackColorPickers();
         var slider     = document.getElementById("opacity-slider");
         var opacityVal = document.getElementById("opacity-value");
 
@@ -355,6 +399,18 @@
 
         document.getElementById("auto-rotate-btn").addEventListener("click", autoRotate);
         document.getElementById("save-btn").addEventListener("click", exportPNG);
+
+        document.getElementById("poster-title").addEventListener("input", function () {
+            posterTitle = this.value;
+            if (statsData) renderStatsOverlay(statsData);
+        });
+
+        document.querySelectorAll("[data-stat]").forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+                enabledStats[this.dataset.stat] = this.checked;
+                if (statsData) renderStatsOverlay(statsData);
+            });
+        });
     }
 
     function exportPNG() {
@@ -440,8 +496,13 @@
 
         var nameSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-name")).fontSize) * scale);
         var dateSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-date")).fontSize) * scale);
-        var valSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-value")).fontSize) * scale);
-        var lblSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-label")).fontSize) * scale);
+
+        // Guard: .stat-value / .stat-label may be absent when all stats are hidden.
+        var valSz = 0, lblSz = 0;
+        var firstVal = overlay.querySelector(".stat-value");
+        var firstLbl = overlay.querySelector(".stat-label");
+        if (firstVal) valSz = Math.round(parseFloat(window.getComputedStyle(firstVal).fontSize) * scale);
+        if (firstLbl) lblSz = Math.round(parseFloat(window.getComputedStyle(firstLbl).fontSize) * scale);
 
         ctx.fillStyle = "rgba(0,0,0,0.72)";
         ctx.fillRect(0, panelY, w, overlayH);
@@ -455,7 +516,7 @@
 
         ctx.fillStyle = "#ffffff";
         ctx.font = "bold " + nameSz + "px system-ui,-apple-system,sans-serif";
-        ctx.fillText(agg.name || "GPX Track", padL, y);
+        ctx.fillText(posterTitle || agg.name || "GPX Track", padL, y);
         y += Math.round(nameSz * 1.3);
 
         if (agg.date) {
@@ -465,26 +526,27 @@
             y += Math.round(dateSz * 1.7);
         }
 
-        var items = [
-            { value: agg.distanceKm.toFixed(1) + " km",       label: "Distance" },
-            { value: agg.movingTime,                           label: "Moving Time" },
-            { value: agg.avgSpeedKmh.toFixed(1) + " km/h",    label: "Avg Speed" },
-            { value: "↑ " + Math.round(agg.uphillM) + " m", label: "Elevation" },
-        ];
+        var items = [];
+        if (enabledStats.distance)   items.push({ value: agg.distanceKm.toFixed(1) + " km",    label: "Distance" });
+        if (enabledStats.movingTime) items.push({ value: agg.movingTime,                        label: "Moving Time" });
+        if (enabledStats.avgSpeed)   items.push({ value: agg.avgSpeedKmh.toFixed(1) + " km/h", label: "Avg Speed" });
+        if (enabledStats.elevation)  items.push({ value: "↑ " + Math.round(agg.uphillM) + " m", label: "Elevation" });
 
-        var colW = w / items.length;
-        items.forEach(function (item, i) {
-            var cx = Math.round(colW * i + colW / 2);
+        if (items.length > 0 && valSz > 0) {
+            var colW = w / items.length;
+            items.forEach(function (item, i) {
+                var cx = Math.round(colW * i + colW / 2);
 
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "bold " + valSz + "px system-ui,-apple-system,sans-serif";
-            ctx.textAlign = "center";
-            ctx.fillText(item.value, cx, y);
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold " + valSz + "px system-ui,-apple-system,sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText(item.value, cx, y);
 
-            ctx.fillStyle = "rgba(255,255,255,0.5)";
-            ctx.font = lblSz + "px system-ui,-apple-system,sans-serif";
-            ctx.fillText(item.label, cx, y + Math.round(valSz * 1.3));
-        });
+                ctx.fillStyle = "rgba(255,255,255,0.5)";
+                ctx.font = lblSz + "px system-ui,-apple-system,sans-serif";
+                ctx.fillText(item.label, cx, y + Math.round(valSz * 1.3));
+            });
+        }
 
         ctx.textAlign    = "left";
         ctx.textBaseline = "alphabetic";
