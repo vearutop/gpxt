@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%;padding:0;margin:0">
+<head>
+    <title>GPX Poster</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/static/favicon.png" type="image/png"/>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css" />
+    <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+    <link rel="stylesheet" href="/static/poster.css" />
+</head>
+<body>
+<div id="toolbar">
+    <span class="toolbar-brand">GPX Poster</span>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Map opacity</span>
+        <input type="range" id="opacity-slider" min="0" max="100" value="65">
+        <span id="opacity-value">65%</span>
+    </label>
+    <button id="save-btn" disabled>Save as PNG</button>
+</div>
+<div id="poster-wrapper">
+    <div id="poster-frame">
+        <img id="bg-image" alt="background" />
+        <div id="map"></div>
+        <div id="stats-overlay"></div>
+    </div>
+</div>
+<script>
+    window.POSTER_CONFIG = {
+        files: {{.Files}},
+        styleURL: {{.StyleURL}}
+    };
+</script>
+<script type="text/javascript" src="/static/poster.js"></script>
+</body>
+</html>

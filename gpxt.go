@@ -18,6 +18,7 @@ func main() {
 	moveCmd()
 	infoCmd()
 	showCmd()
+	posterCmd()
 	concatCmd()
 	cutCmd()
 	reduceCmd()
