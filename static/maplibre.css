@@ -7,3 +7,55 @@ html, body {
 body {
     overflow: hidden;
 }
+
+.track-panel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    background: rgba(18, 18, 18, 0.84);
+    color: #f5f5f5;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    padding: 12px 12px 8px;
+    min-width: 220px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(10px);
+    font: 13px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.track-panel__title {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.track-panel__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.track-panel__item input {
+    margin: 0;
+}
+
+.track-panel__swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    flex: 0 0 12px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+.track-panel__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

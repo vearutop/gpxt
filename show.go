@@ -13,6 +13,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"time"
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/swaggest/openapi-go/openapi3"
@@ -27,39 +28,39 @@ import (
 
 func showCmd() {
 	var (
-		files    []string
-		tiles    string
-		styleURL string
-		mapLibre bool
+		files      []string
+		tiles      string
+		styleURL   string
+		useLeaflet bool
 	)
 
-	info := kingpin.Command("show", "Show GPX file on the map in the browser")
-	info.Arg("files", "Files to show on the map.").StringsVar(&files)
-	info.Flag("tiles", "URL pattern for map tiles.").
+	cmd := kingpin.Command("show", "Show GPX file on the map in the browser")
+	cmd.Arg("files", "Files to show on the map.").StringsVar(&files)
+	cmd.Flag("tiles", "URL pattern for map tiles.").
 		Default("https://tile.openstreetmap.org/{z}/{x}/{y}.png").
 		Envar("LEAFLET_TILES").
 		StringVar(&tiles)
-	info.Flag("style", "MapLibre style URL.").
+	cmd.Flag("style", "MapLibre style URL.").
 		Default("https://tiles.openfreemap.org/styles/liberty").
 		Envar("MAPLIBRE_STYLE").
 		StringVar(&styleURL)
-	info.Flag("map-libre", "Show tracks on a MapLibre map instead of Leaflet.").
+	cmd.Flag("leaflet", "Show tracks on a Leaflet map instead of MapLibre.").
 		Default("false").
-		BoolVar(&mapLibre)
+		BoolVar(&useLeaflet)
 
-	info.Action(func(_ *kingpin.ParseContext) error {
+	cmd.Action(func(_ *kingpin.ParseContext) error {
 		if len(files) < 1 {
 			return errors.New("at least one file expected to show")
 		}
 
 		s := web.NewService(openapi3.NewReflector())
 		s.Mount("/static/", http.StripPrefix("/static", Static))
-		if mapLibre {
+		if !useLeaflet {
 			s.Get("/track/{id}.geojson", dlGeoJSON(files))
 			s.Get("/", showMapLibre(files, styleURL))
 		} else {
 			s.Get("/track/{id}.gpx", dlGPX(files))
-			s.Get("/", showMap(files, tiles))
+			s.Get("/", showMapLeaflet(files, tiles))
 		}
 
 		srv := httptest.NewServer(s)
@@ -90,8 +91,8 @@ func init() {
 	}
 }
 
-// showMap creates use case interactor to show map.
-func showMap(files []string, tiles string) usecase.Interactor {
+// showMapLeaflet creates use case interactor to show map.
+func showMapLeaflet(files []string, tiles string) usecase.Interactor {
 	tmpl, err := static.Template("map.html")
 	if err != nil {
 		panic(err)
@@ -199,14 +200,16 @@ func dlGeoJSON(files []string) usecase.Interactor {
 
 func gpxToGeoJSON(doc *gpx.GPX, sourceName string) (string, error) {
 	type geometry struct {
-		Type        string      `json:"type"`
-		Coordinates [][]float64 `json:"coordinates,omitempty"`
+		Type        string `json:"type"`
+		Coordinates any    `json:"coordinates,omitempty"`
 	}
 	type properties struct {
 		Name    string `json:"name,omitempty"`
 		Source  string `json:"source,omitempty"`
 		Track   string `json:"track,omitempty"`
 		Segment int    `json:"segment,omitempty"`
+		Desc    string `json:"desc,omitempty"`
+		Time    string `json:"time,omitempty"`
 	}
 	type feature struct {
 		Type       string     `json:"type"`
@@ -219,6 +222,27 @@ func gpxToGeoJSON(doc *gpx.GPX, sourceName string) (string, error) {
 	}
 
 	var features []feature
+	for _, wp := range doc.Waypoints {
+		name := wp.Name
+		if name == "" {
+			name = "waypoint"
+		}
+
+		features = append(features, feature{
+			Type: "Feature",
+			Geometry: geometry{
+				Type:        "Point",
+				Coordinates: []float64{wp.Longitude, wp.Latitude},
+			},
+			Properties: properties{
+				Name:   name,
+				Source: sourceName,
+				Desc:   wp.Description,
+				Time:   wp.Timestamp.Format(time.RFC3339),
+			},
+		})
+	}
+
 	for trackIdx, track := range doc.Tracks {
 		for segIdx, segment := range track.Segments {
 			if len(segment.Points) == 0 {
