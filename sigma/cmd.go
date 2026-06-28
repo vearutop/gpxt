@@ -19,9 +19,7 @@ func Cmd() {
 }
 
 func info(c *kingpin.CmdClause) {
-	var (
-		slfFile string
-	)
+	var slfFile string
 
 	info := c.Command("info", "Print SLF info")
 	info.Arg("slf", "Source SLF file.").Required().StringVar(&slfFile)

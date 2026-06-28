@@ -19,6 +19,7 @@ type MapSlf struct {
 	SkipStartDist float64
 }
 
+// SlfInfo shows information about SLF file.
 func SlfInfo(slfFn string) error {
 	d, err := os.ReadFile(slfFn) //nolint:gosec
 	if err != nil {
