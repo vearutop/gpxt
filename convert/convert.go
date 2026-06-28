@@ -28,5 +28,15 @@ func Auto(data io.ReadSeeker) (gpx.GPX, error) {
 		return g, nil
 	}
 
+	_, err = data.Seek(0, io.SeekStart)
+	if err != nil {
+		return gpx.GPX{}, err
+	}
+
+	gpxFile, err := gpx.Parse(data)
+	if err == nil {
+		return *gpxFile, nil
+	}
+
 	return gpx.GPX{}, err
 }

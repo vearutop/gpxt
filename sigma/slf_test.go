@@ -25,3 +25,13 @@ func TestMergeSlfIntoGpx_byDist(t *testing.T) {
 		},
 	))
 }
+
+func TestSlfInfo(t *testing.T) {
+	require.NoError(t, sigma.SlfInfo("testdata/2026.06.06.slf"))
+	require.NoError(t, sigma.SlfInfo("testdata/2026.06.06-07.slf"))
+
+	sigma.MergeSlfIntoGpxFile("testdata/2026.06.06-07.slf", "testdata/2026.06.07.gpx", "testdata/2026.06.07.slf.gpx", func(options *sigma.MapSlf) {
+		options.ByDist = true
+		options.SkipStartDist = 83628
+	})
+}
