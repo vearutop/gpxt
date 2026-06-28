@@ -8,6 +8,8 @@
     var trackCanvas = null;
     var tc = null;         // 2D context of the track overlay canvas
     var palette = ["#f97316", "#22c55e", "#06b6d4", "#eab308", "#ef4444", "#8b5cf6"];
+    var fillLayers = {};   // layerId → {prop, original} — cached before first strip
+    var trackBounds = null; // stored for re-fit after bearing change
 
     function init() {
         loadBackgroundImage()
@@ -76,10 +78,12 @@
         });
 
         map.on("load", function () {
+            initFillLayers(); // must come before stripMapFills
             stripMapFills();
             map.resize();
             loadTracks();
         });
+
 
         // Redraw the track overlay whenever MapLibre repaints.
         map.on("render", drawTracks);
@@ -88,22 +92,35 @@
         map.getContainer().style.opacity = String(opacity);
     }
 
-    function stripMapFills() {
+    var FILL_OPACITY_PROP = {
+        "background":    "background-opacity",
+        "fill":          "fill-opacity",
+        "fill-extrusion":"fill-extrusion-opacity",
+        "raster":        "raster-opacity",
+    };
+
+    // Cache original values from the style spec before we touch anything.
+    function initFillLayers() {
         map.getStyle().layers.forEach(function (layer) {
-            switch (layer.type) {
-            case "background":
-                map.setPaintProperty(layer.id, "background-opacity", 0);
-                break;
-            case "fill":
-                map.setPaintProperty(layer.id, "fill-opacity", 0);
-                break;
-            case "fill-extrusion":
-                map.setPaintProperty(layer.id, "fill-extrusion-opacity", 0);
-                break;
-            case "raster":
-                map.setPaintProperty(layer.id, "raster-opacity", 0);
-                break;
-            }
+            var prop = FILL_OPACITY_PROP[layer.type];
+            if (!prop) return;
+            var paint = layer.paint || {};
+            fillLayers[layer.id] = {
+                prop:     prop,
+                original: paint[prop] !== undefined ? paint[prop] : 1,
+            };
+        });
+    }
+
+    function stripMapFills() {
+        Object.keys(fillLayers).forEach(function (id) {
+            map.setPaintProperty(id, fillLayers[id].prop, 0);
+        });
+    }
+
+    function restoreMapFills() {
+        Object.keys(fillLayers).forEach(function (id) {
+            map.setPaintProperty(id, fillLayers[id].prop, fillLayers[id].original);
         });
     }
 
@@ -128,6 +145,7 @@
                     loaded++;
                     if (loaded === config.files.length) {
                         if (!bounds.isEmpty()) {
+                            trackBounds = bounds;
                             map.fitBounds(bounds, { padding: 56, duration: 0 });
                         }
                         map.once("idle", function () {
@@ -135,6 +153,7 @@
                             document.getElementById("export-size").textContent =
                                 mc.width + "×" + mc.height + " px";
                             document.getElementById("save-btn").disabled = false;
+                            document.getElementById("auto-rotate-btn").disabled = false;
                         });
                     }
                 });
@@ -248,16 +267,93 @@
             .replace(/>/g, "&gt;");
     }
 
+    // PCA-based auto-rotate: finds the principal axis of the track points and
+    // aligns it with the poster's longer dimension (vertical for portrait, etc.).
+    function autoRotate() {
+        var coords = [];
+        allGeoJson.forEach(function (geojson) {
+            if (!geojson) return;
+            geojson.features.forEach(function (f) {
+                if (f.geometry && f.geometry.type === "LineString") {
+                    f.geometry.coordinates.forEach(function (c) {
+                        coords.push([c[0], c[1]]);
+                    });
+                }
+            });
+        });
+        if (coords.length < 2) return;
+
+        // Centroid.
+        var mx = 0, my = 0;
+        coords.forEach(function (c) { mx += c[0]; my += c[1]; });
+        mx /= coords.length;
+        my /= coords.length;
+
+        // Scale longitude by cos(lat) so distances are isotropic.
+        var cosLat = Math.cos(my * Math.PI / 180);
+
+        // Covariance matrix elements.
+        var cxx = 0, cyy = 0, cxy = 0;
+        coords.forEach(function (c) {
+            var dx = (c[0] - mx) * cosLat;
+            var dy =  c[1] - my;
+            cxx += dx * dx;
+            cyy += dy * dy;
+            cxy += dx * dy;
+        });
+
+        // Angle of the principal eigenvector (atan2 trick for 2×2 symmetric matrix).
+        var angle = Math.atan2(2 * cxy, cxx - cyy) / 2; // radians, from East axis
+
+        // Convert to MapLibre bearing (degrees clockwise from North).
+        var bearing = Math.atan2(Math.cos(angle), Math.sin(angle)) * 180 / Math.PI;
+
+        // For a landscape frame the principal axis should be horizontal → rotate 90°.
+        var frame = document.getElementById("poster-frame");
+        if (frame.clientWidth > frame.clientHeight) {
+            bearing = (bearing + 90 + 360) % 360;
+        }
+
+        // Normalise to (−180, 180].
+        if (bearing > 180) bearing -= 360;
+
+        if (trackBounds) {
+            map.fitBounds(trackBounds, { padding: 56, duration: 300, bearing: bearing });
+        } else {
+            map.setBearing(bearing);
+        }
+        document.getElementById("bearing-slider").value = Math.round(bearing);
+        document.getElementById("bearing-value").textContent = Math.round(bearing) + "°";
+    }
+
     function setupControls() {
         var slider     = document.getElementById("opacity-slider");
         var opacityVal = document.getElementById("opacity-value");
 
         slider.addEventListener("input", function () {
             opacityVal.textContent = slider.value + "%";
-            // Only the map container changes — track canvas is always at 100%.
             if (map) map.getContainer().style.opacity = String(slider.value / 100);
         });
 
+        document.getElementById("fills-checkbox").addEventListener("change", function () {
+            if (this.checked) restoreMapFills();
+            else              stripMapFills();
+        });
+
+        var bearingSlider = document.getElementById("bearing-slider");
+        var bearingVal    = document.getElementById("bearing-value");
+        bearingSlider.addEventListener("input", function () {
+            var b = Number(this.value);
+            bearingVal.textContent = b + "°";
+            if (map) map.setBearing(b);
+        });
+        // Re-fit track into frame once the drag is released.
+        bearingSlider.addEventListener("change", function () {
+            var b = Number(bearingSlider.value);
+            if (map && trackBounds) map.fitBounds(trackBounds, { padding: 56, duration: 200, bearing: b });
+        });
+
+        document.getElementById("auto-rotate-btn").addEventListener("click", autoRotate);
         document.getElementById("save-btn").addEventListener("click", exportPNG);
     }
 

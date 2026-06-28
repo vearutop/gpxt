@@ -18,7 +18,17 @@
         <input type="range" id="opacity-slider" min="0" max="100" value="90">
         <span id="opacity-value">90%</span>
     </label>
-    <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums"></span>
+    <label class="toolbar-control">
+        <input type="checkbox" id="fills-checkbox">
+        <span class="toolbar-control__label">Show fills</span>
+    </label>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Rotation</span>
+        <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
+        <span id="bearing-value">0°</span>
+    </label>
+    <button id="auto-rotate-btn" disabled>Auto</button>
+    <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;margin-left:auto"></span>
     <button id="save-btn" disabled>Save as PNG</button>
 </div>
 <div id="poster-wrapper">
