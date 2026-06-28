@@ -61,12 +61,34 @@
         });
 
         map.on("load", function () {
+            stripMapFills();
             map.resize();
             loadTracks();
         });
 
         var opacity = document.getElementById("opacity-slider").value / 100;
         map.getContainer().style.opacity = String(opacity);
+    }
+
+    // Remove all filled/background/raster layers so the photo shows through cleanly.
+    // Lines (roads, rivers) and symbol labels are kept.
+    function stripMapFills() {
+        map.getStyle().layers.forEach(function (layer) {
+            switch (layer.type) {
+            case "background":
+                map.setPaintProperty(layer.id, "background-opacity", 0);
+                break;
+            case "fill":
+                map.setPaintProperty(layer.id, "fill-opacity", 0);
+                break;
+            case "fill-extrusion":
+                map.setPaintProperty(layer.id, "fill-extrusion-opacity", 0);
+                break;
+            case "raster":
+                map.setPaintProperty(layer.id, "raster-opacity", 0);
+                break;
+            }
+        });
     }
 
     function loadTracks() {
@@ -125,6 +147,9 @@
                     if (tracksLoaded === config.files.length) {
                         // Wait for tiles to render before enabling save.
                         map.once("idle", function () {
+                            var mc = map.getCanvas();
+                            document.getElementById("export-size").textContent =
+                                mc.width + "×" + mc.height + " px";
                             document.getElementById("save-btn").disabled = false;
                         });
                     }
@@ -210,97 +235,140 @@
         btn.disabled = true;
         btn.textContent = "Rendering…";
 
-        setTimeout(function () {
-            try {
-                var bgImage = document.getElementById("bg-image");
-                var exportW = 1080;
-                var exportH = Math.round(exportW * bgImage.naturalHeight / bgImage.naturalWidth);
-
-                var canvas = document.createElement("canvas");
-                canvas.width = exportW;
-                canvas.height = exportH;
-                var ctx = canvas.getContext("2d");
-
-                // Layer 1: background photo.
-                ctx.drawImage(bgImage, 0, 0, exportW, exportH);
-
-                // Layer 2: map at configured opacity.
-                var opacity = document.getElementById("opacity-slider").value / 100;
-                ctx.globalAlpha = opacity;
-                ctx.drawImage(map.getCanvas(), 0, 0, exportW, exportH);
-                ctx.globalAlpha = 1;
-
-                // Layer 3: stats panel drawn directly on canvas.
-                if (statsData && statsData.length > 0) {
-                    drawStatsCanvas(ctx, aggregateStats(statsData), exportW, exportH);
-                }
-
-                var link = document.createElement("a");
-                link.download = "gpx-poster.png";
-                link.href = canvas.toDataURL("image/png");
-                link.click();
-            } catch (e) {
-                alert("Export failed: " + e.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = "Save as PNG";
-            }
-        }, 0);
+        // Trigger a fresh WebGL render, then capture on the next animation frame.
+        // One rAF is enough: MapLibre renders into the canvas during this frame,
+        // and toDataURL (used below) forces a synchronous GPU read-back.
+        map.triggerRepaint();
+        requestAnimationFrame(function () {
+            captureAndDownload(btn);
+        });
     }
 
-    function drawStatsCanvas(ctx, agg, w, h) {
-        var panelH = Math.round(h * 0.21);
-        var panelY = h - panelH;
-        var pad = Math.round(w * 0.046);
+    function captureAndDownload(btn) {
+        function done() {
+            btn.disabled = false;
+            btn.textContent = "Save as PNG";
+        }
 
-        // Background.
+        var bgImage = document.getElementById("bg-image");
+        var frame   = document.getElementById("poster-frame");
+
+        // Export at DPR × CSS frame size — matches what MapLibre rendered, no scaling.
+        var dpr     = window.devicePixelRatio || 1;
+        var exportW = Math.round(frame.clientWidth  * dpr);
+        var exportH = Math.round(frame.clientHeight * dpr);
+
+        var canvas = document.createElement("canvas");
+        canvas.width  = exportW;
+        canvas.height = exportH;
+        var ctx = canvas.getContext("2d");
+
+        // Layer 1: background photo.
+        ctx.drawImage(bgImage, 0, 0, exportW, exportH);
+
+        var opacity = document.getElementById("opacity-slider").value / 100;
+
+        function finish() {
+            // Layer 3: stats panel — sizes derived from live DOM, scaled to export.
+            if (statsData && statsData.length > 0) {
+                drawStatsCanvas(ctx, aggregateStats(statsData), exportW, exportH);
+            }
+            var link = document.createElement("a");
+            link.download = "gpx-poster.png";
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+            done();
+        }
+
+        // Layer 2: map.
+        // toDataURL serialises the WebGL buffer synchronously (GPU read-back),
+        // then we load it as a plain Image so the 2D canvas drawImage path is used.
+        // Direct drawImage(webglCanvas) is unreliable in Firefox when the WebGL
+        // context renders with a transparent background (stripped fills).
+        try {
+            var mapDataUrl = map.getCanvas().toDataURL("image/png");
+            var mapImg = new Image();
+            mapImg.onload = function () {
+                ctx.globalAlpha = opacity;
+                ctx.drawImage(mapImg, 0, 0, exportW, exportH);
+                ctx.globalAlpha = 1;
+                finish();
+            };
+            mapImg.onerror = finish; // proceed without map layer on failure
+            mapImg.src = mapDataUrl;
+        } catch (e) {
+            // Canvas tainted by cross-origin tiles — skip map layer.
+            console.warn("Map canvas read-back failed:", e);
+            finish();
+        }
+    }
+
+    // Draw the stats panel onto the export canvas.
+    // Font sizes and panel height are read from the live DOM and scaled up to
+    // the export resolution so the PNG matches what the user sees on screen.
+    function drawStatsCanvas(ctx, agg, w, h) {
+        var frame = document.getElementById("poster-frame");
+        var overlay = document.getElementById("stats-overlay");
+        var scale = w / frame.clientWidth;
+
+        // Mirror the DOM layout.
+        var overlayH = Math.round(overlay.getBoundingClientRect().height * scale);
+        var panelY = h - overlayH;
+        var cs = window.getComputedStyle(overlay);
+        var padL = Math.round(parseFloat(cs.paddingLeft) * scale);
+        var padT = Math.round(parseFloat(cs.paddingTop) * scale);
+
+        var nameSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-name")).fontSize) * scale);
+        var dateSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-date")).fontSize) * scale);
+        var valSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-value")).fontSize) * scale);
+        var lblSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-label")).fontSize) * scale);
+
+        // Panel background.
         ctx.fillStyle = "rgba(0,0,0,0.72)";
-        ctx.fillRect(0, panelY, w, panelH);
+        ctx.fillRect(0, panelY, w, overlayH);
 
         // Accent line.
         ctx.fillStyle = "#f97316";
-        ctx.fillRect(0, panelY, w, Math.round(h * 0.003));
+        ctx.fillRect(0, panelY, w, Math.max(2, Math.round(3 * scale)));
+
+        ctx.textAlign = "left";
+        ctx.textBaseline = "top";
+        var y = panelY + padT;
 
         // Track name.
-        var nameSz = Math.round(w * 0.042);
         ctx.fillStyle = "#ffffff";
         ctx.font = "bold " + nameSz + "px system-ui,-apple-system,sans-serif";
-        ctx.textAlign = "left";
-        ctx.textBaseline = "alphabetic";
-        ctx.fillText(agg.name || "GPX Track", pad, panelY + Math.round(panelH * 0.36));
+        ctx.fillText(agg.name || "GPX Track", padL, y);
+        y += Math.round(nameSz * 1.3);
 
         // Date.
         if (agg.date) {
-            var dateSz = Math.round(w * 0.026);
             ctx.fillStyle = "rgba(255,255,255,0.55)";
             ctx.font = dateSz + "px system-ui,-apple-system,sans-serif";
-            ctx.fillText(agg.date, pad, panelY + Math.round(panelH * 0.57));
+            ctx.fillText(agg.date, padL, y);
+            y += Math.round(dateSz * 1.7);
         }
 
         // Four stat columns.
         var items = [
             { value: agg.distanceKm.toFixed(1) + " km", label: "Distance" },
-            { value: agg.movingTime, label: "Moving Time" },
+            { value: agg.movingTime,                    label: "Moving Time" },
             { value: agg.avgSpeedKmh.toFixed(1) + " km/h", label: "Avg Speed" },
             { value: "↑ " + Math.round(agg.uphillM) + " m", label: "Elevation" },
         ];
 
-        var valSz = Math.round(w * 0.036);
-        var lblSz = Math.round(w * 0.024);
         var colW = w / items.length;
-
         items.forEach(function (item, i) {
             var cx = Math.round(colW * i + colW / 2);
 
             ctx.fillStyle = "#ffffff";
             ctx.font = "bold " + valSz + "px system-ui,-apple-system,sans-serif";
             ctx.textAlign = "center";
-            ctx.textBaseline = "alphabetic";
-            ctx.fillText(item.value, cx, panelY + Math.round(panelH * 0.72));
+            ctx.fillText(item.value, cx, y);
 
             ctx.fillStyle = "rgba(255,255,255,0.5)";
             ctx.font = lblSz + "px system-ui,-apple-system,sans-serif";
-            ctx.fillText(item.label, cx, panelY + Math.round(panelH * 0.9));
+            ctx.fillText(item.label, cx, y + Math.round(valSz * 1.3));
         });
 
         ctx.textAlign = "left";
