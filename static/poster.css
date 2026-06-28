@@ -105,6 +105,12 @@ html, body {
     height: 100%;
 }
 
+#track-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
 #stats-overlay {
     position: absolute;
     bottom: 0;

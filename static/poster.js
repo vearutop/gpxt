@@ -4,11 +4,15 @@
     var config = window.POSTER_CONFIG;
     var map = null;
     var statsData = null;
-    var tracksLoaded = 0;
+    var allGeoJson = [];   // indexed by file, filled as fetches complete
+    var trackCanvas = null;
+    var tc = null;         // 2D context of the track overlay canvas
+    var palette = ["#f97316", "#22c55e", "#06b6d4", "#eab308", "#ef4444", "#8b5cf6"];
 
     function init() {
         loadBackgroundImage()
             .then(function () {
+                initTrackCanvas();
                 initMap();
                 return fetch("/stats.json").then(function (r) { return r.json(); });
             })
@@ -41,13 +45,24 @@
                 }
                 frame.style.width = w + "px";
                 frame.style.height = h + "px";
-                // Force layout recalc before MapLibre init.
                 frame.getBoundingClientRect();
                 resolve();
             };
             img.onerror = function () { reject(new Error("Failed to load background image")); };
             img.src = "/image";
         });
+    }
+
+    function initTrackCanvas() {
+        trackCanvas = document.getElementById("track-canvas");
+        var frame = document.getElementById("poster-frame");
+        var dpr = window.devicePixelRatio || 1;
+        // Physical pixels for the canvas buffer; CSS size matches the frame.
+        trackCanvas.width  = Math.round(frame.clientWidth  * dpr);
+        trackCanvas.height = Math.round(frame.clientHeight * dpr);
+        trackCanvas.style.width  = frame.clientWidth  + "px";
+        trackCanvas.style.height = frame.clientHeight + "px";
+        tc = trackCanvas.getContext("2d");
     }
 
     function initMap() {
@@ -66,12 +81,13 @@
             loadTracks();
         });
 
+        // Redraw the track overlay whenever MapLibre repaints.
+        map.on("render", drawTracks);
+
         var opacity = document.getElementById("opacity-slider").value / 100;
         map.getContainer().style.opacity = String(opacity);
     }
 
-    // Remove all filled/background/raster layers so the photo shows through cleanly.
-    // Lines (roads, rivers) and symbol labels are kept.
     function stripMapFills() {
         map.getStyle().layers.forEach(function (layer) {
             switch (layer.type) {
@@ -93,43 +109,13 @@
 
     function loadTracks() {
         var bounds = new maplibregl.LngLatBounds();
-        var palette = ["#f97316", "#22c55e", "#06b6d4", "#eab308", "#ef4444", "#8b5cf6"];
+        var loaded = 0;
 
         config.files.forEach(function (name, i) {
             fetch("/track/" + i + ".geojson")
                 .then(function (r) { return r.json(); })
                 .then(function (geojson) {
-                    map.addSource("track-" + i, { type: "geojson", data: geojson });
-
-                    var hasLines = geojson.features.some(function (f) {
-                        return f.geometry && f.geometry.type === "LineString";
-                    });
-
-                    if (hasLines) {
-                        // Dark outline for contrast on any background.
-                        map.addLayer({
-                            id: "track-outline-" + i,
-                            type: "line",
-                            source: "track-" + i,
-                            filter: ["==", ["geometry-type"], "LineString"],
-                            paint: {
-                                "line-color": "#000000",
-                                "line-width": 8,
-                                "line-opacity": 0.45,
-                            },
-                        });
-
-                        map.addLayer({
-                            id: "track-line-" + i,
-                            type: "line",
-                            source: "track-" + i,
-                            filter: ["==", ["geometry-type"], "LineString"],
-                            paint: {
-                                "line-color": palette[i % palette.length],
-                                "line-width": 5,
-                            },
-                        });
-                    }
+                    allGeoJson[i] = geojson;
 
                     geojson.features.forEach(function (f) {
                         if (f.geometry.type === "LineString") {
@@ -139,13 +125,11 @@
                         }
                     });
 
-                    if (!bounds.isEmpty()) {
-                        map.fitBounds(bounds, { padding: 56, duration: 0 });
-                    }
-
-                    tracksLoaded++;
-                    if (tracksLoaded === config.files.length) {
-                        // Wait for tiles to render before enabling save.
+                    loaded++;
+                    if (loaded === config.files.length) {
+                        if (!bounds.isEmpty()) {
+                            map.fitBounds(bounds, { padding: 56, duration: 0 });
+                        }
                         map.once("idle", function () {
                             var mc = map.getCanvas();
                             document.getElementById("export-size").textContent =
@@ -155,6 +139,56 @@
                     }
                 });
         });
+    }
+
+    // Redraws all tracks on the overlay canvas using projected screen coordinates.
+    // Called on every MapLibre render so the overlay stays in sync with pan/zoom.
+    function drawTracks() {
+        if (!tc) return;
+        var dpr = window.devicePixelRatio || 1;
+        tc.clearRect(0, 0, trackCanvas.width, trackCanvas.height);
+
+        allGeoJson.forEach(function (geojson, i) {
+            if (!geojson) return;
+            var color = palette[i % palette.length];
+
+            geojson.features.forEach(function (feature) {
+                if (!feature.geometry) return;
+
+                if (feature.geometry.type === "LineString") {
+                    var coords = feature.geometry.coordinates;
+                    if (coords.length < 2) return;
+                    drawLine(coords, "rgba(0,0,0,0.45)", 8 * dpr);
+                    drawLine(coords, color, 5 * dpr);
+
+                } else if (feature.geometry.type === "Point") {
+                    var pt = map.project(feature.geometry.coordinates);
+                    var r = 6 * dpr;
+                    tc.beginPath();
+                    tc.arc(pt.x * dpr, pt.y * dpr, r, 0, Math.PI * 2);
+                    tc.fillStyle = color;
+                    tc.fill();
+                    tc.strokeStyle = "#ffffff";
+                    tc.lineWidth = 2 * dpr;
+                    tc.stroke();
+                }
+            });
+        });
+    }
+
+    function drawLine(coords, color, width) {
+        var dpr = window.devicePixelRatio || 1;
+        tc.beginPath();
+        tc.strokeStyle = color;
+        tc.lineWidth = width;
+        tc.lineCap = "round";
+        tc.lineJoin = "round";
+        coords.forEach(function (coord, j) {
+            var pt = map.project(coord);
+            if (j === 0) tc.moveTo(pt.x * dpr, pt.y * dpr);
+            else         tc.lineTo(pt.x * dpr, pt.y * dpr);
+        });
+        tc.stroke();
     }
 
     function renderStatsOverlay(stats) {
@@ -170,35 +204,31 @@
             statItem(agg.distanceKm.toFixed(1) + " km", "Distance") +
             statItem(agg.movingTime, "Moving Time") +
             statItem(agg.avgSpeedKmh.toFixed(1) + " km/h", "Avg Speed") +
-            statItem("↑ " + Math.round(agg.uphillM) + " m", "Elevation") +
+            statItem("↑ " + Math.round(agg.uphillM) + " m", "Elevation") +
             "</div>";
     }
 
     function aggregateStats(stats) {
         var totalDist = 0, totalSecs = 0, totalUphill = 0;
-
         stats.forEach(function (s) {
-            totalDist += s.distance_km;
-            totalSecs += s.moving_time_secs;
+            totalDist   += s.distance_km;
+            totalSecs   += s.moving_time_secs;
             totalUphill += s.uphill_m;
         });
-
-        var avgSpeedKmh = totalSecs > 0 ? (totalDist / totalSecs) * 3600 : 0;
-
         return {
-            name: stats[0].name,
-            date: stats[0].date,
-            distanceKm: totalDist,
-            movingTime: fmtDuration(totalSecs),
-            avgSpeedKmh: avgSpeedKmh,
-            uphillM: totalUphill,
+            name:        stats[0].name,
+            date:        stats[0].date,
+            distanceKm:  totalDist,
+            movingTime:  fmtDuration(totalSecs),
+            avgSpeedKmh: totalSecs > 0 ? (totalDist / totalSecs) * 3600 : 0,
+            uphillM:     totalUphill,
         };
     }
 
     function fmtDuration(secs) {
         var h = Math.floor(secs / 3600);
         var m = Math.floor((secs % 3600) / 60);
-        if (h > 0) return h + "h " + String(m).padStart(2, "0") + "m";
+        if (h > 0) return h + "h " + String(m).padStart(2, "0") + "m";
         return m + "m";
     }
 
@@ -219,11 +249,12 @@
     }
 
     function setupControls() {
-        var slider = document.getElementById("opacity-slider");
+        var slider     = document.getElementById("opacity-slider");
         var opacityVal = document.getElementById("opacity-value");
 
         slider.addEventListener("input", function () {
             opacityVal.textContent = slider.value + "%";
+            // Only the map container changes — track canvas is always at 100%.
             if (map) map.getContainer().style.opacity = String(slider.value / 100);
         });
 
@@ -235,9 +266,6 @@
         btn.disabled = true;
         btn.textContent = "Rendering…";
 
-        // Trigger a fresh WebGL render, then capture on the next animation frame.
-        // One rAF is enough: MapLibre renders into the canvas during this frame,
-        // and toDataURL (used below) forces a synchronous GPU read-back.
         map.triggerRepaint();
         requestAnimationFrame(function () {
             captureAndDownload(btn);
@@ -252,8 +280,6 @@
 
         var bgImage = document.getElementById("bg-image");
         var frame   = document.getElementById("poster-frame");
-
-        // Export at DPR × CSS frame size — matches what MapLibre rendered, no scaling.
         var dpr     = window.devicePixelRatio || 1;
         var exportW = Math.round(frame.clientWidth  * dpr);
         var exportH = Math.round(frame.clientHeight * dpr);
@@ -268,11 +294,17 @@
 
         var opacity = document.getElementById("opacity-slider").value / 100;
 
-        function finish() {
-            // Layer 3: stats panel — sizes derived from live DOM, scaled to export.
+        function afterMap() {
+            // Layer 3: GPX tracks at full opacity.
+            // trackCanvas is a plain 2D canvas — no WebGL / cross-origin issue.
+            ctx.globalAlpha = 1;
+            ctx.drawImage(trackCanvas, 0, 0, exportW, exportH);
+
+            // Layer 4: stats panel.
             if (statsData && statsData.length > 0) {
                 drawStatsCanvas(ctx, aggregateStats(statsData), exportW, exportH);
             }
+
             var link = document.createElement("a");
             link.download = "gpx-poster.png";
             link.href = canvas.toDataURL("image/png");
@@ -280,11 +312,8 @@
             done();
         }
 
-        // Layer 2: map.
-        // toDataURL serialises the WebGL buffer synchronously (GPU read-back),
-        // then we load it as a plain Image so the 2D canvas drawImage path is used.
-        // Direct drawImage(webglCanvas) is unreliable in Firefox when the WebGL
-        // context renders with a transparent background (stripped fills).
+        // Layer 2: map (roads/labels) at slider opacity.
+        // toDataURL forces a synchronous GPU read-back before we copy.
         try {
             var mapDataUrl = map.getCanvas().toDataURL("image/png");
             var mapImg = new Image();
@@ -292,56 +321,47 @@
                 ctx.globalAlpha = opacity;
                 ctx.drawImage(mapImg, 0, 0, exportW, exportH);
                 ctx.globalAlpha = 1;
-                finish();
+                afterMap();
             };
-            mapImg.onerror = finish; // proceed without map layer on failure
+            mapImg.onerror = afterMap;
             mapImg.src = mapDataUrl;
         } catch (e) {
-            // Canvas tainted by cross-origin tiles — skip map layer.
             console.warn("Map canvas read-back failed:", e);
-            finish();
+            afterMap();
         }
     }
 
-    // Draw the stats panel onto the export canvas.
-    // Font sizes and panel height are read from the live DOM and scaled up to
-    // the export resolution so the PNG matches what the user sees on screen.
     function drawStatsCanvas(ctx, agg, w, h) {
-        var frame = document.getElementById("poster-frame");
+        var frame   = document.getElementById("poster-frame");
         var overlay = document.getElementById("stats-overlay");
-        var scale = w / frame.clientWidth;
+        var scale   = w / frame.clientWidth;
 
-        // Mirror the DOM layout.
         var overlayH = Math.round(overlay.getBoundingClientRect().height * scale);
-        var panelY = h - overlayH;
-        var cs = window.getComputedStyle(overlay);
+        var panelY   = h - overlayH;
+        var cs   = window.getComputedStyle(overlay);
         var padL = Math.round(parseFloat(cs.paddingLeft) * scale);
-        var padT = Math.round(parseFloat(cs.paddingTop) * scale);
+        var padT = Math.round(parseFloat(cs.paddingTop)  * scale);
 
         var nameSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-name")).fontSize) * scale);
         var dateSz = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stats-date")).fontSize) * scale);
         var valSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-value")).fontSize) * scale);
         var lblSz  = Math.round(parseFloat(window.getComputedStyle(overlay.querySelector(".stat-label")).fontSize) * scale);
 
-        // Panel background.
         ctx.fillStyle = "rgba(0,0,0,0.72)";
         ctx.fillRect(0, panelY, w, overlayH);
 
-        // Accent line.
         ctx.fillStyle = "#f97316";
         ctx.fillRect(0, panelY, w, Math.max(2, Math.round(3 * scale)));
 
-        ctx.textAlign = "left";
+        ctx.textAlign    = "left";
         ctx.textBaseline = "top";
         var y = panelY + padT;
 
-        // Track name.
         ctx.fillStyle = "#ffffff";
         ctx.font = "bold " + nameSz + "px system-ui,-apple-system,sans-serif";
         ctx.fillText(agg.name || "GPX Track", padL, y);
         y += Math.round(nameSz * 1.3);
 
-        // Date.
         if (agg.date) {
             ctx.fillStyle = "rgba(255,255,255,0.55)";
             ctx.font = dateSz + "px system-ui,-apple-system,sans-serif";
@@ -349,11 +369,10 @@
             y += Math.round(dateSz * 1.7);
         }
 
-        // Four stat columns.
         var items = [
-            { value: agg.distanceKm.toFixed(1) + " km", label: "Distance" },
-            { value: agg.movingTime,                    label: "Moving Time" },
-            { value: agg.avgSpeedKmh.toFixed(1) + " km/h", label: "Avg Speed" },
+            { value: agg.distanceKm.toFixed(1) + " km",       label: "Distance" },
+            { value: agg.movingTime,                           label: "Moving Time" },
+            { value: agg.avgSpeedKmh.toFixed(1) + " km/h",    label: "Avg Speed" },
             { value: "↑ " + Math.round(agg.uphillM) + " m", label: "Elevation" },
         ];
 
@@ -371,7 +390,7 @@
             ctx.fillText(item.label, cx, y + Math.round(valSz * 1.3));
         });
 
-        ctx.textAlign = "left";
+        ctx.textAlign    = "left";
         ctx.textBaseline = "alphabetic";
     }
 
