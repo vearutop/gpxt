@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%;padding:0;margin:0">
+<head>
+    <title>GPX Poster</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/static/favicon.png" type="image/png"/>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css" />
+    <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+    <link rel="stylesheet" href="/static/poster.css" />
+</head>
+<body>
+<div id="toolbar">
+    <span class="toolbar-brand">GPX Poster</span>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Map opacity</span>
+        <input type="range" id="opacity-slider" min="0" max="100" value="90">
+        <span id="opacity-value">90%</span>
+    </label>
+    <label class="toolbar-control">
+        <input type="checkbox" id="fills-checkbox">
+        <span class="toolbar-control__label">Show fills</span>
+    </label>
+    <div id="track-colors"></div>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Title</span>
+        <input type="text" id="poster-title" class="toolbar-text-input" placeholder="(track name)">
+    </label>
+    <div class="toolbar-stat-group">
+        <span class="toolbar-control__label">Stats</span>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="distance"   checked> Dist</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="movingTime" checked> Time</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="avgSpeed"   checked> Speed</label>
+        <label class="toolbar-stat"><input type="checkbox" data-stat="elevation"  checked> Elev</label>
+    </div>
+    <label class="toolbar-control">
+        <span class="toolbar-control__label">Rotation</span>
+        <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
+        <span id="bearing-value">0°</span>
+    </label>
+    <button id="auto-rotate-btn" disabled>Auto</button>
+    <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;margin-left:auto"></span>
+    <button id="save-btn" disabled>Save as PNG</button>
+</div>
+<div id="poster-wrapper">
+    <div id="poster-frame">
+        <img id="bg-image" alt="background" />
+        <div id="map"></div>
+        <canvas id="track-canvas"></canvas>
+        <div id="stats-overlay"></div>
+    </div>
+</div>
+<script>
+    window.POSTER_CONFIG = {
+        files: {{.Files}},
+        styleURL: {{.StyleURL}}
+    };
+</script>
+<script type="text/javascript" src="/static/poster.js"></script>
+</body>
+</html>
