@@ -15,8 +15,79 @@ import (
 
 // MapSlf defines mapping options.
 type MapSlf struct {
-	ByDist        bool
-	SkipStartDist float64
+	ByDist          bool
+	SkipStartDist   float64
+	KeepStoppedTime bool
+	IdleSpeedKmh    float64
+}
+
+// defaultIdleSpeedKmh matches gpxgo's defaultStoppedSpeedThreshold, the speed below
+// which a point-to-point arc counts as "Stopped time" rather than moving. Used when
+// MapSlf.IdleSpeedKmh is left unset (zero or negative).
+const defaultIdleSpeedKmh = 1.0
+
+// removeStoppedPoints drops the interior points of stationary dwells (runs of two or
+// more consecutive arcs at or below idleSpeedKmh), so parked/jittery clusters don't skew
+// distance-based alignment with the SLF stream.
+//
+// Only interior points are dropped: both endpoints of a dwell are kept, so gpxgo's own
+// Moving/Stopped time classification of the resulting track stays close to the original
+// - it recomputes speed between whatever points remain, and collapsing a dwell down to
+// its two boundary points still leaves a near-zero-distance arc between them, which is
+// still classified as stopped. Dropping every stopped point outright (including isolated,
+// single-arc ones) instead bridges straight across the dwell to the next point and can
+// flip that arc's average speed above the threshold, misclassifying stopped time as moving.
+func removeStoppedPoints(gpxFile *gpx.GPX, idleSpeedKmh float64) {
+	for ti, tr := range gpxFile.Tracks {
+		for si, s := range tr.Segments {
+			s.Points = filterStoppedPoints(s.Points, idleSpeedKmh)
+			tr.Segments[si] = s
+		}
+
+		gpxFile.Tracks[ti] = tr
+	}
+}
+
+func filterStoppedPoints(points []gpx.GPXPoint, idleSpeedKmh float64) []gpx.GPXPoint {
+	if len(points) < 3 {
+		return points
+	}
+
+	stopped := make([]bool, len(points))
+
+	for i := 1; i < len(points); i++ {
+		dt := points[i].Timestamp.Sub(points[i-1].Timestamp).Seconds()
+		if dt <= 0 {
+			continue
+		}
+
+		speedKmh := (points[i-1].Distance3D(&points[i]) / 1000) / (dt / 60 / 60)
+		stopped[i] = speedKmh <= idleSpeedKmh
+	}
+
+	filtered := make([]gpx.GPXPoint, 0, len(points))
+	filtered = append(filtered, points[0])
+
+	for i := 1; i < len(points); {
+		if !stopped[i] {
+			filtered = append(filtered, points[i])
+			i++
+
+			continue
+		}
+
+		// Run of one or more stopped arcs: keep only its trailing boundary point,
+		// dropping any interior points (points[i-1] is already kept).
+		j := i
+		for j < len(points) && stopped[j] {
+			j++
+		}
+
+		filtered = append(filtered, points[j-1])
+		i = j
+	}
+
+	return filtered
 }
 
 // SlfInfo shows information about SLF file.
@@ -66,6 +137,15 @@ func MergeSlfIntoGpx(gpxFile gpx.GPX, slfFn string, outFn string, opts ...func(o
 
 	for _, opt := range opts {
 		opt(&mo)
+	}
+
+	if !mo.KeepStoppedTime {
+		idleSpeedKmh := mo.IdleSpeedKmh
+		if idleSpeedKmh <= 0 {
+			idleSpeedKmh = defaultIdleSpeedKmh
+		}
+
+		removeStoppedPoints(&gpxFile, idleSpeedKmh)
 	}
 
 	d, err := os.ReadFile(slfFn) //nolint:gosec
