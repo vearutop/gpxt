@@ -31,11 +31,13 @@ func info(c *kingpin.CmdClause) {
 
 func merge(c *kingpin.CmdClause) {
 	var (
-		gpxFile       string
-		slfFile       string
-		output        string
-		byTime        bool
-		skipStartDist float64
+		gpxFile         string
+		slfFile         string
+		output          string
+		byTime          bool
+		skipStartDist   float64
+		keepStoppedTime bool
+		idleSpeed       float64
 	)
 
 	merge := c.Command("merge", "Merge SLF into GPX")
@@ -45,6 +47,10 @@ func merge(c *kingpin.CmdClause) {
 	merge.Flag("output", "Output file.").Default("<name>.slf.gpx").StringVar(&output)
 	merge.Flag("by-time", "Map by estimated time, can be less accurate than by distance.").BoolVar(&byTime)
 	merge.Flag("skip-start-dist", "Skip starting SLF points, meters.").Float64Var(&skipStartDist)
+	merge.Flag("keep-stopped-time", "Keep points recorded while stopped, instead of dropping them "+
+		"(original behavior, restores GPS jitter noise from stationary clusters).").BoolVar(&keepStoppedTime)
+	merge.Flag("idle-speed", "Speed threshold, km/h, at or below which a point-to-point arc is "+
+		"considered stopped and its interior points dropped.").Default("1").Float64Var(&idleSpeed)
 
 	merge.Action(func(_ *kingpin.ParseContext) error {
 		name := strings.TrimSuffix(gpxFile, path.Ext(gpxFile))
@@ -68,6 +74,8 @@ func merge(c *kingpin.CmdClause) {
 		err = MergeSlfIntoGpx(gpxf, slfFile, outName, func(options *MapSlf) {
 			options.ByDist = !byTime
 			options.SkipStartDist = skipStartDist
+			options.KeepStoppedTime = keepStoppedTime
+			options.IdleSpeedKmh = idleSpeed
 		})
 		if err != nil {
 			return err
