@@ -31,22 +31,26 @@ type gpxStats struct {
 	UphillM        float64 `json:"uphill_m"`
 	DownhillM      float64 `json:"downhill_m"`
 	Date           string  `json:"date"`
+	DateStart      string  `json:"date_start"`
 }
 
 func posterCmd() {
 	var (
-		files     []string
-		imageFile string
-		styleURL  string
+		files              []string
+		imageFile          string
+		styleURL           string
+		elevationThreshold float64
 	)
 
 	cmd := kingpin.Command("poster", "Create a shareable poster with GPX track on a background image")
 	cmd.Arg("files", "GPX files to show on the poster.").StringsVar(&files)
 	cmd.Flag("image", "Background image file (JPG/PNG).").Required().StringVar(&imageFile)
 	cmd.Flag("style", "MapLibre style URL.").
-		Default("https://tiles.openfreemap.org/styles/fiord").
+		Default("https://tiles.openfreemap.org/styles/liberty").
 		Envar("MAPLIBRE_STYLE").
 		StringVar(&styleURL)
+	cmd.Flag("elevation-threshold", "Minimum elevation change (m) counted as gain/loss, filters GPS/barometric noise.").
+		Default("8").FloatVar(&elevationThreshold)
 
 	cmd.Action(func(_ *kingpin.ParseContext) error {
 		if len(files) < 1 {
@@ -57,7 +61,7 @@ func posterCmd() {
 		s.Mount("/static/", http.StripPrefix("/static", Static))
 		s.Get("/track/{id}.geojson", dlGeoJSON(files))
 		s.Get("/image", posterServeImage(imageFile))
-		s.Get("/stats.json", posterServeStats(files))
+		s.Get("/stats.json", posterServeStats(files, elevationThreshold))
 
 		// If --style points to a local file, serve it from the embedded server
 		// so the browser can fetch it from the same origin as the page.
@@ -136,7 +140,7 @@ func posterServeImage(imageFile string) usecase.Interactor {
 	})
 }
 
-func posterServeStats(files []string) usecase.Interactor {
+func posterServeStats(files []string, elevationThreshold float64) usecase.Interactor {
 	return usecase.NewInteractor(func(_ context.Context, _ struct{}, out *usecase.OutputWithEmbeddedWriter) error {
 		rw, ok := out.Writer.(http.ResponseWriter)
 		if !ok {
@@ -152,7 +156,7 @@ func posterServeStats(files []string) usecase.Interactor {
 			}
 
 			md := doc.MovingData()
-			updo := doc.UphillDownhill()
+			uphill, downhill := elevationGain(doc, elevationThreshold)
 			tb := doc.TimeBounds()
 
 			name := ""
@@ -183,9 +187,10 @@ func posterServeStats(files []string) usecase.Interactor {
 				MovingTimeSecs: md.MovingTime,
 				AvgSpeedKmh:    avgSpd,
 				MaxSpeedKmh:    md.MaxSpeed * 3.6,
-				UphillM:        updo.Uphill,
-				DownhillM:      updo.Downhill,
+				UphillM:        uphill,
+				DownhillM:      downhill,
 				Date:           date,
+				DateStart:      tb.StartTime.Format(time.RFC3339),
 			})
 		}
 
@@ -193,6 +198,46 @@ func posterServeStats(files []string) usecase.Interactor {
 
 		return json.NewEncoder(rw).Encode(allStats)
 	})
+}
+
+// elevationGain computes total ascent/descent using a hysteresis threshold instead of
+// summing every raw point-to-point delta, which mistakes GPS/barometric jitter for gain.
+// Gpxgo's built-in UphillDownhill only applies a light 3-point weighted average, which is
+// not enough to filter that noise out (observed ~70% overcount vs Strava on 1m-resolution tracks).
+func elevationGain(doc *gpx.GPX, thresholdM float64) (uphill, downhill float64) {
+	var (
+		base    float64
+		hasBase bool
+	)
+
+	// Segments within a file are brief recording pauses (stoplights, breaks), not
+	// teleports, so the elevation profile is treated as one continuous stream —
+	// resetting the baseline at every segment boundary would drop real gain/loss
+	// that happened across the pause.
+	for _, trk := range doc.Tracks {
+		for _, seg := range trk.Segments {
+			for _, e := range seg.Elevations() {
+				if !e.NotNull() {
+					continue
+				}
+
+				if !hasBase {
+					base, hasBase = e.Value(), true
+					continue
+				}
+
+				if d := e.Value() - base; d > thresholdM {
+					uphill += d
+					base = e.Value()
+				} else if -d > thresholdM {
+					downhill -= d
+					base = e.Value()
+				}
+			}
+		}
+	}
+
+	return uphill, downhill
 }
 
 func posterServeRaw(data []byte, contentType string) usecase.Interactor {

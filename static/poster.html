@@ -12,36 +12,38 @@
 </head>
 <body>
 <div id="toolbar">
-    <span class="toolbar-brand">GPX Poster</span>
-    <label class="toolbar-control">
-        <span class="toolbar-control__label">Map opacity</span>
-        <input type="range" id="opacity-slider" min="0" max="100" value="90">
-        <span id="opacity-value">90%</span>
-    </label>
-    <label class="toolbar-control">
-        <input type="checkbox" id="fills-checkbox">
-        <span class="toolbar-control__label">Show fills</span>
-    </label>
-    <div id="track-colors"></div>
-    <label class="toolbar-control">
-        <span class="toolbar-control__label">Title</span>
-        <input type="text" id="poster-title" class="toolbar-text-input" placeholder="(track name)">
-    </label>
-    <div class="toolbar-stat-group">
-        <span class="toolbar-control__label">Stats</span>
-        <label class="toolbar-stat"><input type="checkbox" data-stat="distance"   checked> Dist</label>
-        <label class="toolbar-stat"><input type="checkbox" data-stat="movingTime" checked> Time</label>
-        <label class="toolbar-stat"><input type="checkbox" data-stat="avgSpeed"   checked> Speed</label>
-        <label class="toolbar-stat"><input type="checkbox" data-stat="elevation"  checked> Elev</label>
+    <div class="toolbar-row">
+        <span class="toolbar-brand">GPX Poster</span>
+        <label class="toolbar-control">
+            <span class="toolbar-control__label">Map opacity</span>
+            <input type="range" id="opacity-slider" min="0" max="100" value="90">
+            <span id="opacity-value">90%</span>
+        </label>
+        <label class="toolbar-control">
+            <input type="checkbox" id="fills-checkbox">
+            <span class="toolbar-control__label">Show fills</span>
+        </label>
+        <div id="track-colors"></div>
+        <label class="toolbar-control">
+            <span class="toolbar-control__label">Title</span>
+            <input type="text" id="poster-title" class="toolbar-text-input" placeholder="(track name)">
+        </label>
+        <label class="toolbar-control">
+            <input type="checkbox" id="stats-top-checkbox">
+            <span class="toolbar-control__label">Stats on top</span>
+        </label>
+        <label class="toolbar-control">
+            <span class="toolbar-control__label">Rotation</span>
+            <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
+            <span id="bearing-value"> 000°</span>
+        </label>
+        <button id="auto-rotate-btn" disabled>Auto</button>
+        <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;margin-left:auto"></span>
+        <button id="save-btn" disabled>Save as PNG</button>
     </div>
-    <label class="toolbar-control">
-        <span class="toolbar-control__label">Rotation</span>
-        <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
-        <span id="bearing-value">0°</span>
-    </label>
-    <button id="auto-rotate-btn" disabled>Auto</button>
-    <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;margin-left:auto"></span>
-    <button id="save-btn" disabled>Save as PNG</button>
+    <div class="toolbar-row toolbar-stat-group" id="stat-toggles">
+        <span class="toolbar-control__label">Stats</span>
+    </div>
 </div>
 <div id="poster-wrapper">
     <div id="poster-frame">

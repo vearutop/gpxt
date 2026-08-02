@@ -12,7 +12,31 @@
     var trackBounds = null; // stored for re-fit after bearing change
     var trackColors = config.files.map(function (_, i) { return palette[i % palette.length]; });
     var posterTitle = "";
-    var enabledStats = { distance: true, movingTime: true, avgSpeed: true, elevation: true };
+    var statsOnTop = false;
+
+    // Single source of truth for selectable poster stats: add an entry here to make a
+    // new metric available in the toolbar, live overlay, and PNG export all at once.
+    var STAT_DEFS = [
+        { key: "distance",   toggleLabel: "Dist",  gridLabel: "Distance",    default: true,
+          value: function (a) { return a.distanceKm.toFixed(1) + " km"; } },
+        { key: "movingTime", toggleLabel: "Time",   gridLabel: "Moving Time", default: true,
+          value: function (a) { return a.movingTime; } },
+        { key: "avgSpeed",   toggleLabel: "Speed",  gridLabel: "Avg Speed",   default: true,
+          value: function (a) { return a.avgSpeedKmh.toFixed(1) + " km/h"; } },
+        { key: "maxSpeed",   toggleLabel: "Max",    gridLabel: "Max Speed",   default: false,
+          value: function (a) { return a.maxSpeedKmh.toFixed(1) + " km/h"; } },
+        { key: "elevation",  toggleLabel: "Elev",   gridLabel: "Elevation",   default: true,
+          value: function (a) { return "↑ " + Math.round(a.uphillM) + " m"; } },
+        { key: "descent",    toggleLabel: "Desc",   gridLabel: "Descent",     default: false,
+          value: function (a) { return "↓ " + Math.round(a.downhillM) + " m"; } },
+    ];
+
+    var enabledStats = {};
+    STAT_DEFS.forEach(function (d) { enabledStats[d.key] = d.default; });
+
+    // Per-stat manual override (e.g. Strava's corrected elevation instead of gpxt's own
+    // computed value) — non-empty string wins over the computed value verbatim.
+    var overrides = {};
 
     function init() {
         loadBackgroundImage()
@@ -228,11 +252,9 @@
         var overlay = document.getElementById("stats-overlay");
         var displayName = posterTitle || agg.name;
 
-        var itemsHtml = [];
-        if (enabledStats.distance)   itemsHtml.push(statItem(agg.distanceKm.toFixed(1) + " km", "Distance"));
-        if (enabledStats.movingTime) itemsHtml.push(statItem(agg.movingTime, "Moving Time"));
-        if (enabledStats.avgSpeed)   itemsHtml.push(statItem(agg.avgSpeedKmh.toFixed(1) + " km/h", "Avg Speed"));
-        if (enabledStats.elevation)  itemsHtml.push(statItem("↑ " + Math.round(agg.uphillM) + " m", "Elevation"));
+        var itemsHtml = STAT_DEFS
+            .filter(function (d) { return enabledStats[d.key]; })
+            .map(function (d) { return statItem(overrides[d.key] || d.value(agg), d.gridLabel); });
 
         overlay.innerHTML =
             '<div class="stats-name">' + esc(displayName) + "</div>" +
@@ -244,20 +266,45 @@
     }
 
     function aggregateStats(stats) {
-        var totalDist = 0, totalSecs = 0, totalUphill = 0;
+        var totalDist = 0, totalSecs = 0, totalUphill = 0, totalDownhill = 0, maxSpeed = 0;
         stats.forEach(function (s) {
-            totalDist   += s.distance_km;
-            totalSecs   += s.moving_time_secs;
-            totalUphill += s.uphill_m;
+            totalDist     += s.distance_km;
+            totalSecs     += s.moving_time_secs;
+            totalUphill   += s.uphill_m;
+            totalDownhill += s.downhill_m;
+            maxSpeed = Math.max(maxSpeed, s.max_speed_kmh);
         });
         return {
             name:        stats[0].name,
-            date:        stats[0].date,
+            date:        dateRange(stats),
             distanceKm:  totalDist,
             movingTime:  fmtDuration(totalSecs),
             avgSpeedKmh: totalSecs > 0 ? (totalDist / totalSecs) * 3600 : 0,
+            maxSpeedKmh: maxSpeed,
             uphillM:     totalUphill,
+            downhillM:   totalDownhill,
         };
+    }
+
+    // Renders a single date for one day, or "Month D–D, YYYY" / "Month D, YYYY – Month D, YYYY"
+    // spanning multiple files' start dates.
+    function dateRange(stats) {
+        var dates = stats
+            .map(function (s) { return s.date_start ? new Date(s.date_start) : null; })
+            .filter(function (d) { return d && !isNaN(d); })
+            .sort(function (a, b) { return a - b; });
+
+        if (dates.length === 0) return stats[0].date || "";
+
+        var first = dates[0], last = dates[dates.length - 1];
+        var fmtFull  = function (d) { return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); };
+        var fmtMonth = function (d) { return d.toLocaleDateString("en-US", { month: "long" }); };
+
+        if (first.toDateString() === last.toDateString()) return fmtFull(first);
+        if (first.getFullYear() === last.getFullYear() && first.getMonth() === last.getMonth()) {
+            return fmtMonth(first) + " " + first.getDate() + "–" + last.getDate() + ", " + first.getFullYear();
+        }
+        return fmtFull(first) + " – " + fmtFull(last);
     }
 
     function fmtDuration(secs) {
@@ -274,6 +321,13 @@
             '<div class="stat-label">' + label + "</div>" +
             "</div>"
         );
+    }
+
+    // Fixed-width so the toolbar doesn't jitter as the digit count changes across the
+    // slider's -180..180 range (e.g. "5°" vs "-180°").
+    function fmtBearing(b) {
+        var sign = b < 0 ? "-" : " ";
+        return sign + Math.abs(b).toString().padStart(3, "0") + "°";
     }
 
     function esc(s) {
@@ -339,7 +393,7 @@
             map.setBearing(bearing);
         }
         document.getElementById("bearing-slider").value = Math.round(bearing);
-        document.getElementById("bearing-value").textContent = Math.round(bearing) + "°";
+        document.getElementById("bearing-value").textContent = fmtBearing(Math.round(bearing));
     }
 
     function initTrackColorPickers() {
@@ -369,8 +423,46 @@
         });
     }
 
+    function initStatToggles() {
+        var container = document.getElementById("stat-toggles");
+        STAT_DEFS.forEach(function (d) {
+            var item = document.createElement("div");
+            item.className = "toolbar-stat-item";
+
+            var label = document.createElement("label");
+            label.className = "toolbar-stat";
+
+            var checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = d.default;
+            checkbox.addEventListener("change", function () {
+                enabledStats[d.key] = checkbox.checked;
+                if (statsData) renderStatsOverlay(statsData);
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(d.toggleLabel));
+
+            // Outside the <label> so clicking/typing here doesn't toggle the checkbox.
+            var override = document.createElement("input");
+            override.type = "text";
+            override.className = "toolbar-stat-override";
+            override.placeholder = "custom";
+            override.title = "Override the computed " + d.gridLabel + " value";
+            override.addEventListener("input", function () {
+                overrides[d.key] = override.value;
+                if (statsData) renderStatsOverlay(statsData);
+            });
+
+            item.appendChild(label);
+            item.appendChild(override);
+            container.appendChild(item);
+        });
+    }
+
     function setupControls() {
         initTrackColorPickers();
+        initStatToggles();
         var slider     = document.getElementById("opacity-slider");
         var opacityVal = document.getElementById("opacity-value");
 
@@ -388,7 +480,7 @@
         var bearingVal    = document.getElementById("bearing-value");
         bearingSlider.addEventListener("input", function () {
             var b = Number(this.value);
-            bearingVal.textContent = b + "°";
+            bearingVal.textContent = fmtBearing(b);
             if (map) map.setBearing(b);
         });
         // Re-fit track into frame once the drag is released.
@@ -405,11 +497,9 @@
             if (statsData) renderStatsOverlay(statsData);
         });
 
-        document.querySelectorAll("[data-stat]").forEach(function (checkbox) {
-            checkbox.addEventListener("change", function () {
-                enabledStats[this.dataset.stat] = this.checked;
-                if (statsData) renderStatsOverlay(statsData);
-            });
+        document.getElementById("stats-top-checkbox").addEventListener("change", function () {
+            statsOnTop = this.checked;
+            document.getElementById("stats-overlay").classList.toggle("stats-top", statsOnTop);
         });
     }
 
@@ -489,7 +579,7 @@
         var scale   = w / frame.clientWidth;
 
         var overlayH = Math.round(overlay.getBoundingClientRect().height * scale);
-        var panelY   = h - overlayH;
+        var panelY   = statsOnTop ? 0 : h - overlayH;
         var cs   = window.getComputedStyle(overlay);
         var padL = Math.round(parseFloat(cs.paddingLeft) * scale);
         var padT = Math.round(parseFloat(cs.paddingTop)  * scale);
@@ -507,8 +597,9 @@
         ctx.fillStyle = "rgba(0,0,0,0.72)";
         ctx.fillRect(0, panelY, w, overlayH);
 
+        var stripeH = Math.max(2, Math.round(3 * scale));
         ctx.fillStyle = "#f97316";
-        ctx.fillRect(0, panelY, w, Math.max(2, Math.round(3 * scale)));
+        ctx.fillRect(0, statsOnTop ? panelY + overlayH - stripeH : panelY, w, stripeH);
 
         ctx.textAlign    = "left";
         ctx.textBaseline = "top";
@@ -526,11 +617,9 @@
             y += Math.round(dateSz * 1.7);
         }
 
-        var items = [];
-        if (enabledStats.distance)   items.push({ value: agg.distanceKm.toFixed(1) + " km",    label: "Distance" });
-        if (enabledStats.movingTime) items.push({ value: agg.movingTime,                        label: "Moving Time" });
-        if (enabledStats.avgSpeed)   items.push({ value: agg.avgSpeedKmh.toFixed(1) + " km/h", label: "Avg Speed" });
-        if (enabledStats.elevation)  items.push({ value: "↑ " + Math.round(agg.uphillM) + " m", label: "Elevation" });
+        var items = STAT_DEFS
+            .filter(function (d) { return enabledStats[d.key]; })
+            .map(function (d) { return { value: overrides[d.key] || d.value(agg), label: d.gridLabel }; });
 
         if (items.length > 0 && valSz > 0) {
             var colW = w / items.length;
