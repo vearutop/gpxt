@@ -13,11 +13,19 @@ html, body {
 #toolbar {
     flex: 0 0 auto;
     display: flex;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 8px;
     padding: 10px 20px;
     background: #0d1117;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toolbar-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    row-gap: 8px;
 }
 
 .toolbar-brand {
@@ -61,6 +69,13 @@ html, body {
 #opacity-value {
     min-width: 32px;
     font-variant-numeric: tabular-nums;
+}
+
+#bearing-value {
+    display: inline-block;
+    min-width: 34px;
+    font-variant-numeric: tabular-nums;
+    white-space: pre;
 }
 
 #save-btn {
@@ -149,6 +164,16 @@ html, body {
     background: #f97316;
 }
 
+#stats-overlay.stats-top {
+    top: 0;
+    bottom: auto;
+}
+
+#stats-overlay.stats-top::before {
+    top: auto;
+    bottom: 0;
+}
+
 .stats-name {
     font-size: clamp(13px, 2.8vw, 22px);
     font-weight: 700;
@@ -198,6 +223,12 @@ html, body {
     font-size: 12px;
 }
 
+.toolbar-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
 .toolbar-stat {
     display: flex;
     align-items: center;
@@ -210,6 +241,25 @@ html, body {
 .toolbar-stat input[type="checkbox"] {
     accent-color: #f97316;
     cursor: pointer;
+}
+
+.toolbar-stat-override {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    color: #f9fafb;
+    font: 12px/1 system-ui, -apple-system, sans-serif;
+    padding: 3px 5px;
+    width: 56px;
+    outline: none;
+}
+
+.toolbar-stat-override:focus {
+    border-color: #f97316;
+}
+
+.toolbar-stat-override::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .stat-item {
