@@ -94,19 +94,22 @@ func posterCmd() {
 	})
 }
 
+// posterPageData feeds poster.html. BasePath is empty for the local `poster` command
+// (assets served at "/") and a per-session prefix like "/poster/abc123" in server mode.
+type posterPageData struct {
+	Files    []string
+	StyleURL string
+	BasePath string
+}
+
 func posterShowPage(files []string, styleURL string) usecase.Interactor {
 	tmpl, err := static.Template("poster.html")
 	if err != nil {
 		panic(err)
 	}
 
-	type pageData struct {
-		Files    []string
-		StyleURL string
-	}
-
 	return usecase.NewInteractor(func(_ context.Context, _ struct{}, out *page) error {
-		return out.Render(tmpl, pageData{Files: files, StyleURL: styleURL})
+		return out.Render(tmpl, posterPageData{Files: files, StyleURL: styleURL})
 	})
 }
 
@@ -148,57 +151,68 @@ func posterServeStats(files []string, elevationThreshold float64) usecase.Intera
 			return errors.New("missing http.ResponseWriter")
 		}
 
-		var allStats []gpxStats
-
-		for _, f := range files {
-			doc, err := gpx.ParseFile(f)
-			if err != nil {
-				return err
-			}
-
-			md := doc.MovingData()
-			uphill, downhill := elevationGain(doc, elevationThreshold)
-			tb := doc.TimeBounds()
-
-			name := ""
-			if len(doc.Tracks) > 0 {
-				name = doc.Tracks[0].Name
-			}
-
-			if name == "" {
-				name = strings.TrimSuffix(filepath.Base(f), filepath.Ext(f))
-			}
-
-			dist := doc.Length3D() / 1000.0
-			avgSpd := 0.0
-
-			if md.MovingTime > 0 {
-				avgSpd = (md.MovingDistance / md.MovingTime) * 3.6
-			}
-
-			date := ""
-			if !tb.StartTime.IsZero() {
-				date = tb.StartTime.Format("January 2, 2006")
-			}
-
-			allStats = append(allStats, gpxStats{
-				Name:           name,
-				DistanceKm:     dist,
-				MovingTime:     posterFormatDuration(time.Duration(md.MovingTime) * time.Second),
-				MovingTimeSecs: md.MovingTime,
-				AvgSpeedKmh:    avgSpd,
-				MaxSpeedKmh:    md.MaxSpeed * 3.6,
-				UphillM:        uphill,
-				DownhillM:      downhill,
-				Date:           date,
-				DateStart:      tb.StartTime.Format(time.RFC3339),
-			})
+		allStats, err := computePosterStats(files, elevationThreshold)
+		if err != nil {
+			return err
 		}
 
 		rw.Header().Set("Content-Type", "application/json")
 
 		return json.NewEncoder(rw).Encode(allStats)
 	})
+}
+
+// computePosterStats is shared by the local `poster` command and `serve`'s per-session
+// routes — the only difference between them is where the file list comes from.
+func computePosterStats(files []string, elevationThreshold float64) ([]gpxStats, error) {
+	var allStats []gpxStats
+
+	for _, f := range files {
+		doc, err := gpx.ParseFile(f)
+		if err != nil {
+			return nil, err
+		}
+
+		md := doc.MovingData()
+		uphill, downhill := elevationGain(doc, elevationThreshold)
+		tb := doc.TimeBounds()
+
+		name := ""
+		if len(doc.Tracks) > 0 {
+			name = doc.Tracks[0].Name
+		}
+
+		if name == "" {
+			name = strings.TrimSuffix(filepath.Base(f), filepath.Ext(f))
+		}
+
+		dist := doc.Length3D() / 1000.0
+		avgSpd := 0.0
+
+		if md.MovingTime > 0 {
+			avgSpd = (md.MovingDistance / md.MovingTime) * 3.6
+		}
+
+		date := ""
+		if !tb.StartTime.IsZero() {
+			date = tb.StartTime.Format("January 2, 2006")
+		}
+
+		allStats = append(allStats, gpxStats{
+			Name:           name,
+			DistanceKm:     dist,
+			MovingTime:     posterFormatDuration(time.Duration(md.MovingTime) * time.Second),
+			MovingTimeSecs: md.MovingTime,
+			AvgSpeedKmh:    avgSpd,
+			MaxSpeedKmh:    md.MaxSpeed * 3.6,
+			UphillM:        uphill,
+			DownhillM:      downhill,
+			Date:           date,
+			DateStart:      tb.StartTime.Format(time.RFC3339),
+		})
+	}
+
+	return allStats, nil
 }
 
 // elevationGain computes total ascent/descent using a hysteresis threshold instead of
@@ -268,30 +282,41 @@ func posterServeProfiles(files []string) usecase.Interactor {
 			return errors.New("missing http.ResponseWriter")
 		}
 
-		profiles := make([]trackProfiles, 0, len(files))
-
-		for _, f := range files {
-			doc, err := gpx.ParseFile(f)
-			if err != nil {
-				return err
-			}
-
-			name := ""
-			if len(doc.Tracks) > 0 {
-				name = doc.Tracks[0].Name
-			}
-
-			if name == "" {
-				name = strings.TrimSuffix(filepath.Base(f), filepath.Ext(f))
-			}
-
-			profiles = append(profiles, buildTrackProfiles(doc, name, profileBuckets))
+		profiles, err := computePosterProfiles(files)
+		if err != nil {
+			return err
 		}
 
 		rw.Header().Set("Content-Type", "application/json")
 
 		return json.NewEncoder(rw).Encode(profiles)
 	})
+}
+
+// computePosterProfiles is shared by the local `poster` command and `serve`'s
+// per-session routes — the only difference between them is where the file list comes from.
+func computePosterProfiles(files []string) ([]trackProfiles, error) {
+	profiles := make([]trackProfiles, 0, len(files))
+
+	for _, f := range files {
+		doc, err := gpx.ParseFile(f)
+		if err != nil {
+			return nil, err
+		}
+
+		name := ""
+		if len(doc.Tracks) > 0 {
+			name = doc.Tracks[0].Name
+		}
+
+		if name == "" {
+			name = strings.TrimSuffix(filepath.Base(f), filepath.Ext(f))
+		}
+
+		profiles = append(profiles, buildTrackProfiles(doc, name, profileBuckets))
+	}
+
+	return profiles, nil
 }
 
 // profileSample is one track point's worth of data across every mini-chart metric, with

@@ -2,6 +2,10 @@
     "use strict";
 
     var config = window.POSTER_CONFIG;
+    // Empty for the local `poster` command (assets at "/"); a per-session prefix like
+    // "/poster/abc123" in server mode. Explicit concatenation instead of relative URLs —
+    // relying on trailing-slash resolution is a classic footgun.
+    var base = config.basePath || "";
     var map = null;
     var statsData = null;
     var allGeoJson = [];   // indexed by file, filled as fetches complete
@@ -62,14 +66,14 @@
             .then(function () {
                 initTrackCanvas();
                 initMap();
-                return fetch("/stats.json").then(function (r) { return r.json(); });
+                return fetch(base + "/stats.json").then(function (r) { return r.json(); });
             })
             .then(function (stats) {
                 statsData = stats;
                 renderStatsOverlay(stats);
                 setupControls();
 
-                fetch("/profiles.json").then(function (r) { return r.json(); }).then(function (profiles) {
+                fetch(base + "/profiles.json").then(function (r) { return r.json(); }).then(function (profiles) {
                     trackProfiles = profiles;
                     drawTracks();
                 });
@@ -102,7 +106,7 @@
                 resolve();
             };
             img.onerror = function () { reject(new Error("Failed to load background image")); };
-            img.src = "/image";
+            img.src = base + "/image";
         });
     }
 
@@ -180,7 +184,7 @@
         var loaded = 0;
 
         config.files.forEach(function (name, i) {
-            fetch("/track/" + i + ".geojson")
+            fetch(base + "/track/" + i + ".geojson")
                 .then(function (r) { return r.json(); })
                 .then(function (geojson) {
                     allGeoJson[i] = geojson;
