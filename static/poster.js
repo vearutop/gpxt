@@ -132,13 +132,17 @@
             attributionControl: false,
         });
 
+        // "style.load" fires for the initial style AND every later setStyle() call — fill
+        // layers are style-specific, so they need re-caching and re-applying each time.
+        map.on("style.load", function () {
+            initFillLayers(); // must come before applyFillsState
+            applyFillsState();
+        });
+
         map.on("load", function () {
-            initFillLayers(); // must come before stripMapFills
-            stripMapFills();
             map.resize();
             loadTracks();
         });
-
 
         // Redraw the track overlay whenever MapLibre repaints.
         map.on("render", drawTracks);
@@ -156,6 +160,7 @@
 
     // Cache original values from the style spec before we touch anything.
     function initFillLayers() {
+        fillLayers = {};
         map.getStyle().layers.forEach(function (layer) {
             var prop = FILL_OPACITY_PROP[layer.type];
             if (!prop) return;
@@ -165,6 +170,11 @@
                 original: paint[prop] !== undefined ? paint[prop] : 1,
             };
         });
+    }
+
+    function applyFillsState() {
+        if (document.getElementById("fills-checkbox").checked) restoreMapFills();
+        else stripMapFills();
     }
 
     function stripMapFills() {
@@ -681,10 +691,7 @@
             if (map) map.getContainer().style.opacity = String(slider.value / 100);
         });
 
-        document.getElementById("fills-checkbox").addEventListener("change", function () {
-            if (this.checked) restoreMapFills();
-            else              stripMapFills();
-        });
+        document.getElementById("fills-checkbox").addEventListener("change", applyFillsState);
 
         var bearingSlider = document.getElementById("bearing-slider");
         var bearingVal    = document.getElementById("bearing-value");
@@ -705,6 +712,47 @@
         document.getElementById("stats-top-checkbox").addEventListener("change", function () {
             statsOnTop = this.checked;
             document.getElementById("stats-overlay").classList.toggle("stats-top", statsOnTop);
+        });
+
+        var styleUrlInput  = document.getElementById("style-url-input");
+        var styleJsonInput = document.getElementById("style-json-input");
+        var styleErrorEl   = document.getElementById("style-error");
+
+        if (typeof config.styleURL === "string") styleUrlInput.value = config.styleURL;
+
+        document.getElementById("style-apply-btn").addEventListener("click", function () {
+            styleErrorEl.hidden = true;
+
+            var jsonText = styleJsonInput.value.trim();
+            var urlText  = styleUrlInput.value.trim();
+
+            function fail(msg) {
+                styleErrorEl.textContent = msg;
+                styleErrorEl.hidden = false;
+            }
+
+            // MapLibre accepts either a style URL or a full style document directly —
+            // no server round-trip needed for either, works the same in local and served mode.
+            var newStyle;
+
+            if (jsonText) {
+                try {
+                    newStyle = JSON.parse(jsonText);
+                } catch (e) {
+                    fail("Invalid JSON: " + e.message);
+                    return;
+                }
+            } else if (urlText) {
+                newStyle = urlText;
+            } else {
+                fail("Paste a style URL or JSON payload.");
+                return;
+            }
+
+            map.once("error", function (e) {
+                fail("Style failed to load: " + ((e && e.error && e.error.message) || "unknown error"));
+            });
+            map.setStyle(newStyle);
         });
 
         // <details> has no built-in click-away-to-close.

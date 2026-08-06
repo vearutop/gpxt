@@ -266,6 +266,61 @@ html, body {
     min-width: 200px;
 }
 
+.toolbar-popover__panel--wide {
+    min-width: 340px;
+}
+
+.toolbar-popover__error {
+    color: #ef4444;
+    font-size: 12px;
+}
+
+.toolbar-textarea {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #f9fafb;
+    font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+    padding: 6px 8px;
+    width: 100%;
+    resize: vertical;
+    outline: none;
+}
+
+.toolbar-textarea:focus {
+    border-color: #f97316;
+}
+
+.toolbar-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#style-apply-btn {
+    padding: 7px 14px;
+    background: #f97316;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font: 600 12px/1 system-ui, -apple-system, sans-serif;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+#style-apply-btn:hover {
+    background: #ea6c0a;
+}
+
+.toolbar-popover__link {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+}
+
+.toolbar-popover__link:hover {
+    color: #f97316;
+    text-decoration: underline;
+}
+
 .toolbar-stat-item {
     display: flex;
     align-items: center;

@@ -37,6 +37,25 @@
             <div class="toolbar-popover__panel" id="stat-toggles"></div>
         </details>
         <div id="minichart-controls"></div>
+        <details class="toolbar-popover">
+            <summary class="toolbar-popover__trigger">Map Style ▾</summary>
+            <div class="toolbar-popover__panel toolbar-popover__panel--wide">
+                <label class="toolbar-control">
+                    <span class="toolbar-control__label">Style URL</span>
+                    <input type="text" id="style-url-input" class="toolbar-text-input" placeholder="https://...">
+                </label>
+                <label class="toolbar-control">
+                    <span class="toolbar-control__label">or paste style JSON</span>
+                </label>
+                <textarea id="style-json-input" class="toolbar-textarea" rows="6"
+                          placeholder='{"version": 8, "sources": {...}, "layers": [...]}'></textarea>
+                <div id="style-error" class="toolbar-popover__error" hidden></div>
+                <button id="style-apply-btn" type="button">Apply style</button>
+                <a class="toolbar-popover__link" href="https://maplibre.org/maputnik/" target="_blank" rel="noopener">
+                    Design a style in Maputnik ↗
+                </a>
+            </div>
+        </details>
         <label class="toolbar-control">
             <span class="toolbar-control__label">Rotation</span>
             <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
