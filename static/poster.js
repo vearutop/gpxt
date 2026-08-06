@@ -13,6 +13,25 @@
     var trackColors = config.files.map(function (_, i) { return palette[i % palette.length]; });
     var posterTitle = "";
     var statsOnTop = false;
+    var trackProfiles = []; // one entry per file, fetched from /profiles.json
+
+    // Single source of truth for the selectable mini-charts: add an entry here to make a
+    // new metric's chart available in the toolbar and on the poster at once. "key" must
+    // match a field in the /profiles.json response.
+    var MINICHART_DEFS = [
+        { key: "elevation", label: "Elevation",   unit: "m" },
+        { key: "hr",        label: "Heart Rate",  unit: "bpm" },
+        { key: "power",     label: "Power",       unit: "W" },
+        { key: "atemp",     label: "Temperature", unit: "°C" },
+        { key: "speed",     label: "Speed",       unit: "km/h" },
+    ];
+
+    // Per-chart runtime state — box position/size as % of frame, independent sliders
+    // standing in for drag-and-resize.
+    var miniCharts = {};
+    MINICHART_DEFS.forEach(function (d) {
+        miniCharts[d.key] = { enabled: false, caption: d.label, bg: 35, x: 0, y: 80, w: 100, h: 20 };
+    });
 
     // Single source of truth for selectable poster stats: add an entry here to make a
     // new metric available in the toolbar, live overlay, and PNG export all at once.
@@ -49,6 +68,11 @@
                 statsData = stats;
                 renderStatsOverlay(stats);
                 setupControls();
+
+                fetch("/profiles.json").then(function (r) { return r.json(); }).then(function (profiles) {
+                    trackProfiles = profiles;
+                    drawTracks();
+                });
             })
             .catch(function (err) {
                 document.getElementById("poster-frame").textContent = "Error: " + err.message;
@@ -228,6 +252,121 @@
                 }
             });
         });
+
+        drawMiniCharts();
+    }
+
+    function drawMiniCharts() {
+        MINICHART_DEFS.forEach(drawMiniChart);
+    }
+
+    // Draws one metric's profile chart onto the same overlay canvas as the tracks, so it
+    // rides along for free in the PNG export (which copies that canvas wholesale).
+    function drawMiniChart(def) {
+        var state = miniCharts[def.key];
+        if (!state.enabled || !trackProfiles.length) return;
+
+        var seriesPerFile = trackProfiles.map(function (tp) { return tp[def.key] || []; });
+        if (!seriesPerFile.some(function (s) { return s.length; })) return;
+
+        var dpr = window.devicePixelRatio || 1;
+        var cw = trackCanvas.width, ch = trackCanvas.height;
+
+        var w = (state.w / 100) * cw;
+        var h = (state.h / 100) * ch;
+        if (w <= 0 || h <= 0) return;
+
+        // X/Y slide the box between flush-against-the-near-edge (0%) and
+        // flush-against-the-far-edge (100%) over the remaining slack space, so the box
+        // never runs off-canvas and 100% always means "flush right/bottom", not "clamped
+        // into nothing".
+        var rect = {
+            x: (state.x / 100) * (cw - w),
+            y: (state.y / 100) * (ch - h),
+            w: w,
+            h: h,
+        };
+
+        var minV = Infinity, maxV = -Infinity, totalDist = 0;
+        var offsets = seriesPerFile.map(function (points) {
+            var offset = totalDist;
+            points.forEach(function (pt) {
+                if (pt.v < minV) minV = pt.v;
+                if (pt.v > maxV) maxV = pt.v;
+            });
+            var last = points[points.length - 1];
+            totalDist += last ? last.d : 0;
+            return offset;
+        });
+        if (!isFinite(minV) || totalDist === 0) return;
+        if (maxV === minV) maxV = minV + 1;
+
+        var padY = rect.h * 0.12;
+
+        function xAt(globalD) { return rect.x + (globalD / totalDist) * rect.w; }
+        function yAt(v) { return rect.y + rect.h - padY - ((v - minV) / (maxV - minV)) * (rect.h - 2 * padY); }
+
+        tc.fillStyle = "rgba(0,0,0," + (state.bg / 100) + ")";
+        tc.fillRect(rect.x, rect.y, rect.w, rect.h);
+
+        // Ruler: min/mid/max gridlines, drawn under the profile lines. Labeled on both
+        // edges so the value is readable regardless of which side the profile crowds.
+        var padX = 6 * dpr;
+        tc.font = Math.round(10 * dpr) + "px system-ui,-apple-system,sans-serif";
+        tc.textBaseline = "middle";
+        [minV, (minV + maxV) / 2, maxV].forEach(function (v) {
+            var y = yAt(v);
+            var label = Math.round(v) + def.unit;
+
+            tc.strokeStyle = "rgba(255,255,255,0.15)";
+            tc.lineWidth = Math.max(1, Math.round(dpr));
+            tc.beginPath();
+            tc.moveTo(rect.x, y);
+            tc.lineTo(rect.x + rect.w, y);
+            tc.stroke();
+
+            tc.fillStyle = "rgba(255,255,255,0.55)";
+            tc.textAlign = "left";
+            tc.fillText(label, rect.x + padX, y);
+            tc.textAlign = "right";
+            tc.fillText(label, rect.x + rect.w - padX, y);
+        });
+
+        seriesPerFile.forEach(function (points, i) {
+            if (!points.length) return;
+
+            tc.beginPath();
+            points.forEach(function (pt, j) {
+                var x = xAt(offsets[i] + pt.d);
+                var y = yAt(pt.v);
+                if (j === 0) tc.moveTo(x, y); else tc.lineTo(x, y);
+            });
+            tc.strokeStyle = trackColors[i] || palette[i % palette.length];
+            tc.lineWidth = 2 * dpr;
+            tc.lineJoin = "round";
+            tc.stroke();
+
+            if (i > 0) {
+                var dividerX = xAt(offsets[i]);
+                tc.strokeStyle = "rgba(255,255,255,0.25)";
+                tc.lineWidth = 1 * dpr;
+                tc.beginPath();
+                tc.moveTo(dividerX, rect.y);
+                tc.lineTo(dividerX, rect.y + rect.h);
+                tc.stroke();
+            }
+        });
+
+        if (state.caption) {
+            tc.font = "bold " + Math.round(11 * dpr) + "px system-ui,-apple-system,sans-serif";
+            tc.textAlign = "right";
+            tc.textBaseline = "top";
+            tc.fillStyle = "rgba(255,255,255,0.85)";
+            tc.fillText(state.caption, rect.x + rect.w - padX, rect.y + 6 * dpr);
+        }
+
+        tc.textAlign = "left";
+        tc.textBaseline = "alphabetic";
     }
 
     function drawLine(coords, color, width) {
@@ -423,6 +562,72 @@
         });
     }
 
+    // Builds one <details> popover per mini-chart metric, each with the same
+    // show/caption/background/position/size controls. All wired generically via
+    // data-mc (chart key) / data-field (state field) attributes instead of repeating
+    // markup+listeners per metric.
+    function initMiniChartControls() {
+        var container = document.getElementById("minichart-controls");
+
+        container.innerHTML = MINICHART_DEFS.map(function (def) {
+            var k = esc(def.key);
+            var s = miniCharts[def.key];
+
+            function row(label, field, inputHtml, unit) {
+                return (
+                    '<label class="toolbar-control">' +
+                    '<span class="toolbar-control__label">' + esc(label) + "</span>" +
+                    inputHtml +
+                    (unit ? '<span data-mc-value="' + k + ":" + field + '">' + s[field] + unit + "</span>" : "") +
+                    "</label>"
+                );
+            }
+
+            return (
+                '<details class="toolbar-popover">' +
+                '<summary class="toolbar-popover__trigger">' + esc(def.label) + " chart ▾</summary>" +
+                '<div class="toolbar-popover__panel">' +
+                '<label class="toolbar-control">' +
+                '<input type="checkbox" data-mc="' + k + '" data-field="enabled">' +
+                '<span class="toolbar-control__label">Show chart</span>' +
+                "</label>" +
+                row("Caption", "caption",
+                    '<input type="text" class="toolbar-text-input" data-mc="' + k + '" data-field="caption" value="' + esc(s.caption) + '">') +
+                row("Background", "bg",
+                    '<input type="range" min="0" max="100" value="' + s.bg + '" data-mc="' + k + '" data-field="bg">', "%") +
+                row("Horizontal", "x",
+                    '<input type="range" min="0" max="100" value="' + s.x + '" data-mc="' + k + '" data-field="x">', "%") +
+                row("Vertical", "y",
+                    '<input type="range" min="0" max="100" value="' + s.y + '" data-mc="' + k + '" data-field="y">', "%") +
+                row("Width", "w",
+                    '<input type="range" min="5" max="100" value="' + s.w + '" data-mc="' + k + '" data-field="w">', "%") +
+                row("Height", "h",
+                    '<input type="range" min="5" max="100" value="' + s.h + '" data-mc="' + k + '" data-field="h">', "%") +
+                "</div></details>"
+            );
+        }).join("");
+
+        container.querySelectorAll("[data-mc]").forEach(function (el) {
+            var key = el.dataset.mc, field = el.dataset.field;
+            var eventName = el.type === "checkbox" ? "change" : "input";
+
+            el.addEventListener(eventName, function () {
+                var val = el.type === "checkbox" ? el.checked
+                    : el.type === "range" ? Number(el.value)
+                    : el.value;
+
+                miniCharts[key][field] = val;
+
+                if (el.type === "range") {
+                    var valueEl = container.querySelector('[data-mc-value="' + key + ":" + field + '"]');
+                    if (valueEl) valueEl.textContent = val + "%";
+                }
+
+                drawTracks();
+            });
+        });
+    }
+
     function initStatToggles() {
         var container = document.getElementById("stat-toggles");
         STAT_DEFS.forEach(function (d) {
@@ -463,6 +668,7 @@
     function setupControls() {
         initTrackColorPickers();
         initStatToggles();
+        initMiniChartControls();
         var slider     = document.getElementById("opacity-slider");
         var opacityVal = document.getElementById("opacity-value");
 
@@ -483,11 +689,6 @@
             bearingVal.textContent = fmtBearing(b);
             if (map) map.setBearing(b);
         });
-        // Re-fit track into frame once the drag is released.
-        bearingSlider.addEventListener("change", function () {
-            var b = Number(bearingSlider.value);
-            if (map && trackBounds) map.fitBounds(trackBounds, { padding: 56, duration: 200, bearing: b });
-        });
 
         document.getElementById("auto-rotate-btn").addEventListener("click", autoRotate);
         document.getElementById("save-btn").addEventListener("click", exportPNG);
@@ -500,6 +701,13 @@
         document.getElementById("stats-top-checkbox").addEventListener("change", function () {
             statsOnTop = this.checked;
             document.getElementById("stats-overlay").classList.toggle("stats-top", statsOnTop);
+        });
+
+        // <details> has no built-in click-away-to-close.
+        document.addEventListener("click", function (e) {
+            document.querySelectorAll("details.toolbar-popover[open]").forEach(function (d) {
+                if (!d.contains(e.target)) d.removeAttribute("open");
+            });
         });
     }
 
@@ -537,15 +745,16 @@
         var opacity = document.getElementById("opacity-slider").value / 100;
 
         function afterMap() {
-            // Layer 3: GPX tracks at full opacity.
-            // trackCanvas is a plain 2D canvas — no WebGL / cross-origin issue.
-            ctx.globalAlpha = 1;
-            ctx.drawImage(trackCanvas, 0, 0, exportW, exportH);
-
-            // Layer 4: stats panel.
+            // Layer 3: stats panel.
             if (statsData && statsData.length > 0) {
                 drawStatsCanvas(ctx, aggregateStats(statsData), exportW, exportH);
             }
+
+            // Layer 4: GPX tracks and mini-charts at full opacity, on top of the stats
+            // panel — matches the live preview's z-order (#track-canvas above #stats-overlay).
+            // trackCanvas is a plain 2D canvas — no WebGL / cross-origin issue.
+            ctx.globalAlpha = 1;
+            ctx.drawImage(trackCanvas, 0, 0, exportW, exportH);
 
             var link = document.createElement("a");
             link.download = "gpx-poster.png";

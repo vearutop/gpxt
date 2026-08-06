@@ -32,6 +32,11 @@
             <input type="checkbox" id="stats-top-checkbox">
             <span class="toolbar-control__label">Stats on top</span>
         </label>
+        <details class="toolbar-popover">
+            <summary class="toolbar-popover__trigger">Stats ▾</summary>
+            <div class="toolbar-popover__panel" id="stat-toggles"></div>
+        </details>
+        <div id="minichart-controls"></div>
         <label class="toolbar-control">
             <span class="toolbar-control__label">Rotation</span>
             <input type="range" id="bearing-slider" min="-180" max="180" value="0" step="1">
@@ -40,9 +45,6 @@
         <button id="auto-rotate-btn" disabled>Auto</button>
         <span id="export-size" style="font-size:11px;color:rgba(255,255,255,0.4);font-variant-numeric:tabular-nums;margin-left:auto"></span>
         <button id="save-btn" disabled>Save as PNG</button>
-    </div>
-    <div class="toolbar-row toolbar-stat-group" id="stat-toggles">
-        <span class="toolbar-control__label">Stats</span>
     </div>
 </div>
 <div id="poster-wrapper">

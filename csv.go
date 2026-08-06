@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
@@ -103,12 +104,45 @@ func csvCmd() {
 	})
 }
 
+// extensionFloatTPX reads a numeric TrackPointExtension field (e.g. hr, power, atemp,
+// speed), reporting whether the point actually carried that data at all.
+func extensionFloatTPX(point *gpx.GPXPoint, tag string) (float64, bool) {
+	s := extensionDataTPX(point, tag)
+	if s == "" {
+		return 0, false
+	}
+
+	v, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0, false
+	}
+
+	return v, true
+}
+
 func extensionData(point *gpx.GPXPoint, namespace gpx.NamespaceURL, path ...string) string {
 	node := findExtensionNode(&point.Extensions, namespace, path...)
 	if node == nil {
 		return ""
 	}
 	return strings.TrimSpace(node.Data)
+}
+
+// extensionFloat reads a numeric extension field at an arbitrary namespace/path — some
+// exporters (e.g. sigma's) put <power> directly under <extensions>, not nested inside
+// <gpxtpx:TrackPointExtension> like hr/cad/atemp.
+func extensionFloat(point *gpx.GPXPoint, namespace gpx.NamespaceURL, path ...string) (float64, bool) {
+	s := extensionData(point, namespace, path...)
+	if s == "" {
+		return 0, false
+	}
+
+	v, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0, false
+	}
+
+	return v, true
 }
 
 func extensionDataTPX(point *gpx.GPXPoint, tag string) string {

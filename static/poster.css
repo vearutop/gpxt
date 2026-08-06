@@ -28,6 +28,12 @@ html, body {
     row-gap: 8px;
 }
 
+/* Wrapper is JS-populated with several <details> popovers; keep it out of the flex box
+   model so its children lay out as if they were direct children of .toolbar-row. */
+#minichart-controls {
+    display: contents;
+}
+
 .toolbar-brand {
     font-weight: 700;
     font-size: 15px;
@@ -140,10 +146,14 @@ html, body {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    /* Tracks and mini-charts share this canvas, and both should float over the stats
+       panel so a chart can be positioned on top of it. */
+    z-index: 2;
 }
 
 #stats-overlay {
     position: absolute;
+    z-index: 1;
     bottom: 0;
     left: 0;
     right: 0;
@@ -215,12 +225,45 @@ html, body {
     color: rgba(255, 255, 255, 0.3);
 }
 
-.toolbar-stat-group {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.toolbar-popover {
+    position: relative;
+}
+
+.toolbar-popover__trigger {
+    cursor: pointer;
+    list-style: none;
     color: rgba(255, 255, 255, 0.7);
     font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    user-select: none;
+}
+
+.toolbar-popover__trigger::-webkit-details-marker {
+    display: none;
+}
+
+.toolbar-popover[open] .toolbar-popover__trigger {
+    border-color: #f97316;
+    color: #fff;
+}
+
+.toolbar-popover__panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 12px 14px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    min-width: 200px;
 }
 
 .toolbar-stat-item {
