@@ -237,6 +237,7 @@ func serveCmd() {
 		}
 
 		s.Get("/", serveIndexPage())
+		s.Wrapper.Get("/camera", serveCameraPage())
 
 		maxUploadBytes := int64(maxUploadMB) << 20
 
