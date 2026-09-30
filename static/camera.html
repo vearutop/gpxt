@@ -40,6 +40,7 @@
   <div><strong>Landscape Camera Preview</strong></div>
   <label>Lat, Lon <input id="latlon" type="text" value="42.1985732535241, 23.31115740159605"
     placeholder="paste from Google Maps"></label>
+  <label><input id="buildings-checkbox" type="checkbox" style="width:auto"> Show buildings (OSM)</label>
   <button id="load-btn">Load terrain</button>
   <hr>
   <label>Focal length (mm) <input id="focal" type="number" min="8" max="800" value="50"></label>
@@ -61,7 +62,8 @@
   <label>Sun altitude <input id="sun-alt" type="range" min="0" max="90" value="35"></label>
   <div>FOV: <span id="fov-readout">-</span></div>
   <div class="hint">Drag to pan/tilt. WASD to walk, Space/C to rise/sink.</div>
-  <div class="hint">Imagery © Esri, Maxar, Earthstar Geographics. Elevation: Mapzen Terrarium tiles.</div>
+  <div class="hint">Imagery © Esri, Maxar, Earthstar Geographics. Elevation: Mapzen Terrarium tiles.
+    Buildings © OpenStreetMap contributors.</div>
 </div>
 
 <div id="status">Loading…</div>
@@ -198,6 +200,89 @@ async function loadSatelliteImagery(lat, lon, zoom, gridRadius) {
   await Promise.all(tasks);
 
   return canvas;
+}
+
+// ---- OSM buildings (extruded footprints, so nearby structures can block/frame a shot) ----
+
+const BUILDINGS_RADIUS_M = 2000;
+const DEFAULT_BUILDING_HEIGHT_M = 6;
+const LEVEL_HEIGHT_M = 3;
+
+// Goes through gpxt's own /overpass/buildings proxy rather than querying Overpass directly:
+// public Overpass mirrors turn out to block cross-site *browser* fetches specifically (a
+// plain server-side request works fine) — see camera.go for detail. This means buildings
+// only load when this page is served via `gpxt serve`, not when opened as a bare file.
+async function loadBuildings(lat0, lon0) {
+  const { latM, lonM } = metersPerDegree(lat0);
+  const south = lat0 - BUILDINGS_RADIUS_M / latM;
+  const north = lat0 + BUILDINGS_RADIUS_M / latM;
+  const west = lon0 - BUILDINGS_RADIUS_M / lonM;
+  const east = lon0 + BUILDINGS_RADIUS_M / lonM;
+
+  const params = new URLSearchParams({ south, west, north, east });
+  const resp = await fetch(`/overpass/buildings?${params}`);
+  if (!resp.ok) throw new Error(`buildings fetch failed: HTTP ${resp.status}`);
+
+  const json = await resp.json();
+
+  return json.elements || [];
+}
+
+function buildingHeightM(tags) {
+  const height = parseFloat(tags.height);
+  if (Number.isFinite(height)) return height;
+
+  const levels = parseFloat(tags['building:levels']);
+  if (Number.isFinite(levels)) return levels * LEVEL_HEIGHT_M;
+
+  return DEFAULT_BUILDING_HEIGHT_M;
+}
+
+// A small deterministic per-building tint (near-neutral, hue only) so a dense block of
+// buildings reads as distinct shapes instead of one flat gray slab.
+function buildingMaterial(id) {
+  const color = new THREE.Color().setHSL((id % 360) / 360, 0.06, 0.55);
+  return new THREE.MeshStandardMaterial({ color, roughness: 0.9, side: THREE.DoubleSide });
+}
+
+function sampleElevation(dem, lat, lon) {
+  const { grid, cols, originTileX, originTileY, zoom } = dem;
+  const [xf, yf] = lonLatToTileFrac(lon, lat, zoom);
+  const px = Math.min(cols - 1, Math.max(0, Math.round(xf * TILE_SIZE - originTileX * TILE_SIZE)));
+  const py = Math.min(cols - 1, Math.max(0, Math.round(yf * TILE_SIZE - originTileY * TILE_SIZE)));
+
+  return grid[py * cols + px];
+}
+
+function buildBuildingsMesh(elements, lat0, lon0, dem) {
+  const { latM, lonM } = metersPerDegree(lat0);
+  const group = new THREE.Group();
+
+  for (const el of elements) {
+    if (el.type !== 'way' || !el.geometry || el.geometry.length < 3) continue;
+
+    // Shape's (x,y) maps to world (x,z) after the rotateX below (see there for the exact
+    // sign derivation) — y here must be +north so the rotated result lands on -Z, matching
+    // the terrain mesh's own north = -Z convention.
+    let pts = el.geometry.map((p) => new THREE.Vector2((p.lon - lon0) * lonM, (p.lat - lat0) * latM));
+    if (pts.length > 1 && pts[0].equals(pts[pts.length - 1])) pts = pts.slice(0, -1);
+    if (pts.length < 3) continue;
+
+    const height = buildingHeightM(el.tags || {});
+    // ExtrudeGeometry extrudes the shape's XY plane along +Z by [0, depth]; rotating -90°
+    // about X turns that into "footprint flat on the ground, extruded up along +Y".
+    const geometry = new THREE.ExtrudeGeometry(new THREE.Shape(pts), { depth: height, bevelEnabled: false });
+    geometry.rotateX(-Math.PI / 2);
+
+    const centroidLat = el.geometry.reduce((sum, p) => sum + p.lat, 0) / el.geometry.length;
+    const centroidLon = el.geometry.reduce((sum, p) => sum + p.lon, 0) / el.geometry.length;
+
+    const mesh = new THREE.Mesh(geometry, buildingMaterial(el.id));
+    mesh.position.set(0, sampleElevation(dem, centroidLat, centroidLon), 0);
+    group.add(mesh);
+  }
+
+  return group;
 }
 
 // ---- terrain mesh -----------------------------------------------------------
@@ -368,15 +453,17 @@ scene.add(sun, sun.target);
 
 let terrainMesh = null;
 let farTerrainMesh = null;
+let buildingsGroup = null;
+let currentDem = null; // needed to place buildings on the ground when the checkbox is toggled on later
 let centerElevation = 0;
 let originLat = 0, originLon = 0; // lat/lon the loaded terrain (and camera x/z) is centered on
 
 // ---- UI wiring ----------------------------------------------------------
 
 const el = (id) => document.getElementById(id);
-const [latlonEl, loadBtn, focalEl, sensorPresetEl, customRowEl, sensorWEl, sensorHEl,
+const [latlonEl, buildingsCheckboxEl, loadBtn, focalEl, sensorPresetEl, customRowEl, sensorWEl, sensorHEl,
   sunAzEl, sunAltEl, fovReadoutEl, statusEl, frameGuideEl] = [
-  'latlon', 'load-btn', 'focal', 'sensor-preset', 'custom-sensor-row', 'sensor-w', 'sensor-h',
+  'latlon', 'buildings-checkbox', 'load-btn', 'focal', 'sensor-preset', 'custom-sensor-row', 'sensor-w', 'sensor-h',
   'sun-az', 'sun-alt', 'fov-readout', 'status', 'frame-guide',
 ].map(el);
 
@@ -429,6 +516,7 @@ function parseUrlState() {
   return {
     lat: num('lat'), lon: num('lon'), alt: num('alt'), yaw: num('yaw'), pitch: num('pitch'),
     focal: num('focal'), sw: num('sw'), sh: num('sh'), sunAz: num('sunaz'), sunAlt: num('sunalt'),
+    buildings: p.has('buildings') ? p.get('buildings') === '1' : undefined,
   };
 }
 
@@ -452,6 +540,7 @@ function applyUrlStateToInputs(s) {
 
   if (s.sunAz !== undefined) sunAzEl.value = s.sunAz;
   if (s.sunAlt !== undefined) sunAltEl.value = s.sunAlt;
+  if (s.buildings !== undefined) buildingsCheckboxEl.checked = s.buildings;
 }
 
 // Camera x/z are meters from (originLat, originLon); converting back to real lat/lon lets
@@ -474,6 +563,7 @@ function syncUrl() {
     sw, sh,
     sunaz: sunAzEl.value,
     sunalt: sunAltEl.value,
+    buildings: buildingsCheckboxEl.checked ? '1' : '0',
   });
 
   history.replaceState(null, '', '?' + params.toString());
@@ -485,6 +575,41 @@ function disposeMesh(mesh) {
   mesh.geometry.dispose();
   if (mesh.material.map) mesh.material.map.dispose();
   mesh.material.dispose();
+}
+
+function disposeGroup(group) {
+  if (!group) return;
+  scene.remove(group);
+  group.traverse((obj) => {
+    if (obj.geometry) obj.geometry.dispose();
+    if (obj.material) obj.material.dispose();
+  });
+}
+
+// Buildings are off by default (an extra network fetch not everyone wants) and cached once
+// fetched, so toggling the checkbox back and forth just shows/hides the existing group
+// instead of re-querying Overpass every time.
+async function refreshBuildings() {
+  if (!buildingsCheckboxEl.checked) {
+    if (buildingsGroup) buildingsGroup.visible = false;
+    return;
+  }
+
+  if (buildingsGroup) {
+    buildingsGroup.visible = true;
+    return;
+  }
+
+  if (!currentDem) return; // terrain hasn't loaded yet; reload() calls this again once it has
+
+  try {
+    const elements = await loadBuildings(originLat, originLon);
+    buildingsGroup = buildBuildingsMesh(elements, originLat, originLon, currentDem);
+    scene.add(buildingsGroup);
+    statusEl.textContent += ` — ${buildingsGroup.children.length} buildings`;
+  } catch (err) {
+    console.warn('buildings unavailable, skipping them:', err);
+  }
 }
 
 async function reload(override) {
@@ -518,8 +643,10 @@ async function reload(override) {
 
     disposeMesh(terrainMesh);
     disposeMesh(farTerrainMesh);
+    disposeGroup(buildingsGroup);
     terrainMesh = null;
     farTerrainMesh = null;
+    buildingsGroup = null;
 
     const built = buildTerrainMesh(dem, lat, lon, MESH_STRIDE, true);
     centerElevation = built.centerElevation;
@@ -552,6 +679,7 @@ async function reload(override) {
       scene.add(farTerrainMesh);
     }
 
+    currentDem = dem;
     originLat = lat;
     originLon = lon;
     camera.position.set(0, override?.alt ?? (centerElevation + DEFAULT_EYE_HEIGHT), 0);
@@ -563,6 +691,8 @@ async function reload(override) {
       + (satelliteCanvas ? ' — imagery © Esri, Maxar, Earthstar Geographics' : ' — imagery unavailable, showing elevation tint');
 
     syncUrl();
+
+    await refreshBuildings();
   } catch (err) {
     statusEl.textContent = 'Error: ' + err.message
       + (err.message.includes('fetch') ? ' (possible CORS/network issue reaching the tile source)' : '');
@@ -580,6 +710,7 @@ sensorPresetEl.addEventListener('change', () => {
   syncUrl();
 });
 [sunAzEl, sunAltEl].forEach((e) => e.addEventListener('input', () => { updateSun(); syncUrl(); }));
+buildingsCheckboxEl.addEventListener('change', () => { refreshBuildings(); syncUrl(); });
 
 window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
