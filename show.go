@@ -122,8 +122,10 @@ func showMapLibre(files []string, styleURL string) usecase.Interactor {
 	}
 
 	type pageData struct {
-		Files []string
-		Tiles string
+		Files    []string
+		Tiles    string
+		Base     string
+		Download bool
 	}
 
 	u := usecase.NewInteractor(func(_ context.Context, _ struct{}, out *page) error {

@@ -156,6 +156,16 @@ function loadTracks(params) {
             row.appendChild(checkbox);
             row.appendChild(swatch);
             row.appendChild(text);
+
+            if (params.download) {
+                const dl = document.createElement("a");
+                dl.href = params.base + "/track/" + i + ".gpx";
+                dl.textContent = "\u2913";
+                dl.title = "Download GPX";
+                dl.addEventListener("click", function (e) { e.stopPropagation(); });
+                row.appendChild(dl);
+            }
+
             panel.appendChild(row);
         });
 
@@ -165,7 +175,7 @@ function loadTracks(params) {
     map.on("load", function () {
         buildTrackControls();
         params.files.forEach(function (name, i) {
-            fetch("/track/" + i + ".geojson")
+            fetch((params.base || "") + "/track/" + i + ".geojson")
                 .then(function (response) { return response.json(); })
                 .then(function (geojson) {
                     geojson.features.forEach(function (feature) {

@@ -10,6 +10,7 @@ import (
 	"html/template"
 	"io"
 	"log"
+	"mime"
 	"mime/multipart"
 	"net/http"
 	"os"
@@ -20,6 +21,7 @@ import (
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/swaggest/openapi-go/openapi3"
+	"github.com/swaggest/rest/request"
 	"github.com/swaggest/rest/web"
 	"github.com/swaggest/usecase"
 	"github.com/tkrajina/gpxgo/gpx"
@@ -33,6 +35,7 @@ type posterSession struct {
 	id    string
 	dir   string
 	files []string
+	names []string // Original upload names, parallel to files.
 	image string
 	until time.Time
 }
@@ -245,6 +248,12 @@ func serveCmd() {
 		s.Wrapper.Get("/poster", serveUploadForm(sessionTTL))
 		s.Wrapper.Post("/poster", serveUploadHandler(store, maxUploadBytes, sessionTTL))
 
+		s.Wrapper.Get("/show", serveShowForm())
+		s.Wrapper.Post("/show", serveShowUpload(store, maxUploadBytes))
+		s.Get("/show/{session}", serveShowPage(store, styleEndpoint))
+		s.Get("/show/{session}/track/{id}.geojson", servePosterGeoJSON(store))
+		s.Get("/show/{session}/track/{id}.gpx", serveShowGPX(store))
+
 		s.Get("/poster/{session}", servePosterPage(store, styleEndpoint))
 		s.Get("/poster/{session}/image", servePosterImage(store))
 		s.Get("/poster/{session}/stats.json", servePosterStats(store, elevationThreshold))
@@ -397,6 +406,7 @@ func saveUploadedGPX(sess *posterSession, i int, fh *multipart.FileHeader) error
 
 	path := filepath.Join(sess.dir, fmt.Sprintf("track-%d.gpx", i))
 	sess.files = append(sess.files, path)
+	sess.names = append(sess.names, filepath.Base(fh.Filename))
 
 	return os.WriteFile(path, data, 0o600)
 }
@@ -535,6 +545,7 @@ func servePosterProfiles(store *sessionStore) usecase.Interactor {
 func servePosterGeoJSON(store *sessionStore) usecase.Interactor {
 	type req struct {
 		posterSessionInput
+
 		ID uint `path:"id"`
 	}
 
@@ -567,5 +578,124 @@ func servePosterGeoJSON(store *sessionStore) usecase.Interactor {
 		_, err = rw.Write([]byte(geojson))
 
 		return err
+	})
+}
+
+func serveShowForm() http.HandlerFunc {
+	tmpl, err := static.Template("show_upload.html")
+	if err != nil {
+		panic(err)
+	}
+
+	return func(w http.ResponseWriter, _ *http.Request) {
+		renderUploadPage(w, tmpl, uploadPageData{})
+	}
+}
+
+// serveShowUpload accepts GPX files (dropped or picked), stores them in a fresh session
+// and redirects to the map page.
+func serveShowUpload(store *sessionStore, maxUploadBytes int64) http.HandlerFunc {
+	tmpl, err := static.Template("show_upload.html")
+	if err != nil {
+		panic(err)
+	}
+
+	fail := func(w http.ResponseWriter, status int, msg string) {
+		w.WriteHeader(status)
+		renderUploadPage(w, tmpl, uploadPageData{Error: msg})
+	}
+
+	return func(w http.ResponseWriter, r *http.Request) {
+		r.Body = http.MaxBytesReader(w, r.Body, maxUploadBytes)
+
+		if err := r.ParseMultipartForm(32 << 20); err != nil {
+			fail(w, http.StatusRequestEntityTooLarge, "Upload too large or malformed: "+err.Error())
+
+			return
+		}
+
+		gpxHeaders := r.MultipartForm.File["gpx"]
+		if len(gpxHeaders) == 0 {
+			fail(w, http.StatusBadRequest, "At least one GPX file is required.")
+
+			return
+		}
+
+		sess, err := store.create()
+		if err != nil {
+			log.Println("creating session:", err)
+			fail(w, http.StatusInternalServerError, "Could not create session, try again.")
+
+			return
+		}
+
+		for i, fh := range gpxHeaders {
+			if err := saveUploadedGPX(sess, i, fh); err != nil {
+				_ = os.RemoveAll(sess.dir)
+				fail(w, http.StatusBadRequest, err.Error())
+
+				return
+			}
+		}
+
+		http.Redirect(w, r, "/show/"+sess.id, http.StatusSeeOther)
+	}
+}
+
+func serveShowPage(store *sessionStore, styleURL string) usecase.Interactor {
+	tmpl, err := static.Template("maplibre.html")
+	if err != nil {
+		panic(err)
+	}
+
+	type pageData struct {
+		Files    []string
+		Tiles    string
+		Base     string
+		Download bool
+	}
+
+	return usecase.NewInteractor(func(_ context.Context, in posterSessionInput, out *page) error {
+		sess, err := lookupSession(store, in.Session)
+		if err != nil {
+			return err
+		}
+
+		return out.Render(tmpl, pageData{
+			Files:    sess.names,
+			Tiles:    styleURL,
+			Base:     "/show/" + sess.id,
+			Download: true,
+		})
+	})
+}
+
+func serveShowGPX(store *sessionStore) usecase.Interactor {
+	type req struct {
+		posterSessionInput
+		request.EmbeddedSetter
+
+		ID uint `path:"id"`
+	}
+
+	return usecase.NewInteractor(func(_ context.Context, in req, out *usecase.OutputWithEmbeddedWriter) error {
+		rw, ok := out.Writer.(http.ResponseWriter)
+		if !ok {
+			return errors.New("missing http.ResponseWriter")
+		}
+
+		sess, err := lookupSession(store, in.Session)
+		if err != nil {
+			return err
+		}
+
+		if in.ID >= uint(len(sess.files)) {
+			return fmt.Errorf("unexpected id %d, max %d", in.ID, len(sess.files))
+		}
+
+		rw.Header().Set("Content-Disposition", mime.FormatMediaType("attachment", map[string]string{"filename": sess.names[in.ID]}))
+		http.ServeFile(rw, in.Request(), sess.files[in.ID])
+
+		return nil
 	})
 }
